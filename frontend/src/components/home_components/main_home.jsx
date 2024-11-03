@@ -6,7 +6,7 @@ function MainHome() {
   return (
     <div className="container">
       <NavbarComponent />
-      Bamvola........
+      <div className="text-center">project home updated</div>
       <FooterComponent />
     </div>
   );
