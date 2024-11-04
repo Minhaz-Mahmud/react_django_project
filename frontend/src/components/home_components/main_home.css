@@ -1,0 +1,26 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: white;
+}
+
+.main-home-div {
+  display: flex;
+  background-image: url("/assets/home-bg.jpg");
+  flex-direction: column;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  width: 100%;
+}
+
+.main-home-div > .text-center {
+  flex-grow: 1;
+}
+
+.home-div-class {
+  margin-top: 8%;
+}
