@@ -17,8 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from registration.views import CandidateView 
+from login.views import LoginView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('candidates/',CandidateView.as_view(), name='candidate-list'),
+    path('login/', LoginView.as_view(), name='login'),
+
 ]
