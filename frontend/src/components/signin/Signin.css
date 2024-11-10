@@ -1,0 +1,102 @@
+/* Full-screen container for the glassy effect */
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.signin-container {
+  /* color: black !important; */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/assets/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Glassy card styling */
+.card {
+  background: rgba(41, 39, 39, 0.135); /* Semi-transparent white background */
+  backdrop-filter: blur(10px); /* Blur effect */
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Card body styling */
+.card-body {
+  background: rgba(255, 255, 255, 0.534); /* Slightly opaque background */
+  border-radius: 10px;
+}
+
+/* Form field styles */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.text-danger {
+  font-size: 14px;
+  color: red;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Remember me checkbox style */
+.checkbox-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.checkbox-primary input {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.checkbox-class-input {
+  margin-top: 4px;
+}
+
+.social .btn {
+  width: 48%;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* Google and Facebook buttons */
+.btn-danger {
+  background-color: #db4437;
+}
+
+.btn-primary {
+  background-color: #3b5998;
+}
+
+/* Link for forgot password and signup */
+a {
+  color: #007bff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
