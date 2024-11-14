@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Signin.css";
 
 const Signin = () => {
@@ -21,13 +23,22 @@ const Signin = () => {
       });
 
       if (response.status === 200) {
-        navigate("/");
+        console.log("Success response from server");
+        toast.clearWaitingQueue();
+        toast.success("Login successful!");
+
+        // Redirect to home page after a delay
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
       }
     } catch (err) {
       if (err.response && err.response.data) {
         setError(err.response.data.detail);
+        toast.error(err.response.data.detail);
       } else {
         setError("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
       }
     }
   };
@@ -42,6 +53,11 @@ const Signin = () => {
 
   return (
     <div className="signin-container">
+      <ToastContainer
+        className="toast-class"
+        position="top-center"
+        autoClose={2000}
+      />
       <div className="card shadow-lg">
         <div className="card-body">
           <h2 className="text-center">Login</h2>
@@ -98,8 +114,7 @@ const Signin = () => {
 
           <div className="text-center mt-4">
             <p className="text-dark">
-              Don't have an account?{" "}
-              <Link to="/registration">Sign up here</Link>
+              New here? <Link to="/registration"> Sign up</Link>
             </p>
           </div>
 
