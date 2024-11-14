@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -23,11 +23,8 @@ const Signin = () => {
       });
 
       if (response.status === 200) {
-        console.log("Success response from server");
         toast.clearWaitingQueue();
         toast.success("Login successful!");
-
-        // Redirect to home page after a delay
         setTimeout(() => {
           navigate("/");
         }, 3000);

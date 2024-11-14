@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Registration.css";
 
@@ -81,9 +81,8 @@ const Registration = () => {
 
       // Redirect to home page after a delay
       setTimeout(() => {
-        navigate("/");
+        navigate("/signin");
       }, 3000);
-      
     } catch (error) {
       console.error("Error creating profile:", error);
       toast.clearWaitingQueue();
@@ -187,6 +186,14 @@ const Registration = () => {
             </button>
           </form>
         </div>
+      </div>
+      <div className="company-div">
+        <Link
+          to="/company-register"
+          className="btn btn-primary fs-3 w-100 mt-3"
+        >
+          Register your company
+        </Link>
       </div>
     </div>
   );

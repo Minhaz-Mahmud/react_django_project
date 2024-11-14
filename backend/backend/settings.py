@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "registration",
     "rest_framework",
     "corsheaders",
+    "company_registration",
 ]
 
 MIDDLEWARE = [
