@@ -75,7 +75,7 @@ const CompanyReg = () => {
       toast.clearWaitingQueue();
       toast.success("Company registered successfully!");
       setTimeout(() => {
-        navigate("/");
+        navigate("/company-dashboard");
       }, 2000);
     } catch (err) {
       if (err.response && err.response.data) {

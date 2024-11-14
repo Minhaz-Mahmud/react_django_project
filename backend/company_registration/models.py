@@ -1,27 +1,36 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
 
+# from .validators import unique_email_validator
 
 class Company(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(
         max_length=11,
-        validators=[MinLengthValidator(11)]
+        validators=[
+            MinLengthValidator(11),
+            # unique_email_validator,
+        ],
     )
     location = models.CharField(max_length=255)
     description = models.TextField()
     website = models.URLField(max_length=255, blank=True, null=True)
     ceo_phone = models.CharField(
         max_length=11,
-        validators=[MinLengthValidator(11)]
+        validators=[
+            MinLengthValidator(11),
+        ],
     )
-    company_type = models.CharField(max_length=50, choices=[
-        ('Multinational', 'Multinational'),
-        ('International', 'International'),
-        ('Startup', 'Startup'),
-        ('Small Business', 'Small Business')
-    ])
+    company_type = models.CharField(
+        max_length=50,
+        choices=[
+            ("Multinational", "Multinational"),
+            ("International", "International"),
+            ("Startup", "Startup"),
+            ("Small Business", "Small Business"),
+        ],
+    )
 
     def __str__(self):
         return self.name
@@ -54,4 +63,3 @@ class Company(models.Model):
 
 #     def __str__(self):
 #         return f"Application for {self.job_post.job_title} by {self.candidate.user.username}"
-

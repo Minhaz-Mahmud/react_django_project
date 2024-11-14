@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Signin from "./components/signin/Signin";
 import Registration from "./components/registration/Registration";
 import CompanyReg from "./components/registration/company_reg";
+import CompanyDashboard from "./components/compnay_dashboard/company_dashboard";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/registration" element={<Registration />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/company-register" element={<CompanyReg />} />
+        <Route path="/company-dashboard" element={<CompanyDashboard />} />
       </Routes>
     </BrowserRouter>
   );
