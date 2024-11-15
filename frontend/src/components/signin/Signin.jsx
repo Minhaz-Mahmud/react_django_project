@@ -132,6 +132,15 @@ const Signin = () => {
               <i className="fab fa-facebook-f mr-2"></i> Facebook
             </button>
           </div>
+          <p className="w-100 text-center text-dark">
+            &mdash; &mdash; &mdash; &mdash;
+          </p>
+          <Link
+            to="/company-signin"
+            className="text-center btn btn-primary py-2 m-auto"
+          >
+            Company Signin
+          </Link>
         </div>
       </div>
     </div>
