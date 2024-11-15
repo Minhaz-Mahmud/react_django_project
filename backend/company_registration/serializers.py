@@ -1,7 +1,25 @@
+# from rest_framework import serializers
+# from .models import Company
+
+# class CompanySerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Company
+#         fields = ['name', 'email', 'phone_number', 'location', 'description', 'website', 'ceo_phone', 'company_type']
+
+
 from rest_framework import serializers
+from django.contrib.auth.hashers import make_password
 from .models import Company
+
 
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ['name', 'email', 'phone_number', 'location', 'description', 'website', 'ceo_phone', 'company_type']
+        fields = "__all__"
+
+    def create(self, validated_data):
+        # Hash the password before saving
+        password = validated_data.get("password")
+        if password:
+            validated_data["password"] = make_password(password)
+        return super().create(validated_data)
