@@ -41,14 +41,16 @@ const CompanyReg = () => {
           website: website,
           ceo_phone: ceoPhone,
           company_type: companyType,
-          password: password, // Send password
+          password: password,
         }
       );
+
+      console.log("Company registered successfully", response);
 
       toast.clearWaitingQueue();
       toast.success("Company registered successfully!");
       setTimeout(() => {
-        navigate("/company-dashboard");
+        navigate("/company-signin");
       }, 2000);
     } catch (err) {
       if (err.response && err.response.data) {
