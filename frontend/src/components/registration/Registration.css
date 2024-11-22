@@ -56,9 +56,10 @@
 /* ------------------------------- */
 
 .main-reg-div {
+  margin-bottom: 20px !important;
+  margin-top: 100px !important;
   background-color: #333;
   padding: 30px;
-  margin: 0 auto;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }

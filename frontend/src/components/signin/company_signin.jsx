@@ -23,25 +23,16 @@ const CompanySignin = () => {
         }
       );
 
-      console.log("successful login", response);
-      // Show success toast
       toast.success("Company logged in successfully!");
 
-      // Store the token if available (useless)
-
-      if (response.data.access_token) {
-        localStorage.setItem("access_token", response.data.access_token);
-      }
-
-      // Store company data in localStorage or sessionStorage
-      localStorage.setItem(
+      sessionStorage.setItem(
         "companyData",
         JSON.stringify(response.data.company)
       );
 
       setTimeout(() => {
-        navigate("/company-profile");
-      }, 2000);
+        navigate("/company/dashboard");
+      }, 2500);
     } catch (err) {
       const errorMessage =
         err.response?.data?.detail || "Invalid credentials. Please try again.";

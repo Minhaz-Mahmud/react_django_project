@@ -1,5 +1,5 @@
 * {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .navbar-class {
@@ -58,7 +58,7 @@
 @media (max-width: 992px) {
   .mobile-nav-bg {
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.518);
+    background-color: rgba(0, 0, 0, 0.888);
     backdrop-filter: blur(200px);
     transition: background-color 0.3s ease;
     border-radius: 5px;

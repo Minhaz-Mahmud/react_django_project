@@ -1,9 +1,30 @@
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavbarComponent = () => {
+  const [userType, setUserType] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const CompanySessionData = JSON.parse(
+      sessionStorage.getItem("companyData")
+    );
+    if (CompanySessionData && CompanySessionData.user_type === "company")
+      setUserType("company");
+    else setUserType(null);
+  }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("companyData");
+    sessionStorage.removeItem("firstRefresh");
+    setUserType(null);
+    navigate("/");
+  };
+
   return (
     <div>
       <Navbar
@@ -17,7 +38,7 @@ const NavbarComponent = () => {
           left: 0,
           width: "100%",
           zIndex: 1000,
-        }} // Added position and z-index
+        }}
       >
         <Container>
           <Navbar.Brand as={Link} to="/">
@@ -35,22 +56,34 @@ const NavbarComponent = () => {
               <Nav.Link as={Link} to="/about">
                 About
               </Nav.Link>
-              <NavDropdown title="More" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/action">
-                  Action
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/another-action">
-                  Another Action
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Button
-                as={Link}
-                to="/signin"
-                variant="outline-light"
-                className="ms-2"
-              >
-                Signin
-              </Button>
+
+              {/* Show different items if the user is logged in as a company */}
+              {userType === "company" ? (
+                <>
+                  <Nav.Link as={Link} to="/company/dashboard">
+                    Dashboard
+                  </Nav.Link>
+                  <Nav.Link as={Link} to="/post-jobs">
+                    Post Jobs
+                  </Nav.Link>
+                  <Button
+                    variant="outline-light"
+                    className="ms-2"
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  as={Link}
+                  to="/signin"
+                  variant="outline-light"
+                  className="ms-2"
+                >
+                  Signin
+                </Button>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

@@ -55,13 +55,14 @@ const Signin = () => {
         position="top-center"
         autoClose={2000}
       />
-      <div className="card shadow-lg">
+      <div className="card shadow-lg signin-card-div">
         <div className="card-body">
           <h2 className="text-center">Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label className="text-dark">Email:</label>
               <input
+                name="email"
                 placeholder="Enter email address"
                 type="email"
                 className="form-control"

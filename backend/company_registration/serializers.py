@@ -9,7 +9,6 @@ class CompanySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        # Hash the password before saving
         password = validated_data.get("password")
         if password:
             validated_data["password"] = make_password(password)

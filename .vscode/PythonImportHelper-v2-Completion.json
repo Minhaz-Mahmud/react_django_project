@@ -112,6 +112,30 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -809,6 +833,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.company_registration.migrations.0003_company_type",
+        "description": "backend.company_registration.migrations.0003_company_type",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('company_registration', '0002_company_password'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='company',\n            name='type',\n            field=models.CharField(default='company', editable=False, max_length=50),\n        ),",
+        "detail": "backend.company_registration.migrations.0003_company_type",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.company_registration.migrations.0004_rename_type_company_user_type",
+        "description": "backend.company_registration.migrations.0004_rename_type_company_user_type",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('company_registration', '0003_company_type'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='company',\n            old_name='type',\n            new_name='user_type',\n        ),",
+        "detail": "backend.company_registration.migrations.0004_rename_type_company_user_type",
+        "documentation": {}
+    },
+    {
         "label": "CompanyRegistrationConfig",
         "kind": 6,
         "importPath": "backend.company_registration.apps",
@@ -822,7 +864,7 @@
         "kind": 6,
         "importPath": "backend.company_registration.models",
         "description": "backend.company_registration.models",
-        "peekOfCode": "class Company(models.Model):\n    name = models.CharField(max_length=255)\n    email = models.EmailField(unique=True)\n    phone_number = models.CharField(\n        max_length=11,\n        validators=[MinLengthValidator(11)],\n    )\n    location = models.CharField(max_length=255)\n    description = models.TextField()\n    website = models.URLField(max_length=255, blank=True, null=True)",
+        "peekOfCode": "class Company(models.Model):\n    name = models.CharField(max_length=255)\n    email = models.EmailField(unique=True)\n    phone_number = models.CharField(\n        max_length=11,\n        validators=[\n            MinLengthValidator(11),\n        ],\n    )\n    location = models.CharField(max_length=255)",
         "detail": "backend.company_registration.models",
         "documentation": {}
     },
@@ -831,7 +873,7 @@
         "kind": 6,
         "importPath": "backend.company_registration.serializers",
         "description": "backend.company_registration.serializers",
-        "peekOfCode": "class CompanySerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Company\n        fields = \"__all__\"\n    def create(self, validated_data):\n        # Hash the password before saving\n        password = validated_data.get(\"password\")\n        if password:\n            validated_data[\"password\"] = make_password(password)\n        return super().create(validated_data)",
+        "peekOfCode": "class CompanySerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Company\n        fields = \"__all__\"\n    def create(self, validated_data):\n        password = validated_data.get(\"password\")\n        if password:\n            validated_data[\"password\"] = make_password(password)\n        return super().create(validated_data)",
         "detail": "backend.company_registration.serializers",
         "documentation": {}
     },

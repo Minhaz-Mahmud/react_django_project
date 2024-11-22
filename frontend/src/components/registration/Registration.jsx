@@ -91,7 +91,7 @@ const Registration = () => {
   };
 
   return (
-    <div className="main-reg-div container my-5">
+    <div className="main-reg-div container">
       <ToastContainer
         className="toast-class"
         position="top-center"

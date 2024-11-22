@@ -4,14 +4,12 @@ const CompanyProfile = () => {
   const [companyData, setCompanyData] = useState(null);
 
   useEffect(() => {
-    const storedCompanyData = localStorage.getItem("companyData");
+    const storedCompanyData = sessionStorage.getItem("companyData");
     if (storedCompanyData) setCompanyData(JSON.parse(storedCompanyData));
     else window.location.href = "/company-signin";
   }, []);
 
-  if (!companyData) {
-    return <div>Loading...</div>;
-  }
+  if (!companyData) return <div>Loading...</div>;
 
   return (
     <div className="text-dark company-profile">

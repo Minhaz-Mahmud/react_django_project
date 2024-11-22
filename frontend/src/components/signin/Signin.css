@@ -15,6 +15,10 @@
   background: url("/assets/bg.jpg") no-repeat center center fixed;
   background-size: cover;
 }
+.signin-card-div {
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
 
 /* Glassy card styling */
 .card {

@@ -8,6 +8,7 @@
 .company-reg-container {
   width: 60%;
   margin: 50px auto;
+  margin-top: 100px;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -16,7 +17,7 @@
 
 .form-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5 rem;
   font-weight: bold;
   color: #333;
   margin-bottom: 20px;

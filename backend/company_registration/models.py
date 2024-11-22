@@ -8,7 +8,9 @@ class Company(models.Model):
     email = models.EmailField(unique=True)
     phone_number = models.CharField(
         max_length=11,
-        validators=[MinLengthValidator(11)],
+        validators=[
+            MinLengthValidator(11),
+        ],
     )
     location = models.CharField(max_length=255)
     description = models.TextField()
@@ -27,6 +29,10 @@ class Company(models.Model):
         ],
     )
     password = models.CharField(max_length=255)
+    user_type = models.CharField(
+        default="company",
+        editable=False,
+    )
 
     def set_password(self, raw_password):
         self.password = make_password(raw_password)
