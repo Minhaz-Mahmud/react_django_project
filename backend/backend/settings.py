@@ -146,22 +146,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ==================================================================code for media files======================================================
 # ============================================================================================================================================
-# settings.py
+
 
 import os
 
 # Media settings
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-# Add this to your urls.py to serve media in development
-from django.conf import settings
-from django.conf.urls.static import static
-
-urlpatterns = [
-    # other url patterns
-]
-
-# Serve media files in development
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
