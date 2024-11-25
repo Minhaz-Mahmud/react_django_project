@@ -88,6 +88,7 @@ const NavbarComponent = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <br />
     </div>
   );
 };

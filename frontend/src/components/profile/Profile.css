@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: url("/assets/profile.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+  }
+  
+  .profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .profile-details {
+    background: rgba(255, 255, 255, 0.9); 
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 50px 20px 30px; 
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: black;
+    position: relative; 
+  }
+  
+  .profile-picture {
+    width: 150px; 
+    height: 150px; 
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 5px solid rgba(0, 0, 0, 0.2); 
+    position: absolute;
+    top: -75px; 
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .profile-details p {
+    margin: 20px 0; 
+    font-size: 1.4rem; 
+    font-weight: 600; 
+  }
+  
+  .profile-details p strong {
+    color: #ff8800; 
+    font-weight: 700; 
+  }
+  
+ 
+  .profile-details a {
+    color: #810a0a;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .profile-details a:hover {
+    text-decoration: underline;
+  }
+
+ 
+.fetched-data {
+    color: #1e88e5; 
+    font-weight: 700; 
+    font-size: 1.2rem; 
+  }
+  
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .profile-picture {
+      width: 120px;
+      height: 120px;
+      top: -60px; 
+    }
+  
+    .profile-details {
+      padding: 40px 20px 20px;
+    }
+  
+    .profile-details p {
+      font-size: 1.2rem;
+    }
+
+  }
+  
