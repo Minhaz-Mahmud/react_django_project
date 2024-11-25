@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -16,27 +16,30 @@ const Signin = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/login/", {
-        email,
-        password,
-        rememberMe,
-      });
+      const response = await axios.post(
+        "http://127.0.0.1:8000/login/",
+        {
+          email,
+          password,
+        }
+      );
 
-      if (response.status === 200) {
-        toast.clearWaitingQueue();
-        toast.success("Login successful!");
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
-      }
+      toast.success("Candidate logged in successfully!");
+
+      // Save candidate data to session storage
+      sessionStorage.setItem(
+        "candidateData",
+        JSON.stringify(response.data.candidate)
+      );
+
+      setTimeout(() => {
+        navigate("/candidate/dashboard");
+      }, 2500);
     } catch (err) {
-      if (err.response && err.response.data) {
-        setError(err.response.data.detail);
-        toast.error(err.response.data.detail);
-      } else {
-        setError("An error occurred. Please try again.");
-        toast.error("An error occurred. Please try again.");
-      }
+      const errorMessage =
+        err.response?.data?.detail || "Invalid credentials. Please try again.";
+      setError(errorMessage);
+      toast.error(errorMessage);
     }
   };
 
@@ -57,7 +60,7 @@ const Signin = () => {
       />
       <div className="card shadow-lg signin-card-div">
         <div className="card-body">
-          <h2 className="text-center">Login</h2>
+          <h2 className="text-center">Candidate Login</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label className="text-dark">Email:</label>
