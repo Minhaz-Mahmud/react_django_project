@@ -12,6 +12,7 @@ import CompanySignin from "./components/signin/company_signin";
 import CompanyProfile from "./components/profile/company_profile";
 import NavbarComponent from "./components/navbar/navbar";
 import FooterComponent from "./components/footer/footer";
+import Profile from "./components/profile/profile";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/" element={<MainHome />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/company-register" element={<CompanyReg />} />
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
         <Route path="/company-signin" element={<CompanySignin />} />
