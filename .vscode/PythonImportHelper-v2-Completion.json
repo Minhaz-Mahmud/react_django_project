@@ -40,11 +40,11 @@
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
         "isExtraImport": true,
-        "detail": "django.apps",
+        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -72,6 +72,134 @@
         "documentation": {}
     },
     {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -128,14 +256,6 @@
         "documentation": {}
     },
     {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -144,51 +264,11 @@
         "documentation": {}
     },
     {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
         "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -273,22 +353,6 @@
         "documentation": {}
     },
     {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "static",
-        "importPath": "django.conf.urls.static",
-        "description": "django.conf.urls.static",
-        "isExtraImport": true,
-        "detail": "django.conf.urls.static",
-        "documentation": {}
-    },
-    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -305,7 +369,7 @@
         "documentation": {}
     },
     {
-        "label": "LoginView",
+        "label": "CandidateLoginView",
         "importPath": "login.views",
         "description": "login.views",
         "isExtraImport": true,
@@ -326,6 +390,38 @@
         "description": "company_registration.views",
         "isExtraImport": true,
         "detail": "company_registration.views",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostCreateView",
+        "importPath": "job_post.views",
+        "description": "job_post.views",
+        "isExtraImport": true,
+        "detail": "job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyJobsView",
+        "importPath": "job_post.views",
+        "description": "job_post.views",
+        "isExtraImport": true,
+        "detail": "job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
+        "isExtraImport": true,
+        "detail": "django.conf.urls.static",
         "documentation": {}
     },
     {
@@ -418,6 +514,22 @@
         "documentation": {}
     },
     {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
         "label": "status",
         "importPath": "rest_framework",
         "description": "rest_framework",
@@ -474,6 +586,22 @@
         "documentation": {}
     },
     {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
         "label": "Response",
         "importPath": "rest_framework.response",
         "description": "rest_framework.response",
@@ -522,11 +650,68 @@
         "documentation": {}
     },
     {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
         "label": "Candidate",
         "importPath": "registration.models",
         "description": "registration.models",
         "isExtraImport": true,
         "detail": "registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "CandidateSerializer",
+        "importPath": "registration.serializer",
+        "description": "registration.serializer",
+        "isExtraImport": true,
+        "detail": "registration.serializer",
         "documentation": {}
     },
     {
@@ -648,7 +833,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\"DEFAULT_PERMISSION_CLASSES\": [\"rest_framework.permissions.AllowAny\"]}\nCORS_ORIGIN_ALLOW_ALL = True\nROOT_URLCONF = \"backend.urls\"\nCORS_ALLOWED_ORIGINS = [\n    \"http://localhost:3000\",  # React app URL\n]\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],",
+        "peekOfCode": "REST_FRAMEWORK = {\n    \"DEFAULT_PERMISSION_CLASSES\": [\n        \"rest_framework.permissions.AllowAny\",\n    ],\n    \"DEFAULT_AUTHENTICATION_CLASSES\": [\n        \"rest_framework.authentication.SessionAuthentication\",\n        \"rest_framework.authentication.TokenAuthentication\",\n    ],\n}\nCORS_ORIGIN_ALLOW_ALL = True",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -693,7 +878,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",\n    }",
+        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -702,7 +887,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",\n        # \"HOST\": \"localhost\",\n        # \"PORT\": \"5432\",\n    }\n}",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -747,7 +932,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\n# settings.py",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\nimport os",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -756,7 +941,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "STATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\n# settings.py\nimport os\n# Media settings\nMEDIA_URL = \"/media/\"",
+        "peekOfCode": "STATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\nimport os\n# Media settings\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -765,7 +950,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\n# settings.py\nimport os\n# Media settings\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\n# Add this to your urls.py to serve media in development\nfrom django.conf import settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\nimport os\n# Media settings\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -774,7 +959,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "MEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\n# Add this to your urls.py to serve media in development\nfrom django.conf import settings\nfrom django.conf.urls.static import static\nurlpatterns = [\n    # other url patterns\n]\n# Serve media files in development\nif settings.DEBUG:",
+        "peekOfCode": "MEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -783,16 +968,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\n# Add this to your urls.py to serve media in development\nfrom django.conf import settings\nfrom django.conf.urls.static import static\nurlpatterns = [\n    # other url patterns\n]\n# Serve media files in development\nif settings.DEBUG:\n    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
-        "detail": "backend.backend.settings",
-        "documentation": {}
-    },
-    {
-        "label": "urlpatterns",
-        "kind": 5,
-        "importPath": "backend.backend.settings",
-        "description": "backend.backend.settings",
-        "peekOfCode": "urlpatterns = [\n    # other url patterns\n]\n# Serve media files in development\nif settings.DEBUG:\n    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -801,7 +977,7 @@
         "kind": 5,
         "importPath": "backend.backend.urls",
         "description": "backend.backend.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"candidates/\", CandidateView.as_view(), name=\"candidate-list\"),\n    path(\"login/\", LoginView.as_view(), name=\"login\"),\n    path(\n        \"api/company/register/\", CompanyRegisterView.as_view(), name=\"company-register\"\n    ),\n    path(\"api/company/login/\", CompanyLoginView.as_view(), name=\"company-login\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"candidates/\", CandidateView.as_view(), name=\"candidate-list\"),\n    path(\"login/\", CandidateLoginView.as_view(), name=\"login\"),\n    path(\n        \"api/company/register/\", CompanyRegisterView.as_view(), name=\"company-register\"\n    ),\n    path(\"api/company/login/\", CompanyLoginView.as_view(), name=\"company-login\"),\n    path(\"api/company/post-job/\", JobPostCreateView.as_view(), name=\"company-job-post\"),\n    path(\"api/company/posted-jobs/\", CompanyJobsView.as_view(), name=\"posted-jobs\"),",
         "detail": "backend.backend.urls",
         "documentation": {}
     },
@@ -848,6 +1024,15 @@
         "description": "backend.company_registration.migrations.0004_rename_type_company_user_type",
         "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('company_registration', '0003_company_type'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='company',\n            old_name='type',\n            new_name='user_type',\n        ),",
         "detail": "backend.company_registration.migrations.0004_rename_type_company_user_type",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.company_registration.migrations.0005_alter_company_user_type",
+        "description": "backend.company_registration.migrations.0005_alter_company_user_type",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('company_registration', '0004_rename_type_company_user_type'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='company',\n            name='user_type',\n            field=models.CharField(default='company', editable=False),\n        ),",
+        "detail": "backend.company_registration.migrations.0005_alter_company_user_type",
         "documentation": {}
     },
     {
@@ -905,6 +1090,60 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.job_post.migrations.0001_initial",
+        "description": "backend.job_post.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('company_registration', '0005_alter_company_user_type'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='JobPost',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "backend.job_post.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostConfig",
+        "kind": 6,
+        "importPath": "backend.job_post.apps",
+        "description": "backend.job_post.apps",
+        "peekOfCode": "class JobPostConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'job_post'",
+        "detail": "backend.job_post.apps",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "kind": 6,
+        "importPath": "backend.job_post.models",
+        "description": "backend.job_post.models",
+        "peekOfCode": "class JobPost(models.Model):\n    company = models.ForeignKey(\n        Company,\n        on_delete=models.CASCADE,\n        related_name=\"job_posts\",\n    )\n    title = models.CharField(max_length=255)\n    tags = models.CharField(max_length=255, help_text=\"Comma-separated tags (max 6)\")\n    job_type = models.CharField(\n        max_length=20,",
+        "detail": "backend.job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostSerializer",
+        "kind": 6,
+        "importPath": "backend.job_post.serializers",
+        "description": "backend.job_post.serializers",
+        "peekOfCode": "class JobPostSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = JobPost\n        fields = [\n            \"id\",\n            \"company\",\n            \"title\",\n            \"tags\",\n            \"job_type\",\n            \"salary_range\",",
+        "detail": "backend.job_post.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostCreateView",
+        "kind": 6,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "class JobPostCreateView(APIView):\n    def post(self, request):\n        if request.user.is_authenticated:\n            try:\n                company = Company.objects.get(email=request.user.email)\n            except Company.DoesNotExist:\n                return Response(\n                    {\n                        \"error\": \"You must be associated with a registered company to post jobs.\"\n                    },",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyJobsView",
+        "kind": 6,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "class CompanyJobsView(APIView):\n    def get(self, request):\n        if request.user.is_authenticated:\n            try:\n                company = Company.objects.get(email=request.user.email)\n            except Company.DoesNotExist:\n                return Response(\n                    {\"error\": \"Invalid company association.\"},\n                    status=status.HTTP_403_FORBIDDEN,\n                )",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
         "label": "LoginConfig",
         "kind": 6,
         "importPath": "backend.login.apps",
@@ -914,11 +1153,20 @@
         "documentation": {}
     },
     {
-        "label": "LoginView",
+        "label": "CandidateLoginView",
         "kind": 6,
         "importPath": "backend.login.views",
         "description": "backend.login.views",
-        "peekOfCode": "class LoginView(APIView):\n    def post(self, request, *args, **kwargs):\n        email = request.data.get(\"email\")\n        password = request.data.get(\"password\")\n        # Validate that the email and password are provided\n        if not email or not password:\n            return Response(\n                {\"detail\": \"Email and password are required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )",
+        "peekOfCode": "class CandidateLoginView(APIView):\n    def post(self, request, *args, **kwargs):\n        email = request.data.get(\"email\")\n        password = request.data.get(\"password\")\n        if not email or not password:\n            return Response(\n                {\"message\": \"Email and password are required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:",
+        "detail": "backend.login.views",
+        "documentation": {}
+    },
+    {
+        "label": "CandidateProfileView",
+        "kind": 6,
+        "importPath": "backend.login.views",
+        "description": "backend.login.views",
+        "peekOfCode": "class CandidateProfileView(APIView):\n    permission_classes = [IsAuthenticated]\n    def get(self, request, *args, **kwargs):\n        try:\n            candidate = Candidate.objects.get(user=request.user)\n        except Candidate.DoesNotExist:\n            return Response(\n                {\"error\": \"Candidate not found\"},\n                status=status.HTTP_404_NOT_FOUND,\n            )",
         "detail": "backend.login.views",
         "documentation": {}
     },
@@ -938,6 +1186,15 @@
         "description": "backend.registration.migrations.0002_alter_candidate_phone_number",
         "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('registration', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='candidate',\n            name='phone_number',\n            field=models.CharField(max_length=11, validators=[django.core.validators.MinLengthValidator(11)]),\n        ),",
         "detail": "backend.registration.migrations.0002_alter_candidate_phone_number",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.registration.migrations.0003_alter_candidate_profile_picture_and_more",
+        "description": "backend.registration.migrations.0003_alter_candidate_profile_picture_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('registration', '0002_alter_candidate_phone_number'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='candidate',\n            name='profile_picture',\n            field=models.ImageField(blank=True, null=True, upload_to='media/profile_pictures/'),\n        ),",
+        "detail": "backend.registration.migrations.0003_alter_candidate_profile_picture_and_more",
         "documentation": {}
     },
     {

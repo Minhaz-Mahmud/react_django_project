@@ -17,7 +17,9 @@ class Company(models.Model):
     website = models.URLField(max_length=255, blank=True, null=True)
     ceo_phone = models.CharField(
         max_length=11,
-        validators=[MinLengthValidator(11)],
+        validators=[
+            MinLengthValidator(11),
+        ],
     )
     company_type = models.CharField(
         max_length=50,

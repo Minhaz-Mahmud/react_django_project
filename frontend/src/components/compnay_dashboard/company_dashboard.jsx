@@ -4,6 +4,10 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import CompanyProfile from "../profile/company_profile";
+import JobPost from "../dashboard_components/job_post/JobPost";
+import PostedJobs from "../dashboard_components/posted_jobs/PostedJobs";
+import "./company_dashboard.css";
 
 // Component for the summary cards at the top
 const SummaryCard = ({ title, value, bgColor }) => (
@@ -61,16 +65,24 @@ const MainContent = ({ activeComponent }) => {
         </div>
       </div>
     ),
-    colors: <h2>Colors</h2>,
-    typography: <h2>Typography</h2>,
-    base: <h2>Base</h2>,
-    buttons: <h2>Buttons</h2>,
-    editors: <h2>Editors</h2>,
-    forms: <h2>Forms</h2>,
-    googleMaps: <h2>Google Maps</h2>,
-    icons: <h2>Icons</h2>,
-    notifications: <h2>Notifications</h2>,
-    plugins: <h2>Plugins</h2>,
+    Comp_Profile: (
+      <div>
+        <CompanyProfile />
+      </div>
+    ),
+    post_Job: (
+      <div>
+        <JobPost />
+      </div>
+    ),
+    posted_jobs: (
+      <div>
+        <PostedJobs />
+      </div>
+    ),
+    job_responses: <h2>job_responses</h2>,
+    active_recruitments: <h2>active_recruitments</h2>,
+    googleMapsLocation: <h2>Google Maps</h2>,
   };
 
   return components[activeComponent] || <div>Select a component</div>;
@@ -97,12 +109,14 @@ const CompanyDashboard = () => {
         {/* Sidebar */}
         <div className="col-md-2 bg-dark min-vh-100 text-white p-0">
           <div className="p-3 border-bottom">
+            {/* take name from the companyData sessionStorage and display it */}
             <h5 className="text-white">COREUI</h5>
           </div>
 
           <div className="nav flex-column">
             <div className="p-3 border-bottom">
-              <h6 className="text-muted">THEME</h6>
+              <h6 className="text">MAIN</h6>
+              {/* dashboard */}
               <button
                 className={`btn btn-link text-white text-decoration-none ${
                   activeComponent === "dashboard" ? "active" : ""
@@ -112,87 +126,67 @@ const CompanyDashboard = () => {
                 Dashboard
               </button>
               <br />
+              {/* Comp_Profile */}
               <button
                 className={`btn btn-link text-white text-decoration-none ${
-                  activeComponent === "colors" ? "active" : ""
+                  activeComponent === "Comp_Profile" ? "active" : ""
                 }`}
-                onClick={() => setActiveComponent("colors")}
+                onClick={() => setActiveComponent("Comp_Profile")}
               >
-                Colors
+                Company Profile
               </button>
             </div>
+
             <div className="p-3">
-              <h6 className="text-light">COMPONENTS</h6>
+              <h6 className="text-light">OTHERS</h6>
+              {/* Post jobs */}
               <button
                 className={`btn btn-link text-white text-decoration-none ${
                   activeComponent === "base" ? "active" : ""
                 }`}
-                onClick={() => setActiveComponent("base")}
+                onClick={() => setActiveComponent("post_Job")}
               >
-                Base
+                Post Jobs
               </button>
               <br />
+              {/* Posted jobs */}
+              <button
+                className={`btn btn-link text-white text-decoration-none ${
+                  activeComponent === "base" ? "active" : ""
+                }`}
+                onClick={() => setActiveComponent("posted_jobs")}
+              >
+                Posted Jobs
+              </button>
+              <br />
+              {/* see responses */}
               <button
                 className={`btn btn-link text-white text-decoration-none ${
                   activeComponent === "buttons" ? "active" : ""
                 }`}
-                onClick={() => setActiveComponent("buttons")}
+                onClick={() => setActiveComponent("job_responses")}
               >
-                Buttons
+                Job Responses
               </button>
               <br />
+              {/* active recruitment */}
               <button
                 className={`btn btn-link text-white text-decoration-none ${
                   activeComponent === "editors" ? "active" : ""
                 }`}
-                onClick={() => setActiveComponent("editors")}
+                onClick={() => setActiveComponent("active_recruitments")}
               >
-                Editors
+                Activate Recruitment
               </button>
               <br />
-              <button
-                className={`btn btn-link text-white text-decoration-none ${
-                  activeComponent === "forms" ? "active" : ""
-                }`}
-                onClick={() => setActiveComponent("forms")}
-              >
-                Forms
-              </button>
-              <br />
+              {/* googleMapsLocation */}
               <button
                 className={`btn btn-link text-white text-decoration-none ${
                   activeComponent === "googleMaps" ? "active" : ""
                 }`}
-                onClick={() => setActiveComponent("googleMaps")}
+                onClick={() => setActiveComponent("googleMapsLocation")}
               >
-                Google Maps
-              </button>
-              <br />
-              <button
-                className={`btn btn-link text-white text-decoration-none ${
-                  activeComponent === "icons" ? "active" : ""
-                }`}
-                onClick={() => setActiveComponent("icons")}
-              >
-                Icons
-              </button>
-              <br />
-              <button
-                className={`btn btn-link text-white text-decoration-none ${
-                  activeComponent === "notifications" ? "active" : ""
-                }`}
-                onClick={() => setActiveComponent("notifications")}
-              >
-                Notifications
-              </button>
-              <br />
-              <button
-                className={`btn btn-link text-white text-decoration-none ${
-                  activeComponent === "plugins" ? "active" : ""
-                }`}
-                onClick={() => setActiveComponent("plugins")}
-              >
-                Plugins
+                Google Map Location
               </button>
             </div>
           </div>

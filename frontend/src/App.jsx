@@ -12,7 +12,9 @@ import CompanySignin from "./components/signin/company_signin";
 import CompanyProfile from "./components/profile/company_profile";
 import NavbarComponent from "./components/navbar/navbar";
 import FooterComponent from "./components/footer/footer";
-import Profile from "./components/profile/profile";
+import Profile from "./components/profile/Profile";
+import PrivateCompanyRoute from "./components/private_routes/PrivateCompanyRoute";
+import JobFeed from "./components/job_feed/JobFeed";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -29,14 +31,44 @@ const App = () => {
       <NavbarComponent />
       <Routes>
         <Route path="/" element={<MainHome />} />
-        <Route path="/registration" element={<Registration />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/company-register" element={<CompanyReg />} />
+        <Route
+          path="/registration"
+          element={
+            <PrivateCompanyRoute>
+              <Registration />
+            </PrivateCompanyRoute>
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <PrivateCompanyRoute>
+              <Signin />
+            </PrivateCompanyRoute>
+          }
+        />
+        <Route
+          path="/company-register"
+          element={
+            <PrivateCompanyRoute>
+              <CompanyReg />
+            </PrivateCompanyRoute>
+          }
+        />
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
-        <Route path="/company-signin" element={<CompanySignin />} />
+        <Route
+          path="/company-signin"
+          element={
+            <PrivateCompanyRoute>
+              <CompanySignin />
+            </PrivateCompanyRoute>
+          }
+        />
         <Route path="/company-profile" element={<CompanyProfile />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/job-feed" element={<JobFeed />} />
       </Routes>
+
       <FooterComponent />
     </div>
   );

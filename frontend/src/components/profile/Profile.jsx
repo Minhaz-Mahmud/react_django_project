@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Profile.css";
 
 const Profile = () => {
@@ -24,7 +24,6 @@ const Profile = () => {
     : null;
 
   return (
-
     <div className="profile-container">
       <div className="profile-details">
         <br />
@@ -32,23 +31,27 @@ const Profile = () => {
           className="profile-picture"
           style={{ backgroundImage: `url(${profileImage})` }}
         ></div>
-         
-         <p>
-  <strong>Name:</strong> <span className="fetched-data">{userData.full_name}</span>
-</p>
-<p>
-  <strong>Email:</strong> <span className="fetched-data">{userData.email}</span>
-</p>
-<p>
-  <strong>Phone Number:</strong> <span className="fetched-data">{userData.phone_number}</span>
-</p>
-<p>
-  <strong>Location:</strong> <span className="fetched-data">{userData.location}</span>
-</p>
-<p>
-  <strong>Skills:</strong> <span className="fetched-data">{userData.skills}</span>
-</p>
 
+        <p>
+          <strong>Name:</strong>{" "}
+          <span className="fetched-data">{userData.full_name}</span>
+        </p>
+        <p>
+          <strong>Email:</strong>{" "}
+          <span className="fetched-data">{userData.email}</span>
+        </p>
+        <p>
+          <strong>Phone Number:</strong>{" "}
+          <span className="fetched-data">{userData.phone_number}</span>
+        </p>
+        <p>
+          <strong>Location:</strong>{" "}
+          <span className="fetched-data">{userData.location}</span>
+        </p>
+        <p>
+          <strong>Skills:</strong>{" "}
+          <span className="fetched-data">{userData.skills}</span>
+        </p>
 
         <p>
           <strong>Resume:</strong>{" "}

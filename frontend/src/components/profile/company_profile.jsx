@@ -14,7 +14,7 @@ const CompanyProfile = () => {
   return (
     <div className="text-dark company-profile">
       <h2>Company Profile</h2>
-      <div className="profile-details">
+      <div className="text-dark profile-details">
         <p>
           <strong>Name:</strong> {companyData.name}
         </p>

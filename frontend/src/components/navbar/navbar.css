@@ -18,6 +18,13 @@
   transition: background-color 0.3s ease;
 }
 
+.user-company-navdropdown {
+  background-color: rgba(72, 4, 93, 0.651);
+  border-radius: 4px;
+  box-shadow: 0 0 5px;
+  margin-left: 20px;
+}
+
 .navbar-class .navbar-brand,
 .navbar-class .nav-link,
 .navbar-class .nav-dropdown-item {
@@ -63,6 +70,13 @@
     transition: background-color 0.3s ease;
     border-radius: 5px;
     margin-top: 16px;
+  }
+
+  .user-company-navdropdown {
+    background-color: rgba(72, 4, 93, 0.651);
+    border-radius: 4px;
+    box-shadow: 0 0 5px;
+    padding-left: 10px;
   }
 
   .nav-link:hover {

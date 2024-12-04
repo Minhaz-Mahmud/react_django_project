@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "company_registration",
+    "job_post",
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,15 @@ MIDDLEWARE = [
 ]
 
 
-REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"]}
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+}
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -94,10 +103,10 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "career_connect",
-        "USER": "postgres",
+        "USER": "safa",
         "PASSWORD": "123456",
-        "HOST": "localhost",
-        "PORT": "5432",
+        # "HOST": "localhost",
+        # "PORT": "5432",
     }
 }
 
