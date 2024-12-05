@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const FooterComponent = () => {
   return (
     <footer className="bg-dark text-white pt-4 pb-2">
-      <Container>
+      <Container className="bg-dark">
         <Row>
           <Col md={4} className="mb-3">
             <h5>About Us</h5>

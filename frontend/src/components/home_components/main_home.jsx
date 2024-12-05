@@ -4,8 +4,8 @@ import "./main_home.css";
 function MainHome() {
   return (
     <div>
-      <div className="main-home-div">
-        <div className="home-div-class container d-flex flex-row text-center"></div>
+      <div className="main-home-div bg-dark">
+       
       </div>
     </div>
   );

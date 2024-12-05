@@ -15,5 +15,7 @@ class CompanySerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 
-
-
+class CompanyProfileUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Company
+        exclude = ["password", "id"]

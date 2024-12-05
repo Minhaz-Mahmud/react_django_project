@@ -9,7 +9,7 @@ import Registration from "./components/registration/Registration";
 import CompanyReg from "./components/registration/company_reg";
 import CompanyDashboard from "./components/compnay_dashboard/company_dashboard";
 import CompanySignin from "./components/signin/company_signin";
-import CompanyProfile from "./components/profile/company_profile";
+import CompanyProfile from "./components/company_profile/company_profile";
 import NavbarComponent from "./components/navbar/navbar";
 import FooterComponent from "./components/footer/footer";
 import Profile from "./components/profile/Profile";

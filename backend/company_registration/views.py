@@ -1,8 +1,5 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth.hashers import check_password
 from rest_framework import status
 from .models import Company
@@ -62,21 +59,40 @@ class CompanyLoginView(APIView):
         )
 
 
-class CompanyProfileView(APIView):
-    permission_classes = [IsAuthenticated]
+class CompanyProfileUpdateView(APIView):
+    def put(self, request):
+        company_id = request.data.get("id")
 
-    def get(self, request, *args, **kwargs):
+        if not company_id:
+            return Response(
+                {"message": "Company ID is required"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         try:
-            company = Company.objects.get(id=request.user.id)
+            company = Company.objects.get(id=company_id)
         except Company.DoesNotExist:
             return Response(
-                {"error": "Company not found"},
+                {"message": "Company not found"},
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        # Return company data
-        company_data = CompanySerializer(company).data
+        serializer = CompanySerializer(company, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            updated_company = serializer.save()
+
+            response_data = serializer.data
+
+            return Response(
+                {
+                    "message": "Profile updated successfully",
+                    "company": response_data,
+                },
+                status=status.HTTP_200_OK,
+            )
+
         return Response(
-            {"company": company_data},
-            status=status.HTTP_200_OK,
+            serializer.errors,
+            status=status.HTTP_400_BAD_REQUEST,
         )

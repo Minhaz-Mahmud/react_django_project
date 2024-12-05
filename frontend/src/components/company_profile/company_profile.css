@@ -1,0 +1,91 @@
+/* * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.company-profile {
+  margin-top: 70px;
+}
+.company-profile-details {
+  color: black !important;
+  background-color: black;
+  padding: 30px;
+} */
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-div-class {
+  margin-top: 80px;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.profile-section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.profile-item {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.profile-item strong {
+  color: #555;
+}
+
+.form-label {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+button.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+button.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+button.btn-success:hover {
+  background-color: #218838;
+}
+
+button.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+button.btn-secondary:hover {
+  background-color: #5a6268;
+}

@@ -320,14 +320,6 @@
         "documentation": {}
     },
     {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
         "label": "os",
         "kind": 6,
         "isExtraImport": true,
@@ -393,6 +385,14 @@
         "documentation": {}
     },
     {
+        "label": "CompanyProfileUpdateView",
+        "importPath": "company_registration.views",
+        "description": "company_registration.views",
+        "isExtraImport": true,
+        "detail": "company_registration.views",
+        "documentation": {}
+    },
+    {
         "label": "JobPostCreateView",
         "importPath": "job_post.views",
         "description": "job_post.views",
@@ -402,6 +402,14 @@
     },
     {
         "label": "CompanyJobsView",
+        "importPath": "job_post.views",
+        "description": "job_post.views",
+        "isExtraImport": true,
+        "detail": "job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostDeleteView",
         "importPath": "job_post.views",
         "description": "job_post.views",
         "isExtraImport": true,
@@ -634,30 +642,6 @@
         "documentation": {}
     },
     {
-        "label": "RefreshToken",
-        "importPath": "rest_framework_simplejwt.tokens",
-        "description": "rest_framework_simplejwt.tokens",
-        "isExtraImport": true,
-        "detail": "rest_framework_simplejwt.tokens",
-        "documentation": {}
-    },
-    {
-        "label": "IsAuthenticated",
-        "importPath": "rest_framework.permissions",
-        "description": "rest_framework.permissions",
-        "isExtraImport": true,
-        "detail": "rest_framework.permissions",
-        "documentation": {}
-    },
-    {
-        "label": "IsAuthenticated",
-        "importPath": "rest_framework.permissions",
-        "description": "rest_framework.permissions",
-        "isExtraImport": true,
-        "detail": "rest_framework.permissions",
-        "documentation": {}
-    },
-    {
         "label": "django.db.models.deletion",
         "kind": 6,
         "isExtraImport": true,
@@ -712,6 +696,14 @@
         "description": "registration.serializer",
         "isExtraImport": true,
         "detail": "registration.serializer",
+        "documentation": {}
+    },
+    {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
         "documentation": {}
     },
     {
@@ -1058,7 +1050,16 @@
         "kind": 6,
         "importPath": "backend.company_registration.serializers",
         "description": "backend.company_registration.serializers",
-        "peekOfCode": "class CompanySerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Company\n        fields = \"__all__\"\n    def create(self, validated_data):\n        password = validated_data.get(\"password\")\n        if password:\n            validated_data[\"password\"] = make_password(password)\n        return super().create(validated_data)",
+        "peekOfCode": "class CompanySerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Company\n        fields = \"__all__\"\n    def create(self, validated_data):\n        password = validated_data.get(\"password\")\n        if password:\n            validated_data[\"password\"] = make_password(password)\n        return super().create(validated_data)\nclass CompanyProfileUpdateSerializer(serializers.ModelSerializer):",
+        "detail": "backend.company_registration.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyProfileUpdateSerializer",
+        "kind": 6,
+        "importPath": "backend.company_registration.serializers",
+        "description": "backend.company_registration.serializers",
+        "peekOfCode": "class CompanyProfileUpdateSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Company\n        exclude = [\"password\", \"id\"]",
         "detail": "backend.company_registration.serializers",
         "documentation": {}
     },
@@ -1081,11 +1082,11 @@
         "documentation": {}
     },
     {
-        "label": "CompanyProfileView",
+        "label": "CompanyProfileUpdateView",
         "kind": 6,
         "importPath": "backend.company_registration.views",
         "description": "backend.company_registration.views",
-        "peekOfCode": "class CompanyProfileView(APIView):\n    permission_classes = [IsAuthenticated]\n    def get(self, request, *args, **kwargs):\n        try:\n            company = Company.objects.get(id=request.user.id)\n        except Company.DoesNotExist:\n            return Response(\n                {\"error\": \"Company not found\"},\n                status=status.HTTP_404_NOT_FOUND,\n            )",
+        "peekOfCode": "class CompanyProfileUpdateView(APIView):\n    def put(self, request):\n        company_id = request.data.get(\"id\")\n        if not company_id:\n            return Response(\n                {\"message\": \"Company ID is required\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:\n            company = Company.objects.get(id=company_id)",
         "detail": "backend.company_registration.views",
         "documentation": {}
     },
@@ -1140,6 +1141,15 @@
         "importPath": "backend.job_post.views",
         "description": "backend.job_post.views",
         "peekOfCode": "class CompanyJobsView(APIView):\n    def get(self, request):\n        if request.user.is_authenticated:\n            try:\n                company = Company.objects.get(email=request.user.email)\n            except Company.DoesNotExist:\n                return Response(\n                    {\"error\": \"Invalid company association.\"},\n                    status=status.HTTP_403_FORBIDDEN,\n                )",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostDeleteView",
+        "kind": 6,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "class JobPostDeleteView(APIView):\n    def delete(self, request, job_id):\n        if request.user.is_authenticated:\n            try:\n                company = Company.objects.get(email=request.user.email)\n            except Company.DoesNotExist:\n                return Response(\n                    {\"error\": \"Invalid company association.\"},\n                    status=status.HTTP_403_FORBIDDEN,\n                )",
         "detail": "backend.job_post.views",
         "documentation": {}
     },

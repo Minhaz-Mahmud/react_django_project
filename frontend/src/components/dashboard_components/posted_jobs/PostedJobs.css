@@ -1,0 +1,62 @@
+.job-card {
+  background-color: #343a40eb;
+  color: #fff;
+}
+
+.job-text {
+  margin-bottom: 0.8rem;
+}
+
+.post-job-div {
+  margin-top: 70px;
+}
+
+@media (max-width: 768px) {
+  .post-job-div {
+    margin-top: 10px;
+  }
+  .job-card {
+    padding: 2rem; /* Adjust padding for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .job-card {
+    padding: 1.5rem; /* Less padding for very small screens */
+  }
+}
+
+/* delete button design */
+
+.delete-btn {
+  padding: 10px 20px; /* Adjust padding for a better look */
+  font-size: 16px; /* Font size for better readability */
+  font-weight: bold; /* Bold text for emphasis */
+  border-radius: 5px; /* Rounded corners for modern appearance */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.delete-btn:hover {
+  background-color: #dc3545; /* Darker shade on hover */
+  color: #fff; /* Ensure text stays white on hover */
+  transform: scale(1.05); /* Slight scaling effect on hover */
+  transition: all 0.3s ease;
+}
+
+.delete-btn:focus {
+  outline: none; /* Remove focus outline for a cleaner look */
+}
+
+@media (max-width: 768px) {
+  .delete-btn {
+    font-size: 14px; /* Smaller font size for mobile */
+    padding: 8px 16px; /* Adjust padding on smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .delete-btn {
+    font-size: 12px; /* Even smaller font size for extra small devices */
+    padding: 6px 12px; /* Reduce padding further for small screens */
+  }
+}

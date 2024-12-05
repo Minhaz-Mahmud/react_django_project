@@ -123,7 +123,7 @@ const NavbarComponent = () => {
   return (
     <div>
       <Navbar
-        className="rounded navbar-class"
+        className="text-dark rounded navbar-class"
         bg="dark"
         variant="dark"
         expand="lg"
@@ -135,7 +135,7 @@ const NavbarComponent = () => {
           zIndex: 1000,
         }}
       >
-        <Container>
+        <Container className="bg-dark">
           <Navbar.Brand as={Link} to="/">
             Career Connect
           </Navbar.Brand>

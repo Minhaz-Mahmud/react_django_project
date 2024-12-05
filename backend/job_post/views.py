@@ -76,7 +76,6 @@ class CompanyJobsView(APIView):
                     status=status.HTTP_404_NOT_FOUND,
                 )
 
-        # Retrieve jobs for the company
         jobs = JobPost.objects.filter(company=company)
         serializer = JobPostSerializer(jobs, many=True)
         return Response(
@@ -85,3 +84,40 @@ class CompanyJobsView(APIView):
         )
 
 
+class JobPostDeleteView(APIView):
+    def delete(self, request, job_id):
+        if request.user.is_authenticated:
+            try:
+                company = Company.objects.get(email=request.user.email)
+            except Company.DoesNotExist:
+                return Response(
+                    {"error": "Invalid company association."},
+                    status=status.HTTP_403_FORBIDDEN,
+                )
+        else:
+            company_email = request.data.get("company_email")
+            if not company_email:
+                return Response(
+                    {"error": "Company email is required for unauthenticated users."},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+            try:
+                company = Company.objects.get(email=company_email)
+            except Company.DoesNotExist:
+                return Response(
+                    {"error": "Invalid company email provided."},
+                    status=status.HTTP_404_NOT_FOUND,
+                )
+
+        try:
+            job_post = JobPost.objects.get(id=job_id, company=company)
+            job_post.delete()
+            return Response(
+                {"message": "Job post deleted successfully."},
+                status=status.HTTP_204_NO_CONTENT,
+            )
+        except JobPost.DoesNotExist:
+            return Response(
+                {"error": "Job post not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )

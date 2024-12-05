@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
-import CompanyProfile from "../profile/company_profile";
+import CompanyProfile from "../company_profile/company_profile";
 import JobPost from "../dashboard_components/job_post/JobPost";
 import PostedJobs from "../dashboard_components/posted_jobs/PostedJobs";
 import "./company_dashboard.css";
@@ -104,7 +104,7 @@ const CompanyDashboard = () => {
   }, [navigate]);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid bg-primary">
       <div className="row">
         {/* Sidebar */}
         <div className="col-md-2 bg-dark min-vh-100 text-white p-0">
