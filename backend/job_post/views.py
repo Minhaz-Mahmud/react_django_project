@@ -121,3 +121,26 @@ class JobPostDeleteView(APIView):
                 {"error": "Job post not found."},
                 status=status.HTTP_404_NOT_FOUND,
             )
+
+
+
+
+
+# views.py
+from rest_framework.generics import ListAPIView
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
+from .models import JobPost
+from .serializers import JobPostSerializer
+
+
+class JobPostPagination(PageNumberPagination):
+    page_size = 5  # Number of posts per page
+    page_size_query_param = "page_size"
+    max_page_size = 50
+
+
+class JobPostListView(ListAPIView):
+    queryset = JobPost.objects.all().order_by("-posted_at")
+    serializer_class = JobPostSerializer
+    pagination_class = JobPostPagination

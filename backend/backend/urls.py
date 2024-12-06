@@ -7,9 +7,10 @@ from company_registration.views import (
     CompanyLoginView,
     CompanyProfileUpdateView,
 )
-from job_post.views import JobPostCreateView, CompanyJobsView, JobPostDeleteView
+from job_post.views import JobPostCreateView, CompanyJobsView, JobPostDeleteView,JobPostListView
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -32,6 +33,8 @@ urlpatterns = [
         CompanyProfileUpdateView.as_view(),
         name="company-profile-update",
     ),
+
+    path("job-posts/", JobPostListView.as_view(), name="job-posts"),
 ]
 
 
