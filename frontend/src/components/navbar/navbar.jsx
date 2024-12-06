@@ -95,7 +95,6 @@
 
 // export default NavbarComponent;
 
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -104,19 +103,36 @@ import { Link, useNavigate } from "react-router-dom";
 
 const NavbarComponent = () => {
   const [userType, setUserType] = useState(null);
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
   const CompanySessionData = JSON.parse(sessionStorage.getItem("companyData"));
+  const CandidateSessionData = JSON.parse(sessionStorage.getItem("candidateData"));
 
   useEffect(() => {
-    if (CompanySessionData && CompanySessionData.user_type === "company")
+    if (CompanySessionData && CompanySessionData.user_type === "company") {
       setUserType("company");
-    else setUserType(null);
+      setUserName(CompanySessionData.name);
+    } else if (CandidateSessionData) {
+      setUserType("candidate");
+      setUserName(CandidateSessionData.full_name);
+      // Display the last part of the candidate's name
+      // const candidateNameParts = CandidateSessionData.full_name.split(" ");
+      // setUserName(candidateNameParts[candidateNameParts.length - 1]);
+    } else {
+      setUserType(null);
+      setUserName("");
+    }
   }, []);
 
   const handleLogout = () => {
-    sessionStorage.removeItem("companyData");
+    if (userType === "company") {
+      sessionStorage.removeItem("companyData");
+    } else if (userType === "candidate") {
+      sessionStorage.removeItem("candidateData");
+    }
     sessionStorage.removeItem("firstRefresh");
     setUserType(null);
+    setUserName("");
     navigate("/");
   };
 
@@ -152,16 +168,32 @@ const NavbarComponent = () => {
                 About
               </Nav.Link>
 
-              {/* Show different items if the user is logged in as a company */}
+              {/* Show different items based on logged-in user type */}
               {userType === "company" ? (
                 <>
                   <NavDropdown
                     className="user-company-navdropdown"
-                    title={CompanySessionData.name}
+                    title={userName}
                     id="basic-nav-dropdown"
                   >
                     <NavDropdown.Item as={Link} to="/company/dashboard">
                       Dashboard
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={handleLogout}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
+              ) : userType === "candidate" ? (
+                <>
+                  <NavDropdown
+                    className="user-company-navdropdown"
+                    title={userName}
+                    id="basic-nav-dropdown"
+                  >
+                    <NavDropdown.Item as={Link} to="/candidate/profile">
+                      Profile
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={handleLogout}>

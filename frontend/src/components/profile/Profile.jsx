@@ -1,17 +1,29 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // Check if the page has been refreshed already
+    const firstRefresh = sessionStorage.getItem("firstRefresh");
+    if (!firstRefresh) {
+      sessionStorage.setItem("firstRefresh", "true");
+      window.location.reload();
+      return; // Prevent further execution on the first load
+    }
+
+    // Check for candidate data in sessionStorage
     const storedUserData = sessionStorage.getItem("candidateData");
     if (storedUserData) {
       setUserData(JSON.parse(storedUserData));
     } else {
-      window.location.href = "/signin";
+      // Redirect to the sign-in page if no user data exists
+      navigate("/signin");
     }
-  }, []);
+  }, [navigate]);
 
   if (!userData) return <div>Loading...</div>;
 
