@@ -417,6 +417,14 @@
         "documentation": {}
     },
     {
+        "label": "JobPostListView",
+        "importPath": "job_post.views",
+        "description": "job_post.views",
+        "isExtraImport": true,
+        "detail": "job_post.views",
+        "documentation": {}
+    },
+    {
         "label": "settings",
         "importPath": "django.conf",
         "description": "django.conf",
@@ -483,6 +491,14 @@
     },
     {
         "label": "check_password",
+        "importPath": "django.contrib.auth.hashers",
+        "description": "django.contrib.auth.hashers",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.hashers",
+        "documentation": {}
+    },
+    {
+        "label": "make_password",
         "importPath": "django.contrib.auth.hashers",
         "description": "django.contrib.auth.hashers",
         "isExtraImport": true,
@@ -683,6 +699,22 @@
         "documentation": {}
     },
     {
+        "label": "ListAPIView",
+        "importPath": "rest_framework.generics",
+        "description": "rest_framework.generics",
+        "isExtraImport": true,
+        "detail": "rest_framework.generics",
+        "documentation": {}
+    },
+    {
+        "label": "PageNumberPagination",
+        "importPath": "rest_framework.pagination",
+        "description": "rest_framework.pagination",
+        "isExtraImport": true,
+        "detail": "rest_framework.pagination",
+        "documentation": {}
+    },
+    {
         "label": "Candidate",
         "importPath": "registration.models",
         "description": "registration.models",
@@ -870,7 +902,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",",
+        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\n# Database configuration\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -879,7 +911,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",\n        # \"HOST\": \"localhost\",\n        # \"PORT\": \"5432\",\n    }\n}",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -1050,16 +1082,7 @@
         "kind": 6,
         "importPath": "backend.company_registration.serializers",
         "description": "backend.company_registration.serializers",
-        "peekOfCode": "class CompanySerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Company\n        fields = \"__all__\"\n    def create(self, validated_data):\n        password = validated_data.get(\"password\")\n        if password:\n            validated_data[\"password\"] = make_password(password)\n        return super().create(validated_data)\nclass CompanyProfileUpdateSerializer(serializers.ModelSerializer):",
-        "detail": "backend.company_registration.serializers",
-        "documentation": {}
-    },
-    {
-        "label": "CompanyProfileUpdateSerializer",
-        "kind": 6,
-        "importPath": "backend.company_registration.serializers",
-        "description": "backend.company_registration.serializers",
-        "peekOfCode": "class CompanyProfileUpdateSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Company\n        exclude = [\"password\", \"id\"]",
+        "peekOfCode": "class CompanySerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Company\n        fields = \"__all__\"\n    def create(self, validated_data):\n        password = validated_data.get(\"password\")\n        if password:\n            validated_data[\"password\"] = make_password(password)\n        return super().create(validated_data)\n    def update(self, instance, validated_data):",
         "detail": "backend.company_registration.serializers",
         "documentation": {}
     },
@@ -1068,7 +1091,7 @@
         "kind": 6,
         "importPath": "backend.company_registration.views",
         "description": "backend.company_registration.views",
-        "peekOfCode": "class CompanyRegisterView(APIView):\n    def post(self, request, *args, **kwargs):\n        serializer = CompanySerializer(data=request.data)\n        if serializer.is_valid():\n            company = serializer.save()\n            return Response(\n                {\n                    \"message\": \"Company registered successfully!\",\n                    \"company\": serializer.data,\n                },",
+        "peekOfCode": "class CompanyRegisterView(APIView):\n    def post(self, request):\n        serializer = CompanySerializer(data=request.data)\n        if serializer.is_valid():\n            company = serializer.save()\n            return Response(\n                {\n                    \"message\": \"Company registered successfully!\",\n                    \"company\": serializer.data,\n                },",
         "detail": "backend.company_registration.views",
         "documentation": {}
     },
@@ -1086,7 +1109,7 @@
         "kind": 6,
         "importPath": "backend.company_registration.views",
         "description": "backend.company_registration.views",
-        "peekOfCode": "class CompanyProfileUpdateView(APIView):\n    def put(self, request):\n        company_id = request.data.get(\"id\")\n        if not company_id:\n            return Response(\n                {\"message\": \"Company ID is required\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:\n            company = Company.objects.get(id=company_id)",
+        "peekOfCode": "class CompanyProfileUpdateView(APIView):\n    def post(self, request):\n        email = request.data.get(\"email\")\n        if not email:\n            return Response(\n                {\"error\": \"Email is required to update profile.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:\n            company = Company.objects.get(email=email)",
         "detail": "backend.company_registration.views",
         "documentation": {}
     },
@@ -1150,6 +1173,24 @@
         "importPath": "backend.job_post.views",
         "description": "backend.job_post.views",
         "peekOfCode": "class JobPostDeleteView(APIView):\n    def delete(self, request, job_id):\n        if request.user.is_authenticated:\n            try:\n                company = Company.objects.get(email=request.user.email)\n            except Company.DoesNotExist:\n                return Response(\n                    {\"error\": \"Invalid company association.\"},\n                    status=status.HTTP_403_FORBIDDEN,\n                )",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostPagination",
+        "kind": 6,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "class JobPostPagination(PageNumberPagination):\n    page_size = 5  # Number of posts per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass JobPostListView(ListAPIView):\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostListView",
+        "kind": 6,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "class JobPostListView(ListAPIView):\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination",
         "detail": "backend.job_post.views",
         "documentation": {}
     },

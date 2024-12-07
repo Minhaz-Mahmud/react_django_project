@@ -1,69 +1,18 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./company_profile.css";
 
 const CompanyProfile = () => {
-  const [companyData, setCompanyData] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({});
+  const [companyData, setCompanyData] = useState({});
+  const [isEditing, setIsEditing] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [companyType, setCompanyType] = useState("");
 
-  useEffect(() => {
-    const storedCompanyData = sessionStorage.getItem("companyData");
-    if (storedCompanyData) {
-      const parsedData = JSON.parse(storedCompanyData);
-      setCompanyData(parsedData);
-      setFormData(parsedData);
-    } else {
-      window.location.href = "/company-signin";
-    }
-  }, []);
-
-  const handleEdit = () => setIsEditing(true);
-
-  const handleSave = async () => {
-    try {
-      const response = await fetch(
-        "http://127.0.0.1:8000/api/company/profile-update/",
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // Update session storage with new company data
-        sessionStorage.setItem("companyData", JSON.stringify(data.company));
-
-        // Update local state
-        setCompanyData(data.company);
-        setIsEditing(false);
-
-        // Optional: Show success message
-        alert("Profile updated successfully");
-      } else {
-        // Handle errors
-        alert(data.message || "Failed to update profile");
-      }
-    } catch (error) {
-      console.error("Error updating profile:", error);
-      alert("An error occurred while updating the profile");
-    }
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  if (!companyData) return <div className="text-center mt-5">Loading...</div>;
-
-  // Fields to display/edit, excluding password and id
   const editableFields = [
     "name",
     "email",
@@ -72,78 +21,162 @@ const CompanyProfile = () => {
     "location",
     "description",
     "website",
-    "company_type",
   ];
 
+  useEffect(() => {
+    const storedCompanyData = sessionStorage.getItem("companyData");
+    if (storedCompanyData) {
+      const parsedData = JSON.parse(storedCompanyData);
+      setCompanyData(parsedData);
+      setFormData(parsedData);
+      setCompanyType(parsedData.company_type); // Set the company type for select dropdown
+    } else {
+      window.location.href = "/company-signin";
+    }
+  }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const updatedData = { ...formData, company_type: companyType };
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/company/update-profile/",
+        updatedData
+      );
+      setSuccessMessage(response.data.message);
+      setCompanyData(response.data.company);
+      setIsEditing(false);
+      sessionStorage.setItem(
+        "companyData",
+        JSON.stringify(response.data.company)
+      );
+      toast.success("Company profile updated successfully");
+    } catch (error) {
+      console.error("Error updating company profile", error);
+      toast.error("An error occurred: " + error.message);
+      setErrorMessage(
+        error.response?.data?.error || "Failed to update company profile."
+      );
+    }
+  };
+
   return (
-    <div className="container profile-div-class">
-      <h1 className="text-center mb-4">Your Company Profile</h1>
-      <div className="profile-section p-3">
-        {isEditing ? (
-          <form>
-            {editableFields.map((key) => (
-              <div className="mb-3" key={key}>
-                <label className="form-label">
-                  {key.replace(/_/g, " ").toUpperCase()}:
-                </label>
-                {key === "company_type" ? (
-                  <select
-                    className="form-control"
-                    name={key}
-                    value={formData[key] || ""}
-                    onChange={handleChange}
-                    required
-                  >
-                    <option value="Multinational">Multinational</option>
-                    <option value="International">International</option>
-                    <option value="Startup">Startup</option>
-                    <option value="Small Business">Small Business</option>
-                  </select>
-                ) : (
-                  <input
-                    type="text"
-                    className="form-control"
-                    name={key}
-                    value={formData[key] || ""}
-                    onChange={handleChange}
-                    required
-                  />
-                )}
-              </div>
+    <div className="container mt-5">
+      <h2 className="text-center mb-4">Company Profile</h2>
+
+      {successMessage ? (
+        <div className="alert alert-success alert-dismissible" role="alert">
+          {successMessage}
+          <button
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+            onClick={() => setSuccessMessage("")}
+          />
+        </div>
+      ) : errorMessage ? (
+        <div className="alert alert-danger alert-dismissible" role="alert">
+          {errorMessage}
+          <button
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+            onClick={() => setErrorMessage("")}
+          />
+        </div>
+      ) : null}
+
+      <ToastContainer position="top-center" autoClose={1500} />
+
+      {!isEditing ? (
+        <div>
+          <ul className="list-group mb-4">
+            {editableFields.map((field) => (
+              <li key={field} className="list-group-item">
+                <strong>{field.replace("_", " ").toUpperCase()}: </strong>
+                {companyData[field] || "N/A"}
+              </li>
             ))}
-            <div className="d-flex justify-content-end mt-3">
-              <button
-                type="button"
-                className="btn btn-success me-2"
-                onClick={handleSave}
-              >
-                Save Changes
-              </button>
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => setIsEditing(false)}
-              >
-                Cancel
-              </button>
+            <li className="list-group-item">
+              <strong>Company Type: </strong>
+              {companyData.company_type || "N/A"}
+            </li>
+          </ul>
+          <button
+            className="btn btn-primary w-100"
+            onClick={() => setIsEditing(true)}
+          >
+            Update Profile
+          </button>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          {editableFields.map((field) => (
+            <div key={field} className="form-group mb-3">
+              <label htmlFor={field} className="form-label">
+                {field.replace("_", " ").toUpperCase()}
+              </label>
+              <input
+                type="text"
+                id={field}
+                name={field}
+                className="form-control"
+                value={formData[field] || ""}
+                onChange={handleChange}
+                required={field === "email" || field === "name"}
+              />
             </div>
-          </form>
-        ) : (
-          <>
-            {editableFields.map((key) => (
-              <p key={key} className="profile-item">
-                <strong>{key.replace(/_/g, " ").toUpperCase()}:</strong>{" "}
-                {companyData[key] || "Not available"}
-              </p>
-            ))}
-            <div className="d-flex justify-content-end mt-3">
-              <button className="btn btn-primary" onClick={handleEdit}>
-                Edit Profile
-              </button>
-            </div>
-          </>
-        )}
-      </div>
+          ))}
+
+          <div className="form-group mb-3">
+            <label className="form-label">Company Type:</label>
+            <select
+              className="form-control"
+              value={companyType}
+              onChange={(e) => setCompanyType(e.target.value)}
+              required
+            >
+              <option className="text-dark" value="Multinational">
+                Multinational
+              </option>
+              <option className="text-dark" value="International">
+                International
+              </option>
+              <option className="text-dark" value="Startup">
+                Startup
+              </option>
+              <option className="text-dark" value="Small Business">
+                Small Business
+              </option>
+            </select>
+          </div>
+
+          <div className="d-flex justify-content-between">
+            <button type="submit" className="btn btn-success">
+              Save Changes
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => {
+                setIsEditing(false);
+                setFormData(companyData); // Reset form data
+                setCompanyType(companyData.company_type); // Reset company type
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
     </div>
   );
 };

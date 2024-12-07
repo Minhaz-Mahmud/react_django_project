@@ -1,13 +1,13 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import check_password, make_password
 from rest_framework import status
 from .models import Company
 from .serializers import CompanySerializer
 
 
 class CompanyRegisterView(APIView):
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         serializer = CompanySerializer(data=request.data)
 
         if serializer.is_valid():
@@ -60,38 +60,33 @@ class CompanyLoginView(APIView):
 
 
 class CompanyProfileUpdateView(APIView):
-    def put(self, request):
-        company_id = request.data.get("id")
+    def post(self, request):
+        email = request.data.get("email")
 
-        if not company_id:
+        if not email:
             return Response(
-                {"message": "Company ID is required"},
+                {"error": "Email is required to update profile."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
         try:
-            company = Company.objects.get(id=company_id)
+            company = Company.objects.get(email=email)
         except Company.DoesNotExist:
             return Response(
-                {"message": "Company not found"},
+                {"error": "Company not found."},
                 status=status.HTTP_404_NOT_FOUND,
             )
 
         serializer = CompanySerializer(company, data=request.data, partial=True)
-
         if serializer.is_valid():
-            updated_company = serializer.save()
-
-            response_data = serializer.data
-
+            serializer.save()
             return Response(
                 {
-                    "message": "Profile updated successfully",
-                    "company": response_data,
+                    "message": "Company profile updated successfully!",
+                    "company": serializer.data,
                 },
                 status=status.HTTP_200_OK,
             )
-
         return Response(
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST,

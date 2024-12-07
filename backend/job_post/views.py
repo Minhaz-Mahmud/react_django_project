@@ -3,6 +3,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import JobPostSerializer
 from company_registration.models import Company
+from rest_framework.generics import ListAPIView
+from rest_framework.pagination import PageNumberPagination
 from job_post.models import JobPost
 
 
@@ -39,6 +41,7 @@ class JobPostCreateView(APIView):
 
         # Serialize and validate data
         serializer = JobPostSerializer(data=data)
+        
         if serializer.is_valid():
             serializer.save()
             return Response(
@@ -121,17 +124,6 @@ class JobPostDeleteView(APIView):
                 {"error": "Job post not found."},
                 status=status.HTTP_404_NOT_FOUND,
             )
-
-
-
-
-
-# views.py
-from rest_framework.generics import ListAPIView
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.response import Response
-from .models import JobPost
-from .serializers import JobPostSerializer
 
 
 class JobPostPagination(PageNumberPagination):

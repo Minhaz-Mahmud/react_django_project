@@ -14,8 +14,9 @@ class CompanySerializer(serializers.ModelSerializer):
             validated_data["password"] = make_password(password)
         return super().create(validated_data)
 
-
-class CompanyProfileUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Company
-        exclude = ["password", "id"]
+    def update(self, instance, validated_data):
+        # Only update fields that are provided
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        instance.save()
+        return instance

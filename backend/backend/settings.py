@@ -76,6 +76,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React app URL
 ]
 
+
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -104,10 +106,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "career_connect",
-        "USER": "postgres",
+        "USER": "safa",
         "PASSWORD": "123456",
-        "HOST": "localhost",
-        "PORT": "5432",
     }
 }
 
