@@ -8,6 +8,7 @@ import Signin from "./components/signin/Signin";
 import Registration from "./components/registration/Registration";
 import CompanyReg from "./components/registration/company_reg";
 import CompanyDashboard from "./components/compnay_dashboard/company_dashboard";
+import Dashboard from "./components/candidate_dashboard/Dashboard";
 import CompanySignin from "./components/signin/company_signin";
 import CompanyProfile from "./components/company_profile/company_profile";
 import NavbarComponent from "./components/navbar/navbar";
@@ -32,14 +33,7 @@ const App = () => {
       <NavbarComponent />
       <Routes>
         <Route path="/" element={<MainHome />} />
-        <Route
-          path="/registration"
-          element={
-            <PrivateCompanyRoute>
-              <Registration />
-            </PrivateCompanyRoute>
-          }
-        />
+        <Route path="/registration" element={<PrivateCompanyRoute> <Registration /> </PrivateCompanyRoute> } />
         <Route
           path="/signin"
           element={
@@ -57,6 +51,7 @@ const App = () => {
           }
         />
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
+        <Route path="/dashboard" element={<Dashboard/>} />
         <Route
           path="/company-signin"
           element={
