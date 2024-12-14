@@ -99,30 +99,34 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const NavbarComponent = () => {
   const [userType, setUserType] = useState(null);
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
+  const location = useLocation(); // To track navigation changes
   const CompanySessionData = JSON.parse(sessionStorage.getItem("companyData"));
   const CandidateSessionData = JSON.parse(sessionStorage.getItem("candidateData"));
 
   useEffect(() => {
-    if (CompanySessionData && CompanySessionData.user_type === "company") {
-      setUserType("company");
-      setUserName(CompanySessionData.name);
-    } else if (CandidateSessionData) {
-      setUserType("candidate");
-      setUserName(CandidateSessionData.full_name);
-      // Display the last part of the candidate's name
-      // const candidateNameParts = CandidateSessionData.full_name.split(" ");
-      // setUserName(candidateNameParts[candidateNameParts.length - 1]);
-    } else {
-      setUserType(null);
-      setUserName("");
-    }
-  }, []);
+    // Function to check and update the user data from sessionStorage
+    const updateUserData = () => {
+      if (CompanySessionData && CompanySessionData.user_type === "company") {
+        setUserType("company");
+        setUserName(CompanySessionData.name);
+      } else if (CandidateSessionData) {
+        setUserType("candidate");
+        setUserName(CandidateSessionData.full_name);
+      } else {
+        setUserType(null);
+        setUserName("");
+      }
+    };
+
+    updateUserData(); // Initial check for user data
+
+  }, [location]); // Re-run the effect whenever the location changes (i.e., page navigation)
 
   const handleLogout = () => {
     if (userType === "company") {
@@ -133,7 +137,7 @@ const NavbarComponent = () => {
     sessionStorage.removeItem("firstRefresh");
     setUserType(null);
     setUserName("");
-    navigate("/");
+    navigate("/"); // Redirect to homepage after logout
   };
 
   return (

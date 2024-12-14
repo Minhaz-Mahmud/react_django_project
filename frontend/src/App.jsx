@@ -17,6 +17,7 @@ import Profile from "./components/profile/Profile";
 import PrivateCompanyRoute from "./components/private_routes/PrivateCompanyRoute";
 import JobFeed from "./components/job_feed/JobFeed";
 import Feed from "./components/feed_candidate/Feed";
+import Update from "./components/profile/Update";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -62,6 +63,7 @@ const App = () => {
         />
         <Route path="/company-profile" element={<CompanyProfile />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/up_profile" element={<Update />} />
         <Route path="/job-feed" element={<JobFeed />} />
         <Route path="/feed" element={<Feed />} />
       </Routes>

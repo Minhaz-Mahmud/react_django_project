@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Profile from "../profile/Profile";
 import Feed from "../feed_candidate/Feed";
 import "./Dashboard.css";
+import Update from "../profile/Update";
 
 // Component for the summary cards at the top
 const SummaryCard = ({ title, value, bgColor }) => (
@@ -66,15 +67,17 @@ const MainContent = ({ activeComponent }) => {
         <Profile />
       </div>
     ),
+    Update_Profile: (
+      <div>
+        <Update />
+      </div>
+    ),
     feed: (
       <div>
         <Feed />
       </div>
     ),
-   
-    
     // job_responses: <h2>job_responses</h2>,
-
   };
 
   return components[activeComponent] || <div>Select a component</div>;
@@ -85,18 +88,19 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const storedUserData = sessionStorage.getItem("candidateData");
-   let firstRefresh = sessionStorage.getItem("firstRefresh");
+  let firstRefresh = sessionStorage.getItem("firstRefresh");
 
   useEffect(() => {
-    if (firstRefresh === null) {
+    // Always reload the page upon visiting the dashboard
+    if (!firstRefresh) {
       sessionStorage.setItem("firstRefresh", "false");
-      window.location.reload();
-      sessionStorage.setItem("firstRefresh", "true");
-    } else if (!storedUserData) navigate("/signin");
-  }, [navigate]);
+      window.location.reload(); // Trigger page reload
+    } else if (!storedUserData) {
+      navigate("/signin"); // Redirect if user data is not available
+    }
+  }, [navigate, storedUserData, firstRefresh]);
 
   return (
-   
     <div className="container-fluid bg-primary">
       <div className="row">
         {/* Sidebar */}
@@ -126,7 +130,16 @@ const Dashboard = () => {
                 }`}
                 onClick={() => setActiveComponent("Cand_Profile")}
               >
-               Candidate Profile
+                Candidate Profile
+              </button>
+
+              <button
+                className={`btn btn-link text-white text-decoration-none ${
+                  activeComponent === "Update_Profile" ? "active" : ""
+                }`}
+                onClick={() => setActiveComponent("Update_Profile")}
+              >
+                Update Profile
               </button>
             </div>
 
@@ -142,7 +155,7 @@ const Dashboard = () => {
                 Feed
               </button>
               <br />
-              
+
               {/* googleMapsLocation */}
               <button
                 className={`btn btn-link text-white text-decoration-none ${
@@ -158,8 +171,9 @@ const Dashboard = () => {
 
         {/* Main content */}
         <div className="col-md-10 p-4 bg-white mt-4">
-          <br /><br />
-        <MainContent activeComponent={activeComponent} />
+          <br />
+          <br />
+          <MainContent activeComponent={activeComponent} />
         </div>
       </div>
     </div>
