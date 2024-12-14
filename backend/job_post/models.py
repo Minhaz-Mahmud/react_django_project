@@ -9,6 +9,7 @@ class JobPost(models.Model):
         related_name="job_posts",
     )
     title = models.CharField(max_length=255)
+    job_location = models.CharField(max_length=255, null=True, blank=True)
     tags = models.CharField(max_length=255, help_text="Comma-separated tags (max 6)")
     job_type = models.CharField(
         max_length=20,

@@ -48,11 +48,19 @@
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
         "isExtraImport": true,
-        "detail": "django.apps",
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -88,6 +96,54 @@
         "documentation": {}
     },
     {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -136,22 +192,6 @@
         "documentation": {}
     },
     {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -168,6 +208,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -177,6 +233,30 @@
     },
     {
         "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -301,6 +381,310 @@
         "description": "django.test",
         "isExtraImport": true,
         "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "CompanySerializer",
+        "importPath": "company_registration.serializers",
+        "description": "company_registration.serializers",
+        "isExtraImport": true,
+        "detail": "company_registration.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "CompanySerializer",
+        "importPath": "company_registration.serializers",
+        "description": "company_registration.serializers",
+        "isExtraImport": true,
+        "detail": "company_registration.serializers",
         "documentation": {}
     },
     {
@@ -345,14 +729,6 @@
         "documentation": {}
     },
     {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
         "label": "CandidateView",
         "importPath": "registration.views",
         "description": "registration.views",
@@ -362,6 +738,14 @@
     },
     {
         "label": "CandidateLoginView",
+        "importPath": "login.views",
+        "description": "login.views",
+        "isExtraImport": true,
+        "detail": "login.views",
+        "documentation": {}
+    },
+    {
+        "label": "CandidateUpdateView",
         "importPath": "login.views",
         "description": "login.views",
         "isExtraImport": true,
@@ -522,142 +906,6 @@
         "documentation": {}
     },
     {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "APIView",
-        "importPath": "rest_framework.views",
-        "description": "rest_framework.views",
-        "isExtraImport": true,
-        "detail": "rest_framework.views",
-        "documentation": {}
-    },
-    {
-        "label": "APIView",
-        "importPath": "rest_framework.views",
-        "description": "rest_framework.views",
-        "isExtraImport": true,
-        "detail": "rest_framework.views",
-        "documentation": {}
-    },
-    {
-        "label": "APIView",
-        "importPath": "rest_framework.views",
-        "description": "rest_framework.views",
-        "isExtraImport": true,
-        "detail": "rest_framework.views",
-        "documentation": {}
-    },
-    {
-        "label": "APIView",
-        "importPath": "rest_framework.views",
-        "description": "rest_framework.views",
-        "isExtraImport": true,
-        "detail": "rest_framework.views",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "rest_framework.response",
-        "description": "rest_framework.response",
-        "isExtraImport": true,
-        "detail": "rest_framework.response",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "rest_framework.response",
-        "description": "rest_framework.response",
-        "isExtraImport": true,
-        "detail": "rest_framework.response",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "rest_framework.response",
-        "description": "rest_framework.response",
-        "isExtraImport": true,
-        "detail": "rest_framework.response",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "rest_framework.response",
-        "description": "rest_framework.response",
-        "isExtraImport": true,
-        "detail": "rest_framework.response",
-        "documentation": {}
-    },
-    {
-        "label": "Response",
-        "importPath": "rest_framework.response",
-        "description": "rest_framework.response",
-        "isExtraImport": true,
-        "detail": "rest_framework.response",
-        "documentation": {}
-    },
-    {
         "label": "django.db.models.deletion",
         "kind": 6,
         "isExtraImport": true,
@@ -680,22 +928,6 @@
         "description": "job_post.models",
         "isExtraImport": true,
         "detail": "job_post.models",
-        "documentation": {}
-    },
-    {
-        "label": "Company",
-        "importPath": "company_registration.models",
-        "description": "company_registration.models",
-        "isExtraImport": true,
-        "detail": "company_registration.models",
-        "documentation": {}
-    },
-    {
-        "label": "Company",
-        "importPath": "company_registration.models",
-        "description": "company_registration.models",
-        "isExtraImport": true,
-        "detail": "company_registration.models",
         "documentation": {}
     },
     {
@@ -739,6 +971,46 @@
         "documentation": {}
     },
     {
+        "label": "MultiPartParser",
+        "importPath": "rest_framework.parsers",
+        "description": "rest_framework.parsers",
+        "isExtraImport": true,
+        "detail": "rest_framework.parsers",
+        "documentation": {}
+    },
+    {
+        "label": "FormParser",
+        "importPath": "rest_framework.parsers",
+        "description": "rest_framework.parsers",
+        "isExtraImport": true,
+        "detail": "rest_framework.parsers",
+        "documentation": {}
+    },
+    {
+        "label": "MultiPartParser",
+        "importPath": "rest_framework.parsers",
+        "description": "rest_framework.parsers",
+        "isExtraImport": true,
+        "detail": "rest_framework.parsers",
+        "documentation": {}
+    },
+    {
+        "label": "FormParser",
+        "importPath": "rest_framework.parsers",
+        "description": "rest_framework.parsers",
+        "isExtraImport": true,
+        "detail": "rest_framework.parsers",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
         "label": "User",
         "importPath": "django.contrib.auth.models",
         "description": "django.contrib.auth.models",
@@ -778,6 +1050,42 @@
         "description": "flatted",
         "isExtraImport": true,
         "detail": "flatted",
+        "documentation": {}
+    },
+    {
+        "label": "AllCompanyConfig",
+        "kind": 6,
+        "importPath": "backend.all_company.apps",
+        "description": "backend.all_company.apps",
+        "peekOfCode": "class AllCompanyConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'all_company'",
+        "detail": "backend.all_company.apps",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.all_company.urls",
+        "description": "backend.all_company.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"list/\", CompanyListView.as_view(), name=\"company-list\"),\n    path(\n        \"<int:company_id>/details/\",\n        CompanyDetailView.as_view(),\n        name=\"company_detail\",\n    ),\n]",
+        "detail": "backend.all_company.urls",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyListView",
+        "kind": 6,
+        "importPath": "backend.all_company.views",
+        "description": "backend.all_company.views",
+        "peekOfCode": "class CompanyListView(APIView):\n    def get(self, request):\n        companies = Company.objects.all()\n        serializer = CompanySerializer(companies, many=True)\n        return Response(\n            serializer.data,\n            status=status.HTTP_200_OK,\n        )\nclass CompanyDetailView(APIView):\n    def get(self, request, company_id):",
+        "detail": "backend.all_company.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyDetailView",
+        "kind": 6,
+        "importPath": "backend.all_company.views",
+        "description": "backend.all_company.views",
+        "peekOfCode": "class CompanyDetailView(APIView):\n    def get(self, request, company_id):\n        try:\n            company = Company.objects.get(id=company_id)\n            serializer = CompanySerializer(company)\n            return Response(serializer.data, status=status.HTTP_200_OK)\n        except Company.DoesNotExist:\n            return Response(\n                {\"error\": \"Company not found.\"},\n                status=status.HTTP_404_NOT_FOUND,",
+        "detail": "backend.all_company.views",
         "documentation": {}
     },
     {
@@ -866,7 +1174,25 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "CORS_ORIGIN_ALLOW_ALL = True\nROOT_URLCONF = \"backend.urls\"\nCORS_ALLOWED_ORIGINS = [\n    \"http://localhost:3000\",  # React app URL\n]\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,",
+        "peekOfCode": "CORS_ORIGIN_ALLOW_ALL = True\nCORS_ALLOW_METHODS = [\n    \"DELETE\",\n    \"GET\",\n    \"OPTIONS\",\n    \"PATCH\",\n    \"POST\",\n    \"PUT\",\n]\nCORS_ALLOW_HEADERS = [",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_METHODS",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "CORS_ALLOW_METHODS = [\n    \"DELETE\",\n    \"GET\",\n    \"OPTIONS\",\n    \"PATCH\",\n    \"POST\",\n    \"PUT\",\n]\nCORS_ALLOW_HEADERS = [\n    \"accept\",",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CORS_ALLOW_HEADERS",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "CORS_ALLOW_HEADERS = [\n    \"accept\",\n    \"accept-encoding\",\n    \"authorization\",\n    \"content-type\",\n    \"dnt\",\n    \"origin\",\n    \"user-agent\",\n    \"x-csrftoken\",\n    \"x-requested-with\",",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -902,7 +1228,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\n# Database configuration\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",",
+        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -1001,7 +1327,7 @@
         "kind": 5,
         "importPath": "backend.backend.urls",
         "description": "backend.backend.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"candidates/\", CandidateView.as_view(), name=\"candidate-list\"),\n    path(\"login/\", CandidateLoginView.as_view(), name=\"login\"),\n    path(\n        \"api/company/register/\", CompanyRegisterView.as_view(), name=\"company-register\"\n    ),\n    path(\"api/company/login/\", CompanyLoginView.as_view(), name=\"company-login\"),\n    path(\"api/company/post-job/\", JobPostCreateView.as_view(), name=\"company-job-post\"),\n    path(\"api/company/posted-jobs/\", CompanyJobsView.as_view(), name=\"posted-jobs\"),",
+        "peekOfCode": "urlpatterns = [\n    path(\n        \"api/candidate/update/<int:pk>/\",\n        CandidateUpdateView.as_view(),\n        name=\"candidate-update\",\n    ),\n    path(\"admin/\", admin.site.urls),\n    path(\"candidates/\", CandidateView.as_view(), name=\"candidate-list\"),\n    path(\"login/\", CandidateLoginView.as_view(), name=\"login\"),\n    path(",
         "detail": "backend.backend.urls",
         "documentation": {}
     },
@@ -1060,6 +1386,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.company_registration.migrations.0006_company_latitude_company_longitude",
+        "description": "backend.company_registration.migrations.0006_company_latitude_company_longitude",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('company_registration', '0005_alter_company_user_type'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='company',\n            name='latitude',\n            field=models.FloatField(blank=True, null=True),\n        ),",
+        "detail": "backend.company_registration.migrations.0006_company_latitude_company_longitude",
+        "documentation": {}
+    },
+    {
         "label": "CompanyRegistrationConfig",
         "kind": 6,
         "importPath": "backend.company_registration.apps",
@@ -1073,7 +1408,7 @@
         "kind": 6,
         "importPath": "backend.company_registration.models",
         "description": "backend.company_registration.models",
-        "peekOfCode": "class Company(models.Model):\n    name = models.CharField(max_length=255)\n    email = models.EmailField(unique=True)\n    phone_number = models.CharField(\n        max_length=11,\n        validators=[\n            MinLengthValidator(11),\n        ],\n    )\n    location = models.CharField(max_length=255)",
+        "peekOfCode": "class Company(models.Model):\n    name = models.CharField(max_length=255)\n    email = models.EmailField(unique=True)\n    latitude = models.FloatField(null=True, blank=True)\n    longitude = models.FloatField(null=True, blank=True)\n    phone_number = models.CharField(\n        max_length=11,\n        validators=[\n            MinLengthValidator(11),\n        ],",
         "detail": "backend.company_registration.models",
         "documentation": {}
     },
@@ -1123,6 +1458,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.job_post.migrations.0002_jobpost_job_location",
+        "description": "backend.job_post.migrations.0002_jobpost_job_location",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('job_post', '0001_initial'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='jobpost',\n            name='job_location',\n            field=models.CharField(blank=True, max_length=255, null=True),\n        ),",
+        "detail": "backend.job_post.migrations.0002_jobpost_job_location",
+        "documentation": {}
+    },
+    {
         "label": "JobPostConfig",
         "kind": 6,
         "importPath": "backend.job_post.apps",
@@ -1136,7 +1480,7 @@
         "kind": 6,
         "importPath": "backend.job_post.models",
         "description": "backend.job_post.models",
-        "peekOfCode": "class JobPost(models.Model):\n    company = models.ForeignKey(\n        Company,\n        on_delete=models.CASCADE,\n        related_name=\"job_posts\",\n    )\n    title = models.CharField(max_length=255)\n    tags = models.CharField(max_length=255, help_text=\"Comma-separated tags (max 6)\")\n    job_type = models.CharField(\n        max_length=20,",
+        "peekOfCode": "class JobPost(models.Model):\n    company = models.ForeignKey(\n        Company,\n        on_delete=models.CASCADE,\n        related_name=\"job_posts\",\n    )\n    title = models.CharField(max_length=255)\n    job_location = models.CharField(max_length=255, null=True, blank=True)\n    tags = models.CharField(max_length=255, help_text=\"Comma-separated tags (max 6)\")\n    job_type = models.CharField(",
         "detail": "backend.job_post.models",
         "documentation": {}
     },
@@ -1145,7 +1489,7 @@
         "kind": 6,
         "importPath": "backend.job_post.serializers",
         "description": "backend.job_post.serializers",
-        "peekOfCode": "class JobPostSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = JobPost\n        fields = [\n            \"id\",\n            \"company\",\n            \"title\",\n            \"tags\",\n            \"job_type\",\n            \"salary_range\",",
+        "peekOfCode": "class JobPostSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = JobPost\n        fields = [\n            \"id\",\n            \"company\",\n            \"title\",\n            \"job_location\",\n            \"tags\",\n            \"job_type\",",
         "detail": "backend.job_post.serializers",
         "documentation": {}
     },
@@ -1219,6 +1563,60 @@
         "description": "backend.login.views",
         "peekOfCode": "class CandidateProfileView(APIView):\n    permission_classes = [IsAuthenticated]\n    def get(self, request, *args, **kwargs):\n        try:\n            candidate = Candidate.objects.get(user=request.user)\n        except Candidate.DoesNotExist:\n            return Response(\n                {\"error\": \"Candidate not found\"},\n                status=status.HTTP_404_NOT_FOUND,\n            )",
         "detail": "backend.login.views",
+        "documentation": {}
+    },
+    {
+        "label": "CandidateUpdateView",
+        "kind": 6,
+        "importPath": "backend.login.views",
+        "description": "backend.login.views",
+        "peekOfCode": "class CandidateUpdateView(APIView):\n    parser_classes = [MultiPartParser, FormParser]\n    def put(self, request, pk):\n        try:\n            candidate = Candidate.objects.get(id=pk)\n            # Update candidate data\n            candidate.full_name = request.data.get('full_name', candidate.full_name)\n            candidate.email = request.data.get('email', candidate.email)\n            candidate.phone_number = request.data.get('phone_number', candidate.phone_number)\n            candidate.location = request.data.get('location', candidate.location)",
+        "detail": "backend.login.views",
+        "documentation": {}
+    },
+    {
+        "label": "MapConfig",
+        "kind": 6,
+        "importPath": "backend.map.apps",
+        "description": "backend.map.apps",
+        "peekOfCode": "class MapConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'map'",
+        "detail": "backend.map.apps",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.map.urls",
+        "description": "backend.map.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"get-lat-lang/\", GetLatLangMap.as_view(), name=\"get-lat-lang\"),\n    path(\"update-lat-lang/\", UpdateLatLangMap.as_view(), name=\"update_lat_lang\"),\n    path(\n        \"<int:company_id>/\",\n        get_company_location,\n        name=\" company_latlang_id \",\n    ),\n]",
+        "detail": "backend.map.urls",
+        "documentation": {}
+    },
+    {
+        "label": "GetLatLangMap",
+        "kind": 6,
+        "importPath": "backend.map.views",
+        "description": "backend.map.views",
+        "peekOfCode": "class GetLatLangMap(APIView):\n    def get(self, request):\n        company_email = request.query_params.get(\"company_email\")\n        if not company_email:\n            return Response(\n                {\"error\": \"Company email is required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:\n            company = Company.objects.get(email=company_email)",
+        "detail": "backend.map.views",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateLatLangMap",
+        "kind": 6,
+        "importPath": "backend.map.views",
+        "description": "backend.map.views",
+        "peekOfCode": "class UpdateLatLangMap(APIView):\n    def put(self, request):\n        company_email = request.data.get(\"company_email\")\n        latitude = request.data.get(\"latitude\")\n        longitude = request.data.get(\"longitude\")\n        if not company_email:\n            return Response(\n                {\"error\": \"Company email is required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )",
+        "detail": "backend.map.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_company_location",
+        "kind": 2,
+        "importPath": "backend.map.views",
+        "description": "backend.map.views",
+        "peekOfCode": "def get_company_location(request, company_id):\n    try:\n        company = Company.objects.get(id=company_id)\n        location_data = {\n            \"latitude\": company.latitude,\n            \"longitude\": company.longitude,\n        }\n        return JsonResponse(location_data)\n    except Company.DoesNotExist:\n        return JsonResponse(",
+        "detail": "backend.map.views",
         "documentation": {}
     },
     {

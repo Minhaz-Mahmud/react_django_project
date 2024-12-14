@@ -1,0 +1,63 @@
+/* Modal custom styles */
+.custom-modal {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.187);
+  backdrop-filter: blur(2px);
+}
+
+.custom-modal-header {
+  background-color: #343a40;
+  color: white;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.custom-modal-body {
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.company-details h4 {
+  color: #17a2b8; /* Bootstrap info color */
+  font-weight: bold;
+}
+
+.company-details p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.company-details strong {
+  color: #495057;
+}
+
+.highlight {
+  color: #17a2b8;
+  font-weight: bold;
+}
+
+.website-link {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.website-link:hover {
+  text-decoration: underline;
+}
+
+.custom-modal-footer {
+  background-color: #f1f3f5;
+  border-top: 1px solid #dee2e6;
+}
+
+.btn-close {
+  background-color: #d6617a;
+  color: white;
+  border: none;
+}
+
+.btn-close:hover {
+  background-color: #e70a4c;
+  border: none;
+  transition: all 0.4s ease-out;
+}

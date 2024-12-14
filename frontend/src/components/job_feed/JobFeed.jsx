@@ -1,272 +1,172 @@
-// /* eslint-disable no-unused-vars */
-// import React, { useState, useEffect } from "react";
-// import {
-//   Container,
-//   Row,
-//   Col,
-//   Card,
-//   Button,
-//   Form,
-//   Pagination,
-//   Modal,
-// } from "react-bootstrap";
-// import { Heart, HeartFill, Star, StarFill } from "react-bootstrap-icons";
-// import "./JobFeed.css";
+/* eslint-disable no-unused-vars */
 
-// // Sample job data (replace with your actual data source)
-// const initialJobs = [
-//   {
-//     id: 1,
-//     title: "Software Engineer",
-//     company: "Tech Innovations Inc.",
-//     location: "San Francisco, CA",
-//     type: "Full-time",
-//     salary: "$120,000 - $150,000",
-//     description:
-//       "We are seeking a talented Software Engineer to join our dynamic team...",
-//     skills: ["React", "JavaScript", "Node.js", "AWS"],
-//     isFavorite: false,
-//   },
-//   {
-//     id: 2,
-//     title: "Product Manager",
-//     company: "Digital Solutions LLC",
-//     location: "New York, NY",
-//     type: "Full-time",
-//     salary: "$110,000 - $140,000",
-//     description:
-//       "Looking for an experienced Product Manager to lead our product strategy...",
-//     skills: ["Agile", "Product Strategy", "User Research"],
-//     isFavorite: false,
-//   },
-//   // Add more job listings...
-// ];
+import React, { useState, useEffect } from "react";
+import "./JobFeed.css";
+import { FaMapMarkerAlt, FaCircle } from "react-icons/fa";
 
-// const JobFeed = () => {
-//   const [jobs, setJobs] = useState(initialJobs);
-//   const [filteredJobs, setFilteredJobs] = useState(initialJobs);
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const [selectedJob, setSelectedJob] = useState(null);
-//   const [filters, setFilters] = useState({
-//     search: "",
-//     location: "",
-//     type: "",
-//     skills: "",
-//   });
+const JobFeed = () => {
+  const [jobPosts, setJobPosts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [hasNextPage, setHasNextPage] = useState(false);
+  const [hasPreviousPage, setHasPreviousPage] = useState(false);
+  const [hasSession, setHasSession] = useState(false);
 
-//   // Pagination settings
-//   const jobsPerPage = 5;
-//   const indexOfLastJob = currentPage * jobsPerPage;
-//   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-//   const currentJobs = filteredJobs.slice(indexOfFirstJob, indexOfLastJob);
+  useEffect(() => {
+    fetchJobPosts(currentPage);
+    checkSessionData();
+  }, [currentPage]);
 
-//   // Filtering logic
-//   useEffect(() => {
-//     const results = jobs.filter(
-//       (job) =>
-//         job.title.toLowerCase().includes(filters.search.toLowerCase()) &&
-//         (filters.location === "" ||
-//           job.location
-//             .toLowerCase()
-//             .includes(filters.location.toLowerCase())) &&
-//         (filters.type === "" || job.type === filters.type) &&
-//         (filters.skills === "" ||
-//           job.skills.some((skill) =>
-//             skill.toLowerCase().includes(filters.skills.toLowerCase())
-//           ))
-//     );
-//     setFilteredJobs(results);
-//     setCurrentPage(1);
-//   }, [filters, jobs]);
+  // Check if there's any session data
+  const checkSessionData = () => {
+    const candidateData = sessionStorage.getItem("candidateData");
+    setHasSession(!!candidateData);
+  };
 
-//   // Pagination
-//   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const fetchJobPosts = async (page) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/job-posts/?page=${page}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch job posts.");
+      }
+      const data = await response.json();
+      setJobPosts(data.results || []);
+      console.log(data.results);
+      setHasNextPage(!!data.next);
+      setHasPreviousPage(!!data.previous);
+    } catch (error) {
+      console.error("Error fetching job posts:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-//   // Toggle favorite
-//   const toggleFavorite = (jobId) => {
-//     setJobs(
-//       jobs.map((job) =>
-//         job.id === jobId ? { ...job, isFavorite: !job.isFavorite } : job
-//       )
-//     );
-//   };
+  const handleNextPage = () => {
+    if (hasNextPage) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
 
-//   // Open job details modal
-//   const openJobDetails = (job) => {
-//     setSelectedJob(job);
-//   };
+  const handlePreviousPage = () => {
+    if (hasPreviousPage) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
 
-//   // Close job details modal
-//   const closeJobDetails = () => {
-//     setSelectedJob(null);
-//   };
+  // Utility function to calculate time ago
+  const calculateTimeAgo = (postedTime) => {
+    const now = new Date();
+    const postedDate = new Date(postedTime);
+    const diffInMs = now - postedDate;
+    const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
+    const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 
-//   // Apply to job (placeholder function)
-//   const applyToJob = (job) => {
-//     alert(`Applied to ${job.title} at ${job.company}`);
-//     // Implement actual application logic
-//   };
+    if (diffInMinutes < 60) {
+      return `${diffInMinutes} minute${diffInMinutes === 1 ? "" : "s"} ago`;
+    } else if (diffInHours < 24) {
+      return `${diffInHours} hour${diffInHours === 1 ? "" : "s"} ago`;
+    } else if (diffInDays === 1) {
+      return "Yesterday";
+    } else {
+      return `${diffInDays} day${diffInDays === 1 ? "" : "s"} ago`;
+    }
+  };
 
-//   return (
-//     <Container className="job-feed">
-//       {/* Filters */}
-//       <Row className="mb-4">
-//         <Col md={3}>
-//           <Form.Control
-//             type="text"
-//             placeholder="Search Jobs"
-//             value={filters.search}
-//             onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-//           />
-//         </Col>
-//         <Col md={3}>
-//           <Form.Control
-//             as="select"
-//             value={filters.location}
-//             onChange={(e) =>
-//               setFilters({ ...filters, location: e.target.value })
-//             }
-//           >
-//             <option value="">All Locations</option>
-//             <option value="San Francisco">San Francisco</option>
-//             <option value="New York">New York</option>
-//           </Form.Control>
-//         </Col>
-//         <Col md={3}>
-//           <Form.Control
-//             as="select"
-//             value={filters.type}
-//             onChange={(e) => setFilters({ ...filters, type: e.target.value })}
-//           >
-//             <option value="">All Job Types</option>
-//             <option value="Full-time">Full-time</option>
-//             <option value="Part-time">Part-time</option>
-//           </Form.Control>
-//         </Col>
-//         <Col md={3}>
-//           <Form.Control
-//             type="text"
-//             placeholder="Skills"
-//             value={filters.skills}
-//             onChange={(e) => setFilters({ ...filters, skills: e.target.value })}
-//           />
-//         </Col>
-//       </Row>
-
-//       {/* Job Listings */}
-//       <Row>
-//         {currentJobs.map((job) => (
-//           <Col md={12} key={job.id} className="mb-3">
-//             <Card>
-//               <Card.Body>
-//                 <Row>
-//                   <Col md={10}>
-//                     <Card.Title>{job.title}</Card.Title>
-//                     <Card.Subtitle className="text-muted mb-2">
-//                       {job.company} | {job.location}
-//                     </Card.Subtitle>
-//                   </Col>
-//                   <Col md={2} className="text-right">
-//                     <Button
-//                       variant="link"
-//                       onClick={() => toggleFavorite(job.id)}
-//                       className="p-0"
-//                     >
-//                       {job.isFavorite ? <HeartFill color="red" /> : <Heart />}
-//                     </Button>
-//                   </Col>
-//                 </Row>
-//                 <Card.Text>{job.description.substring(0, 150)}...</Card.Text>
-//                 <Row>
-//                   <Col>
-//                     <Button
-//                       variant="primary"
-//                       onClick={() => openJobDetails(job)}
-//                     >
-//                       View Details
-//                     </Button>
-//                     <Button
-//                       variant="success"
-//                       className="ml-2"
-//                       onClick={() => applyToJob(job)}
-//                     >
-//                       Apply Now
-//                     </Button>
-//                   </Col>
-//                 </Row>
-//               </Card.Body>
-//             </Card>
-//           </Col>
-//         ))}
-//       </Row>
-
-//       {/* Pagination */}
-//       <Row className="justify-content-center">
-//         <Pagination>
-//           {Array.from({
-//             length: Math.ceil(filteredJobs.length / jobsPerPage),
-//           }).map((_, index) => (
-//             <Pagination.Item
-//               key={index}
-//               active={index + 1 === currentPage}
-//               onClick={() => paginate(index + 1)}
-//             >
-//               {index + 1}
-//             </Pagination.Item>
-//           ))}
-//         </Pagination>
-//       </Row>
-
-//       {/* Job Details Modal */}
-//       {selectedJob && (
-//         <Modal show={!!selectedJob} onHide={closeJobDetails} size="lg">
-//           <Modal.Header closeButton>
-//             <Modal.Title>{selectedJob.title}</Modal.Title>
-//           </Modal.Header>
-//           <Modal.Body>
-//             <h5>
-//               {selectedJob.company} | {selectedJob.location}
-//             </h5>
-//             <p>
-//               <strong>Job Type:</strong> {selectedJob.type}
-//             </p>
-//             <p>
-//               <strong>Salary Range:</strong> {selectedJob.salary}
-//             </p>
-//             <h6>Job Description</h6>
-//             <p>{selectedJob.description}</p>
-//             <h6>Required Skills</h6>
-//             <div>
-//               {selectedJob.skills.map((skill, index) => (
-//                 <Button
-//                   key={index}
-//                   variant="outline-secondary"
-//                   className="mr-2 mb-2"
-//                   size="sm"
-//                 >
-//                   {skill}
-//                 </Button>
-//               ))}
-//             </div>
-//           </Modal.Body>
-//           <Modal.Footer>
-//             <Button variant="secondary" onClick={closeJobDetails}>
-//               Close
-//             </Button>
-//             <Button variant="primary" onClick={() => applyToJob(selectedJob)}>
-//               Apply Now
-//             </Button>
-//           </Modal.Footer>
-//         </Modal>
-//       )}
-//     </Container>
-//   );
-// };
-
-// export default JobFeed;
-
-function JobFeed() {
-  return <div>JobFeed</div>;
-}
+  return (
+    <div className="job-feed-container mt-4">
+      <h4 className="mb-4">Latest Job Posts</h4>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className="job-feed-content">
+          {jobPosts.length === 0 ? (
+            <p>No job posts available.</p>
+          ) : (
+            <div className="job-cards-container">
+              {jobPosts.map((post) => (
+                <div key={post.id} className="job-card">
+                  <div className="job-card-header">
+                    <img
+                      src={post.company_logo || "default-logo.png"}
+                      alt="Company Logo"
+                      className="company-logo"
+                    />
+                    <div>
+                      <h5 className="job-title">{post.title}</h5>
+                      <p className="company-name">{post.company}</p>
+                    </div>
+                  </div>
+                  <div className="job-card-body">
+                    <p className="job-details">
+                      <span className="job-location">
+                        <FaMapMarkerAlt size={16} color="red" />{" "}
+                        {post.job_location}
+                      </span>
+                      <span className="job-posted-time">
+                        ⏳ {calculateTimeAgo(post.posted_at)}
+                      </span>
+                      <span className="job-post-active-recruiting">
+                        {post.active_recruiting ? (
+                          <>
+                            <FaCircle size={12} color="green" /> Active
+                            Recruiting
+                          </>
+                        ) : (
+                          <>
+                            <FaCircle size={12} color="grey" /> Recruiting
+                          </>
+                        )}
+                      </span>
+                    </p>
+                    <button className="btn job-type">{post.job_type}</button>
+                  </div>
+                  <div className="job-card-footer">
+                    <span className="posted-time">
+                      <strong>Posted at:</strong>
+                      <span className="text-primary">
+                        {" "}
+                        {new Date(post.posted_at).toLocaleDateString()}
+                      </span>
+                    </span>
+                    <button className="btn btn-outline-primary btn-sm">
+                      View Details
+                    </button>
+                    {hasSession ? (
+                      <button className="btn btn-outline-primary btn-sm">
+                        Apply
+                      </button>
+                    ) : (
+                      <p className="text-danger mt-2">Login to Apply</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="pagination mt-3">
+            {hasPreviousPage && (
+              <button
+                className="btn btn-secondary"
+                onClick={handlePreviousPage}
+              >
+                Previous
+              </button>
+            )}
+            <span>Page {currentPage}</span>
+            {hasNextPage && (
+              <button className="btn btn-secondary" onClick={handleNextPage}>
+                Next
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default JobFeed;

@@ -5,5 +5,7 @@
   box-sizing: border-box;
 }
 
-
-
+.side-bar-div {
+  margin: auto;
+  border-radius: 7px;
+}

@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "company_registration",
     "job_post",
+    "all_company",
+    "map",
 ]
 
 MIDDLEWARE = [
@@ -69,13 +71,33 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
 ROOT_URLCONF = "backend.urls"
 
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React app URL
 ]
-
 
 
 TEMPLATES = [
@@ -105,10 +127,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "career_connect",
-        "USER": "postgres",
+        "USER": "safa",
         "PASSWORD": "123456",
-        "HOST": "localhost",
-        "PORT": "5432",
     }
 }
 

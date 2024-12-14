@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
+
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +9,8 @@ import CompanyProfile from "../company_profile/company_profile";
 import JobPost from "../dashboard_components/job_post/JobPost";
 import PostedJobs from "../dashboard_components/posted_jobs/PostedJobs";
 import "./company_dashboard.css";
+import CompanyMap from "../company_maps/CompanyMapUpdate";
 
-// Component for the summary cards at the top
 const SummaryCard = ({ title, value, bgColor }) => (
   <div className={`card ${bgColor} text-white mb-4`}>
     <div className="card-body">
@@ -82,7 +83,11 @@ const MainContent = ({ activeComponent }) => {
     ),
     job_responses: <h2>job_responses</h2>,
     active_recruitments: <h2>active_recruitments</h2>,
-    googleMapsLocation: <h2>Google Maps</h2>,
+    googleMapsLocation: (
+      <div>
+        <CompanyMap />
+      </div>
+    ),
   };
 
   return components[activeComponent] || <div>Select a component</div>;
@@ -107,7 +112,7 @@ const CompanyDashboard = () => {
     <div className="container-fluid bg-primary">
       <div className="row">
         {/* Sidebar */}
-        <div className="col-md-2 bg-dark min-vh-100 text-white p-0">
+        <div className="side-bar-div col-md-2 bg-dark text-white p-0">
           <div className="p-3 border-bottom">
             {/* take name from the companyData sessionStorage and display it */}
             <h5 className="text-white">COREUI</h5>

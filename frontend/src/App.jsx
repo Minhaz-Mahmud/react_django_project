@@ -18,6 +18,7 @@ import PrivateCompanyRoute from "./components/private_routes/PrivateCompanyRoute
 import JobFeed from "./components/job_feed/JobFeed";
 import Feed from "./components/feed_candidate/Feed";
 import Update from "./components/profile/Update";
+import AllCompany from "./components/all_company/AllCompany";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -34,7 +35,15 @@ const App = () => {
       <NavbarComponent />
       <Routes>
         <Route path="/" element={<MainHome />} />
-        <Route path="/registration" element={<PrivateCompanyRoute> <Registration /> </PrivateCompanyRoute> } />
+        <Route
+          path="/registration"
+          element={
+            <PrivateCompanyRoute>
+              {" "}
+              <Registration />{" "}
+            </PrivateCompanyRoute>
+          }
+        />
         <Route
           path="/signin"
           element={
@@ -52,7 +61,7 @@ const App = () => {
           }
         />
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
-        <Route path="/dashboard" element={<Dashboard/>} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route
           path="/company-signin"
           element={
@@ -66,6 +75,7 @@ const App = () => {
         <Route path="/up_profile" element={<Update />} />
         <Route path="/job-feed" element={<JobFeed />} />
         <Route path="/feed" element={<Feed />} />
+        <Route path="/all/company" element={<AllCompany />} />
       </Routes>
 
       <FooterComponent />

@@ -9,6 +9,7 @@ class JobPostSerializer(serializers.ModelSerializer):
             "id",
             "company",
             "title",
+            "job_location",
             "tags",
             "job_type",
             "salary_range",

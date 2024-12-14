@@ -5,8 +5,8 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const JobPost = () => {
-
   const [title, setTitle] = useState("");
+  const [jobLocation, setJobLocation] = useState("");
   const [tags, setTags] = useState("");
   const [jobType, setJobType] = useState("Remote");
   const [salaryRange, setSalaryRange] = useState("");
@@ -30,6 +30,7 @@ const JobPost = () => {
         {
           company_email: companyData.email,
           title,
+          job_location: jobLocation,
           tags,
           job_type: jobType,
           salary_range: salaryRange,
@@ -41,11 +42,11 @@ const JobPost = () => {
 
       toast.success("Job posted successfully!");
       setTitle("");
+      setJobLocation("");
       setTags("");
       setSalaryRange("");
       setDescription("");
-    } 
-    catch (err) {
+    } catch (err) {
       const errorMessage = err.response?.data?.error || "Something went wrong!";
       toast.error(errorMessage);
     }
@@ -76,6 +77,19 @@ const JobPost = () => {
             </div>
 
             <div className="form-group">
+              <label className="text-dark">Job Location:</label>
+              <input
+                name="job_location"
+                placeholder="Enter job location"
+                type="text"
+                className="form-control"
+                value={jobLocation}
+                onChange={(e) => setJobLocation(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form-group">
               <label className="text-dark">Tags (comma-separated):</label>
               <input
                 name="tags"
@@ -87,7 +101,6 @@ const JobPost = () => {
                 required
               />
             </div>
-
             <div className="form-group">
               <label className="text-dark">Job Type:</label>
               <select
@@ -100,7 +113,6 @@ const JobPost = () => {
                 <option value="Onsite">Onsite</option>
               </select>
             </div>
-
             <div className="form-group">
               <label className="text-dark">Salary Range:</label>
               <input
@@ -113,7 +125,6 @@ const JobPost = () => {
                 required
               />
             </div>
-
             <div className="form-group">
               <label className="text-dark">Job Time:</label>
               <input
@@ -125,7 +136,6 @@ const JobPost = () => {
                 onChange={(e) => setJobTime(e.target.value)}
               />
             </div>
-
             <div className="form-group">
               <label className="text-dark">Description:</label>
               <textarea
@@ -138,7 +148,6 @@ const JobPost = () => {
                 required
               ></textarea>
             </div>
-
             <div className="form-group">
               <label className="text-dark">Active Recruiting:</label>
               <input
@@ -149,7 +158,6 @@ const JobPost = () => {
               />
               <span className="ms-2">Yes</span>
             </div>
-
             <button type="submit" className="btn btn-primary w-100 mt-3">
               Post Job
             </button>

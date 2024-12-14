@@ -6,6 +6,8 @@ from django.contrib.auth.hashers import make_password
 class Company(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     phone_number = models.CharField(
         max_length=11,
         validators=[
