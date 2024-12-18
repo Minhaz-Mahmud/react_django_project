@@ -104,8 +104,8 @@ const NavbarComponent = () => {
                     title={userName}
                     id="basic-nav-dropdown"
                   >
-                    <NavDropdown.Item as={Link} to="/candidate/profile">
-                      Profile
+                    <NavDropdown.Item as={Link} to="/dashboard">
+                    Dashboard
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item onClick={handleLogout}>
