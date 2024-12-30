@@ -10,6 +10,9 @@ import JobPost from "../dashboard_components/job_post/JobPost";
 import PostedJobs from "../dashboard_components/posted_jobs/PostedJobs";
 import "./company_dashboard.css";
 import CompanyMap from "../company_maps/CompanyMapUpdate";
+import JobApplications from "../job_applications/JobApplications";
+
+
 
 const SummaryCard = ({ title, value, bgColor }) => (
   <div className={`card ${bgColor} text-white mb-4`}>
@@ -79,6 +82,12 @@ const MainContent = ({ activeComponent }) => {
     posted_jobs: (
       <div>
         <PostedJobs />
+      </div>
+    ),
+
+    applications: (
+      <div>
+        <JobApplications />
       </div>
     ),
     job_responses: <h2>job_responses</h2>,
@@ -192,6 +201,15 @@ const CompanyDashboard = () => {
                 onClick={() => setActiveComponent("googleMapsLocation")}
               >
                 Google Map Location
+              </button>
+
+              <button
+                className={`btn btn-link text-white text-decoration-none ${
+                  activeComponent === "buttons" ? "active" : ""
+                }`}
+                onClick={() => setActiveComponent("applications")}
+              >
+                Applications
               </button>
             </div>
           </div>
