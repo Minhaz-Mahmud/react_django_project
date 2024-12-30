@@ -70,3 +70,21 @@ def candidate_details(request, candidate_id):
         "profile_picture": candidate.profile_picture.url if candidate.profile_picture else None,
     }
     return JsonResponse(data)
+
+
+
+
+class ApplicationDeleteView(APIView):
+    def delete(self, request, application_id):
+        try:
+            application = Apply.objects.get(id=application_id)
+            application.delete()
+            return Response(
+                {"message": "Application deleted successfully."},
+                status=status.HTTP_204_NO_CONTENT,
+            )
+        except Apply.DoesNotExist:
+            return Response(
+                {"error": "Application not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
