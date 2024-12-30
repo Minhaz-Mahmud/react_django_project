@@ -19,6 +19,8 @@ import JobFeed from "./components/job_feed/JobFeed";
 import Feed from "./components/feed_candidate/Feed";
 import Update from "./components/profile/Update";
 import AllCompany from "./components/all_company/AllCompany";
+import JobApplications from "./components/job_applications/JobApplications";
+import CandidateDetails from "./components/profile/CandidateDetails";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -76,6 +78,10 @@ const App = () => {
         <Route path="/job-feed" element={<JobFeed />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/all/company" element={<AllCompany />} />
+
+        <Route path="/JA" element={<JobApplications />} />
+        <Route path="/candidate-details/:candidateId" element={<CandidateDetails />} />
+
       </Routes>
 
       <FooterComponent />
