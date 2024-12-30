@@ -21,6 +21,7 @@ import Update from "./components/profile/Update";
 import AllCompany from "./components/all_company/AllCompany";
 import JobApplications from "./components/job_applications/JobApplications";
 import CandidateDetails from "./components/profile/CandidateDetails";
+import ResumeBuilder from "./components/resume/ResumeBuilder";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -80,8 +81,11 @@ const App = () => {
         <Route path="/all/company" element={<AllCompany />} />
 
         <Route path="/JA" element={<JobApplications />} />
-        <Route path="/candidate-details/:candidateId" element={<CandidateDetails />} />
-
+        <Route
+          path="/candidate/apply/details/:candidateId"
+          element={<CandidateDetails />}
+        />
+        <Route path="/candidate/build/resume" element={<ResumeBuilder />} />
       </Routes>
 
       <FooterComponent />

@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Profile from "../profile/Profile";
-import Feed from "../feed_candidate/Feed";
 import "./Dashboard.css";
 import Update from "../profile/Update";
 
@@ -72,12 +73,6 @@ const MainContent = ({ activeComponent }) => {
         <Update />
       </div>
     ),
-    feed: (
-      <div>
-        <Feed />
-      </div>
-    ),
-    // job_responses: <h2>job_responses</h2>,
   };
 
   return components[activeComponent] || <div>Select a component</div>;
@@ -145,26 +140,15 @@ const Dashboard = () => {
 
             <div className="p-3">
               <h6 className="text-light">OTHERS</h6>
-              {/* Feed */}
-              <button
+              {/* generate resume */}
+              <Link
+                to="/candidate/build/resume"
                 className={`btn btn-link text-white text-decoration-none ${
-                  activeComponent === "base" ? "active" : ""
+                  activeComponent === "resume" ? "active" : ""
                 }`}
-                onClick={() => setActiveComponent("feed")}
               >
-                Feed
-              </button>
-              <br />
-
-              {/* googleMapsLocation */}
-              <button
-                className={`btn btn-link text-white text-decoration-none ${
-                  activeComponent === "googleMaps" ? "active" : ""
-                }`}
-                onClick={() => setActiveComponent("googleMapsLocation")}
-              >
-                Google Map Location
-              </button>
+                🆕 Generate Resume
+              </Link>
             </div>
           </div>
         </div>

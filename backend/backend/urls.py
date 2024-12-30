@@ -16,17 +16,27 @@ from job_post.views import (
 from django.conf import settings
 from django.conf.urls.static import static
 
-from apply.views import ApplyToJobView,CompanyApplicationsAPIView,candidate_details,ApplicationDeleteView
+from apply.views import (
+    ApplyToJobView,
+    CompanyApplicationsAPIView,
+    candidate_details,
+    ApplicationDeleteView,
+)
 
 
 urlpatterns = [
-    path("apply/", ApplyToJobView.as_view(), name='apply_to_job'),
-    path("applications/<int:company_id>/", CompanyApplicationsAPIView.as_view(), name="company-applications"), 
+    path("apply/", ApplyToJobView.as_view(), name="apply_to_job"),
+    path(
+        "applications/<int:company_id>/",
+        CompanyApplicationsAPIView.as_view(),
+        name="company-applications",
+    ),
     path("candidates/<int:candidate_id>/", candidate_details, name="candidate_details"),
-    path('applications_del/<int:application_id>/', ApplicationDeleteView.as_view(), name='delete_application'),
-
-
-
+    path(
+        "applications_del/<int:application_id>/",
+        ApplicationDeleteView.as_view(),
+        name="delete_application",
+    ),
     path(
         "api/candidate/update/<int:pk>/",
         CandidateUpdateView.as_view(),
@@ -54,6 +64,7 @@ urlpatterns = [
     path("job-posts/", JobPostListView.as_view(), name="job-posts"),
     path("api/company/location/", include("map.urls")),
     path("api/all/company/", include("all_company.urls")),
+    path("api/", include("resume_builder.urls")),
 ]
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -45,24 +46,20 @@ const ApplicationFeed = () => {
     }
   };
 
-
-
-//   const acceptCandidate = (candidateId) => {
-//     navigate(`/schedule-viva/${candidateId}`);
-//   };
-
-
   const deleteApplication = async (applicationId) => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/applications_del/${applicationId}/`, {
-        method: 'DELETE',
-      });
+      const response = await fetch(
+        `http://127.0.0.1:8000/applications_del/${applicationId}/`,
+        {
+          method: "DELETE",
+        }
+      );
       if (!response.ok) {
-        throw new Error('Failed to delete application.');
+        throw new Error("Failed to delete application.");
       }
-      setApplications(applications.filter(app => app.id !== applicationId));
+      setApplications(applications.filter((app) => app.id !== applicationId));
     } catch (error) {
-      console.error('Error deleting application:', error);
+      console.error("Error deleting application:", error);
     }
   };
 
@@ -79,7 +76,7 @@ const ApplicationFeed = () => {
   };
 
   const viewCandidateDetails = (candidateId) => {
-    navigate(`/candidate-details/${candidateId}`);
+    navigate(`/candidate/apply/details/${candidateId}`);
   };
 
   return (
@@ -101,7 +98,8 @@ const ApplicationFeed = () => {
                 <li key={app.id}>
                   <strong>{app.candidate__full_name}</strong> applied for{" "}
                   <em>{app.job_title}</em> (Job ID: {app.job_id}) on{" "}
-                  {new Date(app.time).toLocaleDateString()}{" "}<h1>{app.candidate_id}</h1>
+                  {new Date(app.time).toLocaleDateString()}{" "}
+                  <h1>{app.candidate_id}</h1>
                   <button
                     onClick={() => viewCandidateDetails(app.candidate_id)}
                     style={{ marginLeft: "10px" }}
@@ -110,17 +108,13 @@ const ApplicationFeed = () => {
                   </button>
                   <button
                     onClick={() => deleteApplication(app.id)}
-                    style={{ marginLeft: "10px",background:"red"}}
+                    style={{ marginLeft: "10px", background: "red" }}
                   >
                     Delete
                   </button>
-
-                  {/* <button
-                    onClick={() => acceptCandidate(app.candidate_id)}
-                    style={{ marginLeft: "10px", background: "green" }}
-                      >
-                      Accept
-                   </button> */}
+                  <button style={{ marginLeft: "10px", background: "green" }}>
+                    Accept
+                  </button>
                 </li>
               ))}
             </ul>

@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     "job_post",
     "all_company",
     "map",
-    "apply"
+    "apply",
+    "resume_builder",
 ]
 
 MIDDLEWARE = [
@@ -128,10 +129,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "career_connect",
-        "USER": "postgres",
+        "USER": "safa",
         "PASSWORD": "123456",
-        "HOST": "localhost",
-        "PORT": "5432",
     }
 }
 

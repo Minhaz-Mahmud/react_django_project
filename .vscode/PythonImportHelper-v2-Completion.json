@@ -64,11 +64,19 @@
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
         "isExtraImport": true,
-        "detail": "django.apps",
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -120,6 +128,54 @@
         "documentation": {}
     },
     {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -341,6 +397,46 @@
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -432,11 +528,11 @@
         "documentation": {}
     },
     {
-        "label": "APIView",
-        "importPath": "rest_framework.views",
-        "description": "rest_framework.views",
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
         "isExtraImport": true,
-        "detail": "rest_framework.views",
+        "detail": "django.urls",
         "documentation": {}
     },
     {
@@ -488,11 +584,27 @@
         "documentation": {}
     },
     {
-        "label": "Response",
-        "importPath": "rest_framework.response",
-        "description": "rest_framework.response",
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
         "isExtraImport": true,
-        "detail": "rest_framework.response",
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
         "documentation": {}
     },
     {
@@ -549,6 +661,54 @@
         "description": "rest_framework.response",
         "isExtraImport": true,
         "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
         "documentation": {}
     },
     {
@@ -637,6 +797,46 @@
         "description": "rest_framework",
         "isExtraImport": true,
         "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
         "documentation": {}
     },
     {
@@ -701,6 +901,151 @@
         "description": "django.shortcuts",
         "isExtraImport": true,
         "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "Candidate",
+        "importPath": "registration.models",
+        "description": "registration.models",
+        "isExtraImport": true,
+        "detail": "registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Candidate",
+        "importPath": "registration.models",
+        "description": "registration.models",
+        "isExtraImport": true,
+        "detail": "registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Candidate",
+        "importPath": "registration.models",
+        "description": "registration.models",
+        "isExtraImport": true,
+        "detail": "registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Candidate",
+        "importPath": "registration.models",
+        "description": "registration.models",
+        "isExtraImport": true,
+        "detail": "registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Candidate",
+        "importPath": "registration.models",
+        "description": "registration.models",
+        "isExtraImport": true,
+        "detail": "registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "Apply",
+        "importPath": "apply.models",
+        "description": "apply.models",
+        "isExtraImport": true,
+        "detail": "apply.models",
+        "documentation": {}
+    },
+    {
+        "label": "PageNumberPagination",
+        "importPath": "rest_framework.pagination",
+        "description": "rest_framework.pagination",
+        "isExtraImport": true,
+        "detail": "rest_framework.pagination",
+        "documentation": {}
+    },
+    {
+        "label": "PageNumberPagination",
+        "importPath": "rest_framework.pagination",
+        "description": "rest_framework.pagination",
+        "isExtraImport": true,
+        "detail": "rest_framework.pagination",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "FileResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "Http404",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -817,11 +1162,67 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
         "label": "static",
         "importPath": "django.conf.urls.static",
         "description": "django.conf.urls.static",
         "isExtraImport": true,
         "detail": "django.conf.urls.static",
+        "documentation": {}
+    },
+    {
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
+        "isExtraImport": true,
+        "detail": "django.conf.urls.static",
+        "documentation": {}
+    },
+    {
+        "label": "ApplyToJobView",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyApplicationsAPIView",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "candidate_details",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "ApplicationDeleteView",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
         "documentation": {}
     },
     {
@@ -906,15 +1307,6 @@
         "documentation": {}
     },
     {
-        "label": "django.db.models.deletion",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.db.models.deletion",
-        "description": "django.db.models.deletion",
-        "detail": "django.db.models.deletion",
-        "documentation": {}
-    },
-    {
         "label": "JobPost",
         "importPath": "job_post.models",
         "description": "job_post.models",
@@ -936,22 +1328,6 @@
         "description": "rest_framework.generics",
         "isExtraImport": true,
         "detail": "rest_framework.generics",
-        "documentation": {}
-    },
-    {
-        "label": "PageNumberPagination",
-        "importPath": "rest_framework.pagination",
-        "description": "rest_framework.pagination",
-        "isExtraImport": true,
-        "detail": "rest_framework.pagination",
-        "documentation": {}
-    },
-    {
-        "label": "Candidate",
-        "importPath": "registration.models",
-        "description": "registration.models",
-        "isExtraImport": true,
-        "detail": "registration.models",
         "documentation": {}
     },
     {
@@ -1003,14 +1379,6 @@
         "documentation": {}
     },
     {
-        "label": "JsonResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
         "label": "User",
         "importPath": "django.contrib.auth.models",
         "description": "django.contrib.auth.models",
@@ -1019,12 +1387,91 @@
         "documentation": {}
     },
     {
-        "label": "sys",
-        "kind": 6,
+        "label": "generate_cv",
+        "importPath": "resume_builder.views",
+        "description": "resume_builder.views",
         "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
+        "detail": "resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "generate_cv2",
+        "importPath": "resume_builder.views",
+        "description": "resume_builder.views",
+        "isExtraImport": true,
+        "detail": "resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetResumes",
+        "importPath": "resume_builder.views",
+        "description": "resume_builder.views",
+        "isExtraImport": true,
+        "detail": "resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "view_cv",
+        "importPath": "resume_builder.views",
+        "description": "resume_builder.views",
+        "isExtraImport": true,
+        "detail": "resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_resume",
+        "importPath": "resume_builder.views",
+        "description": "resume_builder.views",
+        "isExtraImport": true,
+        "detail": "resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "csrf_exempt",
+        "importPath": "django.views.decorators.csrf",
+        "description": "django.views.decorators.csrf",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.csrf",
+        "documentation": {}
+    },
+    {
+        "label": "BytesIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "letter",
+        "importPath": "reportlab.lib.pagesizes",
+        "description": "reportlab.lib.pagesizes",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.pagesizes",
+        "documentation": {}
+    },
+    {
+        "label": "canvas",
+        "importPath": "reportlab.pdfgen",
+        "description": "reportlab.pdfgen",
+        "isExtraImport": true,
+        "detail": "reportlab.pdfgen",
+        "documentation": {}
+    },
+    {
+        "label": "colors",
+        "importPath": "reportlab.lib",
+        "description": "reportlab.lib",
+        "isExtraImport": true,
+        "detail": "reportlab.lib",
+        "documentation": {}
+    },
+    {
+        "label": "inch",
+        "importPath": "reportlab.lib.units",
+        "description": "reportlab.lib.units",
+        "isExtraImport": true,
+        "detail": "reportlab.lib.units",
         "documentation": {}
     },
     {
@@ -1034,6 +1481,58 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "fitz",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "fitz",
+        "description": "fitz",
+        "detail": "fitz",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "string",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string",
+        "description": "string",
+        "detail": "string",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
         "documentation": {}
     },
     {
@@ -1095,6 +1594,78 @@
         "description": "backend.app.apps",
         "peekOfCode": "class AppConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'app'",
         "detail": "backend.app.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.apply.migrations.0001_initial",
+        "description": "backend.apply.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('company_registration', '0006_company_latitude_company_longitude'),\n        ('registration', '0003_alter_candidate_profile_picture_and_more'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Apply',\n            fields=[",
+        "detail": "backend.apply.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "ApplyConfig",
+        "kind": 6,
+        "importPath": "backend.apply.apps",
+        "description": "backend.apply.apps",
+        "peekOfCode": "class ApplyConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'apply'",
+        "detail": "backend.apply.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Apply",
+        "kind": 6,
+        "importPath": "backend.apply.models",
+        "description": "backend.apply.models",
+        "peekOfCode": "class Apply(models.Model):\n    candidate = models.ForeignKey(\n        Candidate,\n        on_delete=models.CASCADE,\n        related_name=\"apply\",\n    )\n    company = models.ForeignKey(\n        Company,\n        on_delete=models.CASCADE,\n        related_name=\"apply\",",
+        "detail": "backend.apply.models",
+        "documentation": {}
+    },
+    {
+        "label": "ApplyToJobView",
+        "kind": 6,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "class ApplyToJobView(APIView):\n    def post(self, request, *args, **kwargs):\n        candidate_id = request.data.get(\"candidate_id\")\n        company_id = request.data.get(\"company_id\")\n        job_id=request.data.get(\"job_id\")\n        job_title=request.data.get(\"job_title\")\n        # Directly create the application without any checks\n        Apply.objects.create(candidate_id=candidate_id, company_id=company_id,job_id=job_id,job_title=job_title)\n        return Response(\n            {\"message\": \"Application submitted successfully!\"},",
+        "detail": "backend.apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "ApplicationPagination",
+        "kind": 6,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "class ApplicationPagination(PageNumberPagination):\n    page_size = 5  # Number of applications per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass CompanyApplicationsAPIView(APIView):\n    pagination_class = ApplicationPagination\n    def get(self, request, company_id, *args, **kwargs):\n        applications = Apply.objects.filter(company_id=company_id).values(\n            \"id\", \"candidate__full_name\", \"job_id\", \"job_title\", \"time\",\"candidate_id\",\n        )",
+        "detail": "backend.apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyApplicationsAPIView",
+        "kind": 6,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "class CompanyApplicationsAPIView(APIView):\n    pagination_class = ApplicationPagination\n    def get(self, request, company_id, *args, **kwargs):\n        applications = Apply.objects.filter(company_id=company_id).values(\n            \"id\", \"candidate__full_name\", \"job_id\", \"job_title\", \"time\",\"candidate_id\",\n        )\n        if applications.exists():\n            paginator = self.pagination_class()\n            paginated_apps = paginator.paginate_queryset(applications, request, view=self)\n            return paginator.get_paginated_response(paginated_apps)",
+        "detail": "backend.apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "ApplicationDeleteView",
+        "kind": 6,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "class ApplicationDeleteView(APIView):\n    def delete(self, request, application_id):\n        try:\n            application = Apply.objects.get(id=application_id)\n            application.delete()\n            return Response(\n                {\"message\": \"Application deleted successfully.\"},\n                status=status.HTTP_204_NO_CONTENT,\n            )\n        except Apply.DoesNotExist:",
+        "detail": "backend.apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "candidate_details",
+        "kind": 2,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "def candidate_details(request, candidate_id):\n    candidate = get_object_or_404(Candidate, id=candidate_id)\n    data = {\n        \"full_name\": candidate.full_name,\n        \"email\": candidate.email,\n        \"phone_number\": candidate.phone_number,\n        \"location\": candidate.location,\n        \"skills\": candidate.skills.split(\",\") if candidate.skills else [],\n        \"resume\": candidate.resume.url if candidate.resume else None,\n        \"profile_picture\": candidate.profile_picture.url if candidate.profile_picture else None,",
+        "detail": "backend.apply.views",
         "documentation": {}
     },
     {
@@ -1327,7 +1898,7 @@
         "kind": 5,
         "importPath": "backend.backend.urls",
         "description": "backend.backend.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\n        \"api/candidate/update/<int:pk>/\",\n        CandidateUpdateView.as_view(),\n        name=\"candidate-update\",\n    ),\n    path(\"admin/\", admin.site.urls),\n    path(\"candidates/\", CandidateView.as_view(), name=\"candidate-list\"),\n    path(\"login/\", CandidateLoginView.as_view(), name=\"login\"),\n    path(",
+        "peekOfCode": "urlpatterns = [\n    path(\"apply/\", ApplyToJobView.as_view(), name=\"apply_to_job\"),\n    path(\n        \"applications/<int:company_id>/\",\n        CompanyApplicationsAPIView.as_view(),\n        name=\"company-applications\",\n    ),\n    path(\"candidates/<int:candidate_id>/\", candidate_details, name=\"candidate_details\"),\n    path(\n        \"applications_del/<int:application_id>/\",",
         "detail": "backend.backend.urls",
         "documentation": {}
     },
@@ -1680,6 +2251,150 @@
         "description": "backend.registration.views",
         "peekOfCode": "class CandidateView(APIView):\n    serializer_class = CandidateSerializer\n    def get(self, request):\n        candidates = Candidate.objects.all()\n        serializer = self.serializer_class(candidates, many=True)\n        return Response(serializer.data)\n    def post(self, request):\n        serializer = self.serializer_class(data=request.data)\n        if serializer.is_valid():\n            serializer.save()",
         "detail": "backend.registration.views",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.resume_builder.migrations.0001_initial",
+        "description": "backend.resume_builder.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('registration', '0003_alter_candidate_profile_picture_and_more'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='CandidateCV',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "backend.resume_builder.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "ResumeBuilderConfig",
+        "kind": 6,
+        "importPath": "backend.resume_builder.apps",
+        "description": "backend.resume_builder.apps",
+        "peekOfCode": "class ResumeBuilderConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'resume_builder'",
+        "detail": "backend.resume_builder.apps",
+        "documentation": {}
+    },
+    {
+        "label": "CandidateCV",
+        "kind": 6,
+        "importPath": "backend.resume_builder.models",
+        "description": "backend.resume_builder.models",
+        "peekOfCode": "class CandidateCV(models.Model):\n    candidate = models.ForeignKey(\n        Candidate,\n        on_delete=models.CASCADE,\n        related_name=\"candidate_cv\",\n        null=True,\n    )\n    email = models.EmailField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    cv_file = models.FileField(upload_to=\"gen_cv/\", null=True, blank=True)",
+        "detail": "backend.resume_builder.models",
+        "documentation": {}
+    },
+    {
+        "label": "ResumeSerializer",
+        "kind": 6,
+        "importPath": "backend.resume_builder.serializers",
+        "description": "backend.resume_builder.serializers",
+        "peekOfCode": "class ResumeSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = CandidateCV\n        fields = [\"id\", \"cv_file\", \"email\", \"created_at\"]",
+        "detail": "backend.resume_builder.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.resume_builder.urls",
+        "description": "backend.resume_builder.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"generate-cv/\", generate_cv, name=\"generate_cv\"),\n    path(\"generate-cv2/\", generate_cv2, name=\"generate_cv2\"),\n    path(\"candidate/get/resumes/\", GetResumes.as_view(), name=\"get_resumes\"),\n    path(\"cv/<str:file_name>/\", view_cv, name=\"view_cv\"),\n    path(\"delete_resume/<int:resume_id>/\", delete_resume, name=\"delete_resume\"),\n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "detail": "backend.resume_builder.urls",
+        "documentation": {}
+    },
+    {
+        "label": "GetResumes",
+        "kind": 6,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "class GetResumes(APIView):\n    def get(self, request):\n        candidate_id = request.query_params.get(\"candidate_id\")\n        if not candidate_id:\n            return Response(\n                {\"error\": \"Candidate ID is required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        # Ensure the candidate exists in the database\n        try:",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "draw_section_header",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def draw_section_header(canvas, text, y_position):\n    \"\"\"Helper function to draw section headers with consistent styling\"\"\"\n    canvas.setFillColor(colors.HexColor(\"#2C3E50\"))\n    canvas.setFont(\"Helvetica-Bold\", 14)\n    canvas.drawString(inch, y_position, text)\n    canvas.setFillColor(colors.HexColor(\"#34495E\"))\n    canvas.line(inch, y_position - 5, 7.5 * inch, y_position - 5)\n    canvas.setFillColor(colors.black)\n    canvas.setFont(\"Helvetica\", 11)\n    return y_position - 25",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "draw_skill_badge",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def draw_skill_badge(canvas, skill, x, y, color):\n    \"\"\"Draw a more elegant skill badge with a subtle background and refined style\"\"\"\n    # Calculate text width for badge size\n    canvas.setFont(\"Helvetica\", 11)\n    text_width = canvas.stringWidth(skill)\n    badge_width = text_width + 20\n    badge_height = 25\n    # Draw badge background with subtle gradient-like effect (light gray)\n    canvas.setFillColor(colors.HexColor(\"#ecf0f1\"))  # Light gray background\n    canvas.roundRect(x, y - 15, badge_width, badge_height, 10, fill=1)",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "generate_cv",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def generate_cv(request):\n    if request.method == \"POST\":\n        data = json.loads(request.body)\n        candidate_id = data.get(\"candidate_id\")\n        candidate_name = data[\"name\"]\n        # Create PDF\n        buffer = BytesIO()\n        pdf = canvas.Canvas(buffer, pagesize=letter)\n        width, height = letter\n        # Set background color for header",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "view_cv",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def view_cv(request, file_name):\n    file_path = os.path.join(settings.MEDIA_ROOT, \"gen_cv\", file_name)\n    if os.path.exists(file_path):\n        return FileResponse(open(file_path, \"rb\"), content_type=\"application/pdf\")\n    else:\n        raise Http404(\"CV not found\")\n@api_view([\"DELETE\"])\ndef delete_resume(request, resume_id):\n    try:\n        resume = CandidateCV.objects.get(id=resume_id)",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_resume",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def delete_resume(request, resume_id):\n    try:\n        resume = CandidateCV.objects.get(id=resume_id)\n        resume.delete()  # This will delete the resume record\n        return Response(\n            {\"message\": \"Resume deleted successfully\"}, status=status.HTTP_200_OK\n        )\n    except CandidateCV.DoesNotExist:\n        return Response({\"error\": \"Resume not found\"}, status=status.HTTP_404_NOT_FOUND)\n# ////////////////////////////////////////////cv2 template///////////////////////////////////////////////////////////////////",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "draw_section_header2",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def draw_section_header2(canvas, text, y_position):\n    \"\"\"Draw modern section headers with new styling\"\"\"\n    # Draw decorative element\n    canvas.setFillColor(colors.HexColor(COLORS[\"accent\"]))\n    canvas.rect(inch - 10, y_position - 8, 5, 25, fill=1)\n    # Draw header text\n    canvas.setFillColor(colors.HexColor(COLORS[\"text\"]))\n    canvas.setFont(\"Helvetica-Bold\", 16)\n    canvas.drawString(inch, y_position, text)\n    # Reset styles",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "draw_skill_badge2",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def draw_skill_badge2(canvas, skill, x, y):\n    \"\"\"Draw minimalist skill badges with new design\"\"\"\n    canvas.setFont(\"Helvetica\", 10)\n    text_width = canvas.stringWidth(skill)\n    badge_width = text_width + 30\n    badge_height = 30\n    # Draw skill box with orange accent\n    canvas.setFillColor(colors.HexColor(COLORS[\"muted\"]))\n    canvas.rect(x, y - 18, badge_width, badge_height, fill=1)\n    # Draw orange accent line",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "generate_cv2",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def generate_cv2(request):\n    if request.method == \"POST\":\n        data = json.loads(request.body)\n        candidate_id = data.get(\"candidate_id\")\n        candidate_name = data[\"name\"]\n        # Create PDF\n        buffer = BytesIO()\n        pdf = canvas.Canvas(buffer, pagesize=letter)\n        width, height = letter\n        # Minimal header design with orange accent",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "SKILL_COLORS",
+        "kind": 5,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "SKILL_COLORS = [\n    \"#ecf0f1\",  # Light gray background\n]\ndef draw_section_header(canvas, text, y_position):\n    \"\"\"Helper function to draw section headers with consistent styling\"\"\"\n    canvas.setFillColor(colors.HexColor(\"#2C3E50\"))\n    canvas.setFont(\"Helvetica-Bold\", 14)\n    canvas.drawString(inch, y_position, text)\n    canvas.setFillColor(colors.HexColor(\"#34495E\"))\n    canvas.line(inch, y_position - 5, 7.5 * inch, y_position - 5)",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "COLORS",
+        "kind": 5,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "COLORS = {\n    \"primary\": \"#FF7043\",  # Light Orange\n    \"secondary\": \"#FF5722\",  # Darker Orange\n    \"accent\": \"#FFB74D\",  # Soft Orange\n    \"text\": \"#212121\",  # Almost Black\n    \"light_text\": \"#424242\",  # Dark Gray\n    \"muted\": \"#FBE9E7\",  # Very Light Orange\n    \"white\": \"#ffffff\",\n    \"dark_black\": \"#010203\",\n}",
+        "detail": "backend.resume_builder.views",
         "documentation": {}
     },
     {
