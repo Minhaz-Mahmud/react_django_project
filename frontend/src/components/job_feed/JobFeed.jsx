@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import React, { useState, useEffect } from "react";
 import "./JobFeed.css";
 import { FaMapMarkerAlt, FaCircle } from "react-icons/fa";
@@ -11,6 +9,7 @@ const JobFeed = () => {
   const [hasNextPage, setHasNextPage] = useState(false);
   const [hasPreviousPage, setHasPreviousPage] = useState(false);
   const [hasSession, setHasSession] = useState(false);
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
     fetchJobPosts(currentPage);
@@ -19,8 +18,11 @@ const JobFeed = () => {
 
   // Check if there's any session data
   const checkSessionData = () => {
-    const candidateData = sessionStorage.getItem("candidateData");
-    setHasSession(!!candidateData);
+    const storedUserData = sessionStorage.getItem("candidateData");
+    if (storedUserData) {
+      setUserData(JSON.parse(storedUserData));
+      setHasSession(true);
+    }
   };
 
   const fetchJobPosts = async (page) => {
@@ -34,7 +36,6 @@ const JobFeed = () => {
       }
       const data = await response.json();
       setJobPosts(data.results || []);
-      console.log(data.results);
       setHasNextPage(!!data.next);
       setHasPreviousPage(!!data.previous);
     } catch (error) {
@@ -44,19 +45,40 @@ const JobFeed = () => {
     }
   };
 
-  const handleNextPage = () => {
-    if (hasNextPage) {
-      setCurrentPage((prev) => prev + 1);
+  const handleApply = async (companyId,job_id,job_title) => {
+    if (!userData) {
+      alert("You need to log in to apply!");
+      return;
+    }
+
+    // Log the company_id to the console
+    console.log("Applying for company with ID:", companyId);
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/apply/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          candidate_id: userData.id,
+          company_id: companyId,
+          job_id:job_id,
+          job_title:job_title,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit application.");
+      }
+
+      alert("Application submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      alert("An error occurred while applying. Please try again.");
     }
   };
 
-  const handlePreviousPage = () => {
-    if (hasPreviousPage) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
-
-  // Utility function to calculate time ago
   const calculateTimeAgo = (postedTime) => {
     const now = new Date();
     const postedDate = new Date(postedTime);
@@ -73,6 +95,18 @@ const JobFeed = () => {
       return "Yesterday";
     } else {
       return `${diffInDays} day${diffInDays === 1 ? "" : "s"} ago`;
+    }
+  };
+
+  const handleNextPage = () => {
+    if (hasNextPage) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (hasPreviousPage) {
+      setCurrentPage((prevPage) => prevPage - 1);
     }
   };
 
@@ -98,6 +132,8 @@ const JobFeed = () => {
                     <div>
                       <h5 className="job-title">{post.title}</h5>
                       <p className="company-name">{post.company}</p>
+                      {/* <p className="company-id">{post.company_id}</p> */}
+
                     </div>
                   </div>
                   <div className="job-card-body">
@@ -135,8 +171,11 @@ const JobFeed = () => {
                     <button className="btn btn-outline-primary btn-sm">
                       View Details
                     </button>
-                    {hasSession ? (
-                      <button className="btn btn-outline-primary btn-sm">
+                    {userData ? (
+                      <button
+                        className="btn btn-outline-primary btn-sm"
+                        onClick={() => handleApply(post.company,post.id,post.title)}
+                      >
                         Apply
                       </button>
                     ) : (

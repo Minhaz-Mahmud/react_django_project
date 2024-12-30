@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "job_post",
     "all_company",
     "map",
+    "apply"
 ]
 
 MIDDLEWARE = [
