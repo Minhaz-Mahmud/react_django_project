@@ -6,7 +6,8 @@ from apply.models import Apply
 from registration.models import Candidate
 from company_registration.models import Company
 from rest_framework.pagination import PageNumberPagination
-
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 
 
 from rest_framework.views import APIView
@@ -52,3 +53,20 @@ class CompanyApplicationsAPIView(APIView):
             return paginator.get_paginated_response(paginated_apps)
 
         return Response({"message": "No applications found for this company."}, status=status.HTTP_404_NOT_FOUND)
+
+
+
+
+
+def candidate_details(request, candidate_id):
+    candidate = get_object_or_404(Candidate, id=candidate_id)
+    data = {
+        "full_name": candidate.full_name,
+        "email": candidate.email,
+        "phone_number": candidate.phone_number,
+        "location": candidate.location,
+        "skills": candidate.skills.split(",") if candidate.skills else [],
+        "resume": candidate.resume.url if candidate.resume else None,
+        "profile_picture": candidate.profile_picture.url if candidate.profile_picture else None,
+    }
+    return JsonResponse(data)

@@ -16,12 +16,13 @@ from job_post.views import (
 from django.conf import settings
 from django.conf.urls.static import static
 
-from apply.views import ApplyToJobView,CompanyApplicationsAPIView
+from apply.views import ApplyToJobView,CompanyApplicationsAPIView,candidate_details
 
 
 urlpatterns = [
     path("apply/", ApplyToJobView.as_view(), name='apply_to_job'),
     path("applications/<int:company_id>/", CompanyApplicationsAPIView.as_view(), name="company-applications"), 
+    path("candidates/<int:candidate_id>/", candidate_details, name="candidate_details"),
 
 
     path(
