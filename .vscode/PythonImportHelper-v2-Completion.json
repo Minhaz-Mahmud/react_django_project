@@ -80,11 +80,11 @@
         "documentation": {}
     },
     {
-        "label": "AppConfig",
-        "importPath": "django.apps",
-        "description": "django.apps",
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
         "isExtraImport": true,
-        "detail": "django.apps",
+        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -152,7 +152,207 @@
         "documentation": {}
     },
     {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
         "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -248,142 +448,6 @@
         "documentation": {}
     },
     {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -421,6 +485,14 @@
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -536,11 +608,11 @@
         "documentation": {}
     },
     {
-        "label": "APIView",
-        "importPath": "rest_framework.views",
-        "description": "rest_framework.views",
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
         "isExtraImport": true,
-        "detail": "rest_framework.views",
+        "detail": "django.urls",
         "documentation": {}
     },
     {
@@ -605,6 +677,30 @@
         "description": "rest_framework.views",
         "isExtraImport": true,
         "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
         "documentation": {}
     },
     {
@@ -776,22 +872,6 @@
         "documentation": {}
     },
     {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
         "label": "status",
         "importPath": "rest_framework",
         "description": "rest_framework",
@@ -813,6 +893,46 @@
         "description": "rest_framework",
         "isExtraImport": true,
         "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
         "documentation": {}
     },
     {
@@ -969,6 +1089,22 @@
         "documentation": {}
     },
     {
+        "label": "Candidate",
+        "importPath": "registration.models",
+        "description": "registration.models",
+        "isExtraImport": true,
+        "detail": "registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Candidate",
+        "importPath": "registration.models",
+        "description": "registration.models",
+        "isExtraImport": true,
+        "detail": "registration.models",
+        "documentation": {}
+    },
+    {
         "label": "api_view",
         "importPath": "rest_framework.decorators",
         "description": "rest_framework.decorators",
@@ -1071,6 +1207,14 @@
         "description": "pathlib",
         "isExtraImport": true,
         "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
         "documentation": {}
     },
     {
@@ -1323,6 +1467,22 @@
         "documentation": {}
     },
     {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
         "label": "ListAPIView",
         "importPath": "rest_framework.generics",
         "description": "rest_framework.generics",
@@ -1376,6 +1536,30 @@
         "description": "rest_framework.parsers",
         "isExtraImport": true,
         "detail": "rest_framework.parsers",
+        "documentation": {}
+    },
+    {
+        "label": "SendEmailView",
+        "importPath": "mail.views",
+        "description": "mail.views",
+        "isExtraImport": true,
+        "detail": "mail.views",
+        "documentation": {}
+    },
+    {
+        "label": "send_mail",
+        "importPath": "django.core.mail",
+        "description": "django.core.mail",
+        "isExtraImport": true,
+        "detail": "django.core.mail",
+        "documentation": {}
+    },
+    {
+        "label": "BadHeaderError",
+        "importPath": "django.core.mail",
+        "description": "django.core.mail",
+        "isExtraImport": true,
+        "detail": "django.core.mail",
         "documentation": {}
     },
     {
@@ -1678,6 +1862,15 @@
         "documentation": {}
     },
     {
+        "label": "GOOGLE_MAPS_API_KEY",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "GOOGLE_MAPS_API_KEY = os.getenv(\"GOOGLE_MAPS_API_KEY\")\n# Build paths inside the project like this: BASE_DIR / 'subdir'.\nBASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"django-insecure-!xp!c1femi58d#r(h(!x@km19er)^^yxmj=9dav^gfg^nevf@(\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = []",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
         "label": "BASE_DIR",
         "kind": 5,
         "importPath": "backend.backend.settings",
@@ -1853,7 +2046,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\nimport os",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\n# Media settings",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -1862,7 +2055,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "STATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\nimport os\n# Media settings\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
+        "peekOfCode": "STATIC_URL = \"static/\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\n# Media settings\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -1871,7 +2064,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\nimport os\n# Media settings\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\n# ==================================================================code for media files======================================================\n# ============================================================================================================================================\n# Media settings\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\n# SMTP server details\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587  # Use 587 for TLS, 465 for SSL",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -1880,7 +2073,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "MEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
+        "peekOfCode": "MEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\n# SMTP server details\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587  # Use 587 for TLS, 465 for SSL\nEMAIL_USE_TLS = True  # Use True for TLS; set to False for SSL\nEMAIL_USE_SSL = False\nEMAIL_HOST_USER = os.getenv(\"EMAIL_HOST_USER\")\nEMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -1889,7 +2082,70 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
+        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\n# SMTP server details\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587  # Use 587 for TLS, 465 for SSL\nEMAIL_USE_TLS = True  # Use True for TLS; set to False for SSL\nEMAIL_USE_SSL = False\nEMAIL_HOST_USER = os.getenv(\"EMAIL_HOST_USER\")\nEMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_BACKEND",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "EMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\n# SMTP server details\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587  # Use 587 for TLS, 465 for SSL\nEMAIL_USE_TLS = True  # Use True for TLS; set to False for SSL\nEMAIL_USE_SSL = False\nEMAIL_HOST_USER = os.getenv(\"EMAIL_HOST_USER\")\nEMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "EMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587  # Use 587 for TLS, 465 for SSL\nEMAIL_USE_TLS = True  # Use True for TLS; set to False for SSL\nEMAIL_USE_SSL = False\nEMAIL_HOST_USER = os.getenv(\"EMAIL_HOST_USER\")\nEMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_PORT",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "EMAIL_PORT = 587  # Use 587 for TLS, 465 for SSL\nEMAIL_USE_TLS = True  # Use True for TLS; set to False for SSL\nEMAIL_USE_SSL = False\nEMAIL_HOST_USER = os.getenv(\"EMAIL_HOST_USER\")\nEMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_USE_TLS",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "EMAIL_USE_TLS = True  # Use True for TLS; set to False for SSL\nEMAIL_USE_SSL = False\nEMAIL_HOST_USER = os.getenv(\"EMAIL_HOST_USER\")\nEMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_USE_SSL",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "EMAIL_USE_SSL = False\nEMAIL_HOST_USER = os.getenv(\"EMAIL_HOST_USER\")\nEMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_USER",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "EMAIL_HOST_USER = os.getenv(\"EMAIL_HOST_USER\")\nEMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
+        "detail": "backend.backend.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_PASSWORD",
+        "kind": 5,
+        "importPath": "backend.backend.settings",
+        "description": "backend.backend.settings",
+        "peekOfCode": "EMAIL_HOST_PASSWORD = os.getenv(\"EMAIL_HOST_PASSWORD\")",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -2146,6 +2402,60 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.mail.migrations.0001_initial",
+        "description": "backend.mail.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('company_registration', '0006_company_latitude_company_longitude'),\n        ('job_post', '0002_jobpost_job_location'),\n        ('registration', '0004_alter_candidate_profile_picture_and_more'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Application',",
+        "detail": "backend.mail.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.mail.migrations.0002_rename_application_application_mail",
+        "description": "backend.mail.migrations.0002_rename_application_application_mail",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('company_registration', '0006_company_latitude_company_longitude'),\n        ('job_post', '0002_jobpost_job_location'),\n        ('mail', '0001_initial'),\n        ('registration', '0004_alter_candidate_profile_picture_and_more'),\n    ]\n    operations = [\n        migrations.RenameModel(\n            old_name='Application',",
+        "detail": "backend.mail.migrations.0002_rename_application_application_mail",
+        "documentation": {}
+    },
+    {
+        "label": "MailConfig",
+        "kind": 6,
+        "importPath": "backend.mail.apps",
+        "description": "backend.mail.apps",
+        "peekOfCode": "class MailConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'mail'",
+        "detail": "backend.mail.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Application_Mail",
+        "kind": 6,
+        "importPath": "backend.mail.models",
+        "description": "backend.mail.models",
+        "peekOfCode": "class Application_Mail(models.Model):\n    job_post = models.ForeignKey(\n        JobPost, on_delete=models.CASCADE, related_name=\"applications\"\n    )\n    candidate = models.ForeignKey(\n        Candidate, on_delete=models.CASCADE, related_name=\"applications\"\n    )\n    company = models.ForeignKey(\n        Company, on_delete=models.CASCADE, related_name=\"applications\"\n    )",
+        "detail": "backend.mail.models",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.mail.urls",
+        "description": "backend.mail.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"send-email/\", SendEmailView.as_view(), name=\"send_email\"),\n]",
+        "detail": "backend.mail.urls",
+        "documentation": {}
+    },
+    {
+        "label": "SendEmailView",
+        "kind": 6,
+        "importPath": "backend.mail.views",
+        "description": "backend.mail.views",
+        "peekOfCode": "class SendEmailView(APIView):\n    def post(self, request):\n        candidate_email = request.data.get(\"candidateEmail\")\n        job_post_id = request.data.get(\"jobId\")\n        candidate_id = request.data.get(\"candidateId\")\n        company_id = request.data.get(\"companyId\")\n        message = request.data.get(\"message\")\n        subject = \"Message from Career Connect\"\n        print(\"candidat email is\", candidate_email)\n        print(\"job id is\", job_post_id)",
+        "detail": "backend.mail.views",
+        "documentation": {}
+    },
+    {
         "label": "MapConfig",
         "kind": 6,
         "importPath": "backend.map.apps",
@@ -2215,6 +2525,15 @@
         "description": "backend.registration.migrations.0003_alter_candidate_profile_picture_and_more",
         "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('registration', '0002_alter_candidate_phone_number'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='candidate',\n            name='profile_picture',\n            field=models.ImageField(blank=True, null=True, upload_to='media/profile_pictures/'),\n        ),",
         "detail": "backend.registration.migrations.0003_alter_candidate_profile_picture_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.registration.migrations.0004_alter_candidate_profile_picture_and_more",
+        "description": "backend.registration.migrations.0004_alter_candidate_profile_picture_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('registration', '0003_alter_candidate_profile_picture_and_more'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='candidate',\n            name='profile_picture',\n            field=models.ImageField(blank=True, null=True, upload_to='profile_pictures/'),\n        ),",
+        "detail": "backend.registration.migrations.0004_alter_candidate_profile_picture_and_more",
         "documentation": {}
     },
     {

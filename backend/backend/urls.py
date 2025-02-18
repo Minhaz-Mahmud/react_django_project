@@ -65,6 +65,7 @@ urlpatterns = [
     path("api/company/location/", include("map.urls")),
     path("api/all/company/", include("all_company.urls")),
     path("api/", include("resume_builder.urls")),
+    path("api/", include("mail.urls")),
 ]
 
 
