@@ -7,19 +7,294 @@
 
 .main-home-div {
   display: flex;
-  background-image: url("/assets/home-bg.jpg");
+  background-image: url("/assets/homebg-2.jpg");
   flex-direction: column;
   min-height: 100vh;
   background-size: cover;
   background-position: center;
   height: 200px;
   width: 100%;
+  position: relative;
+}
+
+.main-home-div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.479);
 }
 
 .main-home-div > .text-center {
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
-.home-div-class {
-  margin-top: 8%;
+.main-home-div h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+.center-button {
+  background-color: #3c25e74a;
+  color: rgba(255, 255, 255, 0.855);
+  border: 3px solid black;
+  padding: 15px 30px;
+  font-size: 28px;
+  margin-top: 40px;
+  font-weight: 500;
+  width: 200px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.center-button:hover {
+  background-color: #3c25e7b2;
+  color: black;
+}
+
+.main-home-div h5 {
+  font-size: 1.25rem;
+  font-style: italic;
+  margin-bottom: 20px;
+  text-align: center;
+  color: rgba(255, 253, 253, 0.916);
+  max-width: 600px;
+}
+
+/* Enhanced Numeric Section Styling */
+.numeric-section {
+  background: rgba(38, 102, 204, 0.105);
+  padding: 30px;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.numeric-section-inside-div {
+  background-color: #c6b9ed31 !important;
+  padding: 50px 0;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-weight: 700;
+  color: #333;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.section-title:after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: #3c25e7;
+  border-radius: 2px;
+}
+
+.stat-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 30px 20px;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(60, 37, 231, 0.15);
+}
+
+.stat-card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #3c25e7;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover:before {
+  transform: scaleX(1);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  background-color: rgba(60, 37, 231, 0.1);
+  color: #3c25e7;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+  background-color: #3c25e7;
+  color: white;
+  transform: scale(1.1);
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #3c25e7;
+  margin-bottom: 5px;
+  display: inline-block;
+  background: linear-gradient(90deg, #3c25e7, #6c5ce7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Poppins", sans-serif;
+}
+
+.stat-label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #555;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+  .stat-card {
+    margin-bottom: 30px;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .stat-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+}
+
+/* Enhanced Numeric Section Styling ends */
+
+/* looking for job section design */
+
+.lookingfor-job-section {
+  background: rgba(167, 165, 167, 0.218);
+  padding: 50px;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.looking-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lookingfor-job-section .applybtn {
+  background-color: #3c25e74a;
+  color: black;
+  border: 2px solid black;
+  padding: 10px;
+  font-size: 18px;
+  margin-top: 40px;
+  font-weight: 400;
+  width: 200px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.lookingfor-job-section .applybtn:hover {
+  background-color: #3c25e7;
+  color: white;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .lookingfor-job-section {
+    padding: 30px;
+  }
+
+  .looking-left {
+    align-items: center;
+  }
+
+  .lookingfor-job-section .applybtn {
+    width: 180px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .lookingfor-job-section {
+    padding: 20px;
+  }
+
+  .looking-left {
+    align-items: center;
+  }
+
+  .lookingfor-job-section .applybtn {
+    width: 160px;
+    font-size: 14px;
+  }
+}
+
+/* looking for job section design ends */
+
+/* Up Button */
+.up-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #d73772;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 20%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.up-button:hover {
+  background-color: #ab114a;
+  transform: translateY(-3px);
+}
+
+/*Font Awesome or Bootstrap Icons */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css");

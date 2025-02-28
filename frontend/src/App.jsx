@@ -36,6 +36,7 @@ const App = () => {
   return (
     <div>
       <NavbarComponent />
+      
       <Routes>
         <Route path="/" element={<MainHome />} />
         <Route

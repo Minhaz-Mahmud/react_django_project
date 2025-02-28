@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from registration.views import CandidateView
 from login.views import CandidateLoginView, CandidateUpdateView
 from company_registration.views import (
@@ -13,9 +15,6 @@ from job_post.views import (
     JobPostDeleteView,
     JobPostListView,
 )
-from django.conf import settings
-from django.conf.urls.static import static
-
 from apply.views import (
     ApplyToJobView,
     CompanyApplicationsAPIView,
@@ -66,6 +65,7 @@ urlpatterns = [
     path("api/all/company/", include("all_company.urls")),
     path("api/", include("resume_builder.urls")),
     path("api/", include("mail.urls")),
+    path("api/", include("numerics.urls")),
 ]
 
 

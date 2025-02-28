@@ -1,90 +1,180 @@
-import { Container, Row, Col } from "react-bootstrap";
+/* eslint-disable no-unused-vars */
+import React from "react";
+import { Link } from "react-router-dom";
+import { Row, Col, Button } from "react-bootstrap";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaPhone,
+} from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./footer.css";
 
 const FooterComponent = () => {
   return (
-    <footer className="bg-dark text-white pt-4 pb-2">
-      <Container className="bg-dark">
-        <Row>
-          <Col md={4} className="mb-3">
-            <h5>About Us</h5>
-            <p>
-              We are a leading company in providing exclusive services and
-              products to our clients worldwide.
-            </p>
-          </Col>
-          <Col md={4} className="mb-3">
-            <h5>Quick Links</h5>
-            <ul className="list-unstyled">
-              <li>
-                <a href="#home" className="text-white text-decoration-none">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-white text-decoration-none">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-white text-decoration-none">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-white text-decoration-none">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </Col>
-          <Col md={4} className="mb-3">
-            <h5>Follow Us</h5>
-            <ul className="list-unstyled">
-              <li>
+    <footer>
+      {/* Main Footer */}
+      <div className="footer-main py-6">
+        <Row className="gy-4">
+          <Col lg={3} md={6}>
+            <div className="footer-info">
+              <h3 className="footer-logo mb-4">Career Connect</h3>
+              <p className="footer-description">
+                We are a leading company in providing exclusive jobs and
+                candidates to our users worldwide.
+              </p>
+              <div className="social-links mt-4">
                 <a
                   href="https://facebook.com"
-                  className="text-white text-decoration-none"
+                  target="_blank"
+                  aria-label="Facebook"
                 >
-                  Facebook
+                  <FaFacebookF />
                 </a>
-              </li>
-              <li>
                 <a
                   href="https://twitter.com"
-                  className="text-white text-decoration-none"
+                  aria-label="Twitter"
+                  target="_blank"
                 >
-                  Twitter
+                  <FaTwitter />
                 </a>
-              </li>
-              <li>
                 <a
                   href="https://instagram.com"
-                  className="text-white text-decoration-none"
+                  aria-label="Instagram"
+                  target="_blank"
                 >
-                  Instagram
+                  <FaInstagram />
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                >
+                  <FaLinkedinIn />
+                </a>
+              </div>
+            </div>
+          </Col>
+
+          <Col lg={3} md={6}>
+            <h4 className="footer-heading">Useful Links</h4>
+            <ul className="footer-links">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/company-signin">Company Login</Link>
+              </li>
+              <li>
+                <Link to="/contact">Contact</Link>
+              </li>
+            </ul>
+          </Col>
+
+          <Col lg={3} md={6}>
+            <h4 className="footer-heading">We Provide</h4>
+            <ul className="footer-links">
+              <li>
+                <a href="https://developer.android.com/" target="_blank">
+                  App Development
                 </a>
               </li>
               <li>
                 <a
-                  href="https://linkedin.com"
-                  className="text-white text-decoration-none"
+                  href="https://www.geeksforgeeks.org/web-development/"
+                  target="_blank"
                 >
-                  LinkedIn
+                  Web Development
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://brainstation.io/career-guides/what-is-a-machine-learning-engineer"
+                  target="_blank"
+                >
+                  ML Engineering
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://en.wikipedia.org/wiki/Computer_security"
+                  target="_blank"
+                >
+                  Cyber Security
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.intel.com/content/www/us/en/cloud-computing/devops.html"
+                  target="_blank"
+                >
+                  Cloud Engineering
                 </a>
               </li>
             </ul>
           </Col>
+
+          <Col lg={3} md={6}>
+            <h4 className="footer-heading">Contact Us</h4>
+            <div className="contact-info">
+              <div className="contact-item">
+                <FaMapMarkerAlt className="icon" />
+                <p>
+                  123 Banani Street, Suite 100
+                  <br />
+                  Dhaka, DHK 1219
+                </p>
+              </div>
+              <div className="contact-item">
+                <FaPhone className="icon" />
+                <p>+1 (555) 123-4567</p>
+              </div>
+              <div className="contact-item">
+                <FaEnvelope className="icon" />
+                <p>info@cc.com</p>
+              </div>
+            </div>
+          </Col>
         </Row>
-        <hr className="bg-light" />
+      </div>
+
+      {/* Newsletter Section */}
+      <div className="footer-newsletter py-4">
+        <Row className="justify-content-center">
+          <Col lg={6}>
+            <h4 className="text-center mb-3">Subscribe to Our Newsletter</h4>
+            <div className="newsletter-form d-flex">
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Enter your email"
+              />
+              <Button type="submit" className="btn-subscribe">
+                Subscribe
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </div>
+
+      {/* Copyright Section */}
+      <div className="footer-bottom py-3">
         <Row>
           <Col className="text-center">
-            <p className="mb-0">
-              &copy; {new Date().getFullYear()} MyCompany. All rights reserved.
+            <p className="copyright-text mb-0">
+              &copy; {new Date().getFullYear()} <strong>Career Connect</strong>.
+              All Rights Reserved
             </p>
           </Col>
         </Row>
-      </Container>
+      </div>
     </footer>
   );
 };
