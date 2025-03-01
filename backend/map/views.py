@@ -79,3 +79,8 @@ def get_company_location(request, company_id):
             {"error": "Company not found"},
             status=404,
         )
+
+
+# create api for website company location
+
+

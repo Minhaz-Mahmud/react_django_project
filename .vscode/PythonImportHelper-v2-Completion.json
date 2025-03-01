@@ -1233,6 +1233,14 @@
         "documentation": {}
     },
     {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
         "label": "FileResponse",
         "importPath": "django.http",
         "description": "django.http",
@@ -1627,6 +1635,14 @@
         "documentation": {}
     },
     {
+        "label": "ApplicationMailView",
+        "importPath": "mail.views",
+        "description": "mail.views",
+        "isExtraImport": true,
+        "detail": "mail.views",
+        "documentation": {}
+    },
+    {
         "label": "send_mail",
         "importPath": "django.core.mail",
         "description": "django.core.mail",
@@ -1640,6 +1656,15 @@
         "description": "django.core.mail",
         "isExtraImport": true,
         "detail": "django.core.mail",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
         "documentation": {}
     },
     {
@@ -1752,15 +1777,6 @@
         "description": "reportlab.lib.units",
         "isExtraImport": true,
         "detail": "reportlab.lib.units",
-        "documentation": {}
-    },
-    {
-        "label": "json",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
         "documentation": {}
     },
     {
@@ -2538,7 +2554,7 @@
         "kind": 5,
         "importPath": "backend.mail.urls",
         "description": "backend.mail.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"send-email/\", SendEmailView.as_view(), name=\"send_email\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"send-email/\", SendEmailView.as_view(), name=\"send_email\"),\n    path(\"contact-email/\", ApplicationMailView.as_view(), name=\"application_mail\"),\n]",
         "detail": "backend.mail.urls",
         "documentation": {}
     },
@@ -2548,6 +2564,15 @@
         "importPath": "backend.mail.views",
         "description": "backend.mail.views",
         "peekOfCode": "class SendEmailView(APIView):\n    def post(self, request):\n        candidate_email = request.data.get(\"candidateEmail\")\n        job_post_id = request.data.get(\"jobId\")\n        candidate_id = request.data.get(\"candidateId\")\n        company_id = request.data.get(\"companyId\")\n        message = request.data.get(\"message\")\n        subject = \"Message from Career Connect\"\n        print(\"candidat email is\", candidate_email)\n        print(\"job id is\", job_post_id)",
+        "detail": "backend.mail.views",
+        "documentation": {}
+    },
+    {
+        "label": "ApplicationMailView",
+        "kind": 6,
+        "importPath": "backend.mail.views",
+        "description": "backend.mail.views",
+        "peekOfCode": "class ApplicationMailView(APIView):\n    def post(self, request, *args, **kwargs):\n        try:\n            data = json.loads(request.body)\n            name = data.get(\"name\")\n            email = data.get(\"email\")\n            subject = data.get(\"subject\")\n            message = data.get(\"message\")\n            if not all([name, email, subject, message]):\n                return Response(",
         "detail": "backend.mail.views",
         "documentation": {}
     },

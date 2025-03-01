@@ -3,46 +3,71 @@
 }
 
 .navbar-class {
-  height: 70px;
-  width: 95%;
-  margin: 0 auto;
-  margin-top: 10px;
-  border: 1px solid rgb(9, 2, 41);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: rgba(130, 127, 127, 0.164) !important;
+  height: 85px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.534);
   backdrop-filter: blur(10px);
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.user-company-navdropdown {
-  background-color: rgba(72, 4, 93, 0.651);
-  border-radius: 4px;
-  box-shadow: 0 0 5px;
-  margin-left: 20px;
+/* hidden navbar at cursor start */
+
+/* .navbar-class {
+  height: 85px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.534);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
-.navbar-class .navbar-brand,
-.navbar-class .nav-link,
-.navbar-class .nav-dropdown-item {
+.navbar-class.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar-class.visible {
+  transform: translateY(0);
+  opacity: 1;
+} */
+
+/* hidden navbar at cursor ends */
+
+.navbar-class .navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.navbar-class .navbar-logo {
+  margin-left: 40px;
+  height: 50px;
+  width: auto;
+}
+
+.navbar-class .nav-link {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.navbar-class .navbar-brand:hover,
-.navbar-class .nav-link:hover,
-.navbar-class .nav-dropdown-item:hover {
+.navbar-class .nav-link:hover {
   color: #ffffff;
 }
 
-/* Styling for the dropdown menu */
+.user-nav-dropdown {
+  color: white;
+}
+
 .navbar-class .dropdown-menu {
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.9);
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -56,54 +81,45 @@
   color: #ffffff;
 }
 
-/* Add margin to the container inside the Navbar for spacing */
-.navbar-class .container {
-  padding: 0 1rem;
+.basic-navbar-nav-collapse {
+  margin-right: 40px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 992px) {
-  .mobile-nav-bg {
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.888);
-    backdrop-filter: blur(200px);
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-    margin-top: 16px;
-  }
-
-  .user-company-navdropdown {
-    background-color: rgba(72, 4, 93, 0.651);
-    border-radius: 4px;
-    box-shadow: 0 0 5px;
-    padding-left: 10px;
-  }
-
-  .nav-link:hover {
-    color: rgb(214, 165, 232) !important;
-  }
-
   .navbar-class .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.799);
+    margin-right: 15px;
+    border-color: rgba(255, 255, 255, 0.8);
   }
 
   .navbar-class .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28155, 155, 155, 0.8%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
 
-  /* Override dropdown menu background color for mobile view */
+  .navbar-class {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+  }
+
+  .basic-navbar-nav-collapse {
+    margin-top: 15px;
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.745);
+  }
+
+  .basic-navbar-nav-collapse Nav button {
+    width: 50% !important;
+    margin-bottom: 10px;
+  }
+
+  .nav-link {
+    padding: 10px;
+    font-size: 1rem;
+  }
+
   .navbar-class .dropdown-menu {
-    background-color: rgba(0, 0, 0, 0.829);
-    margin-bottom: 8px;
-  }
-
-  /* Override dropdown item color for mobile view */
-  .navbar-class .dropdown-item {
-    color: rgba(255, 255, 255, 0.9);
-  }
-
-  .navbar-class .dropdown-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.85);
   }
 }

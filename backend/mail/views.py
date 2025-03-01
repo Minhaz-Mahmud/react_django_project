@@ -52,6 +52,8 @@ from registration.models import Candidate
 from company_registration.models import Company
 from job_post.models import JobPost
 from .models import Application_Mail
+from django.http import JsonResponse
+import json
 
 
 class SendEmailView(APIView):
@@ -129,5 +131,50 @@ class SendEmailView(APIView):
         except Exception as e:
             return Response(
                 {"error": f"Failed to send email: {str(e)}"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )
+
+
+class ApplicationMailView(APIView):
+    def post(self, request, *args, **kwargs):
+        try:
+            data = json.loads(request.body)
+            name = data.get("name")
+            email = data.get("email")
+            subject = data.get("subject")
+            message = data.get("message")
+
+            if not all([name, email, subject, message]):
+                return Response(
+                    {
+                        "status": "error",
+                        "message": "All fields are required",
+                    },
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            # Send email
+            send_mail(
+                subject=f"New Contact Form Submission: {subject}",
+                message=f"Name: {name}\nEmail: {email}\nSubject: {subject}\nMessage: {message}",
+                from_email=email,
+                recipient_list=["ahmedsafa0759@gmail.com"],
+                fail_silently=False,
+            )
+
+            return Response(
+                {
+                    "status": "success",
+                    "message": "Email sent successfully!",
+                },
+                status=status.HTTP_200_OK,
+            )
+
+        except Exception as e:
+            return Response(
+                {
+                    "status": "error",
+                    "message": str(e),
+                },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )

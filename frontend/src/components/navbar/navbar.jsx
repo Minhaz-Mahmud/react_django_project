@@ -1,6 +1,107 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+// /* eslint-disable no-unused-vars */
+// import React, { useState, useEffect } from "react";
+// import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "./navbar.css";
+// import { Link, useNavigate, useLocation } from "react-router-dom";
+
+// const NavbarComponent = () => {
+//   const [userType, setUserType] = useState(null);
+//   const [userName, setUserName] = useState("");
+//   const navigate = useNavigate();
+//   const location = useLocation();
+
+//   useEffect(() => {
+//     const companyData = JSON.parse(sessionStorage.getItem("companyData"));
+//     const candidateData = JSON.parse(sessionStorage.getItem("candidateData"));
+
+//     if (companyData?.user_type === "company") {
+//       setUserType("company");
+//       setUserName(companyData.name);
+//     } else if (candidateData) {
+//       setUserType("candidate");
+//       setUserName(candidateData.full_name);
+//     } else {
+//       setUserType(null);
+//       setUserName("");
+//     }
+//   }, [location]);
+
+//   const handleLogout = () => {
+//     sessionStorage.removeItem("companyData");
+//     sessionStorage.removeItem("candidateData");
+//     sessionStorage.removeItem("firstRefresh");
+//     setUserType(null);
+//     setUserName("");
+//     navigate("/");
+//   };
+
+//   return (
+//     <Navbar expand="lg" className="navbar-class" fixed="top">
+//       <Navbar.Brand as={Link} to="/">
+//         <img src="/assets/logo_nav.png" alt="Logo" className="navbar-logo" />
+//       </Navbar.Brand>
+
+//       <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+//       <Navbar.Collapse
+//         id="basic-navbar-nav"
+//         className="basic-navbar-nav-collapse"
+//       >
+//         <Nav className="ms-auto">
+//           <Nav.Link as={Link} to="/job-feed">
+//             Find Jobs
+//           </Nav.Link>
+//           <Nav.Link as={Link} to="/all/company">
+//             Companies
+//           </Nav.Link>
+//           <Nav.Link as={Link} to="/contact">
+//             Contact
+//           </Nav.Link>
+//           <Nav.Link as={Link} to="/about">
+//             About
+//           </Nav.Link>
+
+//           {userType ? (
+//             <NavDropdown
+//               title={userName}
+//               id="basic-nav-dropdown"
+//               className="user-nav-dropdown"
+//             >
+//               {userType === "company" ? (
+//                 <NavDropdown.Item as={Link} to="/company/dashboard">
+//                   Dashboard
+//                 </NavDropdown.Item>
+//               ) : (
+//                 <NavDropdown.Item as={Link} to="/dashboard">
+//                   Dashboard
+//                 </NavDropdown.Item>
+//               )}
+//               <NavDropdown.Divider />
+//               <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+//             </NavDropdown>
+//           ) : (
+//             <Button
+//               as={Link}
+//               to="/signin"
+//               variant="outline-light"
+//               className="ms-2"
+//             >
+//               Signin
+//             </Button>
+//           )}
+//         </Nav>
+//       </Navbar.Collapse>
+//     </Navbar>
+//   );
+// };
+
+// export default NavbarComponent;
+
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, NavDropdown, Container, Button } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./navbar.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -8,126 +109,127 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 const NavbarComponent = () => {
   const [userType, setUserType] = useState(null);
   const [userName, setUserName] = useState("");
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const navigate = useNavigate();
-  const location = useLocation(); // To track navigation changes
-  const CompanySessionData = JSON.parse(sessionStorage.getItem("companyData"));
-  const CandidateSessionData = JSON.parse(
-    sessionStorage.getItem("candidateData")
-  );
+  const location = useLocation();
 
   useEffect(() => {
-    // Function to check and update the user data from sessionStorage
-    const updateUserData = () => {
-      if (CompanySessionData && CompanySessionData.user_type === "company") {
-        setUserType("company");
-        setUserName(CompanySessionData.name);
-      } else if (CandidateSessionData) {
-        setUserType("candidate");
-        setUserName(CandidateSessionData.full_name);
-      } else {
-        setUserType(null);
-        setUserName("");
-      }
-    };
+    const companyData = JSON.parse(sessionStorage.getItem("companyData"));
+    const candidateData = JSON.parse(sessionStorage.getItem("candidateData"));
 
-    updateUserData(); // Initial check for user data
-  }, [location]); // Re-run the effect whenever the location changes (i.e., page navigation)
+    if (companyData?.user_type === "company") {
+      setUserType("company");
+      setUserName(companyData.name);
+    } else if (candidateData) {
+      setUserType("candidate");
+      setUserName(candidateData.full_name);
+    } else {
+      setUserType(null);
+      setUserName("");
+    }
+  }, [location]);
+
+  // navbar scroll show hide functions start
+
+  const handleScroll = () => {
+    const scrollY = window.scrollY;
+
+    if (scrollY > lastScrollY && scrollY > 100) {
+      setShowNavbar(true); // Show navbar when scrolling down
+    } else if (scrollY < 50) {
+      setShowNavbar(false); // Hide when at the top
+    }
+    setLastScrollY(scrollY);
+  };
+
+  const handleMouseMove = (e) => {
+    if (e.clientY < 50) {
+      setShowNavbar(true); // Show navbar if cursor is near the top
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [lastScrollY]);
+
+  // navbar scroll show hide functions ends
 
   const handleLogout = () => {
-    if (userType === "company") {
-      sessionStorage.removeItem("companyData");
-    } else if (userType === "candidate") {
-      sessionStorage.removeItem("candidateData");
-    }
+    sessionStorage.removeItem("companyData");
+    sessionStorage.removeItem("candidateData");
     sessionStorage.removeItem("firstRefresh");
     setUserType(null);
     setUserName("");
-    navigate("/"); 
+    navigate("/");
   };
 
   return (
-    <div>
-      <Navbar
-        className="text-dark rounded navbar-class"
-        bg="dark"
-        variant="dark"
-        expand="lg"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          zIndex: 1000,
-        }}
-      >
-        <Container className="bg-dark">
-          <Navbar.Brand as={Link} to="/">
-            Career Connect
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto mobile-nav-bg">
-              <Nav.Link as={Link} to="/job-feed">
-                Find Jobs
-              </Nav.Link>
-              <Nav.Link as={Link} to="/all/company">
-                Companies
-              </Nav.Link>
-              <Nav.Link as={Link} to="/contact">
-                Contact
-              </Nav.Link>
-              <Nav.Link as={Link} to="/about">
-                About
-              </Nav.Link>
+    <Navbar
+      expand="lg"
+      className={`navbar-class ${showNavbar ? "visible" : "hidden"}`}
+      fixed="top"
+    >
+      <Navbar.Brand as={Link} to="/">
+        <img src="/assets/logo_nav.png" alt="Logo" className="navbar-logo" />
+      </Navbar.Brand>
 
-              {/* Show different items based on logged-in user type */}
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+      <Navbar.Collapse
+        id="basic-navbar-nav"
+        className="basic-navbar-nav-collapse"
+      >
+        <Nav className="ms-auto">
+          <Nav.Link as={Link} to="/job-feed">
+            Find Jobs
+          </Nav.Link>
+          <Nav.Link as={Link} to="/all/company">
+            Companies
+          </Nav.Link>
+          <Nav.Link as={Link} to="/contact">
+            Contact
+          </Nav.Link>
+          <Nav.Link as={Link} to="/about">
+            About
+          </Nav.Link>
+
+          {userType ? (
+            <NavDropdown
+              title={userName}
+              id="basic-nav-dropdown"
+              className="user-nav-dropdown"
+            >
               {userType === "company" ? (
-                <>
-                  <NavDropdown
-                    className="user-company-navdropdown"
-                    title={userName}
-                    id="basic-nav-dropdown"
-                  >
-                    <NavDropdown.Item as={Link} to="/company/dashboard">
-                      Dashboard
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={handleLogout}>
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </>
-              ) : userType === "candidate" ? (
-                <>
-                  <NavDropdown
-                    className="user-company-navdropdown"
-                    title={userName}
-                    id="basic-nav-dropdown"
-                  >
-                    <NavDropdown.Item as={Link} to="/dashboard">
-                    Dashboard
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item onClick={handleLogout}>
-                      Logout
-                    </NavDropdown.Item>
-                  </NavDropdown>
-                </>
+                <NavDropdown.Item as={Link} to="/company/dashboard">
+                  Dashboard
+                </NavDropdown.Item>
               ) : (
-                <Button
-                  as={Link}
-                  to="/signin"
-                  variant="outline-light"
-                  className="ms-2"
-                >
-                  Signin
-                </Button>
+                <NavDropdown.Item as={Link} to="/dashboard">
+                  Dashboard
+                </NavDropdown.Item>
               )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </div>
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+            </NavDropdown>
+          ) : (
+            <Button
+              as={Link}
+              to="/signin"
+              variant="outline-light"
+              className="ms-2"
+            >
+              Signin
+            </Button>
+          )}
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 

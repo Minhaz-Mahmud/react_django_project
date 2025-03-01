@@ -86,6 +86,7 @@ function MainHome() {
       <div>
         <LookingForJobSection />
       </div>
+      
       {showUpButton && (
         <button className="up-button" onClick={scrollToTop}>
           ↑

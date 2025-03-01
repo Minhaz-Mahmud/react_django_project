@@ -22,6 +22,8 @@ import AllCompany from "./components/all_company/AllCompany";
 import JobApplications from "./components/job_applications/JobApplications";
 import CandidateDetails from "./components/profile/CandidateDetails";
 import ResumeBuilder from "./components/resume/ResumeBuilder";
+import About from "./components/home_components/about";
+import Contact from "./components/home_components/contact";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -36,7 +38,7 @@ const App = () => {
   return (
     <div>
       <NavbarComponent />
-      
+
       <Routes>
         <Route path="/" element={<MainHome />} />
         <Route
@@ -66,6 +68,8 @@ const App = () => {
         />
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route
           path="/company-signin"
           element={
