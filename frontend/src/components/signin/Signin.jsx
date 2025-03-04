@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaGoogle,
+  FaFacebook,
+  FaTimes,
+} from "react-icons/fa";
 import "./Signin.css";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
@@ -16,13 +25,10 @@ const Signin = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/login/",
-        {
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://127.0.0.1:8000/login/", {
+        email,
+        password,
+      });
 
       toast.success("Candidate logged in successfully!");
 
@@ -51,6 +57,14 @@ const Signin = () => {
     console.log("Facebook login");
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const dismissError = () => {
+    setError(null);
+  };
+
   return (
     <div className="signin-container">
       <ToastContainer
@@ -58,92 +72,92 @@ const Signin = () => {
         position="top-center"
         autoClose={2000}
       />
-      <div className="card shadow-lg signin-card-div">
-        <div className="card-body">
-          <h2 className="text-center">Candidate Login</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label className="text-dark">Email:</label>
+
+      <div className="signin-form-container">
+        <div className="signin-header">
+          <h2>Welcome Back</h2>
+          <p>Log in to your candidate account</p>
+        </div>
+        {error && (
+          <div className="error-alert">
+            <span>{error}</span>
+            <button className="error-close-btn" onClick={dismissError}>
+              <FaTimes />
+            </button>
+          </div>
+        )}
+        <form onSubmit={handleSubmit} className="signin-form">
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="password-input-container">
               <input
-                name="email"
-                placeholder="Enter email address"
-                type="email"
-                className="form-control"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label className="text-dark">Password:</label>
-              <input
-                placeholder="Please enter password"
-                type="password"
-                className="form-control"
+                id="password"
+                placeholder="Enter your password"
+                type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              <button
+                type="button"
+                className="password-toggle-btn"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
             </div>
-            {error && <p className="text-danger">{error}</p>}
-            <div className="form-group d-flex justify-content-between">
-              <div>
-                <label className="text-dark checkbox-wrap checkbox-primary">
-                  Remember Me
-                  <input
-                    className="checkbox-class-input"
-                    type="checkbox"
-                    checked={rememberMe}
-                    onChange={(e) => setRememberMe(e.target.checked)}
-                  />
-                  <span className="checkmark"></span>
-                </label>
-              </div>
-              <div>
-                <a
-                  href="/forgot-password"
-                  className="text-decoration-none text-danger"
-                >
-                  Forgot Password?
-                </a>
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary w-100 mt-3">
-              Login
-            </button>
-          </form>
-
-          <div className="text-center mt-4">
-            <p className="text-dark">
-              New here? <Link to="/registration"> Sign up</Link>
-            </p>
           </div>
 
-          <p className="w-100 text-center text-dark">
-            &mdash; Or Sign In With &mdash;
-          </p>
-          <div className="social d-flex justify-content-center">
-            <button
-              className="btn btn-danger px-2 py-2 mr-md-1 rounded"
-              onClick={handleGoogleLogin}
-            >
-              <i className="fab fa-google mr-2"></i> Google
-            </button>
-            <button
-              className="btn btn-primary px-2 py-2 ml-md-1 rounded"
-              onClick={handleFacebookLogin}
-            >
-              <i className="fab fa-facebook-f mr-2"></i> Facebook
-            </button>
+          <div className="form-options">
+            <Link to="/" className="forgot-password">
+              Forgot Password?
+            </Link>
           </div>
-          <p className="w-100 text-center text-dark">
-            &mdash; &mdash; &mdash; &mdash;
-          </p>
-          <Link
-            to="/company-signin"
-            className="text-center btn btn-primary py-2 m-auto"
+
+          <button type="submit" className="signin-btn">
+            Sign In
+          </button>
+        </form>
+
+        <div className="signin-divider">
+          <span>Or continue with</span>
+        </div>
+
+        <div className="social-signin">
+          <button className="social-btn google-btn" onClick={handleGoogleLogin}>
+            <FaGoogle /> Google
+          </button>
+          <button
+            className="social-btn facebook-btn"
+            onClick={handleFacebookLogin}
           >
-            Company Signin
+            <FaFacebook /> Facebook
+          </button>
+        </div>
+
+        <div className="signup-option">
+          <p>
+            Don&apos;t have an account?{" "}
+            <Link to="/registration">Create Account</Link>
+          </p>
+        </div>
+
+        <div className="company-signin">
+          <Link to="/company-signin" className="company-btn">
+            Company Sign In
           </Link>
         </div>
       </div>

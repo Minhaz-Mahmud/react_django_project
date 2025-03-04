@@ -1,6 +1,16 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./JobFeed.css";
-import { FaMapMarkerAlt, FaCircle } from "react-icons/fa";
+import {
+  FaMapMarkerAlt,
+  FaCircle,
+  FaBriefcase,
+  FaSearch,
+  FaFilter,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const JobFeed = () => {
   const [jobPosts, setJobPosts] = useState([]);
@@ -10,12 +20,33 @@ const JobFeed = () => {
   const [hasPreviousPage, setHasPreviousPage] = useState(false);
   const [hasSession, setHasSession] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [jobTypeFilter, setJobTypeFilter] = useState("");
+  const [showUpButton, setShowUpButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowUpButton(true);
+      } else {
+        setShowUpButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     fetchJobPosts(currentPage);
     checkSessionData();
   }, [currentPage]);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   // Check if there's any session data
   const checkSessionData = () => {
     const storedUserData = sessionStorage.getItem("candidateData");
@@ -45,14 +76,11 @@ const JobFeed = () => {
     }
   };
 
-  const handleApply = async (companyId,job_id,job_title) => {
+  const handleApply = async (companyId, job_id, job_title) => {
     if (!userData) {
       alert("You need to log in to apply!");
       return;
     }
-
-    // Log the company_id to the console
-    console.log("Applying for company with ID:", companyId);
 
     try {
       const response = await fetch("http://127.0.0.1:8000/apply/", {
@@ -63,8 +91,8 @@ const JobFeed = () => {
         body: JSON.stringify({
           candidate_id: userData.id,
           company_id: companyId,
-          job_id:job_id,
-          job_title:job_title,
+          job_id: job_id,
+          job_title: job_title,
         }),
       });
 
@@ -110,99 +138,186 @@ const JobFeed = () => {
     }
   };
 
-  return (
-    <div className="job-feed-container mt-4">
-      <h4 className="mb-4">Latest Job Posts</h4>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="job-feed-content">
-          {jobPosts.length === 0 ? (
-            <p>No job posts available.</p>
-          ) : (
-            <div className="job-cards-container">
-              {jobPosts.map((post) => (
-                <div key={post.id} className="job-card">
-                  <div className="job-card-header">
-                    <img
-                      src={post.company_logo || "default-logo.png"}
-                      alt="Company Logo"
-                      className="company-logo"
-                    />
-                    <div>
-                      <h5 className="job-title">{post.title}</h5>
-                      <p className="company-name">{post.company}</p>
-                      {/* <p className="company-id">{post.company_id}</p> */}
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
-                    </div>
-                  </div>
-                  <div className="job-card-body">
-                    <p className="job-details">
-                      <span className="job-location">
-                        <FaMapMarkerAlt size={16} color="red" />{" "}
-                        {post.job_location}
-                      </span>
-                      <span className="job-posted-time">
-                        ⏳ {calculateTimeAgo(post.posted_at)}
-                      </span>
-                      <span className="job-post-active-recruiting">
-                        {post.active_recruiting ? (
-                          <>
-                            <FaCircle size={12} color="green" /> Active
-                            Recruiting
-                          </>
-                        ) : (
-                          <>
-                            <FaCircle size={12} color="grey" /> Recruiting
-                          </>
-                        )}
-                      </span>
-                    </p>
-                    <button className="btn job-type">{post.job_type}</button>
-                  </div>
-                  <div className="job-card-footer">
-                    <span className="posted-time">
-                      <strong>Posted at:</strong>
-                      <span className="text-primary">
-                        {" "}
-                        {new Date(post.posted_at).toLocaleDateString()}
-                      </span>
-                    </span>
-                    <button className="btn btn-outline-primary btn-sm">
-                      View Details
-                    </button>
-                    {userData ? (
-                      <button
-                        className="btn btn-outline-primary btn-sm"
-                        onClick={() => handleApply(post.company,post.id,post.title)}
-                      >
-                        Apply
-                      </button>
-                    ) : (
-                      <p className="text-danger mt-2">Login to Apply</p>
-                    )}
-                  </div>
-                </div>
-              ))}
+  const handleJobTypeChange = (e) => {
+    setJobTypeFilter(e.target.value);
+  };
+
+  const filteredJobs = jobPosts.filter((job) => {
+    return (
+      job.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (jobTypeFilter === "" || job.job_type === jobTypeFilter)
+    );
+  });
+
+  const jobTypes = ["Hybrid", "Remote", "Onsite"];
+
+  return (
+    <div className="job-feed-container">
+      <div className="job-feed-hero">
+        <div className="hero-content">
+          <h1 className="text-light">Find Your Dream Job</h1>
+          <p>Discover thousands of job opportunities with top employers</p>
+          <div className="search-container">
+            <div className="search-box">
+              <FaSearch className="search-icon" />
+              <input
+                type="text"
+                placeholder="Search for job titles, companies, or keywords..."
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
+              <button className="search-button">Search</button>
             </div>
-          )}
-          <div className="pagination mt-3">
-            {hasPreviousPage && (
-              <button
-                className="btn btn-secondary"
-                onClick={handlePreviousPage}
-              >
-                Previous
-              </button>
-            )}
-            <span>Page {currentPage}</span>
-            {hasNextPage && (
-              <button className="btn btn-secondary" onClick={handleNextPage}>
-                Next
-              </button>
-            )}
           </div>
         </div>
+      </div>
+
+      <div className="job-feed-content">
+        <div className="content-header">
+          <h2>Latest Opportunities</h2>
+          <div className="filter-container">
+            <FaFilter className="filter-icon" />
+            <select
+              value={jobTypeFilter}
+              onChange={handleJobTypeChange}
+              className="job-type-filter"
+            >
+              <option value="">All Job Types</option>
+              {jobTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="loading-container">
+            <div className="loading-spinner"></div>
+            <p>Finding opportunities for you...</p>
+          </div>
+        ) : (
+          <>
+            {filteredJobs.length === 0 ? (
+              <div className="no-jobs-message">
+                <FaBriefcase size={48} />
+                <h3>No jobs found</h3>
+                <p>
+                  Try adjusting your search criteria or check back later for new
+                  opportunities.
+                </p>
+              </div>
+            ) : (
+              <div className="job-cards-container">
+                {filteredJobs.map((post) => (
+                  <div key={post.id} className="job-card">
+                    <div className="job-card-header">
+                      <img
+                        src={post.company_logo || "/default-logo.png"}
+                        alt={`${post.company} logo`}
+                        className="company-logo"
+                      />
+                      <div className="job-header-info">
+                        <h3 className="job-title">{post.title}</h3>
+                        <p className="company-name">{post.company}</p>
+                      </div>
+                      <div className="job-type-badge">{post.job_type}</div>
+                    </div>
+
+                    <div className="job-card-body">
+                      <div className="job-details">
+                        <div className="job-detail-item">
+                          <FaMapMarkerAlt className="detail-icon location-icon" />
+                          <span>{post.job_location}</span>
+                        </div>
+                        <div className="job-detail-item">
+                          <span className="time-icon">⏳</span>
+                          <span>{calculateTimeAgo(post.posted_at)}</span>
+                        </div>
+                        <div className="job-detail-item status-indicator">
+                          <FaCircle
+                            className={
+                              post.active_recruiting
+                                ? "active-icon"
+                                : "inactive-icon"
+                            }
+                          />
+                          <span>
+                            {post.active_recruiting
+                              ? "Actively Recruiting"
+                              : "Recruiting Paused"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="job-card-footer">
+                      <div className="footer-left">
+                        <span className="posted-date">
+                          Posted:{" "}
+                          {new Date(post.posted_at).toLocaleDateString()}
+                        </span>
+                      </div>
+                      <div className="footer-right">
+                        <button className="btn btn-outline view-details-btn">
+                          View Details
+                        </button>
+                        {userData ? (
+                          <button
+                            className="btn btn-primary apply-btn"
+                            onClick={() =>
+                              handleApply(post.company, post.id, post.title)
+                            }
+                          >
+                            Apply Now
+                          </button>
+                        ) : (
+                          <Link to="/signin">
+                            <button className="btn btn-secondary login-to-apply-btn text-dark">
+                              Login to Apply
+                            </button>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="pagination">
+              <button
+                className={`pagination-btn prev-btn ${
+                  !hasPreviousPage ? "disabled" : ""
+                }`}
+                onClick={handlePreviousPage}
+                disabled={!hasPreviousPage}
+              >
+                <FaChevronLeft /> Previous
+              </button>
+              <span className="page-indicator">Page {currentPage}</span>
+              <button
+                className={`pagination-btn next-btn ${
+                  !hasNextPage ? "disabled" : ""
+                }`}
+                onClick={handleNextPage}
+                disabled={!hasNextPage}
+              >
+                Next <FaChevronRight />
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+      {showUpButton && (
+        <button className="up-button" onClick={scrollToTop}>
+          ↑
+        </button>
       )}
     </div>
   );

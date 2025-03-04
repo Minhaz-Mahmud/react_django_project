@@ -5,6 +5,9 @@
   background-color: #91939522;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
+
+  /* Animation */
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 /* Hero Section */

@@ -2419,7 +2419,7 @@
         "kind": 6,
         "importPath": "backend.job_post.models",
         "description": "backend.job_post.models",
-        "peekOfCode": "class JobPost(models.Model):\n    company = models.ForeignKey(\n        Company,\n        on_delete=models.CASCADE,\n        related_name=\"job_posts\",\n    )\n    title = models.CharField(max_length=255)\n    job_location = models.CharField(max_length=255, null=True, blank=True)\n    tags = models.CharField(max_length=255, help_text=\"Comma-separated tags (max 6)\")\n    job_type = models.CharField(",
+        "peekOfCode": "class JobPost(models.Model):\n    company = models.ForeignKey(\n        Company,\n        on_delete=models.CASCADE,\n        related_name=\"job_posts\",\n    )\n    title = models.CharField(max_length=255)\n    job_location = models.CharField(max_length=255, null=True, blank=True)\n    tags = models.CharField(\n        max_length=255,",
         "detail": "backend.job_post.models",
         "documentation": {}
     },
@@ -2464,7 +2464,7 @@
         "kind": 6,
         "importPath": "backend.job_post.views",
         "description": "backend.job_post.views",
-        "peekOfCode": "class JobPostPagination(PageNumberPagination):\n    page_size = 5  # Number of posts per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass JobPostListView(ListAPIView):\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination",
+        "peekOfCode": "class JobPostPagination(PageNumberPagination):\n    page_size = 5  # Number of posts per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass JobPostListView(ListAPIView):\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")",
         "detail": "backend.job_post.views",
         "documentation": {}
     },
@@ -2473,7 +2473,7 @@
         "kind": 6,
         "importPath": "backend.job_post.views",
         "description": "backend.job_post.views",
-        "peekOfCode": "class JobPostListView(ListAPIView):\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination",
+        "peekOfCode": "class JobPostListView(ListAPIView):\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")",
         "detail": "backend.job_post.views",
         "documentation": {}
     },

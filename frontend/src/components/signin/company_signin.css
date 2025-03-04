@@ -1,0 +1,283 @@
+.company-signin-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/assets/login-reg-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  padding-top: 100px;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  position: relative;
+}
+
+.company-signin-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.381); 
+  backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
+.company-signin-form-wrapper {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+/* Error alert styling */
+.company-error-alert {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fdecea;
+  color: #b71c1c;
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(183, 28, 28, 0.1);
+  border-left: 4px solid #b71c1c;
+}
+
+.error-dismiss-btn {
+  background: none;
+  border: none;
+  color: #b71c1c;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.error-dismiss-btn:hover {
+  background-color: rgba(183, 28, 28, 0.1);
+}
+
+/* Header styling */
+.company-signin-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.company-signin-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0a2e63;
+  margin-bottom: 8px;
+}
+
+.company-signin-header p {
+  color: #637381;
+  font-size: 16px;
+}
+
+/* Form styling */
+.company-signin-form {
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #344054;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  background-color: #f9fafb;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #1e5799;
+  box-shadow: 0 0 0 4px rgba(30, 87, 153, 0.1);
+  background-color: #fff;
+}
+
+/* Password field with toggle */
+.password-field-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #667085;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle:hover {
+  color: #344054;
+}
+
+/* Forgot password link */
+.forgot-password-link {
+  text-align: right;
+  margin-bottom: 24px;
+}
+
+.forgot-password-link a {
+  color: #1e5799;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.forgot-password-link a:hover {
+  color: #0a2e63;
+  text-decoration: underline;
+}
+
+/* Sign in button */
+.company-signin-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #1e5799;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.company-signin-button:hover {
+  background-color: #0a2e63;
+}
+
+.company-signin-button:disabled {
+  background-color: #9eb6d0;
+  cursor: not-allowed;
+}
+
+/* Registration section */
+.company-registration-section {
+  text-align: center;
+  margin: 32px 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.company-registration-section a {
+  color: #1e5799;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.company-registration-section a:hover {
+  text-decoration: underline;
+}
+
+/* Candidate redirect section */
+.candidate-redirect-section {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.candidate-signin-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #4b5563;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.candidate-signin-link:hover {
+  background-color: #f9fafb;
+  color: #1e5799;
+  border-color: #9eb6d0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .company-signin-form-wrapper {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .company-signin-form-wrapper {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+
+  .company-signin-header h2 {
+    font-size: 24px;
+  }
+
+  .company-signin-header p {
+    font-size: 14px;
+  }
+
+  .form-group input {
+    padding: 12px 14px;
+  }
+
+  .company-signin-button {
+    padding: 12px;
+  }
+}
+
+/* Toast customization */
+.toast-class {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+
+/* Animation for password toggle */
+.password-toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.password-toggle:hover svg {
+  transform: scale(1.1);
+}
+
+/* Focus styling for interactive elements */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #1e5799;
+  outline-offset: 2px;
+}

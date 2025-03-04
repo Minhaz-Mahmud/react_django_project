@@ -1,85 +1,275 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
 .company-reg-container {
-  width: 60%;
-  margin: 50px auto;
-  margin-top: 100px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 40px;
+  margin-top: 85px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
 }
 
-.form-title {
+.company-reg-container .toast-class {
+  padding-top: 70px;
+}
+
+@media (max-width: 992px) {
+  .company-reg-container {
+    margin-top: 60px !important;
+  }
+}
+
+.company-reg-bg {
+  position: relative;
+  padding: 40px 30px;
+  background-image: url("/assets/comp-reg-bg.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.company-reg-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.569);
+  backdrop-filter: blur(1px);
+  z-index: 1;
+}
+
+.company-reg-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+.company-reg-container .form-title {
   text-align: center;
-  font-size: 1.5 rem;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.company-reg-container .form-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #3498db, #2c3e50);
 }
 
 .company-reg-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
-.form-group {
+.company-reg-container .form-group {
   display: flex;
   flex-direction: column;
-}
-
-.form-label {
-  font-size: 1rem;
-  color: #555;
   margin-bottom: 5px;
 }
 
-.form-control {
-  padding: 10px;
+.company-reg-container .form-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #546e7a;
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+}
+
+.company-reg-container .form-control {
+  padding: 12px 16px;
   font-size: 1rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
   outline: none;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
+  background-color: #f9fafc;
+  color: #37474f;
 }
 
-.form-control:focus {
-  border-color: #007bff;
+.company-reg-container .form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+  background-color: #fff;
 }
 
-textarea.form-control {
+.company-reg-container .form-control::placeholder {
+  color: #b0bec5;
+  font-size: 0.9rem;
+}
+
+.company-reg-container textarea.form-control {
   min-height: 120px;
   resize: vertical;
 }
 
-button {
-  padding: 12px;
+.company-reg-container select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23546e7a' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 12px) center;
+  padding-right: 40px;
+}
+
+/* Password input container and toggle styling */
+.company-reg-container .password-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.company-reg-container .password-input-container .form-control {
+  width: 100%;
+  padding-right: 60px; /* Make room for the toggle */
+}
+
+.company-reg-container .password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: #3498db;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: rgba(52, 152, 219, 0.1);
+  transition: all 0.3s ease;
+}
+
+.company-reg-container .password-toggle:hover {
+  background-color: rgba(52, 152, 219, 0.2);
+  color: #2980b9;
+}
+
+.company-reg-container button {
+  padding: 14px;
   font-size: 1.1rem;
-  background-color: #007bff;
+  background: linear-gradient(to right, #3498db, #2980b9);
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.company-reg-container button:hover {
+  background: linear-gradient(to right, #2980b9, #2c3e50);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
 }
 
-button:focus {
+.company-reg-container button:disabled {
+  opacity: 0.7;
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.company-reg-container button:focus {
   outline: none;
 }
 
-.text-danger {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: 10px;
+.alert {
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Dropdown (select) styling for "Company Type" */
+.alert-danger {
+  background-color: #ffe8e6;
+  color: #e74c3c;
+  border-left: 3px solid #e74c3c;
+}
+
+.toast-class {
+  font-size: 0.95rem;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .company-reg-container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .company-reg-container {
+    width: 90%;
+    padding: 25px;
+    margin: 40px auto;
+  }
+
+  .company-reg-container .form-title {
+    font-size: 1.7rem;
+    margin-bottom: 25px;
+  }
+
+  .company-reg-container .form-control {
+    padding: 12px;
+  }
+
+  .company-reg-container .password-toggle {
+    font-size: 0.8rem;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 576px) {
+  .company-reg-container {
+    width: 95%;
+    padding: 20px 15px;
+    margin: 20px auto;
+  }
+
+  .company-reg-container .form-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .company-reg-container .form-group {
+    gap: 6px;
+  }
+
+  .company-reg-container .form-label {
+    font-size: 0.9rem;
+  }
+
+  .company-reg-container .form-control {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .company-reg-container .password-toggle {
+    right: 10px;
+    font-size: 0.75rem;
+    padding: 2px 5px;
+  }
+
+  .company-reg-container button {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}

@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Details from "./Details";
@@ -17,6 +16,9 @@ const AllCompany = () => {
   const [selectedCompanyId, setSelectedCompanyId] = useState(null);
   const [companyLocation, setCompanyLocation] = useState(null);
   const [hasSession, setHasSession] = useState(false);
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const companiesPerPage = 5;
 
   // Filter states
   const [filters, setFilters] = useState({
@@ -24,13 +26,33 @@ const AllCompany = () => {
     type: "",
   });
 
-  // Fetch company list
+  // scroll button
+  const [showUpButton, setShowUpButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowUpButton(true);
+      } else {
+        setShowUpButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     fetchCompanies();
     checkSessionData();
   }, []);
 
-  // Filter companies based on search
   useEffect(() => {
     applyFilters();
   }, [filters, companies]);
@@ -49,18 +71,12 @@ const AllCompany = () => {
     }
   };
 
-  // Check if there's any session data
   const checkSessionData = () => {
     const candidateData = sessionStorage.getItem("candidateData");
     const companyData = sessionStorage.getItem("companyData");
-    if (candidateData || companyData) {
-      setHasSession(true);
-    } else {
-      setHasSession(false);
-    }
+    setHasSession(candidateData || companyData ? true : false);
   };
 
-  // Apply filters to the company list
   const applyFilters = () => {
     const filtered = companies.filter((company) => {
       return (
@@ -75,22 +91,20 @@ const AllCompany = () => {
       );
     });
     setFilteredCompanies(filtered);
+    setCurrentPage(1); // Reset to first page after filtering
   };
 
-  // Handle filter change
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     setFilters({ ...filters, [name]: value });
   };
 
-  // Show company details modal
   const handleShowDetails = (companyId) => {
     setSelectedCompanyId(companyId);
     setShowDetailsModal(true);
-    setShowMapModal(false); // Close map modal if open
+    setShowMapModal(false);
   };
 
-  // Show company location map modal
   const handleLocationClick = async (companyId) => {
     try {
       const response = await axios.get(
@@ -98,98 +112,101 @@ const AllCompany = () => {
       );
       setCompanyLocation(response.data);
       setShowMapModal(true);
-      setShowDetailsModal(false); // Close details modal if open
+      setShowDetailsModal(false);
     } catch (error) {
       setError("Failed to fetch location.");
     }
   };
 
-  // Close both modals
   const handleClose = () => {
     setShowDetailsModal(false);
     setShowMapModal(false);
   };
 
+  // Pagination logic
+  const indexOfLastCompany = currentPage * companiesPerPage;
+  const indexOfFirstCompany = indexOfLastCompany - companiesPerPage;
+  const currentCompanies = filteredCompanies.slice(
+    indexOfFirstCompany,
+    indexOfLastCompany
+  );
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(filteredCompanies.length / companiesPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <div className="all-company-container">
-      <div className="sidebar">
-        <h3>Filter Companies</h3>
-        <div className="filter-controls">
-          <div className="form-group">
-            <label className="form-label">Location:</label>
-            <select
-              name="location"
-              className="form-control mb-2"
-              value={filters.location}
-              onChange={handleFilterChange}
-            >
-              <option value="">All</option>
-              <option value="Dhaka">Dhaka</option>
-              <option value="Khulna">Khulna</option>
-              <option value="Sylhet">Sylhet</option>
-              <option value="Rajshahi">Rajshahi</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label className="form-label">Company Type:</label>
-            <select
-              name="type"
-              className="form-control"
-              value={filters.type}
-              onChange={handleFilterChange}
-            >
-              <option value="">All</option>
-              <option value="Multinational">Multinational</option>
-              <option value="International">International</option>
-              <option value="Startup">Startup</option>
-              <option value="Small Business">Small Business</option>
-            </select>
-          </div>
+      <div className="hero-section">
+        <div className="hero-overlay d-flex flex-column justify-content-center align-items-center">
+          <h1>Find the Best Companies for Your Career</h1>
+          <p>Browse through top companies and explore career opportunities</p>
         </div>
       </div>
 
-      <div className="main-content">
-        <h1 className="text-center mb-4">Company List</h1>
-
-        {loading ? (
-          <div className="loader-container">
-            <div className="spinner"></div>
-            <p>Loading companies...</p>
+      <div className="content-wrapper">
+        <div className="sidebar">
+          <h3>Filter Companies</h3>
+          <div className="filter-controls">
+            <div className="form-group">
+              <label>Location:</label>
+              <select
+                name="location"
+                className="form-control"
+                value={filters.location}
+                onChange={handleFilterChange}
+              >
+                <option value="">All Locations</option>
+                <option value="Dhaka">Dhaka</option>
+                <option value="Khulna">Khulna</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Company Type:</label>
+              <select
+                name="type"
+                className="form-control"
+                value={filters.type}
+                onChange={handleFilterChange}
+              >
+                <option value="">All Types</option>
+                <option value="Multinational">Multinational</option>
+                <option value="Startup">Startup</option>
+              </select>
+            </div>
           </div>
-        ) : error ? (
-          <p className="text-danger text-center">{error}</p>
-        ) : filteredCompanies.length > 0 ? (
-          <div className="company-list">
-            {filteredCompanies.map((company) => (
-              <div className="company-row" key={company.id}>
-                <div className="company-info">
-                  <h2>{company.name}</h2>
-                  <p>
-                    <strong>Location:</strong> {company.location}
-                  </p>
-                  <p>
-                    <strong>Description:</strong> {company.description}
-                  </p>
-                  {company.website && (
+        </div>
+
+        <div className="main-content">
+          <h1 className="text-center mb-4">Explore Companies</h1>
+
+          {loading ? (
+            <p className="text-center">Loading companies...</p>
+          ) : error ? (
+            <p className="text-danger text-center">{error}</p>
+          ) : currentCompanies.length > 0 ? (
+            <div className="company-list">
+              {currentCompanies.map((company) => (
+                <div className="company-row" key={company.id}>
+                  <div className="company-info">
+                    <h2>{company.name}</h2>
                     <p>
-                      <strong>Website:</strong>{" "}
-                      <a
-                        href={company.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Visit Website
-                      </a>
+                      <strong>Location:</strong> {company.location}
                     </p>
-                  )}
-                  <p>
-                    <strong>Type:</strong> {company.company_type}
-                  </p>
-                </div>
-                <div className="company-actions">
-                  {/* Conditionally render Details and Location buttons */}
+                    <p>
+                      <strong>Type:</strong> {company.company_type}
+                    </p>
+                  </div>
                   {hasSession && (
-                    <>
+                    <div className="company-actions">
                       <button
                         className="btn btn-primary"
                         onClick={() => handleShowDetails(company.id)}
@@ -202,31 +219,57 @@ const AllCompany = () => {
                       >
                         Location
                       </button>
-                    </>
+                    </div>
                   )}
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+          ) : (
+            <p className="text-center">
+              No companies match the filter criteria.
+            </p>
+          )}
+
+          {/* Pagination controls */}
+          <div className="pagination-controls py-5">
+            <button
+              className="btn btn-danger rounded-1 border border-2 border-black current-model"
+              onClick={prevPage}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            <span> Page {currentPage} </span>
+            <button
+              className="btn btn-pri rounded border border-2 border-black current-model"
+              onClick={nextPage}
+              disabled={
+                currentPage >=
+                Math.ceil(filteredCompanies.length / companiesPerPage)
+              }
+            >
+              Next
+            </button>
           </div>
-        ) : (
-          <p className="text-center">No companies match the filter criteria.</p>
-        )}
 
-        {/* Company Details Modal */}
-        <Details
-          companyId={selectedCompanyId}
-          showModal={showDetailsModal}
-          handleClose={handleClose}
-        />
-
-        {/* Company Map Modal */}
-        {showMapModal && companyLocation && (
-          <CompanyMapModal
-            companyLocation={companyLocation}
+          <Details
+            companyId={selectedCompanyId}
+            showModal={showDetailsModal}
             handleClose={handleClose}
           />
-        )}
+          {showMapModal && companyLocation && (
+            <CompanyMapModal
+              companyLocation={companyLocation}
+              handleClose={handleClose}
+            />
+          )}
+        </div>
       </div>
+      {showUpButton && (
+        <button className="up-button" onClick={scrollToTop}>
+          ↑
+        </button>
+      )}
     </div>
   );
 };

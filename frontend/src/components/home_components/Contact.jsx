@@ -313,6 +313,7 @@ function Contact() {
 
       <div className="faq-section">
         <section>
+
           <Row className="justify-content-center">
             <Col lg={8} className="text-center">
               <h2 className="section-title">Frequently Asked Questions</h2>
@@ -322,7 +323,7 @@ function Contact() {
             </Col>
           </Row>
 
-          <Row className="mt-5">
+          <Row className="m-5">
             <Col md={6}>
               <div className="faq-item">
                 <h3>How do I create an account?</h3>
@@ -367,6 +368,7 @@ function Contact() {
               </div>
             </Col>
           </Row>
+
         </section>
       </div>
 

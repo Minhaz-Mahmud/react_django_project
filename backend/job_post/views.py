@@ -41,7 +41,7 @@ class JobPostCreateView(APIView):
 
         # Serialize and validate data
         serializer = JobPostSerializer(data=data)
-        
+
         if serializer.is_valid():
             serializer.save()
             return Response(
@@ -133,6 +133,6 @@ class JobPostPagination(PageNumberPagination):
 
 
 class JobPostListView(ListAPIView):
-    queryset = JobPost.objects.all().order_by("-posted_at")
     serializer_class = JobPostSerializer
     pagination_class = JobPostPagination
+    queryset = JobPost.objects.all().order_by("-posted_at")

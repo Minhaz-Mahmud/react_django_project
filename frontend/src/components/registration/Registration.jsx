@@ -1,8 +1,22 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, Link } from "react-router-dom";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaTimes,
+  FaUser,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+  FaTools,
+  FaLock,
+  FaFileAlt,
+  FaImage,
+} from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Registration.css";
 
@@ -18,6 +32,12 @@ const Registration = () => {
     profile_picture: null,
     password: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null);
+  const [fileNames, setFileNames] = useState({
+    resume: "",
+    profile_picture: "",
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,14 +49,29 @@ const Registration = () => {
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
-    setFormData({
-      ...formData,
-      [name]: files[0],
-    });
+    if (files.length > 0) {
+      setFormData({
+        ...formData,
+        [name]: files[0],
+      });
+      setFileNames({
+        ...fileNames,
+        [name]: files[0].name,
+      });
+    }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const dismissError = () => {
+    setError(null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
 
     const data = new FormData();
     data.append("full_name", formData.full_name);
@@ -63,9 +98,7 @@ const Registration = () => {
           },
         }
       );
-      console.log("Candidate created:", response.data);
-      toast.clearWaitingQueue();
-      toast.success("Candidate created successfully!");
+      toast.success("Registration successful! Redirecting to login...");
 
       // Clear the form fields
       setFormData({
@@ -78,122 +111,208 @@ const Registration = () => {
         profile_picture: null,
         password: "",
       });
+      setFileNames({
+        resume: "",
+        profile_picture: "",
+      });
 
-      // Redirect to home page after a delay
+      // Redirect to login page after a delay
       setTimeout(() => {
         navigate("/signin");
       }, 3000);
     } catch (error) {
       console.error("Error creating profile:", error);
-      toast.clearWaitingQueue();
-      toast.error("Failed to create profile:" + error);
+      setError(
+        error.response?.data?.message ||
+          "Failed to create profile. Please try again."
+      );
     }
   };
 
   return (
-    <div className="main-reg-div container">
+    <div className="registration-container">
       <ToastContainer
-        className="toast-class"
         position="top-center"
         autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
       />
 
-      <div className="row justify-content-center align-items-center">
-        <div className="col-md-6">
+      {error && (
+        <div className="error-alert">
+          <p>{error}</p>
+          <button onClick={dismissError} className="close-alert">
+            <FaTimes />
+          </button>
+        </div>
+      )}
+
+      <div className="registration-wrapper">
+        <div className="registration-image-container">
+          <div className="image-overlay">
+            <h2>Join Our Talent Network</h2>
+            <p>
+              Find your dream job with our platform. Connect with top employers
+              and showcase your skills.
+            </p>
+          </div>
           <img
             src="/assets/bg.jpg"
             alt="Registration"
-            className="img-fluid registration-image"
+            className="registration-image"
           />
         </div>
-        <div className="col-md-6">
-          <form
-            onSubmit={handleSubmit}
-            className="registration-form p-4 shadow-sm rounded"
-          >
-            <h3 className="text-center mb-4">Candidate Registration</h3>
-            <input
-              type="text"
-              name="full_name"
-              onChange={handleChange}
-              placeholder="Full Name"
-              value={formData.full_name}
-              required
-              className="form-control mb-3"
-            />
-            <input
-              type="email"
-              name="email"
-              onChange={handleChange}
-              placeholder="Email"
-              value={formData.email}
-              required
-              className="form-control mb-3"
-            />
-            <input
-              type="text"
-              name="phone_number"
-              onChange={handleChange}
-              placeholder="Phone Number"
-              value={formData.phone_number}
-              required
-              className="form-control mb-3"
-            />
-            <input
-              type="text"
-              name="location"
-              onChange={handleChange}
-              placeholder="Location"
-              value={formData.location}
-              required
-              className="form-control mb-3"
-            />
-            <textarea
-              name="skills"
-              onChange={handleChange}
-              placeholder="Skills (comma-separated)"
-              value={formData.skills}
-              required
-              className="form-control mb-3"
-            ></textarea>
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              placeholder="Password"
-              value={formData.password}
-              required
-              className="form-control mb-3"
-            />
-            <label className="text-dark">Resume</label>
-            <input
-              type="file"
-              name="resume"
-              onChange={handleFileChange}
-              accept=".pdf"
-              className="form-control mb-3"
-            />
-            <label className="text-dark">Profile image</label>
-            <input
-              type="file"
-              name="profile_picture"
-              onChange={handleFileChange}
-              accept="image/*"
-              className="form-control mb-4"
-            />
-            <button type="submit" className="btn btn-primary w-100">
-              Submit
+
+        <div className="registration-form-container">
+          <form onSubmit={handleSubmit} className="registration-form">
+            <h3>Create Your Account</h3>
+            <p className="form-subtitle">Fill out the form to get started</p>
+
+            <div className="input-group">
+              <div className="input-icon">
+                <FaUser />
+              </div>
+              <input
+                type="text"
+                name="full_name"
+                onChange={handleChange}
+                placeholder="Full Name"
+                value={formData.full_name}
+                required
+              />
+            </div>
+
+            <div className="input-group">
+              <div className="input-icon">
+                <FaEnvelope />
+              </div>
+              <input
+                type="email"
+                name="email"
+                onChange={handleChange}
+                placeholder="Email Address"
+                value={formData.email}
+                required
+              />
+            </div>
+
+            <div className="input-group">
+              <div className="input-icon">
+                <FaPhone />
+              </div>
+              <input
+                type="text"
+                name="phone_number"
+                onChange={handleChange}
+                placeholder="Phone Number"
+                value={formData.phone_number}
+                required
+              />
+            </div>
+
+            <div className="input-group">
+              <div className="input-icon">
+                <FaMapMarkerAlt />
+              </div>
+              <input
+                type="text"
+                name="location"
+                onChange={handleChange}
+                placeholder="Your Location"
+                value={formData.location}
+                required
+              />
+            </div>
+
+            <div className="input-group">
+              <div className="input-icon">
+                <FaTools />
+              </div>
+              <textarea
+                name="skills"
+                onChange={handleChange}
+                placeholder="Skills (comma-separated)"
+                value={formData.skills}
+                required
+              ></textarea>
+            </div>
+
+            <div className="input-group password-group">
+              <div className="input-icon">
+                <FaLock />
+              </div>
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                onChange={handleChange}
+                placeholder="Password"
+                value={formData.password}
+                required
+              />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
+
+            <div className="file-input-group">
+              <label>
+                <div className="file-input-label">
+                  <FaFileAlt />
+                  <span>{fileNames.resume || "Upload Resume (PDF)"}</span>
+                </div>
+                <input
+                  type="file"
+                  name="resume"
+                  onChange={handleFileChange}
+                  accept=".pdf"
+                  className="hidden-file-input"
+                />
+              </label>
+            </div>
+
+            <div className="file-input-group">
+              <label>
+                <div className="file-input-label">
+                  <FaImage />
+                  <span>
+                    {fileNames.profile_picture || "Upload Profile Picture"}
+                  </span>
+                </div>
+                <input
+                  type="file"
+                  name="profile_picture"
+                  onChange={handleFileChange}
+                  accept="image/*"
+                  className="hidden-file-input"
+                />
+              </label>
+            </div>
+
+            <button type="submit" className="submit-btn">
+              Create Account
             </button>
+
+            <div className="login-link">
+              Already have an account? <Link to="/signin">Sign In</Link>
+            </div>
           </form>
+
+          <div className="company-registration">
+            <h4>Are you hiring?</h4>
+            <Link to="/company-register" className="company-btn">
+              Register Your Company
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className="company-div">
-        <Link
-          to="/company-register"
-          className="btn btn-primary fs-3 w-100 mt-3"
-        >
-          Register your company
-        </Link>
       </div>
     </div>
   );
