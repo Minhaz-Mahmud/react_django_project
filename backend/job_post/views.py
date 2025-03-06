@@ -136,3 +136,64 @@ class JobPostListView(ListAPIView):
     serializer_class = JobPostSerializer
     pagination_class = JobPostPagination
     queryset = JobPost.objects.all().order_by("-posted_at")
+
+
+class GetActiveRecruitmentStatusView(APIView):
+    def get(self, request):
+        company_id = request.query_params.get("company_id")
+
+        if not company_id:
+            return Response(
+                {"error": "Company ID is required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            company = Company.objects.get(id=company_id)
+
+        except Company.DoesNotExist:
+            return Response(
+                {"error": "Invalid company ID provided."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        job_posts = JobPost.objects.filter(company=company)
+        active_recruitment_status = job_posts.values("id", "title", "active_recruiting")
+
+        return Response(
+            active_recruitment_status,
+            status=status.HTTP_200_OK,
+        )
+
+
+class UpdateActiveRecruitmentStatusView(APIView):
+    def post(self, request):
+        company_id = request.data.get("company_id")
+        recruits = request.data.get("recruits")
+
+        if not company_id or not recruits:
+            return Response(
+                {"error": "Company ID and recruits data are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            company = Company.objects.get(id=company_id)
+        except Company.DoesNotExist:
+            return Response(
+                {"error": "Invalid company ID provided."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        for recruit in recruits:
+            try:
+                job_post = JobPost.objects.get(id=recruit["id"], company=company)
+                job_post.active_recruiting = recruit["active_recruiting"]
+                job_post.save()
+            except JobPost.DoesNotExist:
+                continue
+
+        return Response(
+            {"message": "Recruitment status updated successfully."},
+            status=status.HTTP_200_OK,
+        )

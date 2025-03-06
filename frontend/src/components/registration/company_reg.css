@@ -204,10 +204,6 @@
   border-left: 3px solid #e74c3c;
 }
 
-.toast-class {
-  font-size: 0.95rem;
-}
-
 /* Responsive design */
 @media (max-width: 992px) {
   .company-reg-container {

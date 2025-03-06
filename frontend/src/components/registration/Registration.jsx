@@ -2,7 +2,6 @@
 import { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, Link } from "react-router-dom";
 import {
   FaEye,
@@ -132,15 +131,9 @@ const Registration = () => {
   return (
     <div className="registration-container">
       <ToastContainer
+        className="toast-class text-light"
         position="top-center"
         autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
       />
 
       {error && (

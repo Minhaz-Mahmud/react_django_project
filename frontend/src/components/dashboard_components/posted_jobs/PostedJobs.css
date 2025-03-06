@@ -1,62 +1,139 @@
+/* Container Styles */
+.posted-jobs-container {
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+/* Loading Styles */
+.jobs-loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.loading-text {
+  margin-top: 1rem;
+  color: #6c757d;
+}
+
+/* Title Styles */
+.posted-jobs-title {
+  color: #343a40;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+/* No Jobs Styles */
+.no-jobs-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.no-jobs-text {
+  color: #6c757d;
+  font-size: 1.2rem;
+}
+
+/* Jobs Grid */
+.jobs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+/* Job Card Styles */
+.job-card-container {
+  transition: transform 0.3s ease;
+}
+
+.job-card-container:hover {
+  transform: translateY(-10px);
+}
+
 .job-card {
-  background-color: #343a40eb;
-  color: #fff;
-}
-
-.job-text {
-  margin-bottom: 0.8rem;
-}
-
-.post-job-div {
-  margin-top: 70px;
-}
-
-@media (max-width: 768px) {
-  .post-job-div {
-    margin-top: 10px;
-  }
-  .job-card {
-    padding: 2rem; /* Adjust padding for smaller screens */
-  }
-}
-
-@media (max-width: 576px) {
-  .job-card {
-    padding: 1.5rem; /* Less padding for very small screens */
-  }
-}
-
-/* delete button design */
-
-.delete-btn {
-  padding: 10px 20px; /* Adjust padding for a better look */
-  font-size: 16px; /* Font size for better readability */
-  font-weight: bold; /* Bold text for emphasis */
-  border-radius: 5px; /* Rounded corners for modern appearance */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.delete-btn:hover {
-  background-color: #dc3545; /* Darker shade on hover */
-  color: #fff; /* Ensure text stays white on hover */
-  transform: scale(1.05); /* Slight scaling effect on hover */
+  background-color: #ffffff;
+  border: 1px solid #e9ecef !important;
   transition: all 0.3s ease;
 }
 
-.delete-btn:focus {
-  outline: none; /* Remove focus outline for a cleaner look */
+.job-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
+.job-card-header {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+.job-title {
+  color: #343a40;
+  font-weight: 600;
+}
+
+.job-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.job-detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-label {
+  color: #6c757d;
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.detail-value {
+  color: #343a40;
+  font-weight: 500;
+}
+
+.job-description {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.job-tags .badge {
+  background-color: #6c757d !important;
+}
+
+/* Delete Button Styles */
+.job-delete-btn {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.job-delete-btn:hover {
+  background-color: #c82333;
+  transform: scale(1.02);
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .delete-btn {
-    font-size: 14px; /* Smaller font size for mobile */
-    padding: 8px 16px; /* Adjust padding on smaller screens */
+  .posted-jobs-container {
+    padding: 1rem;
+  }
+
+  .job-details {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 576px) {
-  .delete-btn {
-    font-size: 12px; /* Even smaller font size for extra small devices */
-    padding: 6px 12px; /* Reduce padding further for small screens */
+  .job-card {
+    padding: 1rem !important;
   }
 }

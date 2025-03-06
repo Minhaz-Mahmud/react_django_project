@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 import MainHome from "./components/home_components/main_home";
 import "./App.css";
@@ -27,6 +27,7 @@ import Contact from "./components/home_components/contact";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
+  const location = useLocation();
 
   setTimeout(() => {
     sessionStorage.removeItem("firstRefresh");
@@ -45,8 +46,7 @@ const App = () => {
           path="/registration"
           element={
             <PrivateCompanyRoute>
-              {" "}
-              <Registration />{" "}
+              <Registration />
             </PrivateCompanyRoute>
           }
         />
@@ -93,7 +93,9 @@ const App = () => {
         <Route path="/candidate/build/resume" element={<ResumeBuilder />} />
       </Routes>
 
-      <FooterComponent />
+      {location.pathname !== "/company/dashboard" &&
+        location.pathname !== "/dashboard" && <FooterComponent />}
+      {/* <FooterComponent /> */}
     </div>
   );
 };

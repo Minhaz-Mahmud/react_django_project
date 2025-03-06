@@ -66,6 +66,7 @@ urlpatterns = [
     path("api/", include("resume_builder.urls")),
     path("api/", include("mail.urls")),
     path("api/", include("numerics.urls")),
+    path("api/", include("job_post.urls")),
 ]
 
 

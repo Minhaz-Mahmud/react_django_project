@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import {
   FaEye,
   FaEyeSlash,
@@ -18,11 +18,13 @@ const Signin = () => {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await axios.post("http://127.0.0.1:8000/login/", {
@@ -30,22 +32,25 @@ const Signin = () => {
         password,
       });
 
-      toast.success("Candidate logged in successfully!");
+      toast.success("Candidate logged in successfully!", {
+        onClose: () => {
+          setLoading(false);
+          navigate("/dashboard");
+        },
+      });
 
       // Save candidate data to session storage
       sessionStorage.setItem(
         "candidateData",
         JSON.stringify(response.data.candidate)
       );
-
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 2500);
     } catch (err) {
       const errorMessage =
         err.response?.data?.detail || "Invalid credentials. Please try again.";
       setError(errorMessage);
-      toast.error(errorMessage);
+      toast.error(errorMessage, {
+        onClose: () => setLoading(false),
+      });
     }
   };
 
@@ -68,7 +73,7 @@ const Signin = () => {
   return (
     <div className="signin-container">
       <ToastContainer
-        className="toast-class"
+        className="toast-class text-light"
         position="top-center"
         autoClose={2000}
       />
@@ -78,10 +83,11 @@ const Signin = () => {
           <h2>Welcome Back</h2>
           <p>Log in to your candidate account</p>
         </div>
+
         {error && (
-          <div className="error-alert">
+          <div className="company-error-alert">
             <span>{error}</span>
-            <button className="error-close-btn" onClick={dismissError}>
+            <button className="error-dismiss-btn" onClick={dismissError}>
               <FaTimes />
             </button>
           </div>
@@ -127,8 +133,19 @@ const Signin = () => {
             </Link>
           </div>
 
-          <button type="submit" className="signin-btn">
-            Sign In
+          <button type="submit" className="signin-button" disabled={loading}>
+            {loading ? (
+              <Spinner
+                animation="border"
+                variant="light"
+                as={"span"}
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            ) : (
+              "Sign In"
+            )}
           </button>
         </form>
 

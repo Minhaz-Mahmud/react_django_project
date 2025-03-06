@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./JobApplications.css";
 
 const ApplicationFeed = () => {
@@ -54,17 +56,21 @@ const ApplicationFeed = () => {
   };
 
   const deleteApplication = async (applicationId) => {
-    try {
-      const response = await fetch(
-        `http://127.0.0.1:8000/applications_del/${applicationId}/`,
-        { method: "DELETE" }
-      );
-      if (!response.ok) {
-        throw new Error("Failed to delete application.");
+    if (window.confirm("Are you sure you want to delete this application?")) {
+      try {
+        const response = await fetch(
+          `http://127.0.0.1:8000/applications_del/${applicationId}/`,
+          { method: "DELETE" }
+        );
+        if (!response.ok) {
+          throw new Error("Failed to delete application.");
+        }
+        setApplications(applications.filter((app) => app.id !== applicationId));
+        toast.success("Application deleted successfully.");
+      } catch (error) {
+        console.error("Error deleting application:", error);
+        toast.error("Error deleting application.");
       }
-      setApplications(applications.filter((app) => app.id !== applicationId));
-    } catch (error) {
-      console.error("Error deleting application:", error);
     }
   };
 
@@ -114,99 +120,150 @@ const ApplicationFeed = () => {
           companyId: emailData.companyId,
         }
       );
-      alert(response.data.success || "Email sent successfully!");
+      toast.success(response.data.success || "Email sent successfully!");
       closeEmailModal();
     } catch (error) {
-      alert(error.response?.data?.error || "Error sending email");
+      toast.error(error.response?.data?.error || "Error sending email");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="application-feed-container">
-      <br />
-      <br />
-      <br />
-      <br />
-      <h4>Applications for Company ID: {companyId}</h4>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <div className="application-feed-div">
-          {applications.length === 0 ? (
-            <p>No applications found.</p>
-          ) : (
-            <ul className="list-group">
-              {applications.map((app) => (
-                <li
-                  className="list-group-item d-flex justify-content-between align-items-center"
-                  key={app.id}
-                >
-                  <div>
-                    <strong>{app.candidate__full_name}</strong> applied for{" "}
-                    <em>{app.job_title}</em> (Job ID: {app.job_id}) on{" "}
-                    {new Date(app.time).toLocaleDateString()}
+    <div className="container-fluid bg-light py-4">
+      <ToastContainer
+        className="toast-class text-light"
+        position="top-center"
+        autoClose={2000}
+      />
+      <div className="row">
+        <div className="col-12">
+          <div className="card shadow-sm">
+            <div className="card-header text-dark">
+              <h4 className="mb-0">Applications for Company ID: {companyId}</h4>
+            </div>
+            <div className="card-body">
+              {loading ? (
+                <div className="d-flex justify-content-center">
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="visually-hidden">Loading...</span>
                   </div>
-                  <div>
-                    <button
-                      className="btn btn-primary btn-sm me-2"
-                      onClick={() => viewCandidateDetails(app.candidate_id)}
-                    >
-                      View Details
-                    </button>
-                    <button
-                      className="btn btn-danger btn-sm me-2"
-                      onClick={() => deleteApplication(app.id)}
-                    >
-                      Delete
-                    </button>
-                    <button
-                      className="btn btn-success btn-sm"
-                      onClick={() =>
-                        openEmailModal(
-                          app.candidate__email,
-                          app.job_id,
-                          app.candidate_id,
-                          companyId
-                        )
-                      }
-                    >
-                      Send Email
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-          <div className="pagination">
-            {hasPreviousPage && (
-              <button onClick={handlePreviousPage}>Previous</button>
-            )}
-            <span>Page {currentPage}</span>
-            {hasNextPage && <button onClick={handleNextPage}>Next</button>}
+                </div>
+              ) : (
+                <>
+                  {applications.length === 0 ? (
+                    <div className="alert alert-info text-center" role="alert">
+                      No applications found.
+                    </div>
+                  ) : (
+                    <div className="list-group">
+                      {applications.map((app) => (
+                        <div
+                          key={app.id}
+                          className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                        >
+                          <div>
+                            <h6 className="mb-1">
+                              <strong>{app.candidate__full_name}</strong>
+                            </h6>
+                            <p className="mb-1">
+                              Applied for <em>{app.job_title}</em> (Job ID:{" "}
+                              {app.job_id}) on{" "}
+                              {new Date(app.time).toLocaleDateString()}
+                            </p>
+                          </div>
+                          <div className="btn-group" role="group">
+                            <button
+                              className="btn btn-sm btn-outline-primary"
+                              onClick={() =>
+                                viewCandidateDetails(app.candidate_id)
+                              }
+                            >
+                              View Details
+                            </button>
+                            <button
+                              className="btn btn-sm btn-outline-danger"
+                              onClick={() => deleteApplication(app.id)}
+                            >
+                              Delete
+                            </button>
+                            <button
+                              className="btn btn-sm btn-outline-success"
+                              onClick={() =>
+                                openEmailModal(
+                                  app.candidate__email,
+                                  app.job_id,
+                                  app.candidate_id,
+                                  companyId
+                                )
+                              }
+                            >
+                              Send Email
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  <nav aria-label="Page navigation" className="mt-3">
+                    <ul className="pagination justify-content-center">
+                      <li
+                        className={`page-item ${
+                          !hasPreviousPage ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={handlePreviousPage}
+                          disabled={!hasPreviousPage}
+                        >
+                          Previous
+                        </button>
+                      </li>
+                      <li className="page-item">
+                        <span className="page-link">Page {currentPage}</span>
+                      </li>
+                      <li
+                        className={`page-item ${
+                          !hasNextPage ? "disabled" : ""
+                        }`}
+                      >
+                        <button
+                          className="page-link"
+                          onClick={handleNextPage}
+                          disabled={!hasNextPage}
+                        >
+                          Next
+                        </button>
+                      </li>
+                    </ul>
+                  </nav>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      )}
+      </div>
 
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeEmailModal}
-        className="container mt-5 modal-dialog modal-dialog-centered"
+        className="modal-dialog modal-dialog-centered"
+        overlayClassName="modal-overlay"
       >
         <div className="modal-content">
-          <div className="modal-header">
+          <div className="modal-header bg-primary text-white">
             <h5 className="modal-title">Send Email</h5>
             <button
               type="button"
-              className="m-2 p-2 btn-close"
+              className="btn-close btn-close-white"
               onClick={closeEmailModal}
             ></button>
           </div>
           <div className="modal-body">
             <form onSubmit={handleSendEmail}>
               <div className="mb-3">
-                <label className="form-label">Email:</label>
+                <label className="form-label">Email Address</label>
                 <input
                   type="email"
                   className="form-control"
@@ -222,9 +279,10 @@ const ApplicationFeed = () => {
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Message:</label>
+                <label className="form-label">Message</label>
                 <textarea
                   className="form-control"
+                  rows="4"
                   value={emailData.message}
                   onChange={(e) =>
                     setEmailData({ ...emailData, message: e.target.value })
@@ -232,9 +290,26 @@ const ApplicationFeed = () => {
                   required
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary">
-                {loading ? "Sending..." : "Send Email"}
-              </button>
+              <div className="d-grid">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <>
+                      <span
+                        className="spinner-border spinner-border-sm me-2"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Sending...
+                    </>
+                  ) : (
+                    "Send Email"
+                  )}
+                </button>
+              </div>
             </form>
           </div>
         </div>

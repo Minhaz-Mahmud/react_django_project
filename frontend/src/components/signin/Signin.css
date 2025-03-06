@@ -149,7 +149,8 @@
 }
 
 /* Sign in button */
-.signin-btn {
+
+.signin-button {
   width: 100%;
   padding: 14px;
   background-color: #4a6cf7;
@@ -159,12 +160,28 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.signin-btn:hover {
-  background-color: #2c4be3;
+.signin-button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
 }
+
+.signin-button:hover:not(:disabled) {
+  background-color: #2c4be3;
+  transform: translateY(-2px);
+}
+
+.signin-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+
+
 
 /* OR divider */
 .signin-divider {

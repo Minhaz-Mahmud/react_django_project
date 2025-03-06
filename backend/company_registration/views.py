@@ -91,3 +91,9 @@ class CompanyProfileUpdateView(APIView):
             serializer.errors,
             status=status.HTTP_400_BAD_REQUEST,
         )
+
+
+class GetCompanyActiveRecruit(APIView):
+    def get(self, request):
+        company = Company.objects.get(email=request.data.get("email"))
+        recruit = company.recruit_set.filter(status="active")

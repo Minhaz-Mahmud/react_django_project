@@ -1,117 +1,90 @@
-/* JobApplications.css */
-.application-feed-container {
-  padding: 20px;
-  background-color: #f8f9fa; /* Light gray */
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.application-feed-div h4 {
-  font-size: 1.5rem;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-.application-feed-div ul {
-  list-style: none;
-  padding: 0;
-}
-
-.application-feed-div li {
+/* Enhance modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.application-feed-div ul li button {
-  border: none;
-  padding: 5px 10px;
-  font-size: 0.9rem;
-  color: #fff;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.application-feed-div ul li button:hover {
-  opacity: 0.9;
-}
-
-.application-feed-div ul li button:first-child {
-  background-color: #007bff; /* Blue for View Details */
-}
-
-.application-feed-div ul li button:nth-child(2) {
-  background-color: #dc3545; /* Red for Delete */
-}
-
-.application-feed-div ul li button:last-child {
-  background-color: #28a745; /* Green for Send Email */
-}
-
-.pagination {
-  display: flex;
   justify-content: center;
-  margin-top: 20px;
+  z-index: 1050;
 }
 
-.pagination button {
-  margin: 0 5px;
-  padding: 5px 15px;
+
+/* filepath: /d:/react_django_project/frontend/src/components/job_applications/ToastifyCustom.css */
+.Toastify__toast {
+  color: black;
+}
+
+/* Modal header styling */
+.modal-header {
   background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+  color: white;
+  border-bottom: none;
 }
 
-.pagination button:hover {
-  background-color: #0056b3;
+.modal-header .btn-close-white {
+  filter: invert(1) grayscale(100%) brightness(200%);
 }
 
-.send-email-modal {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+/* List group hover effect */
+.list-group-item-action:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
 }
 
-.send-email-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* Button group styling */
+.btn-group .btn {
+  margin-left: 5px;
 }
 
-.send-email-form label {
-  font-weight: bold;
-  margin-bottom: 5px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .list-group-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .list-group-item .btn-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .list-group-item .btn-group .btn {
+    margin: 5px 0;
+    width: 100%;
+  }
 }
 
-.send-email-form input,
-.send-email-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+/* Pagination hover and active states */
+.pagination .page-link {
+  color: #030303;
+  background-color: white;
+  border: 1px solid #dee2e6;
 }
 
-.send-email-form button {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.pagination .page-item.active .page-link {
+  background-color: #0101019c;
+  border-color: #007bff;
 }
 
-.send-email-form button:hover {
-  background-color: #0056b3;
+.pagination .page-link:hover {
+  background-color: #e9ecef;
+  color: #0f0f0f;
 }
 
+/* Ensure modal is fully responsive */
+.modal-dialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
+}
 
-
+/* Form input focus state */
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}

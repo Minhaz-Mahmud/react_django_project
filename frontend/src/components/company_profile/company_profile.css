@@ -1,91 +1,136 @@
-/* * {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
-.company-profile {
-  margin-top: 70px;
-}
-.company-profile-details {
-  color: black !important;
-  background-color: black;
-  padding: 30px;
-} */
-
-.container {
-  max-width: 800px;
-  margin: auto;
-  background-color: #f8f9fa;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.cp-container {
+  max-width: 1000px;
+  margin: 3rem auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.profile-div-class {
-  margin-top: 80px;
+.cp-container:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-h1 {
-  font-size: 2rem;
-  color: #333;
+.cp-header {
+  background-color: #3498db;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
-.profile-section {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  border: 1px solid #ddd;
+.cp-profile-section {
+  background-color: #f4f6f7;
+  padding: 2rem;
 }
 
-.profile-item {
-  font-size: 1rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
+.cp-profile-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e9ecef;
+  transition: background-color 0.2s;
 }
 
-.profile-item strong {
-  color: #555;
+.cp-profile-item:hover {
+  background-color: rgba(0, 123, 255, 0.05);
 }
 
-.form-label {
-  font-weight: bold;
-  font-size: 0.9rem;
-  color: #333;
+.cp-profile-label {
+  color: #2c3e50;
+  font-weight: 600;
+  min-width: 150px;
 }
 
-.form-control {
-  border: 1px solid #ced4da;
-  border-radius: 4px;
+.cp-profile-value {
+  color: #6c757d;
+  text-align: right;
 }
 
-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+.cp-form-group {
+  margin-bottom: 1.25rem;
 }
 
-button.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
+.cp-form-label {
+  color: #2c3e50;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
-button.btn-primary:hover {
-  background-color: #0056b3;
+.cp-form-control {
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  padding: 0.75rem;
+  transition: border-color 0.3s ease;
 }
 
-button.btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
+.cp-form-control:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
 }
 
-button.btn-success:hover {
-  background-color: #218838;
+.cp-btn-update {
+  background-color: #3498db;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
-button.btn-secondary {
+.cp-btn-update:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.cp-btn-save {
+  background-color: #2ecc71;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.cp-btn-save:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+}
+
+.cp-btn-cancel {
   background-color: #6c757d;
-  border-color: #6c757d;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
-button.btn-secondary:hover {
-  background-color: #5a6268;
+.cp-btn-cancel:hover {
+  background-color: #545b62;
+  transform: translateY(-2px);
+}
+
+.cp-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M1 4l5 5 5-5z' fill='%23343a40'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 8px 8px;
+}
+
+@media (max-width: 576px) {
+  .cp-container {
+    margin: 1rem;
+    border-radius: 8px;
+  }
+
+  .cp-profile-section {
+    padding: 1rem;
+  }
 }

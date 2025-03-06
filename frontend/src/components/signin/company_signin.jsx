@@ -4,7 +4,6 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash, FaTimes } from "react-icons/fa";
 import "./company_signin.css";
 
@@ -59,8 +58,9 @@ const CompanySignin = () => {
 
   return (
     <div className="company-signin-container">
+      
       <ToastContainer
-        className="toast-class"
+        className="toast-class text-light"
         position="top-center"
         autoClose={2000}
       />

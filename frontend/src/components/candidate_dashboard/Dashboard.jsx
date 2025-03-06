@@ -96,10 +96,10 @@ const Dashboard = () => {
   }, [navigate, storedUserData, firstRefresh]);
 
   return (
-    <div className="container-fluid bg-primary">
+    <div className="candidate-dash-div container-fluid bg-primary">
       <div className="row">
         {/* Sidebar */}
-        <div className="col-md-2 bg-dark min-vh-100 text-white p-0">
+        <div className="candidate-dash-sidebar-div col-md-2 bg-dark min-vh-100 text-white p-0">
           <div className="p-3 border-bottom">
             {/* take name from the companyData sessionStorage and display it */}
             <h5 className="text-white">COREUI</h5>
@@ -154,7 +154,7 @@ const Dashboard = () => {
         </div>
 
         {/* Main content */}
-        <div className="col-md-10 p-4 bg-white mt-4">
+        <div className="candidate-dash-content-div col-md-10 p-4 bg-white mt-4">
           <br />
           <br />
           <MainContent activeComponent={activeComponent} />

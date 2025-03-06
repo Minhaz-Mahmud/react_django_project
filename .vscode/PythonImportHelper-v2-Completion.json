@@ -656,6 +656,14 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "APIView",
         "importPath": "rest_framework.views",
         "description": "rest_framework.views",
@@ -1411,6 +1419,22 @@
     },
     {
         "label": "JobPostListView",
+        "importPath": "job_post.views",
+        "description": "job_post.views",
+        "isExtraImport": true,
+        "detail": "job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetActiveRecruitmentStatusView",
+        "importPath": "job_post.views",
+        "description": "job_post.views",
+        "isExtraImport": true,
+        "detail": "job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateActiveRecruitmentStatusView",
         "importPath": "job_post.views",
         "description": "job_post.views",
         "isExtraImport": true,
@@ -2388,6 +2412,15 @@
         "documentation": {}
     },
     {
+        "label": "GetCompanyActiveRecruit",
+        "kind": 6,
+        "importPath": "backend.company_registration.views",
+        "description": "backend.company_registration.views",
+        "peekOfCode": "class GetCompanyActiveRecruit(APIView):\n    def get(self, request):\n        company = Company.objects.get(email=request.data.get(\"email\"))\n        recruit = company.recruit_set.filter(status=\"active\")",
+        "detail": "backend.company_registration.views",
+        "documentation": {}
+    },
+    {
         "label": "Migration",
         "kind": 6,
         "importPath": "backend.job_post.migrations.0001_initial",
@@ -2433,6 +2466,15 @@
         "documentation": {}
     },
     {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.job_post.urls",
+        "description": "backend.job_post.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\n        \"get-active-recruitment-status/\",\n        GetActiveRecruitmentStatusView.as_view(),\n        name=\"get-active-status\",\n    ),\n    path(\n        \"update-active-recruitment-status/\",\n        UpdateActiveRecruitmentStatusView.as_view(),\n        name=\"update-active-status\",",
+        "detail": "backend.job_post.urls",
+        "documentation": {}
+    },
+    {
         "label": "JobPostCreateView",
         "kind": 6,
         "importPath": "backend.job_post.views",
@@ -2464,7 +2506,7 @@
         "kind": 6,
         "importPath": "backend.job_post.views",
         "description": "backend.job_post.views",
-        "peekOfCode": "class JobPostPagination(PageNumberPagination):\n    page_size = 5  # Number of posts per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass JobPostListView(ListAPIView):\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")",
+        "peekOfCode": "class JobPostPagination(PageNumberPagination):\n    page_size = 5  # Number of posts per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass JobPostListView(ListAPIView):\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")\nclass GetActiveRecruitmentStatusView(APIView):\n    def get(self, request):",
         "detail": "backend.job_post.views",
         "documentation": {}
     },
@@ -2473,7 +2515,25 @@
         "kind": 6,
         "importPath": "backend.job_post.views",
         "description": "backend.job_post.views",
-        "peekOfCode": "class JobPostListView(ListAPIView):\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")",
+        "peekOfCode": "class JobPostListView(ListAPIView):\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")\nclass GetActiveRecruitmentStatusView(APIView):\n    def get(self, request):\n        company_id = request.query_params.get(\"company_id\")\n        if not company_id:\n            return Response(\n                {\"error\": \"Company ID is required.\"},",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetActiveRecruitmentStatusView",
+        "kind": 6,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "class GetActiveRecruitmentStatusView(APIView):\n    def get(self, request):\n        company_id = request.query_params.get(\"company_id\")\n        if not company_id:\n            return Response(\n                {\"error\": \"Company ID is required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:\n            company = Company.objects.get(id=company_id)",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "UpdateActiveRecruitmentStatusView",
+        "kind": 6,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "class UpdateActiveRecruitmentStatusView(APIView):\n    def post(self, request):\n        company_id = request.data.get(\"company_id\")\n        recruits = request.data.get(\"recruits\")\n        if not company_id or not recruits:\n            return Response(\n                {\"error\": \"Company ID and recruits data are required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:",
         "detail": "backend.job_post.views",
         "documentation": {}
     },

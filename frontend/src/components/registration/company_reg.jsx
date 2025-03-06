@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./company_reg.css";
 
 const CompanyReg = () => {
@@ -107,7 +106,7 @@ const CompanyReg = () => {
     <div className="company-reg-bg">
       <div className="company-reg-container">
         <ToastContainer
-          className="toast-class"
+          className="toast-class text-light"
           position="top-center"
           autoClose={2000}
           style={{ zIndex: 1050 }}
