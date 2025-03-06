@@ -217,11 +217,6 @@ const JobFeed = () => {
                 {filteredJobs.map((post) => (
                   <div key={post.id} className="job-card">
                     <div className="job-card-header">
-                      <img
-                        src={post.company_logo || "/default-logo.png"}
-                        alt={`${post.company} logo`}
-                        className="company-logo"
-                      />
                       <div className="job-header-info">
                         <h3 className="job-title">{post.title}</h3>
                         <p className="company-name">{post.company}</p>

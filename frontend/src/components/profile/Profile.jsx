@@ -12,7 +12,7 @@ const Profile = () => {
     if (!firstRefresh) {
       sessionStorage.setItem("firstRefresh", "true");
       window.location.reload();
-      return; // Prevent further execution on the first load
+      return;
     }
 
     // Check for candidate data in sessionStorage
@@ -20,7 +20,6 @@ const Profile = () => {
     if (storedUserData) {
       setUserData(JSON.parse(storedUserData));
     } else {
-      // Redirect to the sign-in page if no user data exists
       navigate("/signin");
     }
   }, [navigate]);
@@ -28,6 +27,7 @@ const Profile = () => {
   if (!userData) return <div>Loading...</div>;
 
   const defaultProfilePicture = "profile.jpg";
+
   const profileImage = userData.profile_picture
     ? `http://localhost:8000${userData.profile_picture}`
     : defaultProfilePicture;

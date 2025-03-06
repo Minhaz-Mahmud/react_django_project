@@ -99,7 +99,11 @@ const PostedJobs = () => {
                         <div className="job-card-header mb-3">
                           <h5 className="job-title">{job.title}</h5>
                         </div>
+
                         <div className="job-card-body">
+                          <p className="job-id text-muted">
+                            Job id: {job.id}
+                          </p>
                           <div className="job-details">
                             <div className="job-detail-item">
                               <span className="detail-label">Location:</span>

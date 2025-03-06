@@ -67,6 +67,7 @@ urlpatterns = [
     path("api/", include("mail.urls")),
     path("api/", include("numerics.urls")),
     path("api/", include("job_post.urls")),
+    path("api/", include("apply.urls")),
 ]
 
 

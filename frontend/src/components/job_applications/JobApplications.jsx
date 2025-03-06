@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./JobApplications.css";
 
 const ApplicationFeed = () => {
@@ -19,6 +18,9 @@ const ApplicationFeed = () => {
   const [emailData, setEmailData] = useState({
     candidateEmail: "",
     message: "",
+    jobId: "",
+    candidateId: "",
+    companyId: "",
   });
 
   useEffect(() => {
@@ -52,6 +54,29 @@ const ApplicationFeed = () => {
       console.error("Error fetching applications:", error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const getCandidateDetails = async (candidateId) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/candidate/details/${candidateId}/`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch candidate details.");
+      }
+      const data = await response.json();
+
+      // Store the candidate's email in the state
+      setEmailData((prevData) => ({
+        ...prevData,
+        candidateEmail: data.email,
+      }));
+
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching candidate details:", error);
+      toast.error("Error fetching candidate details.");
     }
   };
 
@@ -103,7 +128,13 @@ const ApplicationFeed = () => {
 
   const closeEmailModal = () => {
     setIsModalOpen(false);
-    setEmailData({ candidateEmail: "", subject: "", message: "" });
+    setEmailData({
+      candidateEmail: "",
+      message: "",
+      jobId: "",
+      candidateId: "",
+      companyId: "",
+    });
   };
 
   const handleSendEmail = async (e) => {
@@ -140,7 +171,7 @@ const ApplicationFeed = () => {
         <div className="col-12">
           <div className="card shadow-sm">
             <div className="card-header text-dark">
-              <h4 className="mb-0">Applications for Company ID: {companyId}</h4>
+              <h4 className="mb-0">Applications for your job posts</h4>
             </div>
             <div className="card-body">
               {loading ? (
@@ -189,14 +220,15 @@ const ApplicationFeed = () => {
                             </button>
                             <button
                               className="btn btn-sm btn-outline-success"
-                              onClick={() =>
+                              onClick={() => {
+                                getCandidateDetails(app.candidate_id);
                                 openEmailModal(
                                   app.candidate__email,
                                   app.job_id,
                                   app.candidate_id,
                                   companyId
-                                )
-                              }
+                                );
+                              }}
                             >
                               Send Email
                             </button>
@@ -248,17 +280,19 @@ const ApplicationFeed = () => {
       <Modal
         isOpen={isModalOpen}
         onRequestClose={closeEmailModal}
-        className="modal-dialog modal-dialog-centered"
+        className="send-email-modal modal-dialog modal-dialog-centered"
         overlayClassName="modal-overlay"
       >
-        <div className="modal-content">
+        <div className="modal-content send-email-modal-div">
           <div className="modal-header bg-primary text-white">
             <h5 className="modal-title">Send Email</h5>
             <button
               type="button"
               className="btn-close btn-close-white"
               onClick={closeEmailModal}
-            ></button>
+            >
+              X
+            </button>
           </div>
           <div className="modal-body">
             <form onSubmit={handleSendEmail}>

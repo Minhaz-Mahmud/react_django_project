@@ -1,7 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  LineChart,
+  Line,
+  PieChart,
+  Pie,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 import CompanyProfile from "../company_profile/company_profile";
 import JobPost from "../dashboard_components/job_post/JobPost";
 import PostedJobs from "../dashboard_components/posted_jobs/PostedJobs";
@@ -10,56 +25,256 @@ import CompanyMap from "../company_maps/CompanyMapUpdate";
 import JobApplications from "../job_applications/JobApplications";
 import ActiveRecruit from "../dashboard_components/active_recruit/ActiveRecruit";
 
-const SummaryCard = ({ title, value, bgColor }) => (
-  <div className={`card ${bgColor} text-white mb-4`}>
+// SummaryCard component
+const SummaryCard = ({ title, value, bgColor, icon, data, lineColor }) => (
+  <div className={`card ${bgColor} text-white mb-4 shadow-lg`}>
     <div className="card-body">
-      <h5 className="card-title">{title}</h5>
-      <h2>{value}</h2>
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h6 className="card-title mb-1">{title}</h6>
+          <h2 className="mb-0 font-weight-bold">{value}</h2>
+        </div>
+        <div className="text-white-50">{icon}</div>
+      </div>
+      <div style={{ height: "60px" }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data}>
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke={lineColor}
+              strokeWidth={2}
+              dot={false}
+              isAnimationActive={true}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   </div>
 );
 
-// Component for the main content area
-const MainContent = ({ activeComponent }) => {
+const MainContent = ({ activeComponent, counts }) => {
+  // Generate trend data for each card
+  const generateTrendData = (baseValue, trend) => {
+    return Array(6)
+      .fill()
+      .map((_, i) => ({
+        name: i,
+        value: Math.max(0, Math.round(baseValue * trend[i])),
+      }));
+  };
+
+  // Trend data for each summary card
+  const jobPostsData = generateTrendData(
+    counts.job_posts_count,
+    [0.7, 0.75, 0.8, 0.85, 0.95, 1.0]
+  );
+  const applicationsData = generateTrendData(
+    counts.applications_count,
+    [0.5, 0.6, 0.75, 0.9, 0.95, 1.0]
+  );
+  const appliesData = generateTrendData(
+    counts.apply_count,
+    [0.6, 0.65, 0.7, 0.8, 0.9, 1.0]
+  );
+
+  // Data for pie chart
+  const pieData = [
+    { name: "Job Posts", value: counts.job_posts_count, fill: "#1a237e" },
+    { name: "Mailed", value: counts.applications_count, fill: "#006064" },
+    { name: "Applications", value: counts.apply_count, fill: "#e65100" },
+  ];
+
   const components = {
     dashboard: (
-      <div>
-        <h2 className="text-light">Dashboard</h2>
+      <div className="dashboard-container">
+        <div className="d-flex justify-content-between align-items-center mb-4">
+          <h2 className="text-light">Recruitment Performance</h2>
+        </div>
+
+        {/* Summary Cards Row with Embedded Charts */}
         <div className="row">
-          <div className="col-6 col-md-3">
+          <div className="col-md-4 mb-4">
             <SummaryCard
-              title="Members online"
-              value="9,823"
-              bgColor="bg-primary"
+              title="Job Posts"
+              value={counts.job_posts_count}
+              bgColor="bg-dark"
+              lineColor="#8c9eff"
+              data={jobPostsData}
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+              }
             />
           </div>
-          <div className="col-6 col-md-3">
+
+          <div className="col-md-4 mb-4">
             <SummaryCard
-              title="Members online"
-              value="9,823"
-              bgColor="bg-info"
+              title="Applications"
+              value={counts.apply_count}
+              bgColor="bg-dark"
+              lineColor="#ffcc80"
+              data={appliesData}
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              }
             />
           </div>
-          <div className="col-6 col-md-3">
+
+          <div className="col-md-4 mb-4">
             <SummaryCard
-              title="Members online"
-              value="9,823"
-              bgColor="bg-warning"
-            />
-          </div>
-          <div className="col-6 col-md-3">
-            <SummaryCard
-              title="Members online"
-              value="9,823"
-              bgColor="bg-danger"
+              title="Mailed"
+              value={counts.applications_count}
+              bgColor="bg-dark"
+              lineColor="#80deea"
+              data={applicationsData}
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="7" r="4"></circle>
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                </svg>
+              }
             />
           </div>
         </div>
-        <div className="card mt-4">
-          <div className="card-body">
-            <h3>Traffic</h3>
-            <p className="text-muted">November 2017</p>
-            <div className="text-center p-5 text-muted">Chart Placeholder</div>
+
+        {/* Main Performance Chart */}
+        <div className="row">
+          {/* Recruitment Funnel Chart */}
+          <div className="col-lg-4 mb-4">
+            <div className="card shadow-lg bg-white">
+              <div className="card-header bg-dark text-white">
+                <h5 className="card-title mb-0">Recruitment Funnel</h5>
+              </div>
+              <div className="card-body d-flex justify-content-center align-items-center">
+                <ResponsiveContainer width="100%" height={300}>
+                  <PieChart>
+                    <Pie
+                      data={pieData}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius={60}
+                      outerRadius={100}
+                      paddingAngle={5}
+                      dataKey="value"
+                      label={({ name, percent }) =>
+                        `${name} ${(percent * 100).toFixed(0)}%`
+                      }
+                      labelLine={false}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#343a40",
+                        color: "#fff",
+                        borderRadius: "5px",
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
+          {/* Bar Chart */}
+          <div className="col-lg-4 mb-4">
+            <div className="card shadow-lg bg-white">
+              <div className="card-header bg-dark text-white">
+                <h5 className="card-title mb-0">Summary Bar Chart</h5>
+              </div>
+              <div className="card-body">
+                <ResponsiveContainer width="100%" height={300}>
+                  <BarChart
+                    data={pieData}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#343a40",
+                        color: "#fff",
+                        borderRadius: "5px",
+                      }}
+                    />
+                    <Legend />
+                    <Bar dataKey="value" fill="#8884d8" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+          </div>
+
+          {/* Line Chart */}
+          <div className="col-lg-4 mb-4">
+            <div className="card shadow-lg bg-white">
+              <div className="card-header bg-dark text-white">
+                <h5 className="card-title mb-0">Trend Summary</h5>
+              </div>
+              <div className="card-body">
+                <ResponsiveContainer width="100%" height={300}>
+                  <LineChart
+                    data={pieData}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip
+                      contentStyle={{
+                        backgroundColor: "#343a40",
+                        color: "#fff",
+                        borderRadius: "5px",
+                      }}
+                    />
+                    <Legend />
+                    <Line
+                      type="monotone"
+                      dataKey="value"
+                      stroke="#8884d8"
+                      strokeWidth={2}
+                      dot={false}
+                      isAnimationActive={true}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -102,6 +317,11 @@ const MainContent = ({ activeComponent }) => {
 const CompanyDashboard = () => {
   const [activeComponent, setActiveComponent] = useState("dashboard");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [counts, setCounts] = useState({
+    job_posts_count: 0,
+    applications_count: 0,
+    apply_count: 0,
+  });
   const navigate = useNavigate();
 
   const companyData = sessionStorage.getItem("companyData");
@@ -114,6 +334,40 @@ const CompanyDashboard = () => {
       sessionStorage.setItem("firstRefresh", "true");
     } else if (!companyData) navigate("/company-signin");
   }, [navigate]);
+
+  useEffect(() => {
+    fetchCounts();
+  }, []);
+
+  const fetchCounts = async () => {
+    try {
+      const companyData = JSON.parse(sessionStorage.getItem("companyData"));
+
+      if (!companyData || !companyData.id) {
+        console.error("Company data not found in sessionStorage.");
+        return;
+      }
+
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/sum/count/company/dashboard?company_id=${companyData.id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setCounts(data);
+    } catch (error) {
+      console.error("Error fetching counts:", error);
+    }
+  };
 
   const handleComponentChange = (component) => {
     setActiveComponent(component);
@@ -223,7 +477,7 @@ const CompanyDashboard = () => {
 
         {/* Main content */}
         <div className="company-dash-content-div col-12 col-md-10 p-4">
-          <MainContent activeComponent={activeComponent} />
+          <MainContent activeComponent={activeComponent} counts={counts} />
         </div>
       </div>
     </div>

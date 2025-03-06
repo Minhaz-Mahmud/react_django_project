@@ -19,4 +19,4 @@ class Application_Mail(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Application by {self.candidate.name} for {self.job_post.title}"
+        return f"Application by {self.candidate.full_name} for {self.job_post.title}"

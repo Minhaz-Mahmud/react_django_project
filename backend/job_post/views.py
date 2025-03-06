@@ -197,3 +197,4 @@ class UpdateActiveRecruitmentStatusView(APIView):
             {"message": "Recruitment status updated successfully."},
             status=status.HTTP_200_OK,
         )
+

@@ -616,6 +616,14 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
         "label": "include",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -661,6 +669,14 @@
         "description": "django.urls",
         "isExtraImport": true,
         "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
         "documentation": {}
     },
     {
@@ -1177,6 +1193,46 @@
         "documentation": {}
     },
     {
+        "label": "candidate_details",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "ApplyToJobView",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyApplicationsAPIView",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "candidate_details",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "ApplicationDeleteView",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
         "label": "api_view",
         "importPath": "rest_framework.decorators",
         "description": "rest_framework.decorators",
@@ -1190,6 +1246,14 @@
         "description": "rest_framework.decorators",
         "isExtraImport": true,
         "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "Apply",
+        "importPath": "apply.models",
+        "description": "apply.models",
+        "isExtraImport": true,
+        "detail": "apply.models",
         "documentation": {}
     },
     {
@@ -1442,38 +1506,6 @@
         "documentation": {}
     },
     {
-        "label": "ApplyToJobView",
-        "importPath": "apply.views",
-        "description": "apply.views",
-        "isExtraImport": true,
-        "detail": "apply.views",
-        "documentation": {}
-    },
-    {
-        "label": "CompanyApplicationsAPIView",
-        "importPath": "apply.views",
-        "description": "apply.views",
-        "isExtraImport": true,
-        "detail": "apply.views",
-        "documentation": {}
-    },
-    {
-        "label": "candidate_details",
-        "importPath": "apply.views",
-        "description": "apply.views",
-        "isExtraImport": true,
-        "detail": "apply.views",
-        "documentation": {}
-    },
-    {
-        "label": "ApplicationDeleteView",
-        "importPath": "apply.views",
-        "description": "apply.views",
-        "isExtraImport": true,
-        "detail": "apply.views",
-        "documentation": {}
-    },
-    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -1692,7 +1724,15 @@
         "documentation": {}
     },
     {
-        "label": "GetTotalsView",
+        "label": "GetTotalCountsWeb",
+        "importPath": "numerics.views",
+        "description": "numerics.views",
+        "isExtraImport": true,
+        "detail": "numerics.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetTotalCountCompDash",
         "importPath": "numerics.views",
         "description": "numerics.views",
         "isExtraImport": true,
@@ -1705,6 +1745,14 @@
         "description": "django.views",
         "isExtraImport": true,
         "detail": "django.views",
+        "documentation": {}
+    },
+    {
+        "label": "Application_Mail",
+        "importPath": "mail.models",
+        "description": "mail.models",
+        "isExtraImport": true,
+        "detail": "mail.models",
         "documentation": {}
     },
     {
@@ -1944,11 +1992,20 @@
         "documentation": {}
     },
     {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.apply.urls",
+        "description": "backend.apply.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\n        \"candidate/details/<int:candidate_id>/\",\n        candidate_details,\n        name=\"candidate-details\",\n    ),\n]",
+        "detail": "backend.apply.urls",
+        "documentation": {}
+    },
+    {
         "label": "ApplyToJobView",
         "kind": 6,
         "importPath": "backend.apply.views",
         "description": "backend.apply.views",
-        "peekOfCode": "class ApplyToJobView(APIView):\n    def post(self, request, *args, **kwargs):\n        candidate_id = request.data.get(\"candidate_id\")\n        company_id = request.data.get(\"company_id\")\n        job_id=request.data.get(\"job_id\")\n        job_title=request.data.get(\"job_title\")\n        # Directly create the application without any checks\n        Apply.objects.create(candidate_id=candidate_id, company_id=company_id,job_id=job_id,job_title=job_title)\n        return Response(\n            {\"message\": \"Application submitted successfully!\"},",
+        "peekOfCode": "class ApplyToJobView(APIView):\n    def post(self, request, *args, **kwargs):\n        candidate_id = request.data.get(\"candidate_id\")\n        company_id = request.data.get(\"company_id\")\n        job_id = request.data.get(\"job_id\")\n        job_title = request.data.get(\"job_title\")\n        # Directly create the application without any checks\n        Apply.objects.create(\n            candidate_id=candidate_id,\n            company_id=company_id,",
         "detail": "backend.apply.views",
         "documentation": {}
     },
@@ -1957,7 +2014,7 @@
         "kind": 6,
         "importPath": "backend.apply.views",
         "description": "backend.apply.views",
-        "peekOfCode": "class ApplicationPagination(PageNumberPagination):\n    page_size = 5  # Number of applications per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass CompanyApplicationsAPIView(APIView):\n    pagination_class = ApplicationPagination\n    def get(self, request, company_id, *args, **kwargs):\n        applications = Apply.objects.filter(company_id=company_id).values(\n            \"id\", \"candidate__full_name\", \"job_id\", \"job_title\", \"time\",\"candidate_id\",\n        )",
+        "peekOfCode": "class ApplicationPagination(PageNumberPagination):\n    page_size = 5  # Number of applications per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass CompanyApplicationsAPIView(APIView):\n    pagination_class = ApplicationPagination\n    def get(self, request, company_id, *args, **kwargs):\n        applications = Apply.objects.filter(company_id=company_id).values(\n            \"id\",\n            \"candidate__full_name\",",
         "detail": "backend.apply.views",
         "documentation": {}
     },
@@ -1966,7 +2023,7 @@
         "kind": 6,
         "importPath": "backend.apply.views",
         "description": "backend.apply.views",
-        "peekOfCode": "class CompanyApplicationsAPIView(APIView):\n    pagination_class = ApplicationPagination\n    def get(self, request, company_id, *args, **kwargs):\n        applications = Apply.objects.filter(company_id=company_id).values(\n            \"id\", \"candidate__full_name\", \"job_id\", \"job_title\", \"time\",\"candidate_id\",\n        )\n        if applications.exists():\n            paginator = self.pagination_class()\n            paginated_apps = paginator.paginate_queryset(applications, request, view=self)\n            return paginator.get_paginated_response(paginated_apps)",
+        "peekOfCode": "class CompanyApplicationsAPIView(APIView):\n    pagination_class = ApplicationPagination\n    def get(self, request, company_id, *args, **kwargs):\n        applications = Apply.objects.filter(company_id=company_id).values(\n            \"id\",\n            \"candidate__full_name\",\n            \"job_id\",\n            \"job_title\",\n            \"time\",\n            \"candidate_id\",",
         "detail": "backend.apply.views",
         "documentation": {}
     },
@@ -1984,7 +2041,7 @@
         "kind": 2,
         "importPath": "backend.apply.views",
         "description": "backend.apply.views",
-        "peekOfCode": "def candidate_details(request, candidate_id):\n    candidate = get_object_or_404(Candidate, id=candidate_id)\n    data = {\n        \"full_name\": candidate.full_name,\n        \"email\": candidate.email,\n        \"phone_number\": candidate.phone_number,\n        \"location\": candidate.location,\n        \"skills\": candidate.skills.split(\",\") if candidate.skills else [],\n        \"resume\": candidate.resume.url if candidate.resume else None,\n        \"profile_picture\": candidate.profile_picture.url if candidate.profile_picture else None,",
+        "peekOfCode": "def candidate_details(request, candidate_id):\n    candidate = get_object_or_404(Candidate, id=candidate_id)\n    data = {\n        \"full_name\": candidate.full_name,\n        \"email\": candidate.email,\n        \"phone_number\": candidate.phone_number,\n        \"location\": candidate.location,\n        \"skills\": candidate.skills.split(\",\") if candidate.skills else [],\n        \"resume\": candidate.resume.url if candidate.resume else None,\n        \"profile_picture\": (",
         "detail": "backend.apply.views",
         "documentation": {}
     },
@@ -2695,16 +2752,25 @@
         "kind": 5,
         "importPath": "backend.numerics.urls",
         "description": "backend.numerics.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"sum/total/numbers\", GetTotalsView.as_view(), name=\"get_totals_view\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"sum/total/numbers\", GetTotalCountsWeb.as_view(), name=\"get_totals_view\"),\n    path(\"sum/count/company/dashboard\", GetTotalCountCompDash.as_view(), name=\"get_company_dash_count\"),\n]",
         "detail": "backend.numerics.urls",
         "documentation": {}
     },
     {
-        "label": "GetTotalsView",
+        "label": "GetTotalCountsWeb",
         "kind": 6,
         "importPath": "backend.numerics.views",
         "description": "backend.numerics.views",
-        "peekOfCode": "class GetTotalsView(View):\n    def get(self, request, *args, **kwargs):\n        try:\n            total_job_posts = JobPost.objects.count()\n            total_candidates = Candidate.objects.count()\n            total_companies = Company.objects.count()\n            data = {\n                \"total_job_posts\": total_job_posts,\n                \"total_candidates\": total_candidates,\n                \"total_companies\": total_companies,",
+        "peekOfCode": "class GetTotalCountsWeb(View):\n    def get(self, request, *args, **kwargs):\n        try:\n            total_job_posts = JobPost.objects.count()\n            total_candidates = Candidate.objects.count()\n            total_companies = Company.objects.count()\n            data = {\n                \"total_job_posts\": total_job_posts,\n                \"total_candidates\": total_candidates,\n                \"total_companies\": total_companies,",
+        "detail": "backend.numerics.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetTotalCountCompDash",
+        "kind": 6,
+        "importPath": "backend.numerics.views",
+        "description": "backend.numerics.views",
+        "peekOfCode": "class GetTotalCountCompDash(APIView):\n    def get(self, request, *args, **kwargs):\n        try:\n            company_id = request.GET.get(\"company_id\")\n            if not company_id:\n                return JsonResponse({\"error\": \"Company ID is required\"}, status=400)\n            job_posts_count = JobPost.objects.filter(company_id=company_id).count()\n            applications_count = Application_Mail.objects.filter(\n                company_id=company_id\n            ).count()",
         "detail": "backend.numerics.views",
         "documentation": {}
     },
