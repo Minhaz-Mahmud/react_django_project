@@ -91,19 +91,16 @@ const PostedJobs = () => {
             </div>
           ) : (
             <div>
-              <div className="jobs-grid row g-4">
+              <div className="jobs-list">
                 {currentJobs.map((job) => (
-                  <div key={job.id} className="col-12 col-md-6 col-lg-4">
-                    <div className="job-card-container">
-                      <div className="job-card p-4 border rounded shadow-sm">
-                        <div className="job-card-header mb-3">
-                          <h5 className="job-title">{job.title}</h5>
-                        </div>
+                  <div key={job.id} className="job-row">
+                    <div className="job-card p-4 border rounded shadow-sm">
+                      <div className="job-card-header mb-3">
+                        <h5 className="job-title">{job.title}</h5>
+                      </div>
 
-                        <div className="job-card-body">
-                          <p className="job-id text-muted">
-                            Job id: {job.id}
-                          </p>
+                      <div className="job-card-body">
+                        <div className="job-info-grid">
                           <div className="job-details">
                             <div className="job-detail-item">
                               <span className="detail-label">Location:</span>
@@ -130,23 +127,26 @@ const PostedJobs = () => {
                               </span>
                             </div>
                           </div>
-                          <div className="job-description mt-3">
-                            <p className="text-muted">{job.description}</p>
-                          </div>
-                          <div className="job-tags mt-2">
-                            <span className="badge bg-secondary me-2">
-                              {job.tags}
-                            </span>
+                          <div className="job-description">
+                            <p className="text-muted description-text">
+                              {job.description}
+                            </p>
                           </div>
                         </div>
-                        <div className="job-card-footer mt-3">
-                          <button
-                            className="btn btn-danger job-delete-btn w-100"
-                            onClick={() => handleDeleteJob(job.id)}
-                          >
-                            <i className="bi bi-trash me-2"></i>Delete Job
-                          </button>
+
+                        <div className="job-tags mt-2">
+                          <span className="badge bg-secondary me-2">
+                            {job.tags}
+                          </span>
                         </div>
+                      </div>
+                      <div className="job-card-footer mt-3">
+                        <button
+                          className="btn btn-danger job-delete-btn"
+                          onClick={() => handleDeleteJob(job.id)}
+                        >
+                          <i className="bi bi-trash me-2"></i>Delete Job
+                        </button>
                       </div>
                     </div>
                   </div>

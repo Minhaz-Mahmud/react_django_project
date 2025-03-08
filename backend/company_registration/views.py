@@ -97,3 +97,16 @@ class GetCompanyActiveRecruit(APIView):
     def get(self, request):
         company = Company.objects.get(email=request.data.get("email"))
         recruit = company.recruit_set.filter(status="active")
+
+
+class GetCompanyDetailView(APIView):
+    def get(self, request, company_id):
+        try:
+            company = Company.objects.get(id=company_id)
+            serializer = CompanySerializer(company)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Company.DoesNotExist:
+            return Response(
+                {"error": "Company not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )

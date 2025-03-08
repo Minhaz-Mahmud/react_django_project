@@ -47,6 +47,7 @@ const ApplicationFeed = () => {
         throw new Error("Failed to fetch applications.");
       }
       const data = await response.json();
+      console.log(data);
       setApplications(data.results || []);
       setHasNextPage(!!data.next);
       setHasPreviousPage(!!data.previous);
@@ -72,8 +73,6 @@ const ApplicationFeed = () => {
         ...prevData,
         candidateEmail: data.email,
       }));
-
-      console.log(data);
     } catch (error) {
       console.error("Error fetching candidate details:", error);
       toast.error("Error fetching candidate details.");
@@ -160,6 +159,60 @@ const ApplicationFeed = () => {
     }
   };
 
+  const handleStatusChange = async (e, applicationId) => {
+    const newStatus = e.target.value;
+    setApplications((prevApplications) =>
+      prevApplications.map((app) =>
+        app.id === applicationId ? { ...app, status: newStatus } : app
+      )
+    );
+    try {
+      await setApplicationResponse(applicationId, newStatus);
+    } catch (error) {
+      console.error("Failed to update status:", error);
+      toast.error("Failed to update application status");
+    }
+  };
+
+  const setApplicationResponse = async (applicationId, newStatus) => {
+    try {
+      const requestData = {
+        application_id: applicationId,
+        response: newStatus,
+      };
+
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/applications/update-response/",
+        requestData
+      );
+
+      if (response.status === 200) {
+        toast.success("Response updated successfully.");
+        setApplications((prevApplications) =>
+          prevApplications.map((app) =>
+            app.id === applicationId
+              ? { ...app, status: newStatus, showSetResponseButton: false }
+              : app
+          )
+        );
+      } else {
+        throw new Error(
+          `Failed to update response. Status: ${response.status}`
+        );
+      }
+    } catch (error) {
+      console.error("Error updating response:", error);
+      console.error(
+        "Error details:",
+        error.response?.data || "No response data"
+      );
+      toast.error(
+        "Error updating response: " +
+          (error.response?.data?.error || error.message)
+      );
+    }
+  };
+
   return (
     <div className="container-fluid bg-light py-4">
       <ToastContainer
@@ -170,7 +223,7 @@ const ApplicationFeed = () => {
       <div className="row">
         <div className="col-12">
           <div className="card shadow-sm">
-            <div className="card-header text-dark">
+            <div className="card-header text-light">
               <h4 className="mb-0">Applications for your job posts</h4>
             </div>
             <div className="card-body">
@@ -204,6 +257,7 @@ const ApplicationFeed = () => {
                             </p>
                           </div>
                           <div className="btn-group" role="group">
+                            {/* View Details Button */}
                             <button
                               className="btn btn-sm btn-outline-primary"
                               onClick={() =>
@@ -212,12 +266,16 @@ const ApplicationFeed = () => {
                             >
                               View Details
                             </button>
+
+                            {/* Delete Button */}
                             <button
                               className="btn btn-sm btn-outline-danger"
                               onClick={() => deleteApplication(app.id)}
                             >
                               Delete
                             </button>
+
+                            {/* Send Email Button */}
                             <button
                               className="btn btn-sm btn-outline-success"
                               onClick={() => {
@@ -232,6 +290,38 @@ const ApplicationFeed = () => {
                             >
                               Send Email
                             </button>
+
+                            {/* dropdown menu for status */}
+                            <div className="dropdown">
+                              <select
+                                className="form-select form-select-sm"
+                                value={
+                                  app.application_response ||
+                                  "Application Submitted"
+                                } // Use `application_response`
+                                onChange={(e) => handleStatusChange(e, app.id)}
+                              >
+                                <option value="Application Submitted">
+                                  Application Submitted
+                                </option>
+                                <option value="Under Review">
+                                  Under Review
+                                </option>
+                                <option value="Interview Scheduled">
+                                  Interview Scheduled
+                                </option>
+                                <option value="Shortlisted">Shortlisted</option>
+                                <option value="Rejected">Rejected</option>
+                              </select>
+                              {app.showSetResponseButton && (
+                                <button
+                                  className="btn btn-sm btn-outline-primary mt-2"
+                                  onClick={() => setApplicationResponse(app.id)}
+                                >
+                                  Set Response
+                                </button>
+                              )}
+                            </div>
                           </div>
                         </div>
                       ))}

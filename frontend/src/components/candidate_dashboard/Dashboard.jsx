@@ -6,6 +6,8 @@ import { useNavigate, Link } from "react-router-dom";
 import Profile from "../profile/Profile";
 import "./Dashboard.css";
 import Update from "../profile/Update";
+import AppliedJobs from "../candidate_dashboard/cand_applied_jobs/AppliedJobs";
+import ResumeBuilder from "../resume/ResumeBuilder";
 
 // Component for the summary cards at the top
 const SummaryCard = ({ title, value, bgColor }) => (
@@ -73,6 +75,16 @@ const MainContent = ({ activeComponent }) => {
         <Update />
       </div>
     ),
+    Cand_Applied_jobs: (
+      <div>
+        <AppliedJobs />
+      </div>
+    ),
+    Resume_Builder: (
+      <div>
+        <ResumeBuilder />
+      </div>
+    ),
   };
 
   return components[activeComponent] || <div>Select a component</div>;
@@ -80,6 +92,7 @@ const MainContent = ({ activeComponent }) => {
 
 const Dashboard = () => {
   const [activeComponent, setActiveComponent] = useState("dashboard");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
   const storedUserData = sessionStorage.getItem("candidateData");
@@ -95,32 +108,53 @@ const Dashboard = () => {
     }
   }, [navigate, storedUserData, firstRefresh]);
 
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="candidate-dash-div container-fluid bg-primary">
+    <div className="candidate-dash-div container-fluid">
+      {/* Mobile Menu Toggle */}
+      {!isSidebarOpen ? (
+        <button
+          className="candidate-sidebar-mobile-toggle d-md-none"
+          onClick={toggleSidebar}
+        >
+          ☰ Menu
+        </button>
+      ) : (
+        <button
+          className="candidate-sidebar-mobile-close d-md-none"
+          onClick={toggleSidebar}
+        >
+          ✕ Close
+        </button>
+      )}
+
       <div className="row">
         {/* Sidebar */}
-        <div className="candidate-dash-sidebar-div col-md-2 bg-dark min-vh-100 text-white p-0">
-          <div className="p-3 border-bottom">
-            {/* take name from the companyData sessionStorage and display it */}
-            <h5 className="text-white">COREUI</h5>
-          </div>
+        <div
+          className={`candidate-dash-sidebar-div col-md-2 bg-dark min-vh-100 text-white p-0 
+            ${isSidebarOpen ? "mobile-sidebar-open" : "mobile-sidebar-closed"}`}
+        >
+          <div className="p-2 border-bottom"></div>
 
           <div className="nav flex-column">
             <div className="p-3 border-bottom">
               <h6 className="text">MAIN</h6>
               {/* dashboard */}
               <button
-                className={`btn btn-link text-white text-decoration-none ${
+                className={`nav-button ${
                   activeComponent === "dashboard" ? "active" : ""
                 }`}
                 onClick={() => setActiveComponent("dashboard")}
               >
                 Dashboard
               </button>
-              <br />
+
               {/* Comp_Profile */}
               <button
-                className={`btn btn-link text-white text-decoration-none ${
+                className={`nav-button ${
                   activeComponent === "Cand_Profile" ? "active" : ""
                 }`}
                 onClick={() => setActiveComponent("Cand_Profile")}
@@ -128,8 +162,9 @@ const Dashboard = () => {
                 Candidate Profile
               </button>
 
+              {/* Update_Profile */}
               <button
-                className={`btn btn-link text-white text-decoration-none ${
+                className={`nav-button ${
                   activeComponent === "Update_Profile" ? "active" : ""
                 }`}
                 onClick={() => setActiveComponent("Update_Profile")}
@@ -141,22 +176,30 @@ const Dashboard = () => {
             <div className="p-3">
               <h6 className="text-light">OTHERS</h6>
               {/* generate resume */}
-              <Link
-                to="/candidate/build/resume"
-                className={`btn btn-link text-white text-decoration-none ${
-                  activeComponent === "resume" ? "active" : ""
+              <button
+                className={`nav-button ${
+                  activeComponent === "Resume_Builder" ? "active" : ""
                 }`}
+                onClick={() => setActiveComponent("Resume_Builder")}
               >
-                🆕 Generate Resume
-              </Link>
+                Generate Resume 🆕
+              </button>
+
+              {/* Cand_Applied_jobs */}
+              <button
+                className={`nav-button ${
+                  activeComponent === "Cand_Applied_jobs" ? "active" : ""
+                }`}
+                onClick={() => setActiveComponent("Cand_Applied_jobs")}
+              >
+                Applied Jobs
+              </button>
             </div>
           </div>
         </div>
 
         {/* Main content */}
-        <div className="candidate-dash-content-div col-md-10 p-4 bg-white mt-4">
-          <br />
-          <br />
+        <div className="candidate-dash-content-div col-md-10 p-4 mt-4">
           <MainContent activeComponent={activeComponent} />
         </div>
       </div>

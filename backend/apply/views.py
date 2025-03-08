@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from apply.models import Apply
@@ -9,11 +7,10 @@ from rest_framework.pagination import PageNumberPagination
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Apply
-from registration.models import Candidate
-from company_registration.models import Company
+from job_post.models import JobPost
+from django.views import View
+from django.shortcuts import render
+from django.db import connection
 
 
 class ApplyToJobView(APIView):
@@ -54,6 +51,7 @@ class CompanyApplicationsAPIView(APIView):
             "job_title",
             "time",
             "candidate_id",
+            "application_response",
         )
 
         if applications.exists():
@@ -98,4 +96,86 @@ class ApplicationDeleteView(APIView):
             return Response(
                 {"error": "Application not found."},
                 status=status.HTTP_404_NOT_FOUND,
+            )
+
+
+def get_candidate_applied_jobs(request, candidate_id):
+    """
+    SQL JOIN query.
+    combines data from Apply, JobPost, and Company models.
+    """
+    with connection.cursor() as cursor:
+        cursor.execute(
+            """
+            SELECT 
+                a.id AS apply_id,
+                a.time AS applied_time,
+                a.job_id,
+                a.company_id as company_id,
+                a.application_response as Application_response,
+                j.title AS job_title,
+                j.job_location,
+                j.job_type,
+                j.salary_range,
+                j.job_time,
+                j.description AS job_description,
+                c.name AS company_name,
+                c.email AS company_email,
+                c.phone_number AS Phone,
+                c.location AS company_location,
+                c.website AS company_website,
+                c.company_type
+            FROM 
+                apply a
+            JOIN 
+                job_post_jobpost j ON a.job_id = j.id
+            JOIN 
+                company_registration_company c ON a.company_id = c.id
+            WHERE 
+                a.candidate_id = %s
+            ORDER BY 
+                a.time DESC
+        """,
+            [candidate_id],
+        )
+
+        # Convert query results to a list of dictionaries
+        columns = [col[0] for col in cursor.description]
+        applied_jobs = [dict(zip(columns, row)) for row in cursor.fetchall()]
+
+    return JsonResponse({"applied_jobs": applied_jobs})
+
+
+def applied_jobs_view(request):
+    return render(request, "applied_jobs.html")
+
+
+class UpdateApplicationResponse(APIView):
+    def post(self, request):
+        application_id = request.data.get("application_id")
+        new_response = request.data.get("response")
+
+        if not application_id or not new_response:
+            return Response(
+                {"error": "Application ID and response are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            application = Apply.objects.get(id=application_id)
+            application.application_response = new_response
+            application.save()
+            return Response(
+                {"message": "Response updated successfully."},
+                status=status.HTTP_200_OK,
+            )
+        except Apply.DoesNotExist:
+            return Response(
+                {"error": f"Application not found with id {application_id}."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        except Exception as e:
+            return Response(
+                {"error": str(e)},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )

@@ -39,26 +39,22 @@
   font-size: 1.2rem;
 }
 
-/* Jobs Grid */
-.jobs-grid {
+/* Jobs List - One job per row */
+.jobs-list {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 1.5rem;
 }
 
-/* Job Card Styles */
-.job-card-container {
-  transition: transform 0.3s ease;
-}
-
-.job-card-container:hover {
-  transform: translateY(-10px);
+.job-row {
+  width: 100%;
 }
 
 .job-card {
   background-color: #ffffff;
   border: 1px solid #e9ecef !important;
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .job-card:hover {
@@ -73,6 +69,14 @@
 .job-title {
   color: #343a40;
   font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+/* Two column layout for job details and description */
+.job-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
 }
 
 .job-details {
@@ -84,6 +88,7 @@
 .job-detail-item {
   display: flex;
   flex-direction: column;
+  margin-bottom: 0.5rem;
 }
 
 .detail-label {
@@ -98,8 +103,15 @@
 }
 
 .job-description {
+  padding-left: 1rem;
+  border-left: 1px solid #e9ecef;
+}
+
+.description-text {
   font-size: 0.9rem;
   color: #6c757d;
+  white-space: pre-line;
+  overflow-wrap: break-word;
 }
 
 .job-tags .badge {
@@ -114,26 +126,44 @@
   justify-content: center;
   align-items: center;
   transition: all 0.3s ease;
+  max-width: 200px;
 }
 
 .job-delete-btn:hover {
   background-color: #c82333;
-  transform: scale(1.02);
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-  .posted-jobs-container {
-    padding: 1rem;
+@media (max-width: 992px) {
+  .job-info-grid {
+    grid-template-columns: 1fr; /* Stack on medium screens */
   }
 
   .job-details {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr; /* Keep 2 columns for job details */
+    margin-bottom: 1rem;
+  }
+
+  .job-description {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .posted-jobs-container {
+    padding: 1rem;
   }
 }
 
 @media (max-width: 576px) {
   .job-card {
     padding: 1rem !important;
+  }
+
+  .job-details {
+    grid-template-columns: 1fr; /* Stack on small screens */
   }
 }

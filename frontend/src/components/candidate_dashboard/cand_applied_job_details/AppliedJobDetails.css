@@ -1,0 +1,187 @@
+/* AppliedJobDetails.css */
+.applied-job-details-container {
+  margin-top: 100px !important;
+  margin: 0 auto;
+}
+
+.applied-job-details-main-div {
+  background-color: white;
+}
+
+/* Section styling */
+.company-details-section,
+.job-details-section {
+  border: 1px solid rgba(0, 0, 0, 0.315);
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.section-header {
+  background-color: #293f61;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px 8px 0 0;
+}
+
+.section-body {
+  padding: 20px;
+}
+
+/* Company details styling */
+.company-name {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.company-info p {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+}
+
+.company-description {
+  line-height: 1.6;
+  color: #4a4a4a;
+  text-align: justify;
+}
+
+/* Job details styling */
+.job-title {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.job-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.location-badge {
+  background-color: #e1f0ff;
+  color: #0062cc;
+}
+
+.salary-badge {
+  background-color: #e6f9e6;
+  color: #2e8b57;
+}
+
+.time-badge {
+  background-color: #f0f0f0;
+  color: #555;
+}
+
+.type-badge {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.job-description {
+  line-height: 1.6;
+  color: #4a4a4a;
+  text-align: justify;
+}
+
+.skill-tag {
+  background-color: #f8f9fa;
+  color: #333;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+  font-size: 0.85rem;
+}
+
+.posted-date {
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+}
+
+/* Empty section styling */
+.empty-section {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 30px;
+  color: #6c757d;
+  border: 1px dashed #dee2e6;
+  height: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .company-details-section,
+  .job-details-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header {
+    padding: 12px 15px;
+  }
+
+  .section-body {
+    padding: 15px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .company-details-section,
+  .job-details-section {
+    background-color: #2b2b2b;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-header {
+    background-color: #1a4c94;
+  }
+
+  .company-name,
+  .job-title {
+    color: #f1f1f1;
+  }
+
+  .company-description,
+  .job-description {
+    color: #d1d1d1;
+  }
+
+  .skill-tag {
+    background-color: #3a3a3a;
+    color: #e1e1e1;
+    border-color: #4d4d4d;
+  }
+
+  .empty-section {
+    background-color: #333;
+    border-color: #555;
+    color: #aaa;
+  }
+
+  /* Badge adjustments for dark mode */
+  .location-badge {
+    background-color: #103762;
+    color: #a7d0ff;
+  }
+
+  .salary-badge {
+    background-color: #1e4d33;
+    color: #a7e6ba;
+  }
+
+  .time-badge {
+    background-color: #3a3a3a;
+    color: #d1d1d1;
+  }
+
+  .type-badge {
+    background-color: #142a50;
+    color: #a2c5ff;
+  }
+}

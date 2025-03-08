@@ -13,17 +13,17 @@ import CompanySignin from "./components/signin/company_signin";
 import CompanyProfile from "./components/company_profile/company_profile";
 import NavbarComponent from "./components/navbar/navbar";
 import FooterComponent from "./components/footer/footer";
-import Profile from "./components/profile/Profile";
 import PrivateCompanyRoute from "./components/private_routes/PrivateCompanyRoute";
 import JobFeed from "./components/job_feed/JobFeed";
 import Feed from "./components/feed_candidate/Feed";
-import Update from "./components/profile/Update";
 import AllCompany from "./components/all_company/AllCompany";
 import JobApplications from "./components/job_applications/JobApplications";
 import CandidateDetails from "./components/profile/CandidateDetails";
 import ResumeBuilder from "./components/resume/ResumeBuilder";
 import About from "./components/home_components/about";
 import Contact from "./components/home_components/contact";
+import AppliedJobDetails from "./components/candidate_dashboard/cand_applied_job_details/AppliedJobDetails";
+import AppliedJobs from "./components/candidate_dashboard/cand_applied_jobs/AppliedJobs";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -67,6 +67,11 @@ const App = () => {
           }
         />
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
+        <Route path="/applied-jobs" element={<AppliedJobs />} />
+        <Route
+          path="/applied-job-details/:jobId/:companyId"
+          element={<AppliedJobDetails />}
+        />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
@@ -79,8 +84,6 @@ const App = () => {
           }
         />
         <Route path="/company-profile" element={<CompanyProfile />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/up_profile" element={<Update />} />
         <Route path="/job-feed" element={<JobFeed />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/all/company" element={<AllCompany />} />
@@ -95,7 +98,6 @@ const App = () => {
 
       {location.pathname !== "/company/dashboard" &&
         location.pathname !== "/dashboard" && <FooterComponent />}
-      {/* <FooterComponent /> */}
     </div>
   );
 };

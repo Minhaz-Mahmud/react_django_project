@@ -216,7 +216,47 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "connection",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -672,11 +712,11 @@
         "documentation": {}
     },
     {
-        "label": "APIView",
-        "importPath": "rest_framework.views",
-        "description": "rest_framework.views",
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
         "isExtraImport": true,
-        "detail": "rest_framework.views",
+        "detail": "django.urls",
         "documentation": {}
     },
     {
@@ -760,11 +800,11 @@
         "documentation": {}
     },
     {
-        "label": "Response",
-        "importPath": "rest_framework.response",
-        "description": "rest_framework.response",
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
         "isExtraImport": true,
-        "detail": "rest_framework.response",
+        "detail": "rest_framework.views",
         "documentation": {}
     },
     {
@@ -856,10 +896,11 @@
         "documentation": {}
     },
     {
-        "label": "status",
+        "label": "rest_framework",
+        "kind": 6,
+        "isExtraImport": true,
         "importPath": "rest_framework",
         "description": "rest_framework",
-        "isExtraImport": true,
         "detail": "rest_framework",
         "documentation": {}
     },
@@ -981,14 +1022,6 @@
         "description": "rest_framework",
         "isExtraImport": true,
         "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "Company",
-        "importPath": "company_registration.models",
-        "description": "company_registration.models",
-        "isExtraImport": true,
-        "detail": "company_registration.models",
         "documentation": {}
     },
     {
@@ -1077,14 +1110,6 @@
         "description": "company_registration.serializers",
         "isExtraImport": true,
         "detail": "company_registration.serializers",
-        "documentation": {}
-    },
-    {
-        "label": "render",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
         "documentation": {}
     },
     {
@@ -1097,6 +1122,14 @@
     },
     {
         "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
@@ -1185,15 +1218,31 @@
         "documentation": {}
     },
     {
-        "label": "Candidate",
-        "importPath": "registration.models",
-        "description": "registration.models",
+        "label": "UpdateApplicationResponse",
+        "importPath": "apply.views",
+        "description": "apply.views",
         "isExtraImport": true,
-        "detail": "registration.models",
+        "detail": "apply.views",
         "documentation": {}
     },
     {
         "label": "candidate_details",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "applied_jobs_view",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_candidate_applied_jobs",
         "importPath": "apply.views",
         "description": "apply.views",
         "isExtraImport": true,
@@ -1230,22 +1279,6 @@
         "description": "apply.views",
         "isExtraImport": true,
         "detail": "apply.views",
-        "documentation": {}
-    },
-    {
-        "label": "api_view",
-        "importPath": "rest_framework.decorators",
-        "description": "rest_framework.decorators",
-        "isExtraImport": true,
-        "detail": "rest_framework.decorators",
-        "documentation": {}
-    },
-    {
-        "label": "api_view",
-        "importPath": "rest_framework.decorators",
-        "description": "rest_framework.decorators",
-        "isExtraImport": true,
-        "detail": "rest_framework.decorators",
         "documentation": {}
     },
     {
@@ -1334,6 +1367,70 @@
         "description": "django.http",
         "isExtraImport": true,
         "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "View",
+        "importPath": "django.views",
+        "description": "django.views",
+        "isExtraImport": true,
+        "detail": "django.views",
+        "documentation": {}
+    },
+    {
+        "label": "View",
+        "importPath": "django.views",
+        "description": "django.views",
+        "isExtraImport": true,
+        "detail": "django.views",
         "documentation": {}
     },
     {
@@ -1506,6 +1603,14 @@
         "documentation": {}
     },
     {
+        "label": "GetJobDetailView",
+        "importPath": "job_post.views",
+        "description": "job_post.views",
+        "isExtraImport": true,
+        "detail": "job_post.views",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
@@ -1584,46 +1689,6 @@
         "description": "django.contrib.auth.hashers",
         "isExtraImport": true,
         "detail": "django.contrib.auth.hashers",
-        "documentation": {}
-    },
-    {
-        "label": "JobPost",
-        "importPath": "job_post.models",
-        "description": "job_post.models",
-        "isExtraImport": true,
-        "detail": "job_post.models",
-        "documentation": {}
-    },
-    {
-        "label": "JobPost",
-        "importPath": "job_post.models",
-        "description": "job_post.models",
-        "isExtraImport": true,
-        "detail": "job_post.models",
-        "documentation": {}
-    },
-    {
-        "label": "JobPost",
-        "importPath": "job_post.models",
-        "description": "job_post.models",
-        "isExtraImport": true,
-        "detail": "job_post.models",
-        "documentation": {}
-    },
-    {
-        "label": "JobPost",
-        "importPath": "job_post.models",
-        "description": "job_post.models",
-        "isExtraImport": true,
-        "detail": "job_post.models",
-        "documentation": {}
-    },
-    {
-        "label": "JobPost",
-        "importPath": "job_post.models",
-        "description": "job_post.models",
-        "isExtraImport": true,
-        "detail": "job_post.models",
         "documentation": {}
     },
     {
@@ -1740,14 +1805,6 @@
         "documentation": {}
     },
     {
-        "label": "View",
-        "importPath": "django.views",
-        "description": "django.views",
-        "isExtraImport": true,
-        "detail": "django.views",
-        "documentation": {}
-    },
-    {
         "label": "Application_Mail",
         "importPath": "mail.models",
         "description": "mail.models",
@@ -1849,6 +1906,14 @@
         "description": "reportlab.lib.units",
         "isExtraImport": true,
         "detail": "reportlab.lib.units",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
         "documentation": {}
     },
     {
@@ -1974,6 +2039,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.apply.migrations.0002_apply_application_response",
+        "description": "backend.apply.migrations.0002_apply_application_response",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('apply', '0001_initial'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='apply',\n            name='application_response',\n            field=models.CharField(choices=[('Application Submitted', 'Application Submitted'), ('Under Review', 'Under Review'), ('Interview Scheduled', 'Interview Scheduled'), ('Shortlisted', 'Shortlisted'), ('Rejected', 'Rejected')], default='Application Submitted', max_length=50),\n        ),",
+        "detail": "backend.apply.migrations.0002_apply_application_response",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.apply.migrations.0003_alter_apply_application_response",
+        "description": "backend.apply.migrations.0003_alter_apply_application_response",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('apply', '0002_apply_application_response'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='apply',\n            name='application_response',\n            field=models.CharField(choices=[('Application Submitted', 'Application Submitted'), ('Under Review', 'Under Review'), ('Interview Scheduled', 'Interview Scheduled'), ('Shortlisted', 'Shortlisted'), ('Rejected', 'Rejected')], max_length=50),\n        ),",
+        "detail": "backend.apply.migrations.0003_alter_apply_application_response",
+        "documentation": {}
+    },
+    {
         "label": "ApplyConfig",
         "kind": 6,
         "importPath": "backend.apply.apps",
@@ -1996,7 +2079,7 @@
         "kind": 5,
         "importPath": "backend.apply.urls",
         "description": "backend.apply.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\n        \"candidate/details/<int:candidate_id>/\",\n        candidate_details,\n        name=\"candidate-details\",\n    ),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\n        \"candidate/details/<int:candidate_id>/\",\n        candidate_details,\n        name=\"candidate-details\",\n    ),\n    # URL for the page that displays applied jobs\n    path(\"candidate/applied-jobs/\", applied_jobs_view, name=\"applied_jobs_view\"),\n    # API endpoint to fetch applied jobs data\n    path(",
         "detail": "backend.apply.urls",
         "documentation": {}
     },
@@ -2037,11 +2120,38 @@
         "documentation": {}
     },
     {
+        "label": "UpdateApplicationResponse",
+        "kind": 6,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "class UpdateApplicationResponse(APIView):\n    def post(self, request):\n        application_id = request.data.get(\"application_id\")\n        new_response = request.data.get(\"response\")\n        if not application_id or not new_response:\n            return Response(\n                {\"error\": \"Application ID and response are required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:",
+        "detail": "backend.apply.views",
+        "documentation": {}
+    },
+    {
         "label": "candidate_details",
         "kind": 2,
         "importPath": "backend.apply.views",
         "description": "backend.apply.views",
         "peekOfCode": "def candidate_details(request, candidate_id):\n    candidate = get_object_or_404(Candidate, id=candidate_id)\n    data = {\n        \"full_name\": candidate.full_name,\n        \"email\": candidate.email,\n        \"phone_number\": candidate.phone_number,\n        \"location\": candidate.location,\n        \"skills\": candidate.skills.split(\",\") if candidate.skills else [],\n        \"resume\": candidate.resume.url if candidate.resume else None,\n        \"profile_picture\": (",
+        "detail": "backend.apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_candidate_applied_jobs",
+        "kind": 2,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "def get_candidate_applied_jobs(request, candidate_id):\n    \"\"\"\n    SQL JOIN query.\n    combines data from Apply, JobPost, and Company models.\n    \"\"\"\n    with connection.cursor() as cursor:\n        cursor.execute(\n            \"\"\"\n            SELECT \n                a.id AS apply_id,",
+        "detail": "backend.apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "applied_jobs_view",
+        "kind": 2,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "def applied_jobs_view(request):\n    return render(request, \"applied_jobs.html\")\nclass UpdateApplicationResponse(APIView):\n    def post(self, request):\n        application_id = request.data.get(\"application_id\")\n        new_response = request.data.get(\"response\")\n        if not application_id or not new_response:\n            return Response(\n                {\"error\": \"Application ID and response are required.\"},\n                status=status.HTTP_400_BAD_REQUEST,",
         "detail": "backend.apply.views",
         "documentation": {}
     },
@@ -2442,6 +2552,15 @@
         "documentation": {}
     },
     {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "backend.company_registration.urls",
+        "description": "backend.company_registration.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\n        \"get/company/details/<int:company_id>/\",\n        GetCompanyDetailView.as_view(),\n        name=\"get_company_detail\",\n    ),\n]",
+        "detail": "backend.company_registration.urls",
+        "documentation": {}
+    },
+    {
         "label": "CompanyRegisterView",
         "kind": 6,
         "importPath": "backend.company_registration.views",
@@ -2473,7 +2592,16 @@
         "kind": 6,
         "importPath": "backend.company_registration.views",
         "description": "backend.company_registration.views",
-        "peekOfCode": "class GetCompanyActiveRecruit(APIView):\n    def get(self, request):\n        company = Company.objects.get(email=request.data.get(\"email\"))\n        recruit = company.recruit_set.filter(status=\"active\")",
+        "peekOfCode": "class GetCompanyActiveRecruit(APIView):\n    def get(self, request):\n        company = Company.objects.get(email=request.data.get(\"email\"))\n        recruit = company.recruit_set.filter(status=\"active\")\nclass GetCompanyDetailView(APIView):\n    def get(self, request, company_id):\n        try:\n            company = Company.objects.get(id=company_id)\n            serializer = CompanySerializer(company)\n            return Response(serializer.data, status=status.HTTP_200_OK)",
+        "detail": "backend.company_registration.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetCompanyDetailView",
+        "kind": 6,
+        "importPath": "backend.company_registration.views",
+        "description": "backend.company_registration.views",
+        "peekOfCode": "class GetCompanyDetailView(APIView):\n    def get(self, request, company_id):\n        try:\n            company = Company.objects.get(id=company_id)\n            serializer = CompanySerializer(company)\n            return Response(serializer.data, status=status.HTTP_200_OK)\n        except Company.DoesNotExist:\n            return Response(\n                {\"error\": \"Company not found.\"},\n                status=status.HTTP_404_NOT_FOUND,",
         "detail": "backend.company_registration.views",
         "documentation": {}
     },
@@ -2591,6 +2719,15 @@
         "importPath": "backend.job_post.views",
         "description": "backend.job_post.views",
         "peekOfCode": "class UpdateActiveRecruitmentStatusView(APIView):\n    def post(self, request):\n        company_id = request.data.get(\"company_id\")\n        recruits = request.data.get(\"recruits\")\n        if not company_id or not recruits:\n            return Response(\n                {\"error\": \"Company ID and recruits data are required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "GetJobDetailView",
+        "kind": 6,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "class GetJobDetailView(APIView):\n    def get(self, request, job_id):\n        try:\n            jobpost = JobPost.objects.get(id=job_id)\n            serializer = JobPostSerializer(jobpost)\n            return Response(serializer.data, status=status.HTTP_200_OK)\n        except JobPost.DoesNotExist:\n            return Response(\n                {\"error\": \"Job post not found.\"},\n                status=status.HTTP_404_NOT_FOUND,",
         "detail": "backend.job_post.views",
         "documentation": {}
     },

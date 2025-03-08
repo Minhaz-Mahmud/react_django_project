@@ -20,6 +20,16 @@ class Apply(models.Model):
         null=True,
     )
     time = models.DateTimeField(auto_now_add=True)
+    application_response = models.CharField(
+        max_length=50,
+        choices=[
+            ("Application Submitted", "Application Submitted"),
+            ("Under Review", "Under Review"),
+            ("Interview Scheduled", "Interview Scheduled"),
+            ("Shortlisted", "Shortlisted"),
+            ("Rejected", "Rejected"),
+        ],
+    )
 
     def __str__(self):
         return f"Candidate {self.candidate.full_name} - Company {self.company.name} at {self.time}"

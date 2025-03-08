@@ -68,6 +68,7 @@ urlpatterns = [
     path("api/", include("numerics.urls")),
     path("api/", include("job_post.urls")),
     path("api/", include("apply.urls")),
+    path("api/", include("company_registration.urls")),
 ]
 
 
