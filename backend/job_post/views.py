@@ -128,9 +128,9 @@ class JobPostDeleteView(APIView):
 
 
 class JobPostPagination(PageNumberPagination):
-    page_size = 5  # Number of posts per page
+    page_size = 6  # Number of posts per page
     page_size_query_param = "page_size"
-    max_page_size = 50
+    max_page_size = 10
 
 
 class JobPostListView(ListAPIView):

@@ -169,10 +169,6 @@ const ResumeBuilder = () => {
 
   return (
     <div className="p-4 resume-main-div">
-      <h1 className="text-center text-2xl text-light font-bold mb-4">
-        CV Templates
-      </h1>
-
       <div className="m-4 template_div">
         {/* Image 1 */}
         <div className="template-1-div template-container">

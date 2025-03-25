@@ -362,7 +362,7 @@ const Profile = () => {
                             accept="image/*"
                           />
                           <small className="form-text text-muted">
-                            JPEG, PNG, or GIF
+                            JPEG, PNG
                           </small>
                         </div>
                       </div>

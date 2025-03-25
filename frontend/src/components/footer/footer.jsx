@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Button } from "react-bootstrap";
 import {
@@ -11,10 +11,25 @@ import {
   FaMapMarkerAlt,
   FaPhone,
 } from "react-icons/fa";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 import "./footer.css";
 
 const FooterComponent = () => {
+  const [userType, setUserType] = useState(null);
+
+  useEffect(() => {
+    const companyData = JSON.parse(sessionStorage.getItem("companyData"));
+    const candidateData = JSON.parse(sessionStorage.getItem("candidateData"));
+
+    if (companyData?.user_type === "company") {
+      setUserType("company");
+    } else if (candidateData) {
+      setUserType("candidate");
+    } else {
+      setUserType(null);
+    }
+  }, []);
+
   return (
     <footer>
       {/* Main Footer */}
@@ -69,12 +84,20 @@ const FooterComponent = () => {
               <li>
                 <Link to="/about">About</Link>
               </li>
-              <li>
-                <Link to="/company-signin">Company Login</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact</Link>
-              </li>
+
+              {userType === "company" ? (
+                <li>
+                  <Link to="/company/dashboard">Dashboard</Link>
+                </li>
+              ) : userType === "candidate" ? (
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/company-signin">Company Login</Link>
+                </li>
+              )}
             </ul>
           </Col>
 

@@ -143,17 +143,11 @@ function AppliedJobDetails() {
                     </h6>
                     <p className="job-description">{jobData.description}</p>
                   </div>
-                  <div className="mb-4">
-                    <h6>
-                      <FaTags className="me-2 text-secondary" />
-                      Requirements
-                    </h6>
-                    <p>{jobData.tags}</p>
-                  </div>
+
                   <div className="mb-3">
                     <h6>
                       <FaTags className="me-2 text-secondary" />
-                      Skills
+                      Requirements
                     </h6>
                     <div className="d-flex flex-wrap gap-2">
                       {jobData.tags.split(",").map((tag, index) => (

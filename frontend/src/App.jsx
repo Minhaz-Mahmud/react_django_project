@@ -14,6 +14,7 @@ import CompanyProfile from "./components/company_profile/company_profile";
 import NavbarComponent from "./components/navbar/navbar";
 import FooterComponent from "./components/footer/footer";
 import PrivateCompanyRoute from "./components/private_routes/PrivateCompanyRoute";
+import PrivateCandidateRoute from "./components/private_routes/PrivateCandidateRoute";
 import JobFeed from "./components/job_feed/JobFeed";
 import Feed from "./components/feed_candidate/Feed";
 import AllCompany from "./components/all_company/AllCompany";
@@ -70,7 +71,11 @@ const App = () => {
         <Route path="/applied-jobs" element={<AppliedJobs />} />
         <Route
           path="/applied-job-details/:jobId/:companyId"
-          element={<AppliedJobDetails />}
+          element={
+            <PrivateCandidateRoute>
+              <AppliedJobDetails />
+            </PrivateCandidateRoute>
+          }
         />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
@@ -93,7 +98,14 @@ const App = () => {
           path="/candidate/apply/details/:candidateId"
           element={<CandidateDetails />}
         />
-        <Route path="/candidate/build/resume" element={<ResumeBuilder />} />
+        <Route
+          path="/candidate/build/resume"
+          element={
+            <PrivateCandidateRoute>
+              <ResumeBuilder />
+            </PrivateCandidateRoute>
+          }
+        />
       </Routes>
 
       {location.pathname !== "/company/dashboard" &&

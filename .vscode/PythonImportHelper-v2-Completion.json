@@ -392,6 +392,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -2624,6 +2656,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.job_post.migrations.0003_alter_jobpost_tags",
+        "description": "backend.job_post.migrations.0003_alter_jobpost_tags",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('job_post', '0002_jobpost_job_location'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='jobpost',\n            name='tags',\n            field=models.TextField(help_text='Comma-separated tags'),\n        ),",
+        "detail": "backend.job_post.migrations.0003_alter_jobpost_tags",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.job_post.migrations.0004_alter_jobpost_tags",
+        "description": "backend.job_post.migrations.0004_alter_jobpost_tags",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('job_post', '0003_alter_jobpost_tags'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='jobpost',\n            name='tags',\n            field=models.CharField(help_text='Comma-separated tags (max 6)', max_length=255),\n        ),",
+        "detail": "backend.job_post.migrations.0004_alter_jobpost_tags",
+        "documentation": {}
+    },
+    {
         "label": "JobPostConfig",
         "kind": 6,
         "importPath": "backend.job_post.apps",
@@ -2691,7 +2741,7 @@
         "kind": 6,
         "importPath": "backend.job_post.views",
         "description": "backend.job_post.views",
-        "peekOfCode": "class JobPostPagination(PageNumberPagination):\n    page_size = 5  # Number of posts per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 50\nclass JobPostListView(ListAPIView):\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")\nclass GetActiveRecruitmentStatusView(APIView):\n    def get(self, request):",
+        "peekOfCode": "class JobPostPagination(PageNumberPagination):\n    page_size = 6  # Number of posts per page\n    page_size_query_param = \"page_size\"\n    max_page_size = 10\nclass JobPostListView(ListAPIView):\n    serializer_class = JobPostSerializer\n    pagination_class = JobPostPagination\n    queryset = JobPost.objects.all().order_by(\"-posted_at\")\nclass GetActiveRecruitmentStatusView(APIView):\n    def get(self, request):",
         "detail": "backend.job_post.views",
         "documentation": {}
     },

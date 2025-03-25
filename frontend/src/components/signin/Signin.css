@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.381);
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(3px);
   z-index: 1;
 }
 
@@ -179,9 +179,6 @@
 .signin-button:active:not(:disabled) {
   transform: translateY(0);
 }
-
-
-
 
 /* OR divider */
 .signin-divider {

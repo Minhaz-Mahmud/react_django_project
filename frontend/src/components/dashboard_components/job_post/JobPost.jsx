@@ -113,7 +113,7 @@ const JobPost = () => {
       setDescription("");
       setActiveRecruiting(true);
     } catch (err) {
-      const errorMessage = err.response?.data?.error || "Something went wrong!";
+      const errorMessage = err.response?.data?.error || "Failed to post job.";
       toast.error(errorMessage);
     }
   };
@@ -165,6 +165,7 @@ const JobPost = () => {
               onChange={(e) => setTags(e.target.value)}
               required
             />
+            <small className="form-text text-muted">Max 6 tags.</small>
           </div>
           <div className="form-group">
             <label className="text-dark">Job Type:</label>
@@ -190,7 +191,7 @@ const JobPost = () => {
               required
             />
             <small className="form-text text-muted">
-              Format: $40,000 - $50,000 (low to high)
+              Format: $40,000 - $50,000
             </small>
           </div>
 

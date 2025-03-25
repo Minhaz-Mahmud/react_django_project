@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./JobFeed.css";
 import {
   FaMapMarkerAlt,
   FaCircle,
@@ -11,6 +10,7 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
+import "./JobFeed.css";
 
 const JobFeed = () => {
   const [jobPosts, setJobPosts] = useState([]);
@@ -23,6 +23,7 @@ const JobFeed = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [jobTypeFilter, setJobTypeFilter] = useState("");
   const [showUpButton, setShowUpButton] = useState(false);
+  const jobTypes = ["Hybrid", "Remote", "Onsite"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,7 +103,6 @@ const JobFeed = () => {
 
       alert("Application submitted successfully!");
     } catch (error) {
-      console.error("Error submitting application:", error);
       alert("An error occurred while applying. Please try again.");
     }
   };
@@ -152,8 +152,6 @@ const JobFeed = () => {
       (jobTypeFilter === "" || job.job_type === jobTypeFilter)
     );
   });
-
-  const jobTypes = ["Hybrid", "Remote", "Onsite"];
 
   return (
     <div className="job-feed-container">

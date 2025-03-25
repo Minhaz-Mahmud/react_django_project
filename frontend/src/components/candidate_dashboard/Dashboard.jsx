@@ -4,67 +4,14 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate, Link } from "react-router-dom";
 import Profile from "../profile/Profile";
-import "./Dashboard.css";
 import Update from "../profile/Update";
 import AppliedJobs from "../candidate_dashboard/cand_applied_jobs/AppliedJobs";
 import ResumeBuilder from "../resume/ResumeBuilder";
-
-// Component for the summary cards at the top
-const SummaryCard = ({ title, value, bgColor }) => (
-  <div className={`card ${bgColor} text-white mb-4`}>
-    <div className="card-body">
-      <h5 className="card-title">{title}</h5>
-      <h2>{value}</h2>
-    </div>
-  </div>
-);
+import "./Dashboard.css";
 
 // Component for the main content area
 const MainContent = ({ activeComponent }) => {
   const components = {
-    dashboard: (
-      <div>
-        <h2>Dashboard</h2>
-        <div className="row">
-          <div className="col-md-3">
-            <SummaryCard
-              title="Members online"
-              value="9,823"
-              bgColor="bg-primary"
-            />
-          </div>
-          <div className="col-md-3">
-            <SummaryCard
-              title="Members online"
-              value="9,823"
-              bgColor="bg-info"
-            />
-          </div>
-          <div className="col-md-3">
-            <SummaryCard
-              title="Members online"
-              value="9,823"
-              bgColor="bg-warning"
-            />
-          </div>
-          <div className="col-md-3">
-            <SummaryCard
-              title="Members online"
-              value="9,823"
-              bgColor="bg-danger"
-            />
-          </div>
-        </div>
-        <div className="card mt-4">
-          <div className="card-body">
-            <h3>Traffic</h3>
-            <p className="text-muted">November 2017</p>
-            {/* Chart would go here */}
-            <div className="text-center p-5 text-muted">Chart Placeholder</div>
-          </div>
-        </div>
-      </div>
-    ),
     Cand_Profile: (
       <div>
         <Profile />
@@ -91,7 +38,7 @@ const MainContent = ({ activeComponent }) => {
 };
 
 const Dashboard = () => {
-  const [activeComponent, setActiveComponent] = useState("dashboard");
+  const [activeComponent, setActiveComponent] = useState("Cand_Profile");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -142,15 +89,6 @@ const Dashboard = () => {
           <div className="nav flex-column">
             <div className="p-3 border-bottom">
               <h6 className="text">MAIN</h6>
-              {/* dashboard */}
-              <button
-                className={`nav-button ${
-                  activeComponent === "dashboard" ? "active" : ""
-                }`}
-                onClick={() => setActiveComponent("dashboard")}
-              >
-                Dashboard
-              </button>
 
               {/* Comp_Profile */}
               <button
@@ -175,16 +113,6 @@ const Dashboard = () => {
 
             <div className="p-3">
               <h6 className="text-light">OTHERS</h6>
-              {/* generate resume */}
-              <button
-                className={`nav-button ${
-                  activeComponent === "Resume_Builder" ? "active" : ""
-                }`}
-                onClick={() => setActiveComponent("Resume_Builder")}
-              >
-                Generate Resume 🆕
-              </button>
-
               {/* Cand_Applied_jobs */}
               <button
                 className={`nav-button ${
@@ -193,6 +121,15 @@ const Dashboard = () => {
                 onClick={() => setActiveComponent("Cand_Applied_jobs")}
               >
                 Applied Jobs
+              </button>
+              {/* generate resume */}
+              <button
+                className={`nav-button ${
+                  activeComponent === "Resume_Builder" ? "active" : ""
+                }`}
+                onClick={() => setActiveComponent("Resume_Builder")}
+              >
+                Generate Resume 🆕
               </button>
             </div>
           </div>

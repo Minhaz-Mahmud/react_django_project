@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -42,62 +43,22 @@ function CountUp({ start = 0, end, duration = 2 }) {
   return <>{Math.floor(count).toLocaleString()}</>;
 }
 
-function MainHome() {
-  const [showUpButton, setShowUpButton] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowUpButton(true);
-      } else {
-        setShowUpButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  return (
-    <div>
-      <div className="main-home-div bg-dark">
-        <div className="text-center">
-          <h1 className="text-light">
-            We help you to get your Dream Job easily
-          </h1>
-          <h5 className="text-center">
-            Discover thousands of job opportunities and find the perfect match
-            for your skills and career goals.
-          </h5>
-          <Link className="center-button" to="/job-feed">
-            See Jobs
-          </Link>
-        </div>
-      </div>
-      <div>
-        <NumericSection />
-      </div>
-      <div>
-        <LookingForJobSection />
-      </div>
-      
-      {showUpButton && (
-        <button className="up-button" onClick={scrollToTop}>
-          ↑
-        </button>
-      )}
-    </div>
-  );
-}
-
 //looking for job section
 function LookingForJobSection() {
+  const [userType, setUserType] = useState(null);
+
+  useEffect(() => {
+    const companyData = JSON.parse(sessionStorage.getItem("companyData"));
+    const candidateData = JSON.parse(sessionStorage.getItem("candidateData"));
+
+    if (companyData?.user_type === "company") {
+      setUserType("company");
+    } else if (candidateData) {
+      setUserType("candidate");
+    } else {
+      setUserType(null);
+    }
+  }, []);
   return (
     <div className="py-5 lookingfor-job-section">
       <div className="row">
@@ -107,9 +68,20 @@ function LookingForJobSection() {
             We have a wide range of job opportunities for you. Find the job that
             suits your skills and career goals.
           </p>
-          <Link to="/registration" className="applybtn btn">
-            Sign up and Apply
-          </Link>
+
+          {userType === "company" ? (
+            <Link to="/company/dashboard" className="applybtn btn">
+              Dashboard
+            </Link>
+          ) : userType === "candidate" ? (
+            <Link to="/dashboard" className="applybtn btn">
+              Dashboard
+            </Link>
+          ) : (
+            <Link to="/signin" className="applybtn btn">
+              Sign up and Apply
+            </Link>
+          )}
         </div>
         <div className="looking-right col-md-6">
           <img
@@ -234,4 +206,57 @@ function NumericSection() {
   );
 }
 
+function MainHome() {
+  const [showUpButton, setShowUpButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowUpButton(true);
+      } else {
+        setShowUpButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <div>
+      <div className="main-home-div bg-dark">
+        <div className="text-center">
+          <h1 className="text-light">
+            We help you to get your Dream Job easily
+          </h1>
+          <h5 className="text-center">
+            Discover thousands of job opportunities and find the perfect match
+            for your skills and career goals.
+          </h5>
+          <Link className="center-button" to="/job-feed">
+            See Jobs
+          </Link>
+        </div>
+      </div>
+      <div>
+        <NumericSection />
+      </div>
+      <div>
+        <LookingForJobSection />
+      </div>
+
+      {showUpButton && (
+        <button className="up-button" onClick={scrollToTop}>
+          ↑
+        </button>
+      )}
+    </div>
+  );
+}
 export default MainHome;

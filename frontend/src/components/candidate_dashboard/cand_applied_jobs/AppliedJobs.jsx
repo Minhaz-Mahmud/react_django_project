@@ -4,16 +4,18 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,
+  faArrowLeft,
   faAddressBook,
   faBriefcase,
   faDollarSign,
-  faClock,
 } from "@fortawesome/free-solid-svg-icons";
 
 function AppliedJobs() {
   const [appliedJobs, setAppliedJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   useEffect(() => {
     // Get logged in candidate data from session storage
@@ -22,7 +24,7 @@ function AppliedJobs() {
     );
 
     if (!loggedInCandidateData) {
-      window.location.href = "/candidate/login";
+      window.location.href = "/signin";
     } else {
       fetchAppliedJobs(loggedInCandidateData.id);
     }
@@ -40,7 +42,6 @@ function AppliedJobs() {
       }
 
       const data = await response.json();
-      console.log(data);
       setAppliedJobs(data.applied_jobs);
       setLoading(false);
     } catch (err) {
@@ -48,14 +49,6 @@ function AppliedJobs() {
       setLoading(false);
     }
   };
-
-  if (loading) {
-    return <div className="loading">Loading your applied jobs...</div>;
-  }
-
-  if (error) {
-    return <div className="error">Error: {error}</div>;
-  }
 
   const getStatusClass = (status) => {
     switch (status) {
@@ -74,6 +67,37 @@ function AppliedJobs() {
     }
   };
 
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentJobs = appliedJobs.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(appliedJobs.length / itemsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="loading text-center text-light fs-4 fw-bold my-5 py-5 mt-5 pt-5 mb-5 pb-5">
+        Loading your applied jobs...
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="error">Error: {error}</div>;
+  }
+
   return (
     <div className="applied-jobs-container">
       <h2 className="applied-jobs-heading text-dark text-center">
@@ -88,64 +112,82 @@ function AppliedJobs() {
           </Link>
         </div>
       ) : (
-        <div className="applied-jobs-list">
-          {appliedJobs.map((job) => (
-            <div key={job.apply_id} className="applied-job-item">
-              <h3 className="applied-job-title">{job.job_title}</h3>
-              <p className="applied-job-company">{job.company_name}</p>
+        <>
+          <div className="applied-jobs-list">
+            {currentJobs.map((job) => (
+              <div key={job.apply_id} className="applied-job-item">
+                <h3 className="applied-job-title">{job.job_title}</h3>
+                <p className="applied-job-company">{job.company_name}</p>
 
-              <div className="job-details-grid">
-                <p className="applied-job-location">
-                  <FontAwesomeIcon icon={faAddressBook} />{" "}
-                  <strong className="text-dark">Location:</strong>{" "}
-                  {job.job_location || job.company_location}
+                <div className="job-details-grid">
+                  <p className="applied-job-location">
+                    <FontAwesomeIcon icon={faAddressBook} />{" "}
+                    <strong className="text-dark">Location:</strong>{" "}
+                    {job.job_location || job.company_location}
+                  </p>
+
+                  <p className="applied-job-type">
+                    <FontAwesomeIcon icon={faBriefcase} />{" "}
+                    <strong>Job Type:</strong> {job.job_type}
+                  </p>
+
+                  <p className="applied-job-salary">
+                    <FontAwesomeIcon icon={faDollarSign} />{" "}
+                    <strong>Salary:</strong> {job.salary_range}
+                  </p>
+                </div>
+
+                <p
+                  className={`applied-job-status ${getStatusClass(
+                    job.application_response
+                  )}`}
+                >
+                  <strong className="text-dark">Status:</strong>{" "}
+                  {job.application_response || "Application Submitted"}
                 </p>
+                <div className="update-instructions">
+                  <div className="alert alert-info">
+                    <small>An &quot;Email&quot; will reach you soon.</small>
+                  </div>
+                </div>
 
-                <p className="applied-job-type">
-                  <FontAwesomeIcon icon={faBriefcase} />{" "}
-                  <strong>Job Type:</strong> {job.job_type}
+                <p className="applied-job-date">
+                  <strong>Applied on:</strong>{" "}
+                  {new Date(job.applied_time).toLocaleDateString()}
                 </p>
-
-                <p className="applied-job-salary">
-                  <FontAwesomeIcon icon={faDollarSign} />{" "}
-                  <strong>Salary:</strong> {job.salary_range}
-                </p>
-
-                <p className="applied-job-time">
-                  <FontAwesomeIcon icon={faClock} /> <strong>Hours:</strong>{" "}
-                  {job.job_time}
-                </p>
-              </div>
-
-              <p
-                className={`applied-job-status ${getStatusClass(
-                  job.application_response
-                )}`}
-              >
-                <strong className="text-dark">Status:</strong>{" "}
-                {job.application_response || "Application Submitted"}
-              </p>
-              <div className="update-instructions">
-                <div className="alert alert-info">
-                  <small>An &quot;Email&quot; will reach you soon.</small>
+                <div className="job-actions">
+                  <Link
+                    to={`/applied-job-details/${job.job_id}/${job.company_id}`}
+                    className="applied-job-details-button"
+                  >
+                    View Job Details <FontAwesomeIcon icon={faArrowRight} />
+                  </Link>
                 </div>
               </div>
+            ))}
+          </div>
 
-              <p className="applied-job-date">
-                <strong>Applied on:</strong>{" "}
-                {new Date(job.applied_time).toLocaleDateString()}
-              </p>
-              <div className="job-actions">
-                <Link
-                  to={`/applied-job-details/${job.job_id}/${job.company_id}`}
-                  className="applied-job-details-button"
-                >
-                  View Job Details <FontAwesomeIcon icon={faArrowRight} />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
+          {/* Pagination Controls */}
+          <div className="pagination">
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className="pagination-button"
+            >
+              <FontAwesomeIcon icon={faArrowLeft} /> Previous
+            </button>
+            <span className="page-info">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className="pagination-button"
+            >
+              Next <FontAwesomeIcon icon={faArrowRight} />
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
