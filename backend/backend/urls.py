@@ -23,9 +23,11 @@ from apply.views import (
 )
 
 from mail.views import BasicEmailView
+from chatbot.views import find_jobs
 
 
 urlpatterns = [
+    path('api/find-jobs/', find_jobs, name='find-jobs'),
     path("apply/", ApplyToJobView.as_view(), name="apply_to_job"),
     path(
         "applications/<int:company_id>/",
