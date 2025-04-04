@@ -128,7 +128,7 @@ const Signin = () => {
           </div>
 
           <div className="form-options">
-            <Link to="/" className="forgot-password">
+            <Link to="/cpm" className="forgot-password">
               Forgot Password?
             </Link>
           </div>

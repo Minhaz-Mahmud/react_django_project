@@ -166,3 +166,28 @@ class CandidateUpdateView(APIView):
 
 
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Candidate
+from django.contrib.auth.hashers import make_password
+
+class CandidateChangePasswordView(APIView):
+    def put(self, request, pk):
+        try:
+            candidate = Candidate.objects.get(id=pk)
+            new_password = request.data.get("password")
+
+            if not new_password:
+                return Response({"message": "New password is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+            # Hash and save the new password
+            candidate.password = make_password(new_password)
+            candidate.save()
+
+            return Response({"message": "Password updated successfully!"}, status=status.HTTP_200_OK)
+
+        except Candidate.DoesNotExist:
+            return Response({"message": "Candidate not found."}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"message": f"Error: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)

@@ -25,6 +25,8 @@ import About from "./components/home_components/about";
 import Contact from "./components/home_components/contact";
 import AppliedJobDetails from "./components/candidate_dashboard/cand_applied_job_details/AppliedJobDetails";
 import AppliedJobs from "./components/candidate_dashboard/cand_applied_jobs/AppliedJobs";
+import ChangePassword from "./components/profile/ChangePassword";
+import CPMail from "./components/profile/CPMail";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -106,6 +108,13 @@ const App = () => {
             </PrivateCandidateRoute>
           }
         />
+       {/* <Route path="/cp" element={<ChangePassword />} /> */}
+       <Route path="/cpm" element={<CPMail />} />
+
+       <Route path="/cp/:id" element={<ChangePassword />} />
+
+
+
       </Routes>
 
       {location.pathname !== "/company/dashboard" &&

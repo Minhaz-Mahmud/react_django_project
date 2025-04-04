@@ -132,3 +132,55 @@ class ApplicationMailView(APIView):
                 },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
+
+
+
+
+
+from django.core.mail import send_mail
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from registration.models import Candidate
+
+from django.core.mail import send_mail
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from registration.models import Candidate
+
+class BasicEmailView(APIView):
+    def post(self, request):
+        receiver = request.data.get("receiver")
+        
+        if not receiver:
+            return Response({"error": "Recipient email is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            return self._send_candidate_email_with_link(receiver)
+        except Candidate.DoesNotExist:
+            return Response({"error": "Candidate with this email does not exist."}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"error": f"Failed to send email: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def _send_candidate_email_with_link(self, receiver):
+        """Helper function to fetch candidate, generate link, and send email."""
+        candidate = Candidate.objects.get(email=receiver)
+        candidate_id = candidate.id
+
+        # Generate the link using the candidate ID for the React frontend
+        link = f"http://localhost:5173/cp/{candidate_id}"
+        subject = "Your Account Link"
+        message = f"Hello! Here is your account link: {link}"
+
+        send_mail(
+            subject,
+            message,
+            None,  # Django will use EMAIL_HOST_USER from settings
+            [receiver],
+            fail_silently=False,
+        )
+        return Response({"success": "Email sent successfully with candidate link!"}, status=status.HTTP_200_OK)
+

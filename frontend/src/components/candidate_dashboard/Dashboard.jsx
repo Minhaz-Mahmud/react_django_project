@@ -8,6 +8,7 @@ import Update from "../profile/Update";
 import AppliedJobs from "../candidate_dashboard/cand_applied_jobs/AppliedJobs";
 import ResumeBuilder from "../resume/ResumeBuilder";
 import "./Dashboard.css";
+import ChangePassword from "../profile/ChangePassword";
 
 // Component for the main content area
 const MainContent = ({ activeComponent }) => {
@@ -22,6 +23,12 @@ const MainContent = ({ activeComponent }) => {
         <Update />
       </div>
     ),
+    Change_Password: (
+      <div>
+        <ChangePassword />
+      </div>
+    ),
+    
     Cand_Applied_jobs: (
       <div>
         <AppliedJobs />
@@ -109,6 +116,8 @@ const Dashboard = () => {
               >
                 Update Profile
               </button>
+
+               
             </div>
 
             <div className="p-3">

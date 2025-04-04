@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from registration.views import CandidateView
-from login.views import CandidateLoginView, CandidateUpdateView
+from login.views import CandidateLoginView, CandidateUpdateView, CandidateChangePasswordView
 from company_registration.views import (
     CompanyRegisterView,
     CompanyLoginView,
@@ -22,6 +22,8 @@ from apply.views import (
     ApplicationDeleteView,
 )
 
+from mail.views import BasicEmailView
+
 
 urlpatterns = [
     path("apply/", ApplyToJobView.as_view(), name="apply_to_job"),
@@ -37,13 +39,23 @@ urlpatterns = [
         name="delete_application",
     ),
     path(
+        "api/candidate/cp/<int:pk>/",
+        CandidateChangePasswordView.as_view(),
+        name="change-password",
+    ),
+
+     path("api/send-email/", BasicEmailView.as_view(), name="send-email"),
+    
+     path(
         "api/candidate/update/<int:pk>/",
         CandidateUpdateView.as_view(),
         name="candidate-update",
     ),
+
     path("admin/", admin.site.urls),
     path("candidates/", CandidateView.as_view(), name="candidate-list"),
     path("login/", CandidateLoginView.as_view(), name="login"),
+    
     path(
         "api/company/register/", CompanyRegisterView.as_view(), name="company-register"
     ),
