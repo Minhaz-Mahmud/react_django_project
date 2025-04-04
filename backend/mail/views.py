@@ -172,8 +172,8 @@ class BasicEmailView(APIView):
 
         # Generate the link using the candidate ID for the React frontend
         link = f"http://localhost:5173/cp/{candidate_id}"
-        subject = "Your Account Link"
-        message = f"Hello! Here is your account link: {link}"
+        subject = "Your Account Recovery  Link"
+        message = f"Hello! Click here for  your account recovery: {link}"
 
         send_mail(
             subject,
