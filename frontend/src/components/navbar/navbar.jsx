@@ -115,6 +115,14 @@ const NavbarComponent = () => {
             About
           </Nav.Link>
 
+          <Nav.Link
+            as={Link}
+            to="/CO"
+            className={location.pathname === "/CO" ? "active" : ""}
+          >
+             Job_Suggestions
+          </Nav.Link>
+
           {userType ? (
             <NavDropdown
               title={userName}
