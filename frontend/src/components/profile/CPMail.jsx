@@ -10,7 +10,7 @@ const CPMail = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post("http://localhost:8000/api/send-email/", {
+            const response = await axios.post("http://localhost:8000/api/send-recovery/", {
                 receiver: email,
             });
             setMessage("A recovery link was sent to your email!");

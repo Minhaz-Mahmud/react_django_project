@@ -296,11 +296,11 @@ function Contact() {
         </Row>
       </section>
 
-      <div className="map-section m-3 rounded-1 border border-1 border-dark">
+      {/* <div className="map-section m-3 rounded-1 border border-1 border-dark">
         <section className="p-0">
-          <div className="map-container">
+          <div className="map-container"> */}
             {/* Placeholder for map - in a real implementation, you would use Google Maps API or similar */}
-            <div className="map-placeholder">
+            {/* <div className="map-placeholder">
               <img
                 src="/api/placeholder/1200/400"
                 alt="Location Map"
@@ -309,7 +309,7 @@ function Contact() {
             </div>
           </div>
         </section>
-      </div>
+      </div> */}
 
       <div className="faq-section">
         <section>

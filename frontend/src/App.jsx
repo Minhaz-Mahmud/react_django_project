@@ -22,7 +22,7 @@ import JobApplications from "./components/job_applications/JobApplications";
 import CandidateDetails from "./components/profile/CandidateDetails";
 import ResumeBuilder from "./components/resume/ResumeBuilder";
 import About from "./components/home_components/about";
-import Contact from "./components/home_components/contact";
+import Contact from "./components/home_components/Contact";
 import AppliedJobDetails from "./components/candidate_dashboard/cand_applied_job_details/AppliedJobDetails";
 import AppliedJobs from "./components/candidate_dashboard/cand_applied_jobs/AppliedJobs";
 import ChangePassword from "./components/profile/ChangePassword";

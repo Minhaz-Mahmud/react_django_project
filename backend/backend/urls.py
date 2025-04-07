@@ -46,7 +46,7 @@ urlpatterns = [
         name="change-password",
     ),
 
-     path("api/send-email/", BasicEmailView.as_view(), name="send-email"),
+     path("api/send-recovery/", BasicEmailView.as_view(), name="send-recovery"),
     
      path(
         "api/candidate/update/<int:pk>/",
