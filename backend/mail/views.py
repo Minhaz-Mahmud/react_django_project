@@ -8,6 +8,7 @@ from job_post.models import JobPost
 from .models import Application_Mail
 from django.http import JsonResponse
 import json
+from django.core.mail import send_mail
 
 
 class SendEmailView(APIView):
@@ -20,7 +21,7 @@ class SendEmailView(APIView):
         subject = "Message from Career Connect"
 
         print("candidat email is", candidate_email)
-        print("job id is", job_post_id)
+        print("job post id is", job_post_id)
         print("candidate id is", candidate_id)
         print("company id is", company_id)
 
@@ -132,24 +133,6 @@ class ApplicationMailView(APIView):
                 },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
-
-
-
-
-
-from django.core.mail import send_mail
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
-from registration.models import Candidate
-
-from django.core.mail import send_mail
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
-from registration.models import Candidate
 
 class BasicEmailView(APIView):
     def post(self, request):

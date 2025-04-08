@@ -42,7 +42,7 @@ function About() {
       <section className="about-section">
         <Row className="align-items-center mb-5">
           <Col lg={6}>
-            <h2 className="section-title">Our Mission</h2>
+            <h2 className="section-title text-dark">Our Mission</h2>
             <p className="section-text">
               At Career Connect, we believe that finding the right job should be
               accessible, straightforward, and empowering. Our mission is to
@@ -69,7 +69,7 @@ function About() {
 
         <Row className="values-section">
           <Col lg={12} className="text-center mb-4">
-            <h2 className="section-title">Our Core Values</h2>
+            <h2 className="section-title text-dark">Our Core Values</h2>
           </Col>
           <Col md={3} sm={6}>
             <Card className="value-card">
@@ -158,7 +158,7 @@ function About() {
 
         <Row className="team-section mb-5">
           <Col lg={12} className="text-center mb-4">
-            <h2 className="section-title">Our Leadership Team</h2>
+            <h2 className="section-title text-dark">Our Leadership Team</h2>
           </Col>
           <Col lg={3} md={6}>
             <Card className="team-card">
@@ -248,7 +248,7 @@ function About() {
 
         <Row className="cta-section text-center my-5">
           <Col lg={8} className="mx-auto">
-            <h2 className="section-title">
+            <h2 className="section-title text-success mb-4">
               Ready to Find Your Next Opportunity?
             </h2>
             <p className="section-text mb-4">

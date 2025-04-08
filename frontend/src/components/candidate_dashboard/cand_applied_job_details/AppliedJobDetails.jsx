@@ -120,7 +120,7 @@ function AppliedJobDetails() {
                   </h4>
                 </div>
                 <div className="section-body">
-                  <h5 className="job-title">{jobData.title}</h5>
+                  <h5 className="job-title text-light">{jobData.title}</h5>
                   <div className="d-flex flex-wrap gap-2 mb-3">
                     <span className="job-badge location-badge">
                       <FaMapMarkerAlt className="me-1" /> {jobData.job_location}
@@ -137,7 +137,7 @@ function AppliedJobDetails() {
                   </div>
                   <hr />
                   <div className="mb-4">
-                    <h6>
+                    <h6 className="mb-3 text-light">
                       <FaFileAlt className="me-2 text-secondary" />
                       Description
                     </h6>
@@ -145,7 +145,7 @@ function AppliedJobDetails() {
                   </div>
 
                   <div className="mb-3">
-                    <h6>
+                    <h6 className="mb-3 text-light">
                       <FaTags className="me-2 text-secondary" />
                       Requirements
                     </h6>
@@ -186,7 +186,7 @@ function AppliedJobDetails() {
                 <div className="section-body">
                   <h5 className="company-name">{companyData.name}</h5>
                   <hr />
-                  <div className="company-info">
+                  <div className="company-info bg-light p-3 rounded mb-4">
                     <p>
                       <FaEnvelope className="me-2 text-secondary" />
                       <strong className="me-2">Email:</strong>{" "}
@@ -216,7 +216,7 @@ function AppliedJobDetails() {
                   </div>
                   <hr />
                   <div>
-                    <h6>
+                    <h6 className="mb-3 text-light">
                       <FaInfoCircle className="me-2 text-secondary" />
                       About
                     </h6>

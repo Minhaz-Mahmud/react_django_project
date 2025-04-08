@@ -234,7 +234,9 @@ const CandidateDetails = () => {
               className="pdf-viewer"
             >
               <div className="pdf-fallback text-center p-5">
-                <p>It appears your browser doesn&apos;t support embedded PDFs.</p>
+                <p>
+                  It appears your browser doesn&apos;t support embedded PDFs.
+                </p>
                 <a
                   href={resumeLink}
                   target="_blank"

@@ -1,12 +1,89 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Details from "./Details";
 import "./AllCompany.css";
 import CompanyMapModal from "../company_maps/CompanyMapModal";
+// MUI imports
+import {
+  Box,
+  Container,
+  Typography,
+  Card,
+  CardContent,
+  CardActions,
+  Button,
+  Grid,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Paper,
+  Divider,
+  Pagination,
+  CircularProgress,
+  Fab,
+  Alert,
+  useMediaQuery,
+  alpha,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { KeyboardArrowUp, LocationOn, Info } from "@mui/icons-material";
+import { useTheme } from "@mui/material/styles";
+
+// Styled components
+const HeroSection = styled(Box)(({ theme }) => ({
+  position: "relative",
+  marginTop: "80px",
+  height: "400px",
+  width: "100%",
+  backgroundImage: `url("https://images.unsplash.com/photo-1497215842964-222b430dc094?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")`,
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  marginBottom: "40px",
+  [theme.breakpoints.down("md")]: {
+    height: "350px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    height: "300px",
+  },
+}));
+
+const HeroOverlay = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.5)",
+  padding: theme.spacing(2),
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  textAlign: "center",
+}));
+
+const CompanyCard = styled(Card)(({ theme }) => ({
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  "&:hover": {
+    transform: "translateY(-5px)",
+    boxShadow: theme.shadows[10],
+  },
+}));
+
+const ScrollToTopButton = styled(Fab)(({ theme }) => ({
+  position: "fixed",
+  bottom: theme.spacing(2),
+  right: theme.spacing(2),
+}));
 
 const AllCompany = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
   const [companies, setCompanies] = useState([]);
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,6 +93,7 @@ const AllCompany = () => {
   const [selectedCompanyId, setSelectedCompanyId] = useState(null);
   const [companyLocation, setCompanyLocation] = useState(null);
   const [hasSession, setHasSession] = useState(false);
+
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const companiesPerPage = 5;
@@ -26,7 +104,7 @@ const AllCompany = () => {
     type: "",
   });
 
-  // scroll button
+  // Scroll button state
   const [showUpButton, setShowUpButton] = useState(false);
 
   useEffect(() => {
@@ -66,7 +144,7 @@ const AllCompany = () => {
       setFilteredCompanies(response.data);
       setLoading(false);
     } catch (err) {
-      setError("Failed to load company data.");
+      setError("Failed to load company data.", err);
       setLoading(false);
     }
   };
@@ -114,7 +192,7 @@ const AllCompany = () => {
       setShowMapModal(true);
       setShowDetailsModal(false);
     } catch (error) {
-      setError("Failed to fetch location.");
+      setError("Failed to fetch location.", error);
     }
   };
 
@@ -131,146 +209,250 @@ const AllCompany = () => {
     indexOfLastCompany
   );
 
-  const nextPage = () => {
-    if (currentPage < Math.ceil(filteredCompanies.length / companiesPerPage)) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
   };
 
   return (
-    <div className="all-company-container">
-      <div className="hero-section">
-        <div className="hero-overlay d-flex flex-column justify-content-center align-items-center">
-          <h1>Find the Best Companies for Your Career</h1>
-          <p>Browse through top companies and explore career opportunities</p>
-        </div>
-      </div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: alpha(theme.palette.grey[500], 0.1),
+        width: "100%",
+        minHeight: "100vh",
+      }}
+    >
+      <HeroSection>
+        <HeroOverlay>
+          <Typography
+            variant="h2"
+            component="h1"
+            sx={{
+              color: "white",
+              fontWeight: 700,
+              mb: 2,
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.8rem" },
+            }}
+          >
+            Find the Best Companies for Your Career
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "white",
+              maxWidth: 700,
+              textShadow: "1px 1px 3px rgba(0, 0, 0, 0.5)",
+              fontSize: { xs: "1rem", sm: "1.1rem", md: "1.2rem" },
+            }}
+          >
+            Browse through top companies and explore career opportunities
+          </Typography>
+        </HeroOverlay>
+      </HeroSection>
 
-      <div className="content-wrapper">
-        <div className="sidebar">
-          <h3>Filter Companies</h3>
-          <div className="filter-controls">
-            <div className="form-group">
-              <label>Location:</label>
-              <select
-                name="location"
-                className="form-control"
-                value={filters.location}
-                onChange={handleFilterChange}
-              >
-                <option value="">All Locations</option>
-                <option value="Dhaka">Dhaka</option>
-                <option value="Khulna">Khulna</option>
-              </select>
-            </div>
-            <div className="form-group">
-              <label>Company Type:</label>
-              <select
-                name="type"
-                className="form-control"
-                value={filters.type}
-                onChange={handleFilterChange}
-              >
-                <option value="">All Types</option>
-                <option value="Multinational">Multinational</option>
-                <option value="Startup">Startup</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <div className="main-content">
-          <h1 className="text-center mb-4">Explore Companies</h1>
-
-          {loading ? (
-            <p className="text-center">Loading companies...</p>
-          ) : error ? (
-            <p className="text-danger text-center">{error}</p>
-          ) : currentCompanies.length > 0 ? (
-            <div className="company-list">
-              {currentCompanies.map((company) => (
-                <div className="company-row" key={company.id}>
-                  <div className="company-info">
-                    <h2>{company.name}</h2>
-                    <p>
-                      <strong>Location:</strong> {company.location}
-                    </p>
-                    <p>
-                      <strong>Type:</strong> {company.company_type}
-                    </p>
-                  </div>
-                  {hasSession && (
-                    <div className="company-actions">
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => handleShowDetails(company.id)}
-                      >
-                        Details
-                      </button>
-                      <button
-                        className="btn btn-secondary"
-                        onClick={() => handleLocationClick(company.id)}
-                      >
-                        Location
-                      </button>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-center">
-              No companies match the filter criteria.
-            </p>
-          )}
-
-          {/* Pagination controls */}
-          <div className="pagination-controls py-5">
-            <button
-              className="btn btn-danger rounded-1 border border-2 border-black current-model"
-              onClick={prevPage}
-              disabled={currentPage === 1}
+      <Container maxWidth="xl" sx={{ mb: 8 }}>
+        <Grid container spacing={3}>
+          {/* Sidebar */}
+          <Grid item xs={12} md={3}>
+            <Paper
+              elevation={3}
+              sx={{
+                p: 3,
+                borderRadius: 2,
+                height: "fit-content",
+                position: { md: "sticky" },
+                top: { md: 100 },
+              }}
             >
-              Previous
-            </button>
-            <span> Page {currentPage} </span>
-            <button
-              className="btn btn-pri rounded border border-2 border-black current-model"
-              onClick={nextPage}
-              disabled={
-                currentPage >=
-                Math.ceil(filteredCompanies.length / companiesPerPage)
-              }
-            >
-              Next
-            </button>
-          </div>
+              <Typography
+                variant="h5"
+                component="h3"
+                sx={{
+                  mb: 2,
+                  pb: 1.5,
+                  borderBottom: `2px solid ${theme.palette.primary.main}`,
+                  fontWeight: 600,
+                }}
+              >
+                Filter Companies
+              </Typography>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <FormControl fullWidth variant="outlined" size="small">
+                  <InputLabel>Location</InputLabel>
+                  <Select
+                    name="location"
+                    value={filters.location}
+                    onChange={handleFilterChange}
+                    label="Location"
+                  >
+                    <MenuItem value="">All Locations</MenuItem>
+                    <MenuItem value="Dhaka">Dhaka</MenuItem>
+                    <MenuItem value="Khulna">Khulna</MenuItem>
+                  </Select>
+                </FormControl>
+                <FormControl fullWidth variant="outlined" size="small">
+                  <InputLabel>Company Type</InputLabel>
+                  <Select
+                    name="type"
+                    value={filters.type}
+                    onChange={handleFilterChange}
+                    label="Company Type"
+                  >
+                    <MenuItem value="">All Types</MenuItem>
+                    <MenuItem value="Multinational">Multinational</MenuItem>
+                    <MenuItem value="Startup">Startup</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
+            </Paper>
+          </Grid>
 
-          <Details
-            companyId={selectedCompanyId}
-            showModal={showDetailsModal}
-            handleClose={handleClose}
-          />
-          {showMapModal && companyLocation && (
-            <CompanyMapModal
-              companyLocation={companyLocation}
-              handleClose={handleClose}
-            />
-          )}
-        </div>
-      </div>
-      {showUpButton && (
-        <button className="up-button" onClick={scrollToTop}>
-          ↑
-        </button>
+          {/* Main Content */}
+          <Grid item xs={12} md={9}>
+            <Typography
+              variant="h4"
+              component="h1"
+              align="center"
+              sx={{
+                mb: 4,
+                fontWeight: 700,
+                color: theme.palette.text.primary,
+              }}
+            >
+              Explore Companies
+            </Typography>
+
+            {loading ? (
+              <Box sx={{ display: "flex", justifyContent: "center", p: 5 }}>
+                <CircularProgress />
+              </Box>
+            ) : error ? (
+              <Alert severity="error" sx={{ mb: 3 }}>
+                {error}
+              </Alert>
+            ) : currentCompanies.length > 0 ? (
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+                {currentCompanies.map((company) => (
+                  <CompanyCard key={company.id} elevation={3}>
+                    <CardContent>
+                      <Grid container spacing={2}>
+                        <Grid item xs={12} sm={hasSession ? 8 : 12}>
+                          <Typography
+                            variant="h5"
+                            component="h2"
+                            gutterBottom
+                            sx={{
+                              color: theme.palette.primary.dark,
+                              fontWeight: 500,
+                            }}
+                          >
+                            {company.name}
+                          </Typography>
+                          <Typography
+                            variant="body1"
+                            sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: 1,
+                              mb: 1,
+                            }}
+                          >
+                            <LocationOn fontSize="small" color="action" />
+                            <strong>Location:</strong> {company.location}
+                          </Typography>
+                          <Typography variant="body1">
+                            <strong>Type:</strong> {company.company_type}
+                          </Typography>
+                        </Grid>
+
+                        {hasSession && (
+                          <Grid item xs={12} sm={4}>
+                            <CardActions
+                              sx={{
+                                display: "flex",
+                                flexDirection: isTablet ? "row" : "column",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                gap: 1,
+                                height: "100%",
+                              }}
+                            >
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                startIcon={<Info />}
+                                fullWidth
+                                onClick={() => handleShowDetails(company.id)}
+                              >
+                                Details
+                              </Button>
+                              <Button
+                                variant="contained"
+                                color="secondary"
+                                startIcon={<LocationOn />}
+                                fullWidth
+                                onClick={() => handleLocationClick(company.id)}
+                              >
+                                Location
+                              </Button>
+                            </CardActions>
+                          </Grid>
+                        )}
+                      </Grid>
+                    </CardContent>
+                  </CompanyCard>
+                ))}
+              </Box>
+            ) : (
+              <Alert severity="info">
+                No companies match the filter criteria.
+              </Alert>
+            )}
+
+            {/* Pagination */}
+            {filteredCompanies.length > 0 && (
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
+                <Pagination
+                  count={Math.ceil(filteredCompanies.length / companiesPerPage)}
+                  page={currentPage}
+                  onChange={handlePageChange}
+                  color="primary"
+                  size={isMobile ? "small" : "medium"}
+                />
+              </Box>
+            )}
+          </Grid>
+        </Grid>
+      </Container>
+
+      {/* Modals */}
+      <Details
+        companyId={selectedCompanyId}
+        showModal={showDetailsModal}
+        handleClose={handleClose}
+      />
+
+      {showMapModal && companyLocation && (
+        <CompanyMapModal
+          companyLocation={companyLocation}
+          handleClose={handleClose}
+        />
       )}
-    </div>
+
+      {/* Scroll to top button */}
+      {showUpButton && (
+        <ScrollToTopButton
+          color="primary"
+          size="small"
+          aria-label="scroll back to top"
+          onClick={scrollToTop}
+        >
+          <KeyboardArrowUp />
+        </ScrollToTopButton>
+      )}
+    </Box>
   );
 };
 

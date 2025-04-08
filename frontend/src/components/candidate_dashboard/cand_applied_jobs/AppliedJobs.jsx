@@ -107,7 +107,7 @@ function AppliedJobs() {
       {appliedJobs.length === 0 ? (
         <div className="no-jobs-message">
           <p>You haven&apos;t applied to any jobs yet.</p>
-          <Link to="/jobs" className="browse-jobs-button">
+          <Link to="/job-feed" className="browse-jobs-button">
             Browse Jobs <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </div>

@@ -296,27 +296,13 @@ function Contact() {
         </Row>
       </section>
 
-      {/* <div className="map-section m-3 rounded-1 border border-1 border-dark">
-        <section className="p-0">
-          <div className="map-container"> */}
-            {/* Placeholder for map - in a real implementation, you would use Google Maps API or similar */}
-            {/* <div className="map-placeholder">
-              <img
-                src="/api/placeholder/1200/400"
-                alt="Location Map"
-                className="map-image"
-              />
-            </div>
-          </div>
-        </section>
-      </div> */}
-
       <div className="faq-section">
         <section>
-
           <Row className="justify-content-center">
             <Col lg={8} className="text-center">
-              <h2 className="section-title">Frequently Asked Questions</h2>
+              <h2 className="section-title text-black">
+                Frequently Asked Questions
+              </h2>
               <p className="section-subtitle">
                 Find quick answers to common questions
               </p>
@@ -368,7 +354,6 @@ function Contact() {
               </div>
             </Col>
           </Row>
-
         </section>
       </div>
 

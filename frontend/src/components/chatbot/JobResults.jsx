@@ -1,6 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Card, CardContent, Typography, Grid, Chip } from "@mui/material";
+import {
+  Container,
+  Card,
+  CardContent,
+  Typography,
+  Grid,
+  Chip,
+} from "@mui/material";
 import "./JobResults.css"; // Ensure CSS file is correctly imported
 
 const JobResults = () => {
@@ -42,7 +49,11 @@ const JobResults = () => {
                       <Grid container spacing={1}>
                         {job.required_skills.map((skill, idx) => (
                           <Grid item key={idx}>
-                            <Chip label={skill} variant="outlined" className="skill-chip" />
+                            <Chip
+                              label={skill}
+                              variant="outlined"
+                              className="skill-chip"
+                            />
                           </Grid>
                         ))}
                       </Grid>
@@ -99,9 +110,6 @@ const JobResults = () => {
 };
 
 export default JobResults;
-
-
-
 
 // import React from "react";
 // import { useLocation } from "react-router-dom";
@@ -205,8 +213,6 @@ export default JobResults;
 
 // export default JobResults;
 
-
-
 // import React from "react";
 // import { useLocation } from "react-router-dom";
 // import { Container, Card, CardContent, Typography, Grid, Chip } from "@mui/material";
@@ -283,9 +289,3 @@ export default JobResults;
 // };
 
 // export default JobResults;
-
-
-
-
-
-

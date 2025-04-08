@@ -96,6 +96,22 @@
         "documentation": {}
     },
     {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
         "label": "AppConfig",
         "importPath": "django.apps",
         "description": "django.apps",
@@ -264,94 +280,6 @@
         "documentation": {}
     },
     {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -416,30 +344,6 @@
         "documentation": {}
     },
     {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -457,14 +361,6 @@
     },
     {
         "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -560,6 +456,30 @@
         "documentation": {}
     },
     {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -581,6 +501,118 @@
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -840,6 +872,30 @@
         "documentation": {}
     },
     {
+        "label": "APIView",
+        "importPath": "rest_framework.views",
+        "description": "rest_framework.views",
+        "isExtraImport": true,
+        "detail": "rest_framework.views",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
         "label": "Response",
         "importPath": "rest_framework.response",
         "description": "rest_framework.response",
@@ -970,6 +1026,14 @@
     },
     {
         "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
         "importPath": "rest_framework",
         "description": "rest_framework",
         "isExtraImport": true,
@@ -1563,6 +1627,14 @@
         "documentation": {}
     },
     {
+        "label": "CandidateChangePasswordView",
+        "importPath": "login.views",
+        "description": "login.views",
+        "isExtraImport": true,
+        "detail": "login.views",
+        "documentation": {}
+    },
+    {
         "label": "CompanyRegisterView",
         "importPath": "company_registration.views",
         "description": "company_registration.views",
@@ -1643,11 +1715,86 @@
         "documentation": {}
     },
     {
+        "label": "BasicEmailView",
+        "importPath": "mail.views",
+        "description": "mail.views",
+        "isExtraImport": true,
+        "detail": "mail.views",
+        "documentation": {}
+    },
+    {
+        "label": "SendEmailView",
+        "importPath": "mail.views",
+        "description": "mail.views",
+        "isExtraImport": true,
+        "detail": "mail.views",
+        "documentation": {}
+    },
+    {
+        "label": "ApplicationMailView",
+        "importPath": "mail.views",
+        "description": "mail.views",
+        "isExtraImport": true,
+        "detail": "mail.views",
+        "documentation": {}
+    },
+    {
+        "label": "find_jobs",
+        "importPath": "chatbot.views",
+        "description": "chatbot.views",
+        "isExtraImport": true,
+        "detail": "chatbot.views",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "google.generativeai",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "google.generativeai",
+        "description": "google.generativeai",
+        "detail": "google.generativeai",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
         "documentation": {}
     },
     {
@@ -1724,6 +1871,14 @@
         "documentation": {}
     },
     {
+        "label": "make_password",
+        "importPath": "django.contrib.auth.hashers",
+        "description": "django.contrib.auth.hashers",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.hashers",
+        "documentation": {}
+    },
+    {
         "label": "ListAPIView",
         "importPath": "rest_framework.generics",
         "description": "rest_framework.generics",
@@ -1780,22 +1935,6 @@
         "documentation": {}
     },
     {
-        "label": "SendEmailView",
-        "importPath": "mail.views",
-        "description": "mail.views",
-        "isExtraImport": true,
-        "detail": "mail.views",
-        "documentation": {}
-    },
-    {
-        "label": "ApplicationMailView",
-        "importPath": "mail.views",
-        "description": "mail.views",
-        "isExtraImport": true,
-        "detail": "mail.views",
-        "documentation": {}
-    },
-    {
         "label": "send_mail",
         "importPath": "django.core.mail",
         "description": "django.core.mail",
@@ -1812,12 +1951,11 @@
         "documentation": {}
     },
     {
-        "label": "json",
-        "kind": 6,
+        "label": "send_mail",
+        "importPath": "django.core.mail",
+        "description": "django.core.mail",
         "isExtraImport": true,
-        "importPath": "json",
-        "description": "json",
-        "detail": "json",
+        "detail": "django.core.mail",
         "documentation": {}
     },
     {
@@ -1938,14 +2076,6 @@
         "description": "reportlab.lib.units",
         "isExtraImport": true,
         "detail": "reportlab.lib.units",
-        "documentation": {}
-    },
-    {
-        "label": "api_view",
-        "importPath": "rest_framework.decorators",
-        "description": "rest_framework.decorators",
-        "isExtraImport": true,
-        "detail": "rest_framework.decorators",
         "documentation": {}
     },
     {
@@ -2489,7 +2619,7 @@
         "kind": 5,
         "importPath": "backend.backend.urls",
         "description": "backend.backend.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"apply/\", ApplyToJobView.as_view(), name=\"apply_to_job\"),\n    path(\n        \"applications/<int:company_id>/\",\n        CompanyApplicationsAPIView.as_view(),\n        name=\"company-applications\",\n    ),\n    path(\"candidates/<int:candidate_id>/\", candidate_details, name=\"candidate_details\"),\n    path(\n        \"applications_del/<int:application_id>/\",",
+        "peekOfCode": "urlpatterns = [\n    path('api/find-jobs/', find_jobs, name='find-jobs'),\n    path(\"apply/\", ApplyToJobView.as_view(), name=\"apply_to_job\"),\n    path(\n        \"applications/<int:company_id>/\",\n        CompanyApplicationsAPIView.as_view(),\n        name=\"company-applications\",\n    ),\n    path(\"candidates/<int:candidate_id>/\", candidate_details, name=\"candidate_details\"),\n    path(",
         "detail": "backend.backend.urls",
         "documentation": {}
     },
@@ -2500,6 +2630,24 @@
         "description": "backend.backend.wsgi",
         "peekOfCode": "application = get_wsgi_application()",
         "detail": "backend.backend.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "ChatbotConfig",
+        "kind": 6,
+        "importPath": "backend.chatbot.apps",
+        "description": "backend.chatbot.apps",
+        "peekOfCode": "class ChatbotConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'chatbot'",
+        "detail": "backend.chatbot.apps",
+        "documentation": {}
+    },
+    {
+        "label": "find_jobs",
+        "kind": 2,
+        "importPath": "backend.chatbot.views",
+        "description": "backend.chatbot.views",
+        "peekOfCode": "def find_jobs(request):\n    try:\n        print(\"✅ Received raw data:\", request.data)\n        if not isinstance(request.data, dict):  \n            return Response({\"error\": \"Invalid data format. Expected a JSON object.\"}, status=400)\n        data = request.data\n        skills = data.get('skills', '')\n        degree = data.get('degree', '')\n        experience = data.get('experience', '')\n        job_type = data.get('jobType', '')",
+        "detail": "backend.chatbot.views",
         "documentation": {}
     },
     {
@@ -2818,6 +2966,15 @@
         "documentation": {}
     },
     {
+        "label": "CandidateChangePasswordView",
+        "kind": 6,
+        "importPath": "backend.login.views",
+        "description": "backend.login.views",
+        "peekOfCode": "class CandidateChangePasswordView(APIView):\n    def put(self, request, pk):\n        try:\n            candidate = Candidate.objects.get(id=pk)\n            new_password = request.data.get(\"password\")\n            if not new_password:\n                return Response({\"message\": \"New password is required.\"}, status=status.HTTP_400_BAD_REQUEST)\n            # Hash and save the new password\n            candidate.password = make_password(new_password)\n            candidate.save()",
+        "detail": "backend.login.views",
+        "documentation": {}
+    },
+    {
         "label": "Migration",
         "kind": 6,
         "importPath": "backend.mail.migrations.0001_initial",
@@ -2867,7 +3024,7 @@
         "kind": 6,
         "importPath": "backend.mail.views",
         "description": "backend.mail.views",
-        "peekOfCode": "class SendEmailView(APIView):\n    def post(self, request):\n        candidate_email = request.data.get(\"candidateEmail\")\n        job_post_id = request.data.get(\"jobId\")\n        candidate_id = request.data.get(\"candidateId\")\n        company_id = request.data.get(\"companyId\")\n        message = request.data.get(\"message\")\n        subject = \"Message from Career Connect\"\n        print(\"candidat email is\", candidate_email)\n        print(\"job id is\", job_post_id)",
+        "peekOfCode": "class SendEmailView(APIView):\n    def post(self, request):\n        candidate_email = request.data.get(\"candidateEmail\")\n        job_post_id = request.data.get(\"jobId\")\n        candidate_id = request.data.get(\"candidateId\")\n        company_id = request.data.get(\"companyId\")\n        message = request.data.get(\"message\")\n        subject = \"Message from Career Connect\"\n        print(\"candidat email is\", candidate_email)\n        print(\"job post id is\", job_post_id)",
         "detail": "backend.mail.views",
         "documentation": {}
     },
@@ -2877,6 +3034,15 @@
         "importPath": "backend.mail.views",
         "description": "backend.mail.views",
         "peekOfCode": "class ApplicationMailView(APIView):\n    def post(self, request, *args, **kwargs):\n        try:\n            data = json.loads(request.body)\n            name = data.get(\"name\")\n            email = data.get(\"email\")\n            subject = data.get(\"subject\")\n            message = data.get(\"message\")\n            if not all([name, email, subject, message]):\n                return Response(",
+        "detail": "backend.mail.views",
+        "documentation": {}
+    },
+    {
+        "label": "BasicEmailView",
+        "kind": 6,
+        "importPath": "backend.mail.views",
+        "description": "backend.mail.views",
+        "peekOfCode": "class BasicEmailView(APIView):\n    def post(self, request):\n        receiver = request.data.get(\"receiver\")\n        if not receiver:\n            return Response({\"error\": \"Recipient email is required.\"}, status=status.HTTP_400_BAD_REQUEST)\n        try:\n            return self._send_candidate_email_with_link(receiver)\n        except Candidate.DoesNotExist:\n            return Response({\"error\": \"Candidate with this email does not exist.\"}, status=status.HTTP_400_BAD_REQUEST)\n        except Exception as e:",
         "detail": "backend.mail.views",
         "documentation": {}
     },

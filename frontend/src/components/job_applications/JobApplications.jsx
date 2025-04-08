@@ -1,26 +1,60 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Modal from "react-modal";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "./JobApplications.css";
+
+// Material UI imports
+import {
+  CardContent,
+  Button,
+  Typography,
+  Box,
+  List,
+  ListItem,
+  ListItemText,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  CircularProgress,
+  Backdrop,
+  Pagination,
+  Divider,
+  IconButton,
+  Alert,
+  Paper,
+} from "@mui/material";
+
+import EmailIcon from "@mui/icons-material/Email";
+import DeleteIcon from "@mui/icons-material/Delete";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import SendIcon from "@mui/icons-material/Send";
+import CloseIcon from "@mui/icons-material/Close";
 
 const ApplicationFeed = () => {
   const navigate = useNavigate();
   const [applications, setApplications] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [hasNextPage, setHasNextPage] = useState(false);
-  const [hasPreviousPage, setHasPreviousPage] = useState(false);
+  const [pageCount, setPageCount] = useState(1);
   const [companyId, setCompanyId] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [globalLoading, setGlobalLoading] = useState(false);
   const [emailData, setEmailData] = useState({
     candidateEmail: "",
     message: "",
     jobId: "",
     candidateId: "",
     companyId: "",
+    jobTitle: "",
+    candidateName: "",
   });
 
   useEffect(() => {
@@ -47,12 +81,14 @@ const ApplicationFeed = () => {
         throw new Error("Failed to fetch applications.");
       }
       const data = await response.json();
-      console.log(data);
       setApplications(data.results || []);
-      setHasNextPage(!!data.next);
-      setHasPreviousPage(!!data.previous);
+
+      const total = data.count || 0;
+      const itemsPerPage = 6;
+      setPageCount(Math.ceil(total / itemsPerPage));
     } catch (error) {
       console.error("Error fetching applications:", error);
+      toast.error("Failed to load applications");
     } finally {
       setLoading(false);
     }
@@ -68,10 +104,11 @@ const ApplicationFeed = () => {
       }
       const data = await response.json();
 
-      // Store the candidate's email in the state
+      // Update the state
       setEmailData((prevData) => ({
         ...prevData,
         candidateEmail: data.email,
+        candidateName: data.full_name,
       }));
     } catch (error) {
       console.error("Error fetching candidate details:", error);
@@ -79,35 +116,87 @@ const ApplicationFeed = () => {
     }
   };
 
-  const deleteApplication = async (applicationId) => {
-    if (window.confirm("Are you sure you want to delete this application?")) {
-      try {
+  const deleteApplication = async (
+    applicationId,
+    candidateId,
+    jobId,
+    jobTitle,
+    applicationResponse
+  ) => {
+    setGlobalLoading(true);
+
+    try {
+      // Check if application is not shortlisted
+      if (applicationResponse !== "Shortlisted") {
+        // Get candidate details and send rejection email
         const response = await fetch(
-          `http://127.0.0.1:8000/applications_del/${applicationId}/`,
-          { method: "DELETE" }
+          `http://127.0.0.1:8000/api/candidate/details/${candidateId}/`
         );
         if (!response.ok) {
-          throw new Error("Failed to delete application.");
+          throw new Error("Failed to fetch candidate details.");
         }
-        setApplications(applications.filter((app) => app.id !== applicationId));
-        toast.success("Application deleted successfully.");
-      } catch (error) {
-        console.error("Error deleting application:", error);
-        toast.error("Error deleting application.");
+        const candidateData = await response.json();
+
+        // Send rejection email
+        const emailResponse = await axios.post(
+          "http://127.0.0.1:8000/api/send-email/",
+          {
+            candidateEmail: candidateData.email,
+            message: `Dear ${candidateData.full_name},
+
+                  Thank you for your interest in our company.
+
+                  After careful consideration, we regret to inform you that we will not be moving forward with
+                  your application at this time. We appreciate the time you took to apply and wish you success
+                  in your job search.
+
+                  Job ID: ${jobId}
+                  Job Title: ${jobTitle}
+                  Sent on: ${new Date().toLocaleDateString()}
+
+                  Best regards,
+                  Career Connect`,
+            jobId: jobId,
+            candidateId: candidateId,
+            companyId: companyId,
+          }
+        );
       }
+
+      // Delete application regardless of status
+      const deleteResponse = await fetch(
+        `http://127.0.0.1:8000/applications_del/${applicationId}/`,
+        { method: "DELETE" }
+      );
+
+      if (!deleteResponse.ok) {
+        throw new Error("Failed to delete application.");
+      }
+
+      // Update UI
+      setApplications(applications.filter((app) => app.id !== applicationId));
+
+      // Show appropriate success message
+      if (applicationResponse !== "Shortlisted") {
+        toast.success(
+          "Application deleted and rejection email sent successfully."
+        );
+      } else {
+        toast.success("Application deleted successfully.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error(
+        applicationResponse !== "Shortlisted"
+          ? "Error deleting application or sending rejection email."
+          : "Error deleting application."
+      );
+    } finally {
+      setGlobalLoading(false);
     }
   };
-
-  const handleNextPage = () => {
-    if (hasNextPage) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (hasPreviousPage) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
   };
 
   const viewCandidateDetails = (candidateId) => {
@@ -138,7 +227,7 @@ const ApplicationFeed = () => {
 
   const handleSendEmail = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    setGlobalLoading(true);
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/send-email/",
@@ -155,7 +244,7 @@ const ApplicationFeed = () => {
     } catch (error) {
       toast.error(error.response?.data?.error || "Error sending email");
     } finally {
-      setLoading(false);
+      setGlobalLoading(false);
     }
   };
 
@@ -175,6 +264,7 @@ const ApplicationFeed = () => {
   };
 
   const setApplicationResponse = async (applicationId, newStatus) => {
+    setGlobalLoading(true);
     try {
       const requestData = {
         application_id: applicationId,
@@ -202,82 +292,171 @@ const ApplicationFeed = () => {
       }
     } catch (error) {
       console.error("Error updating response:", error);
-      console.error(
-        "Error details:",
-        error.response?.data || "No response data"
-      );
       toast.error(
         "Error updating response: " +
           (error.response?.data?.error || error.message)
       );
+    } finally {
+      setGlobalLoading(false);
     }
   };
 
+  const [confirmDialog, setConfirmDialog] = useState({
+    open: false,
+    applicationId: null,
+    candidateId: null,
+    jobId: null,
+    jobTitle: null,
+    applicationResponse: null, // Add this line
+  });
+
+  const openConfirmDialog = (
+    applicationId,
+    candidateId,
+    jobId,
+    jobTitle,
+    applicationResponse
+  ) => {
+    setConfirmDialog({
+      open: true,
+      applicationId,
+      candidateId,
+      jobId,
+      jobTitle,
+      applicationResponse, // Add this line
+    });
+  };
+
+  const closeConfirmDialog = () => {
+    setConfirmDialog({
+      open: false,
+      applicationId: null,
+      candidateId: null,
+      jobId: null,
+      jobTitle: null,
+      applicationResponse: null, // Add this line
+    });
+  };
+  // Update the confirmDelete function
+  const confirmDelete = () => {
+    const { applicationId, candidateId, jobId, jobTitle, applicationResponse } =
+      confirmDialog;
+    deleteApplication(
+      applicationId,
+      candidateId,
+      jobId,
+      jobTitle,
+      applicationResponse // Add this parameter
+    );
+    closeConfirmDialog();
+  };
+
   return (
-    <div className="container-fluid bg-light py-4">
-      <ToastContainer
-        className="toast-class text-light"
-        position="top-center"
-        autoClose={2000}
-      />
-      <div className="row">
-        <div className="col-12">
-          <div className="card shadow-sm">
-            <div className="card-header text-light">
-              <h4 className="mb-0">Applications for your job posts</h4>
-            </div>
-            <div className="card-body">
-              {loading ? (
-                <div className="d-flex justify-content-center">
-                  <div className="spinner-border text-primary" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                </div>
-              ) : (
-                <>
-                  {applications.length === 0 ? (
-                    <div className="alert alert-info text-center" role="alert">
-                      No applications found.
-                    </div>
-                  ) : (
-                    <div className="list-group">
-                      {applications.map((app) => (
-                        <div
-                          key={app.id}
-                          className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+    <Box sx={{ py: 2, minHeight: "100vh" }}>
+      <ToastContainer position="top-center" autoClose={2000} />
+
+      {/* Global loading backdrop */}
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={globalLoading}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+
+      <div>
+        <Paper elevation={3} sx={{ borderRadius: 2, overflow: "hidden" }}>
+          <Box sx={{ p: 2, bgcolor: "primary.main", color: "white" }}>
+            <Typography variant="h5" fontWeight="bold">
+              Applications for your job posts
+            </Typography>
+          </Box>
+
+          <CardContent>
+            {loading ? (
+              <Box display="flex" justifyContent="center" my={4}>
+                <CircularProgress />
+              </Box>
+            ) : (
+              <>
+                {applications.length === 0 ? (
+                  <Alert severity="info" sx={{ my: 2 }}>
+                    No applications found.
+                  </Alert>
+                ) : (
+                  <List>
+                    {applications.map((app) => (
+                      <React.Fragment key={app.id}>
+                        <ListItem
+                          sx={{
+                            display: "flex",
+                            flexDirection: { xs: "column", md: "row" },
+                            alignItems: { xs: "flex-start", md: "center" },
+                            py: 2,
+                            "&:hover": { bgcolor: "rgba(0, 0, 0, 0.04)" },
+                          }}
                         >
-                          <div>
-                            <h6 className="mb-1">
-                              <strong>{app.candidate__full_name}</strong>
-                            </h6>
-                            <p className="mb-1">
-                              Applied for <em>{app.job_title}</em> (Job ID:{" "}
-                              {app.job_id}) on{" "}
-                              {new Date(app.time).toLocaleDateString()}
-                            </p>
-                          </div>
-                          <div className="btn-group" role="group">
-                            {/* View Details Button */}
-                            <button
-                              className="btn btn-sm btn-outline-primary"
+                          <ListItemText
+                            primary={
+                              <Typography variant="subtitle1" fontWeight="bold">
+                                {app.candidate__full_name}
+                              </Typography>
+                            }
+                            secondary={
+                              <Typography
+                                variant="body2"
+                                color="text.secondary"
+                              >
+                                Applied for <em>{app.job_title}</em> (Job ID:{" "}
+                                {app.job_id})
+                                <br />
+                                on {new Date(app.time).toLocaleDateString()}
+                              </Typography>
+                            }
+                            sx={{ flex: 1 }}
+                          />
+
+                          <Box
+                            sx={{
+                              display: "flex",
+                              flexDirection: { xs: "column", sm: "row" },
+                              mt: { xs: 2, md: 0 },
+                              gap: 1,
+                              width: { xs: "100%", md: "auto" },
+                            }}
+                          >
+                            <Button
+                              variant="outlined"
+                              size="small"
+                              startIcon={<VisibilityIcon />}
                               onClick={() =>
                                 viewCandidateDetails(app.candidate_id)
                               }
                             >
-                              View Details
-                            </button>
-
-                            {/* Delete Button */}
-                            <button
-                              className="btn btn-sm btn-outline-danger"
-                              onClick={() => deleteApplication(app.id)}
+                              View
+                            </Button>
+                            <Button
+                              variant="outlined"
+                              color="error"
+                              size="small"
+                              startIcon={<DeleteIcon />}
+                              onClick={() =>
+                                openConfirmDialog(
+                                  app.id,
+                                  app.candidate_id,
+                                  app.job_id,
+                                  app.job_title,
+                                  app.application_response // Make sure this matches your data structure
+                                )
+                              }
                             >
                               Delete
-                            </button>
+                            </Button>
 
-                            {/* Send Email Button */}
-                            <button
-                              className="btn btn-sm btn-outline-success"
+                            <Button
+                              variant="outlined"
+                              color="primary"
+                              size="small"
+                              startIcon={<EmailIcon />}
                               onClick={() => {
                                 getCandidateDetails(app.candidate_id);
                                 openEmailModal(
@@ -288,157 +467,159 @@ const ApplicationFeed = () => {
                                 );
                               }}
                             >
-                              Send Email
-                            </button>
+                              Email
+                            </Button>
 
-                            {/* dropdown menu for status */}
-                            <div className="dropdown">
-                              <select
-                                className="form-select form-select-sm"
+                            <FormControl
+                              variant="outlined"
+                              size="small"
+                              sx={{ minWidth: 150 }}
+                            >
+                              <InputLabel>Status</InputLabel>
+                              <Select
                                 value={
                                   app.application_response ||
                                   "Application Submitted"
-                                } // Use `application_response`
+                                }
                                 onChange={(e) => handleStatusChange(e, app.id)}
+                                label="Status"
                               >
-                                <option value="Application Submitted">
+                                <MenuItem value="Application Submitted">
                                   Application Submitted
-                                </option>
-                                <option value="Under Review">
+                                </MenuItem>
+                                <MenuItem value="Under Review">
                                   Under Review
-                                </option>
-                                <option value="Interview Scheduled">
+                                </MenuItem>
+                                <MenuItem value="Interview Scheduled">
                                   Interview Scheduled
-                                </option>
-                                <option value="Shortlisted">Shortlisted</option>
-                                <option value="Rejected">Rejected</option>
-                              </select>
-                              {app.showSetResponseButton && (
-                                <button
-                                  className="btn btn-sm btn-outline-primary mt-2"
-                                  onClick={() => setApplicationResponse(app.id)}
-                                >
-                                  Set Response
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  <nav aria-label="Page navigation" className="mt-3">
-                    <ul className="pagination justify-content-center">
-                      <li
-                        className={`page-item ${
-                          !hasPreviousPage ? "disabled" : ""
-                        }`}
-                      >
-                        <button
-                          className="page-link"
-                          onClick={handlePreviousPage}
-                          disabled={!hasPreviousPage}
-                        >
-                          Previous
-                        </button>
-                      </li>
-                      <li className="page-item">
-                        <span className="page-link">Page {currentPage}</span>
-                      </li>
-                      <li
-                        className={`page-item ${
-                          !hasNextPage ? "disabled" : ""
-                        }`}
-                      >
-                        <button
-                          className="page-link"
-                          onClick={handleNextPage}
-                          disabled={!hasNextPage}
-                        >
-                          Next
-                        </button>
-                      </li>
-                    </ul>
-                  </nav>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
+                                </MenuItem>
+                                <MenuItem value="Shortlisted">
+                                  Shortlisted
+                                </MenuItem>
+                                <MenuItem value="Rejected">Rejected</MenuItem>
+                              </Select>
+                            </FormControl>
+                          </Box>
+                        </ListItem>
+                        <Divider />
+                      </React.Fragment>
+                    ))}
+                  </List>
+                )}
+
+                <Box display="flex" justifyContent="center" mt={3}>
+                  <Pagination
+                    count={pageCount}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    color="primary"
+                  />
+                </Box>
+              </>
+            )}
+          </CardContent>
+        </Paper>
       </div>
 
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeEmailModal}
-        className="send-email-modal modal-dialog modal-dialog-centered"
-        overlayClassName="modal-overlay"
+      {/* Email Modal */}
+      <Dialog
+        open={isModalOpen}
+        onClose={closeEmailModal}
+        maxWidth="sm"
+        fullWidth
       >
-        <div className="modal-content send-email-modal-div">
-          <div className="modal-header bg-primary text-white">
-            <h5 className="modal-title">Send Email</h5>
-            <button
-              type="button"
-              className="btn-close btn-close-white"
-              onClick={closeEmailModal}
-            >
-              X
-            </button>
-          </div>
-          <div className="modal-body">
-            <form onSubmit={handleSendEmail}>
-              <div className="mb-3">
-                <label className="form-label">Email Address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  value={emailData.candidateEmail}
-                  onChange={(e) =>
-                    setEmailData({
-                      ...emailData,
-                      candidateEmail: e.target.value,
-                    })
-                  }
-                  required
-                />
-              </div>
+        <DialogTitle
+          sx={{
+            bgcolor: "primary.main",
+            color: "white",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h6">Send Email</Typography>
+          <IconButton
+            edge="end"
+            color="inherit"
+            onClick={closeEmailModal}
+            aria-label="close"
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent sx={{ pt: 2, mt: 2 }}>
+          <form onSubmit={handleSendEmail}>
+            <TextField
+              fullWidth
+              type="email"
+              margin="normal"
+              value={emailData.candidateEmail}
+              onChange={(e) =>
+                setEmailData({
+                  ...emailData,
+                  candidateEmail: e.target.value,
+                })
+              }
+              required
+            />
 
-              <div className="mb-3">
-                <label className="form-label">Message</label>
-                <textarea
-                  className="form-control"
-                  rows="4"
-                  value={emailData.message}
-                  onChange={(e) =>
-                    setEmailData({ ...emailData, message: e.target.value })
-                  }
-                  required
-                ></textarea>
-              </div>
-              <div className="d-grid">
-                <button
-                  type="submit"
-                  className="btn btn-primary"
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <>
-                      <span
-                        className="spinner-border spinner-border-sm me-2"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                      Sending...
-                    </>
-                  ) : (
-                    "Send Email"
-                  )}
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </Modal>
-    </div>
+            <TextField
+              fullWidth
+              label="Message"
+              multiline
+              rows={4}
+              margin="normal"
+              value={emailData.message}
+              onChange={(e) =>
+                setEmailData({ ...emailData, message: e.target.value })
+              }
+              required
+            />
+
+            <Box sx={{ mt: 3 }}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                disabled={globalLoading}
+                startIcon={
+                  globalLoading ? <CircularProgress size={20} /> : <SendIcon />
+                }
+              >
+                {globalLoading ? "Sending..." : "Send Email"}
+              </Button>
+            </Box>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      {/* Confirmation Dialog */}
+      <Dialog
+        open={confirmDialog.open}
+        onClose={closeConfirmDialog}
+        aria-labelledby="alert-dialog-title"
+      >
+        <DialogTitle id="alert-dialog-title" sx={{ color: "red" }}>
+          Confirm Delete Application?
+        </DialogTitle>
+        <DialogContent>
+          <Typography>
+            Are you sure you want to delete this application? If candidate is
+            not <span className="text-danger">ShortListed</span>, a rejection
+            mail will be sent to the candidate.
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closeConfirmDialog} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={confirmDelete} color="error" autoFocus>
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Box>
   );
 };
 

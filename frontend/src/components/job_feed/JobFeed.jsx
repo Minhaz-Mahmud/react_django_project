@@ -217,7 +217,9 @@ const JobFeed = () => {
                     <div className="job-card-header">
                       <div className="job-header-info">
                         <h3 className="job-title">{post.title}</h3>
-                        <p className="company-name">{post.company}</p>
+                        <p className="company-name text-black">
+                          {post.company}
+                        </p>
                       </div>
                       <div className="job-type-badge">{post.job_type}</div>
                     </div>

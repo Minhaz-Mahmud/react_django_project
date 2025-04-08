@@ -63,7 +63,9 @@ function LookingForJobSection() {
     <div className="py-5 lookingfor-job-section">
       <div className="row">
         <div className="looking-left col-md-6">
-          <h2 className="text-center section-title">Apply for a Job?</h2>
+          <h2 className="text-center section-title text-dark">
+            Apply for a Job?
+          </h2>
           <p>
             We have a wide range of job opportunities for you. Find the job that
             suits your skills and career goals.
@@ -145,7 +147,7 @@ function NumericSection() {
   return (
     <div className="numeric-section py-5" ref={sectionRef}>
       <div className="numeric-section-inside-div">
-        <h2 className="section-title text-center mb-5">
+        <h2 className="section-title text-dark text-center mb-5">
           Our Impact By Numbers
         </h2>
         <div className="row">
