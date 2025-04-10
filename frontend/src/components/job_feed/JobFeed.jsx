@@ -218,7 +218,7 @@ const JobFeed = () => {
                       <div className="job-header-info">
                         <h3 className="job-title">{post.title}</h3>
                         <p className="company-name text-black">
-                          {post.company}
+                          {post.company_name}
                         </p>
                       </div>
                       <div className="job-type-badge">{post.job_type}</div>
@@ -259,9 +259,17 @@ const JobFeed = () => {
                         </span>
                       </div>
                       <div className="footer-right">
+                      {/* <Link to="/signin">
                         <button className="btn btn-outline view-details-btn">
                           View Details
-                        </button>
+                        </button></Link> */}
+
+                  <Link to={`/job-details/${post.id}`}>
+                      <button className="btn btn-outline view-details-btn">
+                      View Details
+                      </button>
+                    </Link>
+
                         {userData ? (
                           <button
                             className="btn btn-primary apply-btn"

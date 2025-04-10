@@ -211,3 +211,30 @@ class GetJobDetailView(APIView):
                 {"error": "Job post not found."},
                 status=status.HTTP_404_NOT_FOUND,
             )
+        
+
+from django.http import JsonResponse
+from .models import JobPost
+from django.core.exceptions import ObjectDoesNotExist
+
+def job_detail(request, id):
+    try:
+        job = JobPost.objects.select_related("company").get(id=id)
+        data = {
+            "id": job.id,
+            "title": job.title,
+            "company": job.company.name,
+            "job_location": job.job_location,
+            "tags": job.tags,
+            "job_type": job.job_type,
+            "salary_range": job.salary_range,
+            "job_time": job.job_time,
+            "description": job.description,
+            "active_recruiting": job.active_recruiting,
+            "posted_at": job.posted_at,
+            "updated_at": job.updated_at,
+        }
+        return JsonResponse(data)
+    except ObjectDoesNotExist:
+        return JsonResponse({"error": "Job not found."}, status=404)
+

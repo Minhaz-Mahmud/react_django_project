@@ -13,7 +13,7 @@ from job_post.views import (
     JobPostCreateView,
     CompanyJobsView,
     JobPostDeleteView,
-    JobPostListView,
+    JobPostListView,job_detail
 )
 from apply.views import (
     ApplyToJobView,
@@ -54,6 +54,8 @@ urlpatterns = [
 
      path("api/send-recovery/", BasicEmailView.as_view(), name="send-recovery"),
      path("api/send-recovery-company/", BasicEmailViewCompany.as_view(), name="send-recovery-comapany"),
+
+      path("job-posts/<int:id>/", job_detail, name="job-detail"),
     
      path(
         "api/candidate/update/<int:pk>/",
