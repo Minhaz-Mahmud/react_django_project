@@ -29,6 +29,8 @@ import ChangePassword from "./components/profile/ChangePassword";
 import CPMail from "./components/profile/CPMail";
 import CareerOpportunities from "./components/chatbot/CareerOpportunities";
 import JobResults from "./components/chatbot/JobResults";
+import CPMailCompany from "./components/all_company/CPMailCompany";
+import ChangePasswordCompany from "./components/all_company/ChangePasswordCompany";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -115,7 +117,13 @@ const App = () => {
 
        <Route path="/cp/:id" element={<ChangePassword />} />
 
-       <Route path="/CO" element={<CareerOpportunities />} />
+       
+
+        <Route path="/cpm-company" element={<CPMailCompany />} />
+        <Route path="/cp-company/:id" element={<ChangePasswordCompany />} />
+
+
+      <Route path="/CO" element={<CareerOpportunities />} />
        <Route path="/job-results" element={<JobResults />} />
 
       </Routes>

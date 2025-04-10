@@ -9,6 +9,7 @@ from .models import Application_Mail
 from django.http import JsonResponse
 import json
 from django.core.mail import send_mail
+from company_registration.models import Company
 
 
 class SendEmailView(APIView):
@@ -166,4 +167,39 @@ class BasicEmailView(APIView):
             fail_silently=False,
         )
         return Response({"success": "Email sent successfully with candidate link!"}, status=status.HTTP_200_OK)
+    
+
+class BasicEmailViewCompany(APIView):
+    def post(self, request):
+        receiver = request.data.get("receiver")
+        
+        if not receiver:
+            return Response({"error": "Recipient email is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            return self._send_company_email_with_link(receiver)
+        except Company.DoesNotExist:
+            return Response({"error": "Company with this email does not exist."}, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({"error": f"Failed to send email: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    def _send_company_email_with_link(self, receiver):
+        """Helper function to fetch candidate, generate link, and send email."""
+        company = Company.objects.get(email=receiver)
+        company_id = company.id
+
+        # Generate the link using the candidate ID for the React frontend
+        link = f"http://localhost:5173/cp-company/{company_id}"
+        subject = "Your Account Recovery  Link"
+        message = f"Hello! Click here for  your account recovery: {link}"
+
+        send_mail(
+            subject,
+            message,
+            None,  # Django will use EMAIL_HOST_USER from settings
+            [receiver],
+            fail_silently=False,
+        )
+        return Response({"success": "Email sent successfully with candidate link!"}, status=status.HTTP_200_OK)
+    
 

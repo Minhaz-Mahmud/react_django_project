@@ -149,7 +149,7 @@ const Signin = () => {
           </button>
         </form>
 
-        <div className="signin-divider">
+        {/* <div className="signin-divider">
           <span>Or continue with</span>
         </div>
 
@@ -163,7 +163,7 @@ const Signin = () => {
           >
             <FaFacebook /> Facebook
           </button>
-        </div>
+        </div> */}
 
         <div className="signup-option">
           <p>

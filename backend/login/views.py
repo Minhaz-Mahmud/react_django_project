@@ -191,3 +191,26 @@ class CandidateChangePasswordView(APIView):
             return Response({"message": "Candidate not found."}, status=status.HTTP_404_NOT_FOUND)
         except Exception as e:
             return Response({"message": f"Error: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+from company_registration.models import Company
+
+class CompanyChangePasswordView(APIView):
+    def put(self, request, pk):
+        try:
+            company = Company.objects.get(id=pk)
+            new_password = request.data.get("password")
+
+            if not new_password:
+                return Response({"message": "New password is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+            # Hash and save the new password
+            company.password = make_password(new_password)
+            company.save()
+
+            return Response({"message": "Password updated successfully!"}, status=status.HTTP_200_OK)
+
+        except Company.DoesNotExist:
+            return Response({"message": "Candidate not found."}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"message": f"Error: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)

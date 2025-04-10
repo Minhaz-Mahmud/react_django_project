@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from registration.views import CandidateView
-from login.views import CandidateLoginView, CandidateUpdateView, CandidateChangePasswordView
+from login.views import CandidateLoginView, CandidateUpdateView, CandidateChangePasswordView,CompanyChangePasswordView
 from company_registration.views import (
     CompanyRegisterView,
     CompanyLoginView,
@@ -22,7 +22,7 @@ from apply.views import (
     ApplicationDeleteView,
 )
 
-from mail.views import BasicEmailView
+from mail.views import BasicEmailView,BasicEmailViewCompany
 from chatbot.views import find_jobs
 
 
@@ -46,7 +46,14 @@ urlpatterns = [
         name="change-password",
     ),
 
+      path(
+        "api/company/cp/<int:pk>/",
+        CompanyChangePasswordView.as_view(),
+        name="change-password-company",
+    ),
+
      path("api/send-recovery/", BasicEmailView.as_view(), name="send-recovery"),
+     path("api/send-recovery-company/", BasicEmailViewCompany.as_view(), name="send-recovery-comapany"),
     
      path(
         "api/candidate/update/<int:pk>/",

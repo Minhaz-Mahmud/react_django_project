@@ -115,7 +115,7 @@ const CompanySignin = () => {
           </div>
 
           <div className="forgot-password-link">
-            <Link to="/company/forgot-password">Forgot password?</Link>
+            <Link to="/cpm-company">Forgot password?</Link>
           </div>
 
           <button
