@@ -39,7 +39,8 @@ const Signin = () => {
         },
       });
 
-      // Save candidate data to session storage
+      console.log(response.data.candidate);
+
       sessionStorage.setItem(
         "candidateData",
         JSON.stringify(response.data.candidate)
@@ -52,14 +53,6 @@ const Signin = () => {
         onClose: () => setLoading(false),
       });
     }
-  };
-
-  const handleGoogleLogin = () => {
-    console.log("Google login");
-  };
-
-  const handleFacebookLogin = () => {
-    console.log("Facebook login");
   };
 
   const togglePasswordVisibility = () => {
@@ -148,22 +141,6 @@ const Signin = () => {
             )}
           </button>
         </form>
-
-        {/* <div className="signin-divider">
-          <span>Or continue with</span>
-        </div>
-
-        <div className="social-signin">
-          <button className="social-btn google-btn" onClick={handleGoogleLogin}>
-            <FaGoogle /> Google
-          </button>
-          <button
-            className="social-btn facebook-btn"
-            onClick={handleFacebookLogin}
-          >
-            <FaFacebook /> Facebook
-          </button>
-        </div> */}
 
         <div className="signup-option">
           <p>

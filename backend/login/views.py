@@ -6,6 +6,18 @@ from .models import Candidate
 from registration.serializer import CandidateSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework import status
+from .models import Candidate
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .models import Candidate
+from django.contrib.auth.hashers import make_password
+from company_registration.models import Company
+
 
 class CandidateLoginView(APIView):
     def post(self, request, *args, **kwargs):
@@ -33,10 +45,10 @@ class CandidateLoginView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        # Serialize the candidate data and add the id field
+        # Serialize the candidate data
         candidate_data = CandidateSerializer(candidate).data
 
-        # Include candidate id in the response
+        # Prepare the response data with all fields
         response_data = {
             "message": "Login successful",
             "candidate": {
@@ -45,9 +57,21 @@ class CandidateLoginView(APIView):
                 "email": candidate.email,
                 "phone_number": candidate.phone_number,
                 "location": candidate.location,
+                "dob": str(candidate.dob) if candidate.dob else None,
+                "gender": candidate.gender,
+                "religion": candidate.religion,
+                "high_school_name": candidate.high_school_name,
+                "high_school_degree": candidate.high_school_degree,
+                "high_school_passing_year": candidate.high_school_passing_year,
+                "high_school_grade": candidate.high_school_grade,
+                "university_name": candidate.university_name,
+                "university_degree": candidate.university_degree,
+                "university_passing_year": candidate.university_passing_year,
+                "university_grade": candidate.university_grade,
+                "professional_experience": candidate.professional_experience,
+                "skills": candidate.skills,
                 "profile_picture": candidate.profile_picture.url if candidate.profile_picture else None,
                 "resume": candidate.resume.url if candidate.resume else None,
-                "skills": candidate.skills,
             }
         }
 
@@ -74,42 +98,58 @@ class CandidateProfileView(APIView):
             {"candidate": candidate_data},
             status=status.HTTP_200_OK,
         )
-
-
-
-
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework import status
-from .models import Candidate
+        
 
 class CandidateUpdateView(APIView):
     parser_classes = [MultiPartParser, FormParser]
-
+    
     def put(self, request, pk):
         try:
             candidate = Candidate.objects.get(id=pk)
             
-            # Update candidate data
-            candidate.full_name = request.data.get('full_name', candidate.full_name)
-            candidate.email = request.data.get('email', candidate.email)
-            candidate.phone_number = request.data.get('phone_number', candidate.phone_number)
-            candidate.location = request.data.get('location', candidate.location)
-            candidate.skills = request.data.get('skills', candidate.skills)
+            # Update text fields only if they are provided and not empty
+            if request.data.get('full_name'):
+                candidate.full_name = request.data.get('full_name')
+            if request.data.get('phone_number'):
+                candidate.phone_number = request.data.get('phone_number')
+            if request.data.get('location'):
+                candidate.location = request.data.get('location')
+            if request.data.get('dob'):
+                candidate.dob = request.data.get('dob')
+            if request.data.get('gender'):
+                candidate.gender = request.data.get('gender')
+            if request.data.get('religion'):
+                candidate.religion = request.data.get('religion')
+            if request.data.get('high_school_name'):
+                candidate.high_school_name = request.data.get('high_school_name')
+            if request.data.get('high_school_degree'):
+                candidate.high_school_degree = request.data.get('high_school_degree')
+            if request.data.get('high_school_passing_year'):
+                candidate.high_school_passing_year = request.data.get('high_school_passing_year')
+            if request.data.get('high_school_grade'):
+                candidate.high_school_grade = request.data.get('high_school_grade')
+            if request.data.get('university_name'):
+                candidate.university_name = request.data.get('university_name')
+            if request.data.get('university_degree'):
+                candidate.university_degree = request.data.get('university_degree')
+            if request.data.get('university_passing_year'):
+                candidate.university_passing_year = request.data.get('university_passing_year')
+            if request.data.get('university_grade'):
+                candidate.university_grade = request.data.get('university_grade')
+            if request.data.get('professional_experience'):
+                candidate.professional_experience = request.data.get('professional_experience')
+            if request.data.get('skills'):
+                candidate.skills = request.data.get('skills')
             
-            if 'resume' in request.data:
-                candidate.resume = request.data['resume']
-            if 'profile_picture' in request.data:
-                candidate.profile_picture = request.data['profile_picture']
+            # Handle file uploads - only update if new files are provided
+            if 'resume' in request.FILES:
+                candidate.resume = request.FILES['resume']
+            if 'profile_picture' in request.FILES:
+                candidate.profile_picture = request.FILES['profile_picture']
             
             candidate.save()
 
-            # Serialize the candidate data
-            candidate_data = CandidateSerializer(candidate).data
-
-            # Prepare the response data
+            # Return updated candidate data in the same format as login
             response_data = {
                 "message": "Profile updated successfully!",
                 "candidate": {
@@ -118,12 +158,24 @@ class CandidateUpdateView(APIView):
                     "email": candidate.email,
                     "phone_number": candidate.phone_number,
                     "location": candidate.location,
+                    "dob": str(candidate.dob) if candidate.dob else None,
+                    "gender": candidate.gender,
+                    "religion": candidate.religion,
+                    "high_school_name": candidate.high_school_name,
+                    "high_school_degree": candidate.high_school_degree,
+                    "high_school_passing_year": candidate.high_school_passing_year,
+                    "high_school_grade": candidate.high_school_grade,
+                    "university_name": candidate.university_name,
+                    "university_degree": candidate.university_degree,
+                    "university_passing_year": candidate.university_passing_year,
+                    "university_grade": candidate.university_grade,
+                    "professional_experience": candidate.professional_experience,
+                    "skills": candidate.skills,
                     "profile_picture": candidate.profile_picture.url if candidate.profile_picture else None,
                     "resume": candidate.resume.url if candidate.resume else None,
-                    "skills": candidate.skills,
                 }
             }
-
+            
             return Response(response_data, status=status.HTTP_200_OK)
 
         except Candidate.DoesNotExist:
@@ -132,45 +184,9 @@ class CandidateUpdateView(APIView):
             return Response({"message": f"Error: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
 
 
-# class CandidateUpdateView(APIView):
-#     parser_classes = [MultiPartParser, FormParser]
-
-#     def put(self, request, pk):
-#         try:
-#             candidate = Candidate.objects.get(id=pk)
-            
-#             # Update candidate data
-#             candidate.full_name = request.data.get('full_name', candidate.full_name)
-#             candidate.email = request.data.get('email', candidate.email)
-#             candidate.phone_number = request.data.get('phone_number', candidate.phone_number)
-#             candidate.location = request.data.get('location', candidate.location)
-#             candidate.skills = request.data.get('skills', candidate.skills)
-            
-#             if 'resume' in request.data:
-#                 candidate.resume = request.data['resume']
-#             if 'profile_picture' in request.data:
-#                 candidate.profile_picture = request.data['profile_picture']
-            
-#             candidate.save()
-
-#             # Return success response
-#             serializer = CandidateSerializer(candidate)
-#             return Response({"message": "Profile updated successfully!", "data": serializer.data}, status=200)
-
-#         except Candidate.DoesNotExist:
-#             return Response({"message": "Candidate not found."}, status=404)
-#         except Exception as e:
-#             return Response({"message": f"Error: {str(e)}"}, status=400)
 
 
 
-
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .models import Candidate
-from django.contrib.auth.hashers import make_password
 
 class CandidateChangePasswordView(APIView):
     def put(self, request, pk):
@@ -193,7 +209,6 @@ class CandidateChangePasswordView(APIView):
             return Response({"message": f"Error: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
 
 
-from company_registration.models import Company
 
 class CompanyChangePasswordView(APIView):
     def put(self, request, pk):

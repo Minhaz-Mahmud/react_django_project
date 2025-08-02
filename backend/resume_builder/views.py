@@ -15,15 +15,35 @@ from .serializers import ResumeSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from .models import CandidateCV
-import fitz  # PyMuPDF
+import fitz
 from PIL import Image
 import random
 import string
 
 
+@api_view(['GET'])
+def get_resume_data(request, resume_id):
+    """Get resume data for editing"""
+    try:
+        resume = CandidateCV.objects.get(id=resume_id)
+        data = ResumeSerializer(resume).data
+       
+        if resume.template_number:
+            data['template_number'] = int(resume.template_number)
+        else:
+            data['template_number'] = 1
+            
+        return JsonResponse(data)
+    except CandidateCV.DoesNotExist:
+        return JsonResponse(
+            {"error": "Resume not found"}, 
+            status=404
+        )
+
+
 # //////////////////////////////////////////cv1 template/////////////////////////////////////////////////////////////////////
 SKILL_COLORS = [
-    "#ecf0f1",  # Light gray background
+    "#ecf0f1", 
 ]
 
 
@@ -193,50 +213,53 @@ def generate_cv(request):
 
         # set names
         def generate_random_string(length=12):
-            return "".join(
-                random.choices(string.ascii_letters + string.digits, k=length)
-            )
+            return "".join(random.choices(string.ascii_letters + string.digits, k=length))
 
         random_cv_name = generate_random_string()
-
-        # Save the PDF
         file_name = f"{random_cv_name.replace(' ', '_')}_resume.pdf"
         file_path = os.path.join(settings.MEDIA_ROOT, "gen_cv", file_name)
 
+        # Save PDF file
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, "wb") as f:
             f.write(buffer.getvalue())
 
-        # Generate a thumbnail using PyMuPDF
-        # Open the PDF file using PyMuPDF
+        # Generate thumbnail
         pdf_document = fitz.open(file_path)
-        # Get the first page of the PDF
         first_page = pdf_document.load_page(0)
-        # Render the page to a Pixmap (an image object)
         pixmap = first_page.get_pixmap()
-        # Convert the Pixmap to a PIL image
         img = Image.frombytes("RGB", [pixmap.width, pixmap.height], pixmap.samples)
-        # Save the image as a thumbnail
         thumbnail_name = f"{random_cv_name.replace(' ', '_')}_thumbnail.jpg"
         thumbnail_path = os.path.join(settings.MEDIA_ROOT, "thumbnails", thumbnail_name)
         os.makedirs(os.path.dirname(thumbnail_path), exist_ok=True)
         img.save(thumbnail_path)
 
-        # Create database record
         CandidateCV.objects.create(
             candidate_id=candidate_id,
             email=data["email"],
+            name=data["name"],
+            title=data.get("title", ""),
+            phone=data.get("phone", ""),
+            gender=data.get("gender", ""),
+            dob=data.get("dob", ""),
+            address=data.get("address", ""),
+            religion=data.get("religion", ""),
+            skillset=data.get("skillset", []),
+            education=data.get("education", {
+                "highSchool": {},
+                "varsity": {}
+            }),
+            experience=data.get("experience", ""),
+            template_number="1", 
             cv_file=f"gen_cv/{file_name}",
             thumbnail=f"thumbnails/{thumbnail_name}",
         )
 
-        return JsonResponse(
-            {
-                "message": "CV generated successfully",
-                "cv_url": f"/media/gen_cv/{file_name}",
-                "thumbnail_url": f"/media/thumbnails/{thumbnail_name}",
-            }
-        )
+        return JsonResponse({
+            "message": "CV generated successfully",
+            "cv_url": f"/media/gen_cv/{file_name}",
+            "thumbnail_url": f"/media/thumbnails/{thumbnail_name}",
+        })
 
     return JsonResponse({"error": "Invalid request"}, status=400)
 
@@ -504,13 +527,276 @@ def generate_cv2(request):
         # set names
 
         def generate_random_string(length=12):
-            return "".join(
-                random.choices(string.ascii_letters + string.digits, k=length)
-            )
+            return "".join(random.choices(string.ascii_letters + string.digits, k=length))
 
         random_cv_name = generate_random_string()
+        file_name = f"{random_cv_name.replace(' ', '_')}_resume.pdf"
+        file_path = os.path.join(settings.MEDIA_ROOT, "gen_cv", file_name)
 
         # Save files and create records (unchanged)
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path, "wb") as f:
+            f.write(buffer.getvalue())
+
+        # Generate thumbnail
+        pdf_document = fitz.open(file_path)
+        first_page = pdf_document.load_page(0)
+        pixmap = first_page.get_pixmap()
+        img = Image.frombytes("RGB", [pixmap.width, pixmap.height], pixmap.samples)
+        thumbnail_name = f"{random_cv_name.replace(' ', '_')}_thumbnail.jpg"
+        thumbnail_path = os.path.join(settings.MEDIA_ROOT, "thumbnails", thumbnail_name)
+        os.makedirs(os.path.dirname(thumbnail_path), exist_ok=True)
+        img.save(thumbnail_path)
+
+
+        CandidateCV.objects.create(
+            candidate_id=candidate_id,
+            email=data["email"],
+            name=data["name"],
+            title=data.get("title", ""),
+            phone=data["phone"],
+            gender=data["gender"],
+            dob=data["dob"],
+            address=data["address"],
+            religion=data["religion"],
+            skillset=data["skillset"],
+            education=data["education"],
+            experience=data["experience"],
+            template_number="2",  # Template 2
+            cv_file=f"gen_cv/{file_name}",
+            thumbnail=f"thumbnails/{thumbnail_name}",
+        )
+       
+            
+    
+
+        return JsonResponse(
+            {
+                "message": "CV generated successfully",
+                "cv_url": f"/media/gen_cv/{file_name}",
+                "thumbnail_url": f"/media/thumbnails/{thumbnail_name}",
+            }
+        )
+
+    return JsonResponse({"error": "Invalid request"}, status=400)
+
+
+# //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# --------------------------------------generate_cv3-----------------------------------------------
+
+
+COLORS_3 = {
+    "primary": "#2E86AB",      # Deep Blue
+    "secondary": "#A23B72",    # Burgundy Pink
+    "accent": "#F18F01",       # Orange Accent
+    "light_blue": "#A8DADC",   # Light Blue
+    "teal": "#457B9D",         # Teal
+    "text": "#1D3557",         # Dark Blue Text
+    "light_text": "#457B9D",   # Medium Blue
+    "background": "#F1FAEE",   # Very Light Blue
+    "white": "#FFFFFF",
+    "dark": "#264653",         # Dark Teal
+}
+
+
+def draw_section_header3(canvas, text, y_position, is_sidebar=False):
+    """Draw section headers with blue theme styling"""
+    if is_sidebar:
+        # Sidebar header styling
+        canvas.setFillColor(colors.HexColor(COLORS_3["accent"]))
+        canvas.rect(0.3 * inch, y_position - 5, 2.2 * inch, 2, fill=1)
+        
+        canvas.setFillColor(colors.HexColor(COLORS_3["white"]))
+        canvas.setFont("Helvetica-Bold", 12)
+        canvas.drawString(0.3 * inch, y_position, text)
+    else:
+        # Main content header styling
+        canvas.setFillColor(colors.HexColor(COLORS_3["primary"]))
+        canvas.rect(3 * inch, y_position - 5, 4.5 * inch, 25, fill=1)
+        
+        canvas.setFillColor(colors.HexColor(COLORS_3["white"]))
+        canvas.setFont("Helvetica-Bold", 14)
+        canvas.drawString(3.2 * inch, y_position + 5, text)
+    
+    canvas.setFillColor(colors.HexColor(COLORS_3["text"]))
+    canvas.setFont("Helvetica", 10)
+    return y_position - 35
+
+
+def draw_skill_badge3(canvas, skill, x, y):
+    """Draw skill badges with blue theme"""
+    canvas.setFont("Helvetica", 9)
+    text_width = canvas.stringWidth(skill)
+    badge_width = max(text_width + 20, 2 * inch)  # Minimum width for sidebar
+    badge_height = 22
+    
+    # Draw skill background
+    canvas.setFillColor(colors.HexColor(COLORS_3["light_blue"]))
+    canvas.roundRect(x, y - 12, badge_width, badge_height, 8, fill=1)
+    
+    # Draw accent border
+    canvas.setStrokeColor(colors.HexColor(COLORS_3["accent"]))
+    canvas.setLineWidth(1)
+    canvas.roundRect(x, y - 12, badge_width, badge_height, 8, fill=0)
+    
+    # Draw skill text
+    canvas.setFillColor(colors.HexColor(COLORS_3["dark"]))
+    canvas.drawCentredString(x + badge_width/2, y - 2, skill)
+    
+    return badge_height + 8
+
+
+def draw_contact_item3(canvas, icon, text, x, y):
+    """Draw contact information with icons in sidebar"""
+    canvas.setFillColor(colors.HexColor(COLORS_3["accent"]))
+    canvas.setFont("Helvetica-Bold", 10)
+    canvas.drawString(x, y, icon)
+    
+    canvas.setFillColor(colors.HexColor(COLORS_3["white"]))
+    canvas.setFont("Helvetica", 9)
+    canvas.drawString(x + 15, y, text)
+    return y - 20
+
+
+@csrf_exempt
+def generate_cv3(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        candidate_id = data.get("candidate_id")
+        candidate_name = data["name"]
+
+        # Create PDF
+        buffer = BytesIO()
+        pdf = canvas.Canvas(buffer, pagesize=letter)
+        width, height = letter
+
+        # Draw sidebar background
+        sidebar_width = 2.8 * inch
+        pdf.setFillColor(colors.HexColor(COLORS_3["dark"]))
+        pdf.rect(0, 0, sidebar_width, height, fill=True)
+
+        # Draw main content background
+        pdf.setFillColor(colors.HexColor(COLORS_3["background"]))
+        pdf.rect(sidebar_width, 0, width - sidebar_width, height, fill=True)
+
+        # Header section with name
+        pdf.setFillColor(colors.HexColor(COLORS_3["primary"]))
+        pdf.rect(0, height - 1.5 * inch, width, 1.5 * inch, fill=True)
+
+        # Name in header
+        pdf.setFillColor(colors.HexColor(COLORS_3["white"]))
+        pdf.setFont("Helvetica-Bold", 28)
+        pdf.drawString(0.3 * inch, height - 0.8 * inch, candidate_name.upper())
+
+        # Professional title
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.setFillColor(colors.HexColor(COLORS_3["accent"]))
+        pdf.drawString(0.3 * inch, height - 1.1 * inch, data.get("title", "Professional"))
+
+        # Sidebar content starts here
+        sidebar_y = height - 2 * inch
+
+        # Contact Information in sidebar
+        sidebar_y = draw_section_header3(pdf, "CONTACT", sidebar_y, is_sidebar=True)
+        sidebar_y = draw_contact_item3(pdf, "✉", data['email'], 0.3 * inch, sidebar_y)
+        sidebar_y = draw_contact_item3(pdf, "☎", data['phone'], 0.3 * inch, sidebar_y)
+        sidebar_y = draw_contact_item3(pdf, "⌂", data['address'], 0.3 * inch, sidebar_y)
+        sidebar_y -= 20
+
+        # Personal Details in sidebar
+        sidebar_y = draw_section_header3(pdf, "PERSONAL", sidebar_y, is_sidebar=True)
+        pdf.setFillColor(colors.HexColor(COLORS_3["white"]))
+        pdf.setFont("Helvetica", 9)
+        pdf.drawString(0.3 * inch, sidebar_y, f"DOB: {data['dob']}")
+        sidebar_y -= 15
+        pdf.drawString(0.3 * inch, sidebar_y, f"Gender: {data['gender'].capitalize()}")
+        sidebar_y -= 15
+        pdf.drawString(0.3 * inch, sidebar_y, f"Religion: {data['religion'].capitalize()}")
+        sidebar_y -= 30
+
+        # Skills in sidebar
+        sidebar_y = draw_section_header3(pdf, "SKILLS", sidebar_y, is_sidebar=True)
+        for skill in data["skillset"]:
+            if skill:
+                skill_height = draw_skill_badge3(pdf, skill, 0.3 * inch, sidebar_y)
+                sidebar_y -= skill_height
+
+        # Main content area
+        main_y = height - 2 * inch
+
+        # Education Section
+        main_y = draw_section_header3(pdf, "EDUCATION", main_y, is_sidebar=False)
+        
+        # University Education
+        uni_education = data["education"]["varsity"]
+        pdf.setFillColor(colors.HexColor(COLORS_3["primary"]))
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(3.2 * inch, main_y, uni_education["name"])
+        main_y -= 18
+        
+        pdf.setFillColor(colors.HexColor(COLORS_3["text"]))
+        pdf.setFont("Helvetica-Bold", 10)
+        pdf.drawString(3.2 * inch, main_y, uni_education["degree"])
+        main_y -= 15
+        
+        pdf.setFont("Helvetica", 10)
+        pdf.drawString(3.2 * inch, main_y, f"Graduated: {uni_education['passingYear']} | GPA: {uni_education['cga']}")
+        main_y -= 25
+
+        # High School Education
+        hs_education = data["education"]["highSchool"]
+        pdf.setFillColor(colors.HexColor(COLORS_3["teal"]))
+        pdf.setFont("Helvetica-Bold", 12)
+        pdf.drawString(3.2 * inch, main_y, hs_education["name"])
+        main_y -= 18
+        
+        pdf.setFillColor(colors.HexColor(COLORS_3["text"]))
+        pdf.setFont("Helvetica-Bold", 10)
+        pdf.drawString(3.2 * inch, main_y, hs_education["degree"])
+        main_y -= 15
+        
+        pdf.setFont("Helvetica", 10)
+        pdf.drawString(3.2 * inch, main_y, f"Completed: {hs_education['year']} | Grade: {hs_education['grade']}")
+        main_y -= 30
+
+        # Professional Experience Section
+        main_y = draw_section_header3(pdf, "PROFESSIONAL EXPERIENCE", main_y, is_sidebar=False)
+        
+        pdf.setFont("Helvetica", 10)
+        experience_lines = data["experience"].split("\n")
+        
+        for line in experience_lines:
+            if line.strip():
+                # Blue accent bullet
+                pdf.setFillColor(colors.HexColor(COLORS_3["accent"]))
+                pdf.circle(3.1 * inch, main_y + 3, 3, fill=1)
+                
+                # Experience text
+                pdf.setFillColor(colors.HexColor(COLORS_3["text"]))
+                max_width = 70  # Characters per line for main content area
+                wrapped_lines = [line[i:i + max_width] for i in range(0, len(line), max_width)]
+                for wrapped_line in wrapped_lines:
+                    pdf.drawString(3.3 * inch, main_y, wrapped_line)
+                    main_y -= 18
+
+        # Footer
+        pdf.setFillColor(colors.HexColor(COLORS_3["primary"]))
+        pdf.rect(0, 0, width, 0.4 * inch, fill=True)
+        
+        pdf.setFillColor(colors.HexColor(COLORS_3["white"]))
+        pdf.setFont("Helvetica", 8)
+        generation_date = datetime.now().strftime("%B %d, %Y")
+        pdf.drawString(0.3 * inch, 0.15 * inch, f"Generated on {generation_date}")
+        pdf.drawRightString(width - 0.3 * inch, 0.15 * inch, f"{candidate_name.title()} | Page 1")
+
+        pdf.save()
+        buffer.seek(0)
+
+        # Generate random name and save files
+        def generate_random_string(length=12):
+            return "".join(random.choices(string.ascii_letters + string.digits, k=length))
+
+        random_cv_name = generate_random_string()
         file_name = f"{random_cv_name.replace(' ', '_')}_resume.pdf"
         file_path = os.path.join(settings.MEDIA_ROOT, "gen_cv", file_name)
 
@@ -528,12 +814,25 @@ def generate_cv2(request):
         os.makedirs(os.path.dirname(thumbnail_path), exist_ok=True)
         img.save(thumbnail_path)
 
+       
         CandidateCV.objects.create(
             candidate_id=candidate_id,
             email=data["email"],
+            name=data["name"],
+            title=data.get("title", ""),
+            phone=data["phone"],
+            gender=data["gender"],
+            dob=data["dob"],
+            address=data["address"],
+            religion=data["religion"],
+            skillset=data["skillset"],
+            education=data["education"],
+            experience=data["experience"],
+            template_number="3",  # Template 3
             cv_file=f"gen_cv/{file_name}",
             thumbnail=f"thumbnails/{thumbnail_name}",
         )
+    
 
         return JsonResponse(
             {
@@ -544,6 +843,3 @@ def generate_cv2(request):
         )
 
     return JsonResponse({"error": "Invalid request"}, status=400)
-
-
-# //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

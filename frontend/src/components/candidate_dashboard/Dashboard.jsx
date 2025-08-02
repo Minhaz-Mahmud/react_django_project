@@ -28,7 +28,7 @@ const MainContent = ({ activeComponent }) => {
         <ChangePassword />
       </div>
     ),
-    
+
     Cand_Applied_jobs: (
       <div>
         <AppliedJobs />
@@ -116,8 +116,6 @@ const Dashboard = () => {
               >
                 Update Profile
               </button>
-
-               
             </div>
 
             <div className="p-3">

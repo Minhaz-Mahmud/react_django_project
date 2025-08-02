@@ -79,8 +79,6 @@ REST_FRAMEWORK = {
     ],
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
-
 CORS_ALLOW_METHODS = [
     "DELETE",
     "GET",
@@ -106,8 +104,11 @@ ROOT_URLCONF = "backend.urls"
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # React app URL
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
 ]
+
 
 
 TEMPLATES = [
@@ -138,7 +139,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "career_connect",
         "USER": "postgres",
-        "PASSWORD": "123456",
+        "PASSWORD": "114114114",
         "HOST": "localhost",
         "PORT": "5432",
     }

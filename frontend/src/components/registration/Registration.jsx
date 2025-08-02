@@ -37,6 +37,7 @@ const Registration = () => {
     resume: "",
     profile_picture: "",
   });
+  const [success, setSuccess] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -97,7 +98,7 @@ const Registration = () => {
           },
         }
       );
-      toast.success("Registration successful! Redirecting to login...");
+      setSuccess("Registration successful! Redirecting to login...");
 
       // Clear the form fields
       setFormData({
@@ -134,16 +135,9 @@ const Registration = () => {
         className="toast-class text-light"
         position="top-center"
         autoClose={2000}
+        style={{ zIndex: 10000 }}
+        toastStyle={{ backgroundColor: "#333" }}
       />
-
-      {error && (
-        <div className="error-alert">
-          <p>{error}</p>
-          <button onClick={dismissError} className="close-alert">
-            <FaTimes />
-          </button>
-        </div>
-      )}
 
       <div className="registration-wrapper">
         <div className="registration-image-container">
@@ -162,6 +156,22 @@ const Registration = () => {
         </div>
 
         <div className="registration-form-container">
+          {error && (
+            <div className="error-alert">
+              <span>{error}</span>
+              <button onClick={dismissError} className="close-alert">
+                <FaTimes />
+              </button>
+            </div>
+          )}
+          {success && (
+            <div className="success-alert">
+              <span>{success}</span>
+              <button onClick={() => setSuccess(null)} className="close-alert">
+                <FaTimes />
+              </button>
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="registration-form">
             <h3>Create Your Account</h3>
             <p className="form-subtitle">Fill out the form to get started</p>

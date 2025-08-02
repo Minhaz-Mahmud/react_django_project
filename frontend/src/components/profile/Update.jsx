@@ -7,21 +7,33 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {
   BsPersonCircle,
   BsFileEarmarkText,
-  BsGeoAlt,
-  BsPhone,
-  BsEnvelope,
-  BsTools,
+  BsBook,
+  BsBuilding,
+  BsBriefcase,
 } from "react-icons/bs";
 import "./Update.css";
 
-const Profile = () => {
+const ProfileUpdate = () => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [previewImage, setPreviewImage] = useState(null);
   const [formData, setFormData] = useState({
     full_name: "",
+    email: "",
     phone_number: "",
     location: "",
+    dob: "",
+    gender: "",
+    religion: "",
+    high_school_name: "",
+    high_school_degree: "",
+    high_school_passing_year: "",
+    high_school_grade: "",
+    university_name: "",
+    university_degree: "",
+    university_passing_year: "",
+    university_grade: "",
+    professional_experience: "",
     skills: "",
     resume: null,
     profile_picture: null,
@@ -29,73 +41,78 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the page has been refreshed already
-    const firstRefresh = sessionStorage.getItem("firstRefresh");
-    if (!firstRefresh) {
-      sessionStorage.setItem("firstRefresh", "true");
-      window.location.reload();
-      return;
-    }
-
-    // Check for candidate data in sessionStorage
     const storedUserData = sessionStorage.getItem("candidateData");
     if (storedUserData) {
       const parsedData = JSON.parse(storedUserData);
       setUserData(parsedData);
+
       setFormData({
-        full_name: parsedData.full_name,
-        email: parsedData.email,
-        phone_number: parsedData.phone_number,
-        location: parsedData.location,
-        skills: parsedData.skills,
-        resume: parsedData.resume,
-        profile_picture: parsedData.profile_picture,
+        full_name: parsedData.full_name || "",
+        email: parsedData.email || "",
+        phone_number: parsedData.phone_number || "",
+        location: parsedData.location || "",
+        dob: parsedData.dob || "",
+        gender: parsedData.gender || "",
+        religion: parsedData.religion || "",
+        high_school_name: parsedData.high_school_name || "",
+        high_school_degree: parsedData.high_school_degree || "",
+        high_school_passing_year: parsedData.high_school_passing_year || "",
+        high_school_grade: parsedData.high_school_grade || "",
+        university_name: parsedData.university_name || "",
+        university_degree: parsedData.university_degree || "",
+        university_passing_year: parsedData.university_passing_year || "",
+        university_grade: parsedData.university_grade || "",
+        professional_experience: parsedData.professional_experience || "",
+        skills: parsedData.skills || "",
+        resume: null,
+        profile_picture: null,
       });
 
-      // Set preview image if exists
       if (parsedData.profile_picture) {
         setPreviewImage(`http://localhost:8000${parsedData.profile_picture}`);
       }
 
       setLoading(false);
     } else {
-      // Redirect to the sign-in page if no user data exists
       navigate("/signin");
     }
   }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
+    const file = files[0];
 
-    setFormData({
-      ...formData,
-      [name]: files[0],
-    });
+    if (file) {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: file,
+      }));
 
-    // Create preview URL for profile picture
-    if (name === "profile_picture" && files[0]) {
-      const fileReader = new FileReader();
-      fileReader.onload = (e) => {
-        setPreviewImage(e.target.result);
-      };
-      fileReader.readAsDataURL(files[0]);
+      // Show preview for profile picture
+      if (name === "profile_picture") {
+        const fileReader = new FileReader();
+        fileReader.onload = (e) => {
+          setPreviewImage(e.target.result);
+        };
+        fileReader.readAsDataURL(file);
+      }
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const candidateId = userData?.id;
 
-    // Retrieve the candidate ID from sessionStorage
-    const candidateData = JSON.parse(sessionStorage.getItem("candidateData"));
-    const candidateId = candidateData ? candidateData.id : null;
+    console.log("userData from update:", userData);
+    console.log("Candidate ID:", candidateId);
 
     if (!candidateId) {
       toast.error("Candidate ID is missing.");
@@ -103,17 +120,24 @@ const Profile = () => {
     }
 
     const data = new FormData();
-    data.append("full_name", formData.full_name);
-    data.append("email", formData.email);
-    data.append("phone_number", formData.phone_number);
-    data.append("location", formData.location);
-    data.append("skills", formData.skills);
 
-    if (formData.resume instanceof File) {
-      data.append("resume", formData.resume);
-    }
-    if (formData.profile_picture instanceof File) {
-      data.append("profile_picture", formData.profile_picture);
+    // Add all form fields to FormData
+    Object.keys(formData).forEach((key) => {
+      const value = formData[key];
+
+      if (key === "resume" || key === "profile_picture") {
+        if (value instanceof File) {
+          data.append(key, value);
+        }
+      } else if (value !== null && value !== undefined && value !== "") {
+        data.append(key, value);
+      }
+    });
+
+    // Debug: Log FormData contents
+    console.log("Sending FormData:");
+    for (let [key, value] of data.entries()) {
+      console.log(key, value);
     }
 
     try {
@@ -127,37 +151,27 @@ const Profile = () => {
         }
       );
 
+      console.log("Response:", response);
+
       if (response.status === 200) {
         toast.success("Profile updated successfully!");
 
-        // Save the updated candidate data to sessionStorage
+        // Update sessionStorage with new data
         sessionStorage.setItem(
           "candidateData",
           JSON.stringify(response.data.candidate)
         );
-
-        // Update state with the latest data
         setUserData(response.data.candidate);
-        setFormData({
-          full_name: response.data.candidate.full_name,
-          email: response.data.candidate.email,
-          phone_number: response.data.candidate.phone_number,
-          location: response.data.candidate.location,
-          skills: response.data.candidate.skills,
-          resume: response.data.candidate.resume,
-          profile_picture: response.data.candidate.profile_picture,
-        });
 
-        // Navigate to dashboard after a short delay
         setTimeout(() => {
           navigate("/dashboard");
         }, 2500);
-      } else {
-        toast.error("Failed to update profile.");
       }
     } catch (error) {
       console.error("Error updating profile:", error);
-      toast.error(error.response?.data?.message || "Error updating profile.");
+      const errorMessage =
+        error.response?.data?.message || "Error updating profile.";
+      toast.error(errorMessage);
     }
   };
 
@@ -171,8 +185,7 @@ const Profile = () => {
     );
   }
 
-  const defaultProfilePicture = "profile.jpg";
-  const resumeLink = userData.resume
+  const resumeLink = userData?.resume
     ? `http://localhost:8000${userData.resume}`
     : null;
 
@@ -182,199 +195,299 @@ const Profile = () => {
 
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-lg-10">
+          <div className="col-lg-12">
             <div className="card border-0 shadow">
               <div className="card-header bg-primary text-white py-3">
                 <h3 className="mb-0 text-center">Update Your Profile</h3>
               </div>
 
               <div className="card-body p-4">
-                <div className="row">
-                  {/* Left Side - Image Preview */}
-                  <div className="col-md-4 mb-4 mb-md-0">
-                    <div className="text-center">
-                      <div className="profile-preview-container mx-auto mb-3">
-                        {previewImage ? (
-                          <img
-                            src={previewImage}
-                            alt="Profile Preview"
-                            className="profile-preview-image"
-                            onError={(e) => {
-                              e.target.src = defaultProfilePicture;
-                            }}
-                          />
-                        ) : (
-                          <div className="default-profile-preview">
-                            <BsPersonCircle size={80} />
-                          </div>
-                        )}
-                      </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="row">
+                    {/* Left Column - Personal Info */}
+                    <div className="col-md-6">
+                      <h5 className="mb-3 text-primary">
+                        <BsPersonCircle className="me-2" />
+                        Personal Information
+                      </h5>
 
-                      <div className="current-document mb-4">
-                        <h6 className="fw-bold text-muted">Current Resume</h6>
-                        {resumeLink ? (
-                          <a
-                            href={resumeLink}
-                            className="btn btn-sm btn-outline-secondary"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <BsFileEarmarkText className="me-1" /> View Current
-                            Resume
-                          </a>
-                        ) : (
-                          <p className="text-muted small">No resume uploaded</p>
-                        )}
-                      </div>
-
-                      <div className="update-instructions">
-                        <div className="alert alert-info">
-                          <small>
-                            Update your information and click &quot;Save
-                            Changes&quot; to update your profile.
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {/* Right Side - Form */}
-                  <div className="col-md-8">
-                    <form onSubmit={handleSubmit}>
                       <div className="mb-3">
-                        <label
-                          htmlFor="full_name"
-                          className="form-label fw-semibold"
-                        >
-                          <BsPersonCircle className="me-2" />
-                          Full Name
-                        </label>
+                        <label className="form-label">Full Name</label>
                         <input
                           type="text"
-                          id="full_name"
                           name="full_name"
                           className="form-control"
-                          onChange={handleChange}
-                          placeholder="Your full name"
                           value={formData.full_name}
+                          onChange={handleChange}
                           required
                         />
                       </div>
+
                       <div className="mb-3">
-                        <label
-                          htmlFor="phone_number"
-                          className="form-label fw-semibold"
-                        >
-                          <BsPhone className="me-2" />
-                          Phone Number
-                        </label>
+                        <label className="form-label">Email</label>
+                        <input
+                          type="email"
+                          name="email"
+                          className="form-control"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          disabled
+                        />
+                      </div>
+
+                      <div className="mb-3">
+                        <label className="form-label">Phone Number</label>
                         <input
                           type="text"
-                          id="phone_number"
                           name="phone_number"
                           className="form-control"
-                          onChange={handleChange}
-                          placeholder="Your phone number"
                           value={formData.phone_number}
+                          onChange={handleChange}
                           required
                         />
                       </div>
 
                       <div className="mb-3">
-                        <label
-                          htmlFor="location"
-                          className="form-label fw-semibold"
-                        >
-                          <BsGeoAlt className="me-2" />
-                          Address
-                        </label>
+                        <label className="form-label">Location</label>
                         <input
                           type="text"
-                          id="location"
                           name="location"
                           className="form-control"
-                          onChange={handleChange}
-                          placeholder="Your location"
                           value={formData.location}
+                          onChange={handleChange}
                           required
                         />
-                      </div>
-
-                      <div className="mb-3">
-                        <label
-                          htmlFor="skills"
-                          className="form-label fw-semibold"
-                        >
-                          <BsTools className="me-2" />
-                          Skills
-                        </label>
-                        <textarea
-                          id="skills"
-                          name="skills"
-                          className="form-control"
-                          onChange={handleChange}
-                          placeholder="Your skills (comma-separated)"
-                          value={formData.skills}
-                          required
-                          rows="3"
-                        ></textarea>
-                        <small className="form-text text-muted">
-                          List your skills separated by commas (e.g.,
-                          JavaScript, React, Node.js)
-                        </small>
                       </div>
 
                       <div className="row">
                         <div className="col-md-6 mb-3">
-                          <label
-                            htmlFor="resume"
-                            className="form-label fw-semibold"
-                          >
-                            <BsFileEarmarkText className="me-2" />
-                            Resume
-                          </label>
+                          <label className="form-label">Date of Birth</label>
                           <input
-                            type="file"
-                            id="resume"
-                            name="resume"
+                            type="date"
+                            name="dob"
                             className="form-control"
-                            onChange={handleFileChange}
-                            accept=".pdf"
+                            value={formData.dob}
+                            onChange={handleChange}
                           />
-                          <small className="form-text text-muted">
-                            Upload a PDF file
-                          </small>
                         </div>
-
                         <div className="col-md-6 mb-3">
-                          <label
-                            htmlFor="profile_picture"
-                            className="form-label fw-semibold"
+                          <label className="form-label">Gender</label>
+                          <select
+                            name="gender"
+                            className="form-select"
+                            value={formData.gender}
+                            onChange={handleChange}
                           >
-                            <BsPersonCircle className="me-2" />
-                            Profile Picture
-                          </label>
-                          <input
-                            type="file"
-                            id="profile_picture"
-                            name="profile_picture"
-                            className="form-control"
-                            onChange={handleFileChange}
-                            accept="image/*"
-                          />
-                          <small className="form-text text-muted">
-                            JPEG, PNG
-                          </small>
+                            <option value="">Select Gender</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                          </select>
                         </div>
                       </div>
 
-                      <div className="mt-4 d-flex justify-content-between">
-                        <button type="submit" className="btn btn-primary px-4">
-                          Save Changes
-                        </button>
+                      <div className="mb-3">
+                        <label className="form-label">Religion</label>
+                        <input
+                          type="text"
+                          name="religion"
+                          className="form-control"
+                          value={formData.religion}
+                          onChange={handleChange}
+                        />
                       </div>
-                    </form>
+
+                      <h5 className="mb-3 mt-4 text-primary">
+                        <BsBriefcase className="me-2" />
+                        Professional Information
+                      </h5>
+
+                      <div className="mb-3">
+                        <label className="form-label">Skills</label>
+                        <textarea
+                          name="skills"
+                          className="form-control"
+                          value={formData.skills}
+                          onChange={handleChange}
+                          rows="3"
+                          required
+                        />
+                        <small className="text-muted">
+                          Comma-separated list
+                        </small>
+                      </div>
+
+                      <div className="mb-3">
+                        <label className="form-label">
+                          Professional Experience
+                        </label>
+                        <textarea
+                          name="professional_experience"
+                          className="form-control"
+                          value={formData.professional_experience}
+                          onChange={handleChange}
+                          rows="4"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Right Column - Education & Files */}
+                    <div className="col-md-6">
+                      <h5 className="mb-3 text-primary">
+                        <BsBook className="me-2" />
+                        Education - High School
+                      </h5>
+
+                      <div className="mb-3">
+                        <label className="form-label">High School Name</label>
+                        <input
+                          type="text"
+                          name="high_school_name"
+                          className="form-control"
+                          value={formData.high_school_name}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="row">
+                        <div className="col-md-6 mb-3">
+                          <label className="form-label">Degree</label>
+                          <input
+                            type="text"
+                            name="high_school_degree"
+                            className="form-control"
+                            value={formData.high_school_degree}
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <div className="col-md-3 mb-3">
+                          <label className="form-label">Passing Year</label>
+                          <input
+                            type="number"
+                            name="high_school_passing_year"
+                            className="form-control"
+                            value={formData.high_school_passing_year}
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <div className="col-md-3 mb-3">
+                          <label className="form-label">Grade</label>
+                          <input
+                            type="text"
+                            name="high_school_grade"
+                            className="form-control"
+                            value={formData.high_school_grade}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
+
+                      <h5 className="mb-3 mt-4 text-primary">
+                        <BsBuilding className="me-2" />
+                        Education - University
+                      </h5>
+
+                      <div className="mb-3">
+                        <label className="form-label">University Name</label>
+                        <input
+                          type="text"
+                          name="university_name"
+                          className="form-control"
+                          value={formData.university_name}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                      <div className="row">
+                        <div className="col-md-6 mb-3">
+                          <label className="form-label">Degree</label>
+                          <input
+                            type="text"
+                            name="university_degree"
+                            className="form-control"
+                            value={formData.university_degree}
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <div className="col-md-3 mb-3">
+                          <label className="form-label">Passing Year</label>
+                          <input
+                            type="number"
+                            name="university_passing_year"
+                            className="form-control"
+                            value={formData.university_passing_year}
+                            onChange={handleChange}
+                          />
+                        </div>
+                        <div className="col-md-3 mb-3">
+                          <label className="form-label">Grade</label>
+                          <input
+                            type="text"
+                            name="university_grade"
+                            className="form-control"
+                            value={formData.university_grade}
+                            onChange={handleChange}
+                          />
+                        </div>
+                      </div>
+
+                      <h5 className="mb-3 mt-4 text-primary">
+                        <BsFileEarmarkText className="me-2" />
+                        Documents
+                      </h5>
+
+                      <div className="mb-3">
+                        <label className="form-label">Profile Picture</label>
+                        <input
+                          type="file"
+                          name="profile_picture"
+                          className="form-control"
+                          onChange={handleFileChange}
+                          accept="image/*"
+                        />
+                        {previewImage && (
+                          <div className="mt-2 text-center">
+                            <img
+                              src={previewImage}
+                              alt="Preview"
+                              className="img-thumbnail"
+                              style={{ maxWidth: "150px" }}
+                            />
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="mb-3">
+                        <label className="form-label">Resume</label>
+                        <input
+                          type="file"
+                          name="resume"
+                          className="form-control"
+                          onChange={handleFileChange}
+                          accept=".pdf,.doc,.docx"
+                        />
+                        {resumeLink && (
+                          <div className="mt-2">
+                            <a
+                              href={resumeLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn btn-sm btn-outline-secondary"
+                            >
+                              View Current Resume
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
+
+                  <div className="mt-4 text-center">
+                    <button type="submit" className="btn btn-primary px-4 me-2">
+                      Save Changes
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -384,4 +497,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileUpdate;

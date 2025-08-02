@@ -85,6 +85,7 @@ const AllCompany = () => {
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   const [companies, setCompanies] = useState([]);
+  const [selectedCompanyName, setSelectedCompanyName] = useState("");
   const [filteredCompanies, setFilteredCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -140,6 +141,7 @@ const AllCompany = () => {
       const response = await axios.get(
         "http://127.0.0.1:8000/api/all/company/list/"
       );
+      console.log("Company data fetched:", response.data);
       setCompanies(response.data);
       setFilteredCompanies(response.data);
       setLoading(false);
@@ -185,10 +187,19 @@ const AllCompany = () => {
 
   const handleLocationClick = async (companyId) => {
     try {
+      // Find the company name
+      const selectedCompany = companies.find(
+        (company) => company.id === companyId
+      );
+      const companyName = selectedCompany
+        ? selectedCompany.name
+        : "Unknown Company";
+
       const response = await axios.get(
         `http://127.0.0.1:8000/api/company/location/${companyId}/`
       );
       setCompanyLocation(response.data);
+      setSelectedCompanyName(companyName); // Store the company name
       setShowMapModal(true);
       setShowDetailsModal(false);
     } catch (error) {
@@ -438,8 +449,9 @@ const AllCompany = () => {
         <CompanyMapModal
           companyLocation={companyLocation}
           handleClose={handleClose}
+          companyName={selectedCompanyName} // Use the stored company name
         />
-      )}
+      )}``
 
       {/* Scroll to top button */}
       {showUpButton && (

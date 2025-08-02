@@ -120,7 +120,7 @@ const NavbarComponent = () => {
             to="/CO"
             className={location.pathname === "/CO" ? "active" : ""}
           >
-             Job_Suggestions
+             Job suggestion
           </Nav.Link>
 
           {userType ? (

@@ -576,6 +576,70 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -1193,6 +1257,22 @@
         "documentation": {}
     },
     {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
+        "label": "Company",
+        "importPath": "company_registration.models",
+        "description": "company_registration.models",
+        "isExtraImport": true,
+        "detail": "company_registration.models",
+        "documentation": {}
+    },
+    {
         "label": "CompanySerializer",
         "importPath": "company_registration.serializers",
         "description": "company_registration.serializers",
@@ -1442,6 +1522,14 @@
         "documentation": {}
     },
     {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
         "label": "FileResponse",
         "importPath": "django.http",
         "description": "django.http",
@@ -1635,6 +1723,14 @@
         "documentation": {}
     },
     {
+        "label": "CompanyChangePasswordView",
+        "importPath": "login.views",
+        "description": "login.views",
+        "isExtraImport": true,
+        "detail": "login.views",
+        "documentation": {}
+    },
+    {
         "label": "CompanyRegisterView",
         "importPath": "company_registration.views",
         "description": "company_registration.views",
@@ -1691,6 +1787,14 @@
         "documentation": {}
     },
     {
+        "label": "job_detail",
+        "importPath": "job_post.views",
+        "description": "job_post.views",
+        "isExtraImport": true,
+        "detail": "job_post.views",
+        "documentation": {}
+    },
+    {
         "label": "GetActiveRecruitmentStatusView",
         "importPath": "job_post.views",
         "description": "job_post.views",
@@ -1716,6 +1820,14 @@
     },
     {
         "label": "BasicEmailView",
+        "importPath": "mail.views",
+        "description": "mail.views",
+        "isExtraImport": true,
+        "detail": "mail.views",
+        "documentation": {}
+    },
+    {
+        "label": "BasicEmailViewCompany",
         "importPath": "mail.views",
         "description": "mail.views",
         "isExtraImport": true,
@@ -1887,6 +1999,14 @@
         "documentation": {}
     },
     {
+        "label": "ObjectDoesNotExist",
+        "importPath": "django.core.exceptions",
+        "description": "django.core.exceptions",
+        "isExtraImport": true,
+        "detail": "django.core.exceptions",
+        "documentation": {}
+    },
+    {
         "label": "CandidateSerializer",
         "importPath": "registration.serializer",
         "description": "registration.serializer",
@@ -1991,6 +2111,14 @@
         "documentation": {}
     },
     {
+        "label": "format_html",
+        "importPath": "django.utils.html",
+        "description": "django.utils.html",
+        "isExtraImport": true,
+        "detail": "django.utils.html",
+        "documentation": {}
+    },
+    {
         "label": "generate_cv",
         "importPath": "resume_builder.views",
         "description": "resume_builder.views",
@@ -2007,6 +2135,14 @@
         "documentation": {}
     },
     {
+        "label": "generate_cv3",
+        "importPath": "resume_builder.views",
+        "description": "resume_builder.views",
+        "isExtraImport": true,
+        "detail": "resume_builder.views",
+        "documentation": {}
+    },
+    {
         "label": "GetResumes",
         "importPath": "resume_builder.views",
         "description": "resume_builder.views",
@@ -2016,6 +2152,14 @@
     },
     {
         "label": "view_cv",
+        "importPath": "resume_builder.views",
+        "description": "resume_builder.views",
+        "isExtraImport": true,
+        "detail": "resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_resume_data",
         "importPath": "resume_builder.views",
         "description": "resume_builder.views",
         "isExtraImport": true,
@@ -2394,16 +2538,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\n    \"DEFAULT_PERMISSION_CLASSES\": [\n        \"rest_framework.permissions.AllowAny\",\n    ],\n    \"DEFAULT_AUTHENTICATION_CLASSES\": [\n        \"rest_framework.authentication.SessionAuthentication\",\n        \"rest_framework.authentication.TokenAuthentication\",\n    ],\n}\nCORS_ORIGIN_ALLOW_ALL = True",
-        "detail": "backend.backend.settings",
-        "documentation": {}
-    },
-    {
-        "label": "CORS_ORIGIN_ALLOW_ALL",
-        "kind": 5,
-        "importPath": "backend.backend.settings",
-        "description": "backend.backend.settings",
-        "peekOfCode": "CORS_ORIGIN_ALLOW_ALL = True\nCORS_ALLOW_METHODS = [\n    \"DELETE\",\n    \"GET\",\n    \"OPTIONS\",\n    \"PATCH\",\n    \"POST\",\n    \"PUT\",\n]\nCORS_ALLOW_HEADERS = [",
+        "peekOfCode": "REST_FRAMEWORK = {\n    \"DEFAULT_PERMISSION_CLASSES\": [\n        \"rest_framework.permissions.AllowAny\",\n    ],\n    \"DEFAULT_AUTHENTICATION_CLASSES\": [\n        \"rest_framework.authentication.SessionAuthentication\",\n        \"rest_framework.authentication.TokenAuthentication\",\n    ],\n}\nCORS_ALLOW_METHODS = [",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -2430,7 +2565,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "ROOT_URLCONF = \"backend.urls\"\nCORS_ALLOWED_ORIGINS = [\n    \"http://localhost:3000\",  # React app URL\n]\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {",
+        "peekOfCode": "ROOT_URLCONF = \"backend.urls\"\nCORS_ALLOWED_ORIGINS = [\n    \"http://localhost:3000\",\n    \"http://localhost:5173\",\n    \"http://127.0.0.1:5173\"\n]\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -2439,7 +2574,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    \"http://localhost:3000\",  # React app URL\n]\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {\n            \"context_processors\": [",
+        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    \"http://localhost:3000\",\n    \"http://localhost:5173\",\n    \"http://127.0.0.1:5173\"\n]\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -2457,7 +2592,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",",
+        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"postgres\",\n        \"PASSWORD\": \"114114114\",",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -2466,7 +2601,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"safa\",\n        \"PASSWORD\": \"123456\",\n    }\n}\n# Password validation\n# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"postgres\",\n        \"PASSWORD\": \"114114114\",\n        \"HOST\": \"localhost\",\n        \"PORT\": \"5432\",\n    }\n}",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -2844,7 +2979,7 @@
         "kind": 6,
         "importPath": "backend.job_post.serializers",
         "description": "backend.job_post.serializers",
-        "peekOfCode": "class JobPostSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = JobPost\n        fields = [\n            \"id\",\n            \"company\",\n            \"title\",\n            \"job_location\",\n            \"tags\",\n            \"job_type\",",
+        "peekOfCode": "class JobPostSerializer(serializers.ModelSerializer):\n    company_name = serializers.CharField(source='company.name', read_only=True)\n    class Meta:\n        model = JobPost\n        fields = [\n            \"id\",\n            \"company\",\n            \"company_name\",  # <-- Add this\n            \"title\",\n            \"job_location\",",
         "detail": "backend.job_post.serializers",
         "documentation": {}
     },
@@ -2930,6 +3065,15 @@
         "documentation": {}
     },
     {
+        "label": "job_detail",
+        "kind": 2,
+        "importPath": "backend.job_post.views",
+        "description": "backend.job_post.views",
+        "peekOfCode": "def job_detail(request, id):\n    try:\n        job = JobPost.objects.select_related(\"company\").get(id=id)\n        data = {\n            \"id\": job.id,\n            \"title\": job.title,\n            \"company\": job.company.name,\n            \"job_location\": job.job_location,\n            \"tags\": job.tags,\n            \"job_type\": job.job_type,",
+        "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
         "label": "LoginConfig",
         "kind": 6,
         "importPath": "backend.login.apps",
@@ -2961,7 +3105,7 @@
         "kind": 6,
         "importPath": "backend.login.views",
         "description": "backend.login.views",
-        "peekOfCode": "class CandidateUpdateView(APIView):\n    parser_classes = [MultiPartParser, FormParser]\n    def put(self, request, pk):\n        try:\n            candidate = Candidate.objects.get(id=pk)\n            # Update candidate data\n            candidate.full_name = request.data.get('full_name', candidate.full_name)\n            candidate.email = request.data.get('email', candidate.email)\n            candidate.phone_number = request.data.get('phone_number', candidate.phone_number)\n            candidate.location = request.data.get('location', candidate.location)",
+        "peekOfCode": "class CandidateUpdateView(APIView):\n    parser_classes = [MultiPartParser, FormParser]\n    def put(self, request, pk):\n        try:\n            candidate = Candidate.objects.get(id=pk)\n            # Update text fields only if they are provided and not empty\n            if request.data.get('full_name'):\n                candidate.full_name = request.data.get('full_name')\n            if request.data.get('phone_number'):\n                candidate.phone_number = request.data.get('phone_number')",
         "detail": "backend.login.views",
         "documentation": {}
     },
@@ -2971,6 +3115,15 @@
         "importPath": "backend.login.views",
         "description": "backend.login.views",
         "peekOfCode": "class CandidateChangePasswordView(APIView):\n    def put(self, request, pk):\n        try:\n            candidate = Candidate.objects.get(id=pk)\n            new_password = request.data.get(\"password\")\n            if not new_password:\n                return Response({\"message\": \"New password is required.\"}, status=status.HTTP_400_BAD_REQUEST)\n            # Hash and save the new password\n            candidate.password = make_password(new_password)\n            candidate.save()",
+        "detail": "backend.login.views",
+        "documentation": {}
+    },
+    {
+        "label": "CompanyChangePasswordView",
+        "kind": 6,
+        "importPath": "backend.login.views",
+        "description": "backend.login.views",
+        "peekOfCode": "class CompanyChangePasswordView(APIView):\n    def put(self, request, pk):\n        try:\n            company = Company.objects.get(id=pk)\n            new_password = request.data.get(\"password\")\n            if not new_password:\n                return Response({\"message\": \"New password is required.\"}, status=status.HTTP_400_BAD_REQUEST)\n            # Hash and save the new password\n            company.password = make_password(new_password)\n            company.save()",
         "detail": "backend.login.views",
         "documentation": {}
     },
@@ -3043,6 +3196,15 @@
         "importPath": "backend.mail.views",
         "description": "backend.mail.views",
         "peekOfCode": "class BasicEmailView(APIView):\n    def post(self, request):\n        receiver = request.data.get(\"receiver\")\n        if not receiver:\n            return Response({\"error\": \"Recipient email is required.\"}, status=status.HTTP_400_BAD_REQUEST)\n        try:\n            return self._send_candidate_email_with_link(receiver)\n        except Candidate.DoesNotExist:\n            return Response({\"error\": \"Candidate with this email does not exist.\"}, status=status.HTTP_400_BAD_REQUEST)\n        except Exception as e:",
+        "detail": "backend.mail.views",
+        "documentation": {}
+    },
+    {
+        "label": "BasicEmailViewCompany",
+        "kind": 6,
+        "importPath": "backend.mail.views",
+        "description": "backend.mail.views",
+        "peekOfCode": "class BasicEmailViewCompany(APIView):\n    def post(self, request):\n        receiver = request.data.get(\"receiver\")\n        if not receiver:\n            return Response({\"error\": \"Recipient email is required.\"}, status=status.HTTP_400_BAD_REQUEST)\n        try:\n            return self._send_company_email_with_link(receiver)\n        except Company.DoesNotExist:\n            return Response({\"error\": \"Company with this email does not exist.\"}, status=status.HTTP_400_BAD_REQUEST)\n        except Exception as e:",
         "detail": "backend.mail.views",
         "documentation": {}
     },
@@ -3164,6 +3326,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.registration.migrations.0005_candidate_dob_candidate_gender_and_more",
+        "description": "backend.registration.migrations.0005_candidate_dob_candidate_gender_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('registration', '0004_alter_candidate_profile_picture_and_more'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='candidate',\n            name='dob',\n            field=models.DateField(blank=True, null=True, verbose_name='Date of Birth'),\n        ),",
+        "detail": "backend.registration.migrations.0005_candidate_dob_candidate_gender_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.registration.migrations.0006_alter_candidate_gender",
+        "description": "backend.registration.migrations.0006_alter_candidate_gender",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('registration', '0005_candidate_dob_candidate_gender_and_more'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='candidate',\n            name='gender',\n            field=models.CharField(blank=True, choices=[('M', 'Male'), ('F', 'Female')], max_length=1, null=True),\n        ),",
+        "detail": "backend.registration.migrations.0006_alter_candidate_gender",
+        "documentation": {}
+    },
+    {
         "label": "RegistrationConfig",
         "kind": 6,
         "importPath": "backend.registration.apps",
@@ -3177,7 +3357,7 @@
         "kind": 6,
         "importPath": "backend.registration.models",
         "description": "backend.registration.models",
-        "peekOfCode": "class Candidate(models.Model):\n    full_name = models.CharField(max_length=255)\n    email = models.EmailField(unique=True)\n    phone_number = models.CharField(\n        max_length=11,\n        validators=[\n            MinLengthValidator(11),\n            # unique_email_validator,\n        ],\n    )",
+        "peekOfCode": "class Candidate(models.Model):\n    GENDER_CHOICES = [\n        ('M', 'Male'),\n        ('F', 'Female'),\n    ]\n    # Basic Information\n    full_name = models.CharField(max_length=255)\n    email = models.EmailField(unique=True)\n    phone_number = models.CharField(\n        max_length=11,",
         "detail": "backend.registration.models",
         "documentation": {}
     },
@@ -3186,7 +3366,7 @@
         "kind": 6,
         "importPath": "backend.registration.serializer",
         "description": "backend.registration.serializer",
-        "peekOfCode": "class CandidateSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Candidate\n        fields = ['full_name', 'email', 'phone_number', 'location', 'skills', 'resume', 'profile_picture', 'password']\n        extra_kwargs = {\n            'password': {'write_only': True} \n        }\n    def validate_email(self, value):\n        if Candidate.objects.filter(email=value).exists():\n            raise serializers.ValidationError(\"This email is already in use.\")",
+        "peekOfCode": "class CandidateSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Candidate\n        fields = [\n            'full_name', 'email', 'phone_number', 'location',\n            'dob', 'gender', 'religion',\n            'high_school_name', 'high_school_degree', 'high_school_passing_year', 'high_school_grade',\n            'university_name', 'university_degree', 'university_passing_year', 'university_grade',\n            'professional_experience', 'skills',\n            'resume', 'profile_picture', 'password'",
         "detail": "backend.registration.serializer",
         "documentation": {}
     },
@@ -3209,6 +3389,33 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.resume_builder.migrations.0002_candidatecv_address_candidatecv_dob_and_more",
+        "description": "backend.resume_builder.migrations.0002_candidatecv_address_candidatecv_dob_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('resume_builder', '0001_initial'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='candidatecv',\n            name='address',\n            field=models.TextField(blank=True),\n        ),",
+        "detail": "backend.resume_builder.migrations.0002_candidatecv_address_candidatecv_dob_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.resume_builder.migrations.0003_candidatecv_template_number",
+        "description": "backend.resume_builder.migrations.0003_candidatecv_template_number",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('resume_builder', '0002_candidatecv_address_candidatecv_dob_and_more'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='candidatecv',\n            name='template_number',\n            field=models.CharField(blank=True, max_length=100),\n        ),",
+        "detail": "backend.resume_builder.migrations.0003_candidatecv_template_number",
+        "documentation": {}
+    },
+    {
+        "label": "CandidateCVAdmin",
+        "kind": 6,
+        "importPath": "backend.resume_builder.admin",
+        "description": "backend.resume_builder.admin",
+        "peekOfCode": "class CandidateCVAdmin(admin.ModelAdmin):\n    list_display = ('id', 'name', 'email', 'created_at', 'view_cv', 'view_thumbnail', 'template_number')\n    list_filter = ('created_at', 'gender', 'religion')\n    search_fields = ('name', 'email', 'phone')\n    readonly_fields = ('created_at',)\n    ordering = ('-created_at',)\n    fieldsets = (\n        ('Personal Information', {\n            'fields': (\n                'candidate', 'name', 'title', 'email', 'phone',",
+        "detail": "backend.resume_builder.admin",
+        "documentation": {}
+    },
+    {
         "label": "ResumeBuilderConfig",
         "kind": 6,
         "importPath": "backend.resume_builder.apps",
@@ -3222,7 +3429,7 @@
         "kind": 6,
         "importPath": "backend.resume_builder.models",
         "description": "backend.resume_builder.models",
-        "peekOfCode": "class CandidateCV(models.Model):\n    candidate = models.ForeignKey(\n        Candidate,\n        on_delete=models.CASCADE,\n        related_name=\"candidate_cv\",\n        null=True,\n    )\n    email = models.EmailField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    cv_file = models.FileField(upload_to=\"gen_cv/\", null=True, blank=True)",
+        "peekOfCode": "class CandidateCV(models.Model):\n    candidate = models.ForeignKey(\n        Candidate,\n        on_delete=models.CASCADE,\n        related_name=\"candidate_cv\",\n        null=True,\n    )\n    email = models.EmailField()\n    name = models.CharField(max_length=255, blank=True)\n    title = models.CharField(max_length=255, blank=True)",
         "detail": "backend.resume_builder.models",
         "documentation": {}
     },
@@ -3231,7 +3438,7 @@
         "kind": 6,
         "importPath": "backend.resume_builder.serializers",
         "description": "backend.resume_builder.serializers",
-        "peekOfCode": "class ResumeSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = CandidateCV\n        fields = [\"id\", \"cv_file\", \"email\", \"created_at\"]",
+        "peekOfCode": "class ResumeSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = CandidateCV\n        fields = [\n            \"id\", \"cv_file\", \"email\", \"created_at\",\"template_number\",\n            \"name\", \"title\", \"phone\", \"gender\", \"dob\", \"address\", \"religion\",\n            \"skillset\", \"education\", \"experience\", \"thumbnail\"\n        ]",
         "detail": "backend.resume_builder.serializers",
         "documentation": {}
     },
@@ -3240,7 +3447,7 @@
         "kind": 5,
         "importPath": "backend.resume_builder.urls",
         "description": "backend.resume_builder.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"generate-cv/\", generate_cv, name=\"generate_cv\"),\n    path(\"generate-cv2/\", generate_cv2, name=\"generate_cv2\"),\n    path(\"candidate/get/resumes/\", GetResumes.as_view(), name=\"get_resumes\"),\n    path(\"cv/<str:file_name>/\", view_cv, name=\"view_cv\"),\n    path(\"delete_resume/<int:resume_id>/\", delete_resume, name=\"delete_resume\"),\n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path(\"generate-cv/\", generate_cv, name=\"generate_cv\"),\n    path(\"generate-cv2/\", generate_cv2, name=\"generate_cv2\"),\n    path(\"generate-cv3/\", generate_cv3, name=\"generate_cv3\"),\n    path(\"candidate/get/resumes/\", GetResumes.as_view(), name=\"get_resumes\"),\n    path(\"cv/<str:file_name>/\", view_cv, name=\"view_cv\"),\n    path(\"delete_resume/<int:resume_id>/\", delete_resume, name=\"delete_resume\"),\n    path(\"get-resume-data/<int:resume_id>/\", get_resume_data, name=\"get_resume_data\"),\n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
         "detail": "backend.resume_builder.urls",
         "documentation": {}
     },
@@ -3250,6 +3457,15 @@
         "importPath": "backend.resume_builder.views",
         "description": "backend.resume_builder.views",
         "peekOfCode": "class GetResumes(APIView):\n    def get(self, request):\n        candidate_id = request.query_params.get(\"candidate_id\")\n        if not candidate_id:\n            return Response(\n                {\"error\": \"Candidate ID is required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        # Ensure the candidate exists in the database\n        try:",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_resume_data",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def get_resume_data(request, resume_id):\n    \"\"\"Get resume data for editing\"\"\"\n    try:\n        resume = CandidateCV.objects.get(id=resume_id)\n        data = ResumeSerializer(resume).data\n        if resume.template_number:\n            data['template_number'] = int(resume.template_number)\n        else:\n            data['template_number'] = 1\n        return JsonResponse(data)",
         "detail": "backend.resume_builder.views",
         "documentation": {}
     },
@@ -3326,11 +3542,47 @@
         "documentation": {}
     },
     {
+        "label": "draw_section_header3",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def draw_section_header3(canvas, text, y_position, is_sidebar=False):\n    \"\"\"Draw section headers with blue theme styling\"\"\"\n    if is_sidebar:\n        # Sidebar header styling\n        canvas.setFillColor(colors.HexColor(COLORS_3[\"accent\"]))\n        canvas.rect(0.3 * inch, y_position - 5, 2.2 * inch, 2, fill=1)\n        canvas.setFillColor(colors.HexColor(COLORS_3[\"white\"]))\n        canvas.setFont(\"Helvetica-Bold\", 12)\n        canvas.drawString(0.3 * inch, y_position, text)\n    else:",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "draw_skill_badge3",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def draw_skill_badge3(canvas, skill, x, y):\n    \"\"\"Draw skill badges with blue theme\"\"\"\n    canvas.setFont(\"Helvetica\", 9)\n    text_width = canvas.stringWidth(skill)\n    badge_width = max(text_width + 20, 2 * inch)  # Minimum width for sidebar\n    badge_height = 22\n    # Draw skill background\n    canvas.setFillColor(colors.HexColor(COLORS_3[\"light_blue\"]))\n    canvas.roundRect(x, y - 12, badge_width, badge_height, 8, fill=1)\n    # Draw accent border",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "draw_contact_item3",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def draw_contact_item3(canvas, icon, text, x, y):\n    \"\"\"Draw contact information with icons in sidebar\"\"\"\n    canvas.setFillColor(colors.HexColor(COLORS_3[\"accent\"]))\n    canvas.setFont(\"Helvetica-Bold\", 10)\n    canvas.drawString(x, y, icon)\n    canvas.setFillColor(colors.HexColor(COLORS_3[\"white\"]))\n    canvas.setFont(\"Helvetica\", 9)\n    canvas.drawString(x + 15, y, text)\n    return y - 20\n@csrf_exempt",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "generate_cv3",
+        "kind": 2,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "def generate_cv3(request):\n    if request.method == \"POST\":\n        data = json.loads(request.body)\n        candidate_id = data.get(\"candidate_id\")\n        candidate_name = data[\"name\"]\n        # Create PDF\n        buffer = BytesIO()\n        pdf = canvas.Canvas(buffer, pagesize=letter)\n        width, height = letter\n        # Draw sidebar background",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
         "label": "SKILL_COLORS",
         "kind": 5,
         "importPath": "backend.resume_builder.views",
         "description": "backend.resume_builder.views",
-        "peekOfCode": "SKILL_COLORS = [\n    \"#ecf0f1\",  # Light gray background\n]\ndef draw_section_header(canvas, text, y_position):\n    \"\"\"Helper function to draw section headers with consistent styling\"\"\"\n    canvas.setFillColor(colors.HexColor(\"#2C3E50\"))\n    canvas.setFont(\"Helvetica-Bold\", 14)\n    canvas.drawString(inch, y_position, text)\n    canvas.setFillColor(colors.HexColor(\"#34495E\"))\n    canvas.line(inch, y_position - 5, 7.5 * inch, y_position - 5)",
+        "peekOfCode": "SKILL_COLORS = [\n    \"#ecf0f1\", \n]\ndef draw_section_header(canvas, text, y_position):\n    \"\"\"Helper function to draw section headers with consistent styling\"\"\"\n    canvas.setFillColor(colors.HexColor(\"#2C3E50\"))\n    canvas.setFont(\"Helvetica-Bold\", 14)\n    canvas.drawString(inch, y_position, text)\n    canvas.setFillColor(colors.HexColor(\"#34495E\"))\n    canvas.line(inch, y_position - 5, 7.5 * inch, y_position - 5)",
         "detail": "backend.resume_builder.views",
         "documentation": {}
     },
@@ -3340,6 +3592,15 @@
         "importPath": "backend.resume_builder.views",
         "description": "backend.resume_builder.views",
         "peekOfCode": "COLORS = {\n    \"primary\": \"#FF7043\",  # Light Orange\n    \"secondary\": \"#FF5722\",  # Darker Orange\n    \"accent\": \"#FFB74D\",  # Soft Orange\n    \"text\": \"#212121\",  # Almost Black\n    \"light_text\": \"#424242\",  # Dark Gray\n    \"muted\": \"#FBE9E7\",  # Very Light Orange\n    \"white\": \"#ffffff\",\n    \"dark_black\": \"#010203\",\n}",
+        "detail": "backend.resume_builder.views",
+        "documentation": {}
+    },
+    {
+        "label": "COLORS_3",
+        "kind": 5,
+        "importPath": "backend.resume_builder.views",
+        "description": "backend.resume_builder.views",
+        "peekOfCode": "COLORS_3 = {\n    \"primary\": \"#2E86AB\",      # Deep Blue\n    \"secondary\": \"#A23B72\",    # Burgundy Pink\n    \"accent\": \"#F18F01\",       # Orange Accent\n    \"light_blue\": \"#A8DADC\",   # Light Blue\n    \"teal\": \"#457B9D\",         # Teal\n    \"text\": \"#1D3557\",         # Dark Blue Text\n    \"light_text\": \"#457B9D\",   # Medium Blue\n    \"background\": \"#F1FAEE\",   # Very Light Blue\n    \"white\": \"#FFFFFF\",",
         "detail": "backend.resume_builder.views",
         "documentation": {}
     },
