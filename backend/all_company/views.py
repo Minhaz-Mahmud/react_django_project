@@ -26,3 +26,21 @@ class CompanyDetailView(APIView):
                 {"error": "Company not found."},
                 status=status.HTTP_404_NOT_FOUND,
             )
+
+
+
+class AdminDeleteCompany(APIView):
+    def delete(self, request, company_id):
+        try:
+            company = Company.objects.get(id=company_id)
+            company.delete()
+            return Response(
+                {"message": "Company deleted successfully"},
+                status=status.HTTP_204_NO_CONTENT,
+            )
+        except Company.DoesNotExist:
+            return Response(
+                {"error": "Company not found"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+    

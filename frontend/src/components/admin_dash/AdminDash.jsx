@@ -33,6 +33,7 @@ import WebIcon from "@mui/icons-material/Web";
 import PeopleIcon from "@mui/icons-material/People";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import AdminAllCompany from "./admin_components/AdminAllCompany";
 import "./AdminDash.css";
 const drawerWidth = 200;
 
@@ -129,7 +130,6 @@ function AdminDash() {
     { text: "Dashboard", icon: <DashboardIcon />, path: "/admin/dashboard" },
     { text: "Candidates", icon: <PeopleIcon />, path: "/admin/all-candidates" },
     { text: "Companies", icon: <BusinessIcon />, path: "/admin/all-companies" },
-    { text: "Posted Jobs", icon: <WorkIcon />, path: "/admin/all-jobs" },
     {
       text: "Leadership",
       icon: <LeaderboardIcon />,
@@ -237,9 +237,9 @@ function AdminDash() {
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
           <Routes>
+            <Route path="/all-companies" element={<AdminAllCompany />} />
             {/* <Route path="/dashboard" element={<AdminDashboard />} /> */}
             {/* <Route path="/all-candidates" element={<AdminAllCandidate />} />
-            <Route path="/all-companies" element={<AdminAllCompany />} />
             <Route path="/all-jobs" element={<AdminAllJobs />} /> */}
             {/* <Route path="/set/leadership" element={<AdminSetLeadership />} /> */}
             <Route path="/" element={<Navigate to="/admin/dashboard" />} />

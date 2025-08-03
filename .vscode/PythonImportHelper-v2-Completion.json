@@ -2493,7 +2493,7 @@
         "kind": 5,
         "importPath": "backend.all_company.urls",
         "description": "backend.all_company.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"list/\", CompanyListView.as_view(), name=\"company-list\"),\n    path(\n        \"<int:company_id>/details/\",\n        CompanyDetailView.as_view(),\n        name=\"company_detail\",\n    ),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"list/\", CompanyListView.as_view(), name=\"company-list\"),\n    path(\n        \"<int:company_id>/details/\",\n        CompanyDetailView.as_view(),\n        name=\"company_detail\",\n    ),\n    path(\n        \"admin/delete/company/<int:company_id>/\",\n        AdminDeleteCompany.as_view(),",
         "detail": "backend.all_company.urls",
         "documentation": {}
     },
@@ -2512,6 +2512,15 @@
         "importPath": "backend.all_company.views",
         "description": "backend.all_company.views",
         "peekOfCode": "class CompanyDetailView(APIView):\n    def get(self, request, company_id):\n        try:\n            company = Company.objects.get(id=company_id)\n            serializer = CompanySerializer(company)\n            return Response(serializer.data, status=status.HTTP_200_OK)\n        except Company.DoesNotExist:\n            return Response(\n                {\"error\": \"Company not found.\"},\n                status=status.HTTP_404_NOT_FOUND,",
+        "detail": "backend.all_company.views",
+        "documentation": {}
+    },
+    {
+        "label": "AdminDeleteCompany",
+        "kind": 6,
+        "importPath": "backend.all_company.views",
+        "description": "backend.all_company.views",
+        "peekOfCode": "class AdminDeleteCompany(APIView):\n    def delete(self, request, company_id):\n        try:\n            company = Company.objects.get(id=company_id)\n            company.delete()\n            return Response(\n                {\"message\": \"Company deleted successfully\"},\n                status=status.HTTP_204_NO_CONTENT,\n            )\n        except Company.DoesNotExist:",
         "detail": "backend.all_company.views",
         "documentation": {}
     },
