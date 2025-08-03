@@ -37,6 +37,7 @@ import AdminAllCompany from "./admin_components/AdminAllCompany";
 import AdminSetLeadership from "./admin_components/AdminSetLeadership";
 import AdminSetFaq from "./admin_components/AdminSetFaq";
 import "./AdminDash.css";
+import AdminCandidates from "./admin_components/AdminCandidates";
 const drawerWidth = 200;
 
 const openedMixin = (theme) => ({
@@ -242,7 +243,7 @@ function AdminDash() {
             <Route path="/all-companies" element={<AdminAllCompany />} />
             <Route path="/set/faqs" element={<AdminSetFaq />} />
             {/* <Route path="/dashboard" element={<AdminDashboard />} /> */}
-            {/* <Route path="/all-candidates" element={<AdminAllCandidate />} /> */}
+            <Route path="/all-candidates" element={<AdminCandidates />} />
             <Route path="/set/leadership" element={<AdminSetLeadership />} />
             <Route path="/" element={<Navigate to="/admin/dashboard" />} />
             <Route index element={<Navigate to="/admin/dashboard" />} />

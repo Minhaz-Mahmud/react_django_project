@@ -24,6 +24,8 @@ from apply.views import (
 
 from mail.views import BasicEmailView,BasicEmailViewCompany
 from chatbot.views import find_jobs
+from registration.views import AdminCandidateListAPIView, AdminCandidateDeleteAPIView
+
 
 
 urlpatterns = [
@@ -93,6 +95,10 @@ urlpatterns = [
     path("api/", include("apply.urls")),
     path("api/", include("company_registration.urls")),
     path("api/", include("admin_app.urls")),
+
+    path('api/admin/candidates/', AdminCandidateListAPIView.as_view(), name='candidate-list'),
+    path('api/admin/candidates/<int:pk>/delete/', AdminCandidateDeleteAPIView.as_view(), name='candidate-delete'),
+
 ]
 
 

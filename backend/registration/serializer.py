@@ -5,7 +5,7 @@ class CandidateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Candidate
         fields = [
-            'full_name', 'email', 'phone_number', 'location',
+            'id', 'full_name', 'email', 'phone_number', 'location',
             'dob', 'gender', 'religion',
             'high_school_name', 'high_school_degree', 'high_school_passing_year', 'high_school_grade',
             'university_name', 'university_degree', 'university_passing_year', 'university_grade',
