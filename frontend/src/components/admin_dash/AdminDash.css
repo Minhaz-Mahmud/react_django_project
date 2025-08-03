@@ -1,0 +1,12 @@
+.active-menu-item {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.active-menu-item .MuiListItemIcon-root {
+  color: #1976d2;
+}
+
+.active-menu-item .MuiListItemText-primary {
+  color: #1976d2;
+  font-weight: 600;
+}

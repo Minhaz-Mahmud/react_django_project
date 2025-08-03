@@ -17,6 +17,7 @@ const NavbarComponent = () => {
   useEffect(() => {
     const companyData = JSON.parse(sessionStorage.getItem("companyData"));
     const candidateData = JSON.parse(sessionStorage.getItem("candidateData"));
+    const adminData = JSON.parse(sessionStorage.getItem("AdminData"));
 
     if (companyData?.user_type === "company") {
       setUserType("company");
@@ -24,21 +25,22 @@ const NavbarComponent = () => {
     } else if (candidateData) {
       setUserType("candidate");
       setUserName(candidateData.full_name);
+    } else if (adminData) {
+      setUserType("admin");
+      setUserName("ADMIN");
     } else {
       setUserType(null);
       setUserName("");
     }
   }, [location]);
 
-  // navbar scroll show hide functions start
-
   const handleScroll = () => {
     const scrollY = window.scrollY;
 
     if (scrollY > lastScrollY && scrollY > 100) {
-      setShowNavbar(true); // Show navbar when scrolling down
+      setShowNavbar(true);
     } else if (scrollY < 50) {
-      setShowNavbar(false); // Hide when at the top
+      setShowNavbar(false);
     }
     setLastScrollY(scrollY);
   };
@@ -62,6 +64,7 @@ const NavbarComponent = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("companyData");
+    sessionStorage.removeItem("AdminData");
     sessionStorage.removeItem("candidateData");
     sessionStorage.removeItem("firstRefresh");
     setUserType(null);
@@ -120,7 +123,7 @@ const NavbarComponent = () => {
             to="/CO"
             className={location.pathname === "/CO" ? "active" : ""}
           >
-             Job suggestion
+            Job suggestion
           </Nav.Link>
 
           {userType ? (
@@ -131,6 +134,10 @@ const NavbarComponent = () => {
             >
               {userType === "company" ? (
                 <NavDropdown.Item as={Link} to="/company/dashboard">
+                  Dashboard
+                </NavDropdown.Item>
+              ) : userType === "admin" ? (
+                <NavDropdown.Item as={Link} to="/admin/dashboard">
                   Dashboard
                 </NavDropdown.Item>
               ) : (

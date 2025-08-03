@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "apply",
     "resume_builder",
     "numerics",
+    "admin_app",
 ]
 
 MIDDLEWARE = [

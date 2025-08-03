@@ -92,6 +92,7 @@ urlpatterns = [
     path("api/", include("job_post.urls")),
     path("api/", include("apply.urls")),
     path("api/", include("company_registration.urls")),
+    path("api/", include("admin_app.urls")),
 ]
 
 

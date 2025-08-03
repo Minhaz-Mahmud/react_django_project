@@ -32,7 +32,8 @@ import JobResults from "./components/chatbot/JobResults";
 import CPMailCompany from "./components/all_company/CPMailCompany";
 import ChangePasswordCompany from "./components/all_company/ChangePasswordCompany";
 import JobDetails from "./components/dashboard_components/job_post/JobDetails";
-
+import AdminLogin from "./components/admin_dash/AdminLogin";
+import AdminDash from "./components/admin_dash/AdminDash";
 
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
@@ -67,6 +68,8 @@ const App = () => {
             </PrivateCompanyRoute>
           }
         />
+
+        <Route path="/web/admin/login" element={<AdminLogin />} />
         <Route
           path="/company-register"
           element={
@@ -75,6 +78,7 @@ const App = () => {
             </PrivateCompanyRoute>
           }
         />
+        <Route path="/admin/*" element={<AdminDash />} />
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
         <Route path="/applied-jobs" element={<AppliedJobs />} />
         <Route
@@ -114,22 +118,18 @@ const App = () => {
             </PrivateCandidateRoute>
           }
         />
-       {/* <Route path="/cp" element={<ChangePassword />} /> */}
-       <Route path="/cpm" element={<CPMail />} />
+        {/* <Route path="/cp" element={<ChangePassword />} /> */}
+        <Route path="/cpm" element={<CPMail />} />
 
-       <Route path="/cp/:id" element={<ChangePassword />} />
-
-       
+        <Route path="/cp/:id" element={<ChangePassword />} />
 
         <Route path="/cpm-company" element={<CPMailCompany />} />
         <Route path="/cp-company/:id" element={<ChangePasswordCompany />} />
 
+        <Route path="/CO" element={<CareerOpportunities />} />
+        <Route path="/job-results" element={<JobResults />} />
 
-      <Route path="/CO" element={<CareerOpportunities />} />
-       <Route path="/job-results" element={<JobResults />} />
-
-       <Route path="/job-details/:id" element={<JobDetails />} />
-
+        <Route path="/job-details/:id" element={<JobDetails />} />
       </Routes>
 
       {location.pathname !== "/company/dashboard" &&
