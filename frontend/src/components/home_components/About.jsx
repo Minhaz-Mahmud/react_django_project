@@ -1,15 +1,30 @@
-/* eslint-disable no-unused-vars */
-
 import { Row, Col, Card, Button } from "react-bootstrap";
 import { FaRocket, FaHandshake, FaLightbulb, FaUsers } from "react-icons/fa";
 import { useState, useEffect } from "react";
-import "./About.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import "./About.css";
 
 function About() {
   const [showUpButton, setShowUpButton] = useState(false);
+  const [leaders, setLeaders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [userType, setUserType] = useState(null);
 
   useEffect(() => {
+    const companyData = JSON.parse(sessionStorage.getItem("companyData"));
+    const adminData = JSON.parse(sessionStorage.getItem("AdminData"));
+    const candidateData = JSON.parse(sessionStorage.getItem("candidateData"));
+    if (companyData?.user_type === "company") {
+      setUserType("company");
+    } else if (adminData) {
+      setUserType("admin");
+    } else if (candidateData) {
+      setUserType("candidate");
+    } else {
+      setUserType(null);
+    }
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowUpButton(true);
@@ -23,6 +38,24 @@ function About() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    fetchLeaders();
+  }, []);
+
+  const fetchLeaders = async () => {
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/admin/leadership/section/"
+      );
+      setLeaders(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching leaders:", error);
+      setError("Failed to load leadership data");
+      setLoading(false);
+    }
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -42,7 +75,7 @@ function About() {
       <section className="about-section">
         <Row className="align-items-center mb-5">
           <Col lg={6}>
-            <h2 className="section-title text-dark">Our Mission</h2>
+            <h2 className="section-title">Our Mission</h2>
             <p className="section-text">
               At Career Connect, we believe that finding the right job should be
               accessible, straightforward, and empowering. Our mission is to
@@ -69,7 +102,7 @@ function About() {
 
         <Row className="values-section">
           <Col lg={12} className="text-center mb-4">
-            <h2 className="section-title text-dark">Our Core Values</h2>
+            <h2 className="section-title">Our Core Values</h2>
           </Col>
           <Col md={3} sm={6}>
             <Card className="value-card">
@@ -158,97 +191,67 @@ function About() {
 
         <Row className="team-section mb-5">
           <Col lg={12} className="text-center mb-4">
-            <h2 className="section-title text-dark">Our Leadership Team</h2>
+            <h2 className="section-title">Our Leadership Team</h2>
           </Col>
-          <Col lg={3} md={6}>
-            <Card className="team-card">
-              <div className="team-image-container">
-                <img
-                  src="https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-female-user-profile-vector-illustration-isolated-background-women-profile-sign-business-concept_157943-38866.jpg?semt=ais_hybrid"
-                  alt="CEO"
-                  className="team-image"
-                />
-              </div>
-              <Card.Body className="text-center">
-                <Card.Title className="team-name">Sarah Johnson</Card.Title>
-                <Card.Subtitle className="team-position">
-                  Chief Executive Officer
-                </Card.Subtitle>
-                <Card.Text className="team-bio">
-                  Former HR executive with 15+ years of experience in talent
-                  acquisition.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col lg={3} md={6}>
-            <Card className="team-card">
-              <div className="team-image-container">
-                <img
-                  src="https://img.freepik.com/premium-vector/professional-male-avatar-profile-picture-employee-work_1322206-66590.jpg"
-                  alt="CTO"
-                  className="team-image"
-                />
-              </div>
-              <Card.Body className="text-center">
-                <Card.Title className="team-name">Michael Chen</Card.Title>
-                <Card.Subtitle className="team-position">
-                  Chief Technology Officer
-                </Card.Subtitle>
-                <Card.Text className="team-bio">
-                  Tech leader with experience building scalable platforms at top
-                  companies.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col lg={3} md={6}>
-            <Card className="team-card">
-              <div className="team-image-container">
-                <img
-                  src="https://img.freepik.com/premium-vector/professional-male-avatar-profile-picture-employee-work_1322206-66590.jpg"
-                  alt="COO"
-                  className="team-image"
-                />
-              </div>
-              <Card.Body className="text-center">
-                <Card.Title className="team-name">David Williams</Card.Title>
-                <Card.Subtitle className="team-position">
-                  Chief Operations Officer
-                </Card.Subtitle>
-                <Card.Text className="team-bio">
-                  Operations expert with a focus on scaling businesses
-                  efficiently.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col lg={3} md={6}>
-            <Card className="team-card">
-              <div className="team-image-container">
-                <img
-                  src="https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-female-user-profile-vector-illustration-isolated-background-women-profile-sign-business-concept_157943-38866.jpg?semt=ais_hybrid"
-                  alt="CMO"
-                  className="team-image"
-                />
-              </div>
-              <Card.Body className="text-center">
-                <Card.Title className="team-name">Priya Patel</Card.Title>
-                <Card.Subtitle className="team-position">
-                  Chief Marketing Officer
-                </Card.Subtitle>
-                <Card.Text className="team-bio">
-                  Digital marketing strategist with expertise in growth and
-                  brand building.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
+          {loading ? (
+            [...Array(4)].map((_, index) => (
+              <Col lg={3} md={6} key={index}>
+                <Card className="team-card">
+                  <div className="team-image-container placeholder-glow">
+                    <div
+                      className="placeholder"
+                      style={{ height: "200px" }}
+                    ></div>
+                  </div>
+                  <Card.Body className="text-center">
+                    <Card.Title className="placeholder-glow">
+                      <span className="placeholder col-6"></span>
+                    </Card.Title>
+                    <Card.Subtitle className="placeholder-glow">
+                      <span className="placeholder col-8"></span>
+                    </Card.Subtitle>
+                    <Card.Text className="placeholder-glow">
+                      <span className="placeholder col-7"></span>
+                      <span className="placeholder col-4"></span>
+                      <span className="placeholder col-4"></span>
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          ) : error ? (
+            <Col lg={12} className="text-center">
+              <p className="text-danger">{error}</p>
+            </Col>
+          ) : (
+            leaders.map((leader) => (
+              <Col lg={3} md={6} key={leader.id}>
+                <Card className="team-card">
+                  <div className="team-image-container">
+                    <img
+                      src={`http://127.0.0.1:8000${leader.image}`}
+                      alt={leader.name}
+                      className="team-image"
+                    />
+                  </div>
+                  <Card.Body className="text-center">
+                    <Card.Title className="team-name">{leader.name}</Card.Title>
+                    <Card.Subtitle className="team-position">
+                      {leader.position}
+                    </Card.Subtitle>
+                    <Card.Text className="team-bio">
+                      {leader.description}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          )}
         </Row>
 
         <Row className="cta-section text-center my-5">
           <Col lg={8} className="mx-auto">
-            <h2 className="section-title text-success mb-4">
+            <h2 className="section-title">
               Ready to Find Your Next Opportunity?
             </h2>
             <p className="section-text mb-4">
@@ -265,15 +268,47 @@ function About() {
               >
                 Browse Jobs
               </Button>
-              <Button
-                as={Link}
-                to="/company-signin"
-                variant="outline-primary"
-                size="lg"
-                className="cta-button"
-              >
-                For Employers
-              </Button>
+              {userType === "admin" ? (
+                <Button
+                  as={Link}
+                  to="/admin/dashboard"
+                  variant="outline-primary"
+                  size="lg"
+                  className="cta-button"
+                >
+                  Admin
+                </Button>
+              ) : userType === "company" ? (
+                <Button
+                  as={Link}
+                  to="/company/dashboard"
+                  variant="outline-primary"
+                  size="lg"
+                  className="cta-button"
+                >
+                  Dashboard
+                </Button>
+              ) : userType === "candidate" ? (
+                <Button
+                  as={Link}
+                  to="/dashboard"
+                  variant="outline-primary"
+                  size="lg"
+                  className="cta-button"
+                >
+                  Dashboard
+                </Button>
+              ) : (
+                <Button
+                  as={Link}
+                  to="/company-signin"
+                  variant="outline-primary"
+                  size="lg"
+                  className="cta-button"
+                >
+                  For Employers
+                </Button>
+              )}
             </div>
           </Col>
         </Row>

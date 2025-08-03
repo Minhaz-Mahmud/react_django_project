@@ -10,6 +10,7 @@ import {
   FaTwitter,
   FaInstagram,
 } from "react-icons/fa";
+import axios from "axios";
 import "./Contact.css";
 
 function Contact() {
@@ -23,6 +24,7 @@ function Contact() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showUpButton, setShowUpButton] = useState(false);
+  const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +41,20 @@ function Contact() {
     };
   }, []);
 
+  useEffect(() => {
+    fetchFaqs();
+  }, []);
+
+  const fetchFaqs = async () => {
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/admin/faq/section/"
+      );
+      setFaqs(response.data);
+    } catch (error) {
+      console.error("Error fetching FAQs:", error);
+    }
+  };
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -300,9 +316,7 @@ function Contact() {
         <section>
           <Row className="justify-content-center">
             <Col lg={8} className="text-center">
-              <h2 className="section-title text-black">
-                Frequently Asked Questions
-              </h2>
+              <h2 className="section-title">Frequently Asked Questions</h2>
               <p className="section-subtitle">
                 Find quick answers to common questions
               </p>
@@ -310,49 +324,19 @@ function Contact() {
           </Row>
 
           <Row className="m-5">
-            <Col md={6}>
-              <div className="faq-item">
-                <h3>How do I create an account?</h3>
-                <p>
-                  You can create a free account by clicking the &quot;Sign
-                  Up&quot; button in the top right corner of our website. Follow
-                  the simple registration process to get started.
-                </p>
-              </div>
-            </Col>
-
-            <Col md={6}>
-              <div className="faq-item">
-                <h3>Is Career Connect free to use?</h3>
-                <p>
-                  Basic services for job seekers are free. Employers and
-                  companies have various subscription plans available to access
-                  premium features.
-                </p>
-              </div>
-            </Col>
-
-            <Col md={6}>
-              <div className="faq-item">
-                <h3>How do I post a job opening?</h3>
-                <p>
-                  After creating an employer account, you can post job openings
-                  from your dashboard. Simply click &quot;Post a Job&quot; and
-                  follow the guided process.
-                </p>
-              </div>
-            </Col>
-
-            <Col md={6}>
-              <div className="faq-item">
-                <h3>Can I apply for multiple jobs?</h3>
-                <p>
-                  Yes, you can apply for as many positions as you wish. Your
-                  application history is saved in your dashboard for easy
-                  tracking.
-                </p>
-              </div>
-            </Col>
+            {faqs.map((faq) => (
+              <Col md={6} key={faq.id}>
+                <div className="faq-item">
+                  <h3>{faq.title}</h3>
+                  <p>{faq.description}</p>
+                </div>
+              </Col>
+            ))}
+            {faqs.length === 0 && (
+              <Col className="text-center">
+                <p>No FAQs available at the moment.</p>
+              </Col>
+            )}
           </Row>
         </section>
       </div>

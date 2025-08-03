@@ -16,6 +16,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -616,6 +648,22 @@
         "documentation": {}
     },
     {
+        "label": "AdminLeaderShipModel",
+        "importPath": "admin_app.models",
+        "description": "admin_app.models",
+        "isExtraImport": true,
+        "detail": "admin_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AdminFaqModel",
+        "importPath": "admin_app.models",
+        "description": "admin_app.models",
+        "isExtraImport": true,
+        "detail": "admin_app.models",
+        "documentation": {}
+    },
+    {
         "label": "AppConfig",
         "importPath": "django.apps",
         "description": "django.apps",
@@ -758,6 +806,159 @@
         "description": "django.core.validators",
         "isExtraImport": true,
         "detail": "django.core.validators",
+        "documentation": {}
+    },
+    {
+        "label": "rest_framework",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
         "documentation": {}
     },
     {
@@ -1010,6 +1211,22 @@
     },
     {
         "label": "admin_login",
+        "importPath": "admin_app.views",
+        "description": "admin_app.views",
+        "isExtraImport": true,
+        "detail": "admin_app.views",
+        "documentation": {}
+    },
+    {
+        "label": "AdminLeaderShipView",
+        "importPath": "admin_app.views",
+        "description": "admin_app.views",
+        "isExtraImport": true,
+        "detail": "admin_app.views",
+        "documentation": {}
+    },
+    {
+        "label": "FaqView",
         "importPath": "admin_app.views",
         "description": "admin_app.views",
         "isExtraImport": true,
@@ -1318,151 +1535,6 @@
         "description": "rest_framework.views",
         "isExtraImport": true,
         "detail": "rest_framework.views",
-        "documentation": {}
-    },
-    {
-        "label": "rest_framework",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
         "documentation": {}
     },
     {
@@ -2444,6 +2516,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.admin_app.migrations.0002_adminleadershipmodel",
+        "description": "backend.admin_app.migrations.0002_adminleadershipmodel",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('admin_app', '0001_initial'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='AdminLeaderShipModel',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('image', models.ImageField(blank=True, null=True, upload_to='leadership_profile_picture/')),",
+        "detail": "backend.admin_app.migrations.0002_adminleadershipmodel",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.admin_app.migrations.0003_adminfaqmodel",
+        "description": "backend.admin_app.migrations.0003_adminfaqmodel",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('admin_app', '0002_adminleadershipmodel'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='AdminFaqModel',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('title', models.CharField(max_length=200)),",
+        "detail": "backend.admin_app.migrations.0003_adminfaqmodel",
+        "documentation": {}
+    },
+    {
         "label": "AdminAppConfig",
         "kind": 6,
         "importPath": "backend.admin_app.apps",
@@ -2457,8 +2547,44 @@
         "kind": 6,
         "importPath": "backend.admin_app.models",
         "description": "backend.admin_app.models",
-        "peekOfCode": "class adminLogin(models.Model):\n    admin_email = models.CharField(max_length=100, default=\"ccadminme@gmail.com\")\n    admin_password = models.CharField(max_length=100, default=\"12345678\")\n    def __str__(self):\n        return self.admin_email",
+        "peekOfCode": "class adminLogin(models.Model):\n    admin_email = models.CharField(max_length=100, default=\"ccadminme@gmail.com\")\n    admin_password = models.CharField(max_length=100, default=\"12345678\")\n    def __str__(self):\n        return self.admin_email\nclass AdminLeaderShipModel(models.Model):\n    image = models.ImageField(\n        upload_to=\"leadership_profile_picture/\", null=True, blank=True\n    )\n    name = models.CharField(max_length=100)",
         "detail": "backend.admin_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AdminLeaderShipModel",
+        "kind": 6,
+        "importPath": "backend.admin_app.models",
+        "description": "backend.admin_app.models",
+        "peekOfCode": "class AdminLeaderShipModel(models.Model):\n    image = models.ImageField(\n        upload_to=\"leadership_profile_picture/\", null=True, blank=True\n    )\n    name = models.CharField(max_length=100)\n    position = models.CharField(max_length=50, null=True, blank=True)\n    description = models.TextField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n    def __str__(self):",
+        "detail": "backend.admin_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AdminFaqModel",
+        "kind": 6,
+        "importPath": "backend.admin_app.models",
+        "description": "backend.admin_app.models",
+        "peekOfCode": "class AdminFaqModel(models.Model):\n    title = models.CharField(max_length=200)\n    description = models.TextField()\n    created_at = models.DateTimeField(auto_now_add=True)\n    updated_at = models.DateTimeField(auto_now=True)\n    def __str__(self):\n        return self.title\n    class Meta:\n        verbose_name_plural = \"FAQs\"",
+        "detail": "backend.admin_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "LeadershipSerializer",
+        "kind": 6,
+        "importPath": "backend.admin_app.serializers",
+        "description": "backend.admin_app.serializers",
+        "peekOfCode": "class LeadershipSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = AdminLeaderShipModel\n        fields = [\n            \"id\",\n            \"image\",\n            \"name\",\n            \"position\",\n            \"description\",\n            \"created_at\",",
+        "detail": "backend.admin_app.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "FaqSerializer",
+        "kind": 6,
+        "importPath": "backend.admin_app.serializers",
+        "description": "backend.admin_app.serializers",
+        "peekOfCode": "class FaqSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = AdminFaqModel\n        fields = [\"id\", \"title\", \"description\", \"created_at\", \"updated_at\"]",
+        "detail": "backend.admin_app.serializers",
         "documentation": {}
     },
     {
@@ -2466,8 +2592,26 @@
         "kind": 5,
         "importPath": "backend.admin_app.urls",
         "description": "backend.admin_app.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"web/admin/login/\", admin_login, name=\"admin_login\"),\n] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+        "peekOfCode": "urlpatterns = [\n    path(\"web/admin/login/\", admin_login, name=\"admin_login\"),\n     path(\n        \"admin/leadership/section/\",\n        AdminLeaderShipView.as_view(),\n        name=\"AdminLeaderShip_details\",\n    ),\n    path(\n        \"admin/leadership/section/<int:pk>/\",\n        AdminLeaderShipView.as_view(),",
         "detail": "backend.admin_app.urls",
+        "documentation": {}
+    },
+    {
+        "label": "AdminLeaderShipView",
+        "kind": 6,
+        "importPath": "backend.admin_app.views",
+        "description": "backend.admin_app.views",
+        "peekOfCode": "class AdminLeaderShipView(APIView):\n    def get(self, request):\n        leaders = AdminLeaderShipModel.objects.all()\n        serializer = LeadershipSerializer(leaders, many=True)\n        return Response(serializer.data)\n    def put(self, request, pk=None):\n        try:\n            leaders = AdminLeaderShipModel.objects.get(pk=pk)\n            serializer = LeadershipSerializer(leaders, data=request.data)\n            if serializer.is_valid():",
+        "detail": "backend.admin_app.views",
+        "documentation": {}
+    },
+    {
+        "label": "FaqView",
+        "kind": 6,
+        "importPath": "backend.admin_app.views",
+        "description": "backend.admin_app.views",
+        "peekOfCode": "class FaqView(APIView):\n    def get(self, request):\n        faqs = AdminFaqModel.objects.all()\n        serializer = FaqSerializer(faqs, many=True)\n        return Response(serializer.data)\n    def put(self, request, pk=None):\n        try:\n            faq = AdminFaqModel.objects.get(pk=pk)\n            serializer = FaqSerializer(faq, data=request.data)\n            if serializer.is_valid():",
+        "detail": "backend.admin_app.views",
         "documentation": {}
     },
     {

@@ -1,0 +1,110 @@
+.leadership-container {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+}
+
+.leader-card-container {
+  perspective: 1000px;
+}
+
+.leader-card {
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
+}
+
+.leader-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.leader-image {
+  height: 300px !important; /* Updated height */
+  width: 300px !important; /* Added fixed width */
+  object-fit: cover !important;
+}
+
+/* Form elements styling */
+.MuiTextField-root {
+  margin-bottom: 16px !important;
+}
+
+.MuiButton-root {
+  text-transform: none;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.MuiButton-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading skeleton animation */
+.MuiSkeleton-root {
+  background-color: rgba(0, 0, 0, 0.08);
+  animation: pulse 1.5s ease-in-out 0.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .leader-card {
+    margin-bottom: 16px;
+  }
+
+  .leader-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 800px) {
+  .leader-card {
+    flex-direction: column !important;
+  }
+
+  .leader-image {
+    width: 100% !important;
+    height: 250px !important;
+  }
+}
+
+.MuiCard-root:hover .MuiCardMedia-root {
+  filter: brightness(1.05);
+}
+
+/* Typography enhancements */
+.MuiTypography-h5 {
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+}
+
+.MuiTypography-subtitle1 {
+  font-style: italic;
+  color: #666;
+}
+
+/* Form fields focus effects */
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #3f51b5;
+}
+
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-width: 2px;
+}

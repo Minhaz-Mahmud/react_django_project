@@ -8,3 +8,32 @@ class adminLogin(models.Model):
 
     def __str__(self):
         return self.admin_email
+    
+
+class AdminLeaderShipModel(models.Model):
+    image = models.ImageField(
+        upload_to="leadership_profile_picture/", null=True, blank=True
+    )
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=50, null=True, blank=True)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "LeaderShips"
+
+class AdminFaqModel(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = "FAQs"

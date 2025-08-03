@@ -168,24 +168,32 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
+  margin-bottom: 20px;
 }
 
 .team-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .team-image-container {
   overflow: hidden;
 }
 
+.team-image-container .placeholder {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
 .team-image {
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
+  border-radius: 8px 8px 0 0;
 }
 
 .team-card:hover .team-image {
@@ -193,20 +201,22 @@
 }
 
 .team-name {
-  font-weight: 700;
-  margin-top: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
   color: #333;
 }
 
 .team-position {
-  font-size: 0.9rem;
-  color: #667eea;
+  color: #666;
+  font-size: 1rem;
   margin-bottom: 1rem;
 }
 
 .team-bio {
-  font-size: 0.95rem;
-  color: #666;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 /* CTA Section */
@@ -317,4 +327,20 @@
 .up-button:hover {
   background-color: #ab114a;
   transform: translateY(-3px);
+}
+
+/* Add loading placeholder styles */
+.placeholder-glow {
+  animation: placeholder-glow 2s ease-in-out infinite;
+}
+
+.placeholder {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+@keyframes placeholder-glow {
+  50% {
+    opacity: 0.5;
+  }
 }

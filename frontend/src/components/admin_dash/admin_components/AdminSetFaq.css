@@ -1,0 +1,124 @@
+/* AdminSetFaq.css */
+.admin-faq-page {
+  min-height: 100vh;
+}
+
+.faq-container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  border-left: 4px solid #3f51b5;
+  border-radius: 8px;
+}
+
+.faq-title {
+  color: #717fce;
+  font-weight: 600;
+}
+
+.faq-description {
+  color: #59a1bc !important;
+  line-height: 1.6;
+}
+
+.faq-actions {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.faq-item:hover .faq-actions {
+  opacity: 1;
+}
+
+.dialog-title {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.add-faq-btn {
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  padding: 8px 20px;
+}
+
+.add-faq-btn:hover {
+  transform: scale(1.05);
+}
+
+.dialog-actions {
+  background-color: #f5f5f5;
+}
+
+.faq-content {
+  padding: 1rem;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bootstrap overrides */
+.py-4 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+.me-2 {
+  margin-right: 0.5rem !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.fw-bold {
+  font-weight: 700 !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.p-4 {
+  padding: 1.5rem !important;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
+
+.my-2 {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
