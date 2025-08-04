@@ -41,6 +41,7 @@ function Contact() {
     };
   }, []);
 
+  // Add useEffect to fetch location
   useEffect(() => {
     fetchFaqs();
   }, []);

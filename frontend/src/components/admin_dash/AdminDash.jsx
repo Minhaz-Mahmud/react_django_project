@@ -36,8 +36,8 @@ import Brightness7Icon from "@mui/icons-material/Brightness7";
 import AdminAllCompany from "./admin_components/AdminAllCompany";
 import AdminSetLeadership from "./admin_components/AdminSetLeadership";
 import AdminSetFaq from "./admin_components/AdminSetFaq";
-import "./AdminDash.css";
 import AdminCandidates from "./admin_components/AdminCandidates";
+import "./AdminDash.css";
 const drawerWidth = 200;
 
 const openedMixin = (theme) => ({
@@ -130,7 +130,7 @@ function AdminDash() {
   });
 
   const menuItems = [
-    { text: "Dashboard", icon: <DashboardIcon />, path: "/admin/dashboard" },
+    // { text: "Dashboard", icon: <DashboardIcon />, path: "/admin/dashboard" },
     { text: "Candidates", icon: <PeopleIcon />, path: "/admin/all-candidates" },
     { text: "Companies", icon: <BusinessIcon />, path: "/admin/all-companies" },
     {
@@ -242,11 +242,9 @@ function AdminDash() {
           <Routes>
             <Route path="/all-companies" element={<AdminAllCompany />} />
             <Route path="/set/faqs" element={<AdminSetFaq />} />
-            {/* <Route path="/dashboard" element={<AdminDashboard />} /> */}
             <Route path="/all-candidates" element={<AdminCandidates />} />
             <Route path="/set/leadership" element={<AdminSetLeadership />} />
-            <Route path="/" element={<Navigate to="/admin/dashboard" />} />
-            <Route index element={<Navigate to="/admin/dashboard" />} />
+            <Route index element={<Navigate to="/admin/all-candidates" />} />
           </Routes>
         </Box>
       </Box>

@@ -137,7 +137,7 @@ const NavbarComponent = () => {
                   Dashboard
                 </NavDropdown.Item>
               ) : userType === "admin" ? (
-                <NavDropdown.Item as={Link} to="/admin/dashboard">
+                <NavDropdown.Item as={Link} to="/admin/all-candidates">
                   Dashboard
                 </NavDropdown.Item>
               ) : (

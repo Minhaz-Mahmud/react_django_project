@@ -35,7 +35,6 @@ import JobDetails from "./components/dashboard_components/job_post/JobDetails";
 import AdminLogin from "./components/admin_dash/AdminLogin";
 import AdminDash from "./components/admin_dash/AdminDash";
 
-
 const App = () => {
   const sessionTimeout = 48 * 60 * 60 * 1000; // (2 day) 48 hours in milliseconds
   const location = useLocation();
@@ -131,10 +130,10 @@ const App = () => {
         <Route path="/job-results" element={<JobResults />} />
 
         <Route path="/job-details/:id" element={<JobDetails />} />
-        
       </Routes>
 
       {location.pathname !== "/company/dashboard" &&
+        !location.pathname.includes("/admin") &&
         location.pathname !== "/dashboard" && <FooterComponent />}
     </div>
   );

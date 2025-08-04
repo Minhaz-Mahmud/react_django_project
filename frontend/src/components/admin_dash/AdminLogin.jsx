@@ -44,7 +44,7 @@ function AdminLogin() {
         sessionStorage.setItem("AdminData", JSON.stringify(true));
 
         setTimeout(() => {
-          navigate("/admin/dashboard");
+          navigate("/admin/all-candidates");
         }, 1000);
       }
     } catch (error) {

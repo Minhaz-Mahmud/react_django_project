@@ -42,7 +42,10 @@ const AdminCandidates = () => {
     const fetchCandidates = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://127.0.0.1:8000/api/admin/candidates/");
+        const res = await axios.get(
+          "http://127.0.0.1:8000/api/admin/candidates/"
+        );
+        console.log(res.data);
         if (Array.isArray(res.data)) {
           setCandidates(res.data);
         } else {
@@ -59,26 +62,36 @@ const AdminCandidates = () => {
   }, []);
 
   const deleteCandidate = async (id) => {
-    if (!id) {return;}
-    
+    if (!id) {
+      return;
+    }
+
     if (window.confirm("Are you sure you want to delete this candidate?")) {
       try {
-        await axios.delete(`http://127.0.0.1:8000/api/admin/candidates/${id}/delete/`);
-        setCandidates(prev => prev.filter(c => c.id !== id));
+        await axios.delete(
+          `http://127.0.0.1:8000/api/admin/candidates/${id}/delete/`
+        );
+        setCandidates((prev) => prev.filter((c) => c.id !== id));
       } catch (err) {
         setError(`Delete failed: ${err.message}`);
       }
     }
   };
 
-  const filteredCandidates = candidates.filter(candidate =>
-    candidate.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    candidate.email?.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredCandidates = candidates.filter(
+    (candidate) =>
+      candidate.full_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      candidate.email?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   if (loading) {
     return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="100vh"
+      >
         <CircularProgress color="primary" size={60} thickness={4} />
       </Box>
     );
@@ -145,22 +158,36 @@ const AdminCandidates = () => {
                 <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                   {candidate.profile_picture && (
                     <Avatar
-                      src={candidate.profile_picture}
+                      src={`http://localhost:8000${candidate.profile_picture}`}
                       alt={candidate.full_name}
                       sx={{ width: 80, height: 80, mr: 3 }}
                     />
                   )}
                   <Box>
-                    <Typography variant="h5" color="primary" sx={{ fontWeight: "bold" }}>
+                    <Typography
+                      variant="h5"
+                      color="primary"
+                      sx={{ fontWeight: "bold" }}
+                    >
                       {candidate.full_name}
                     </Typography>
-                    <Box sx={{ display: "flex", alignItems: "center", gap: 2, mt: 1 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 2,
+                        mt: 1,
+                      }}
+                    >
                       <Chip label={candidate.location} variant="outlined" />
                       {candidate.skills && (
-                        <Chip 
-                          label={`Skills: ${candidate.skills.split(',').slice(0, 2).join(', ')}`} 
-                          color="secondary" 
-                          size="small" 
+                        <Chip
+                          label={`Skills: ${candidate.skills
+                            .split(",")
+                            .slice(0, 2)
+                            .join(", ")}`}
+                          color="secondary"
+                          size="small"
                         />
                       )}
                     </Box>
@@ -169,55 +196,121 @@ const AdminCandidates = () => {
 
                 <Grid container spacing={2}>
                   <Grid item xs={12} md={6}>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1, gap: 1 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        mb: 1,
+                        gap: 1,
+                      }}
+                    >
                       <EmailIcon color="action" />
                       <Typography variant="body1">{candidate.email}</Typography>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1, gap: 1 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        mb: 1,
+                        gap: 1,
+                      }}
+                    >
                       <PhoneIcon color="action" />
-                      <Typography variant="body1">{candidate.phone_number}</Typography>
+                      <Typography variant="body1">
+                        {candidate.phone_number}
+                      </Typography>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1, gap: 1 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        mb: 1,
+                        gap: 1,
+                      }}
+                    >
                       <LocationOnIcon color="action" />
-                      <Typography variant="body1">{candidate.location}</Typography>
+                      <Typography variant="body1">
+                        {candidate.location}
+                      </Typography>
                     </Box>
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1, gap: 1 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        mb: 1,
+                        gap: 1,
+                      }}
+                    >
                       <CakeIcon color="action" />
-                      <Typography variant="body1">DOB: {candidate.dob}</Typography>
+                      <Typography variant="body1">
+                        DOB: {candidate.dob}
+                      </Typography>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1, gap: 1 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        mb: 1,
+                        gap: 1,
+                      }}
+                    >
                       <TransgenderIcon color="action" />
-                      <Typography variant="body1">Gender: {candidate.gender}</Typography>
+                      <Typography variant="body1">
+                        Gender: {candidate.gender}
+                      </Typography>
                     </Box>
-                    <Box sx={{ display: "flex", alignItems: "center", mb: 1, gap: 1 }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        mb: 1,
+                        gap: 1,
+                      }}
+                    >
                       <MenuBookIcon color="action" />
-                      <Typography variant="body1">Religion: {candidate.religion}</Typography>
+                      <Typography variant="body1">
+                        Religion: {candidate.religion}
+                      </Typography>
                     </Box>
                   </Grid>
                 </Grid>
 
                 <Accordion sx={{ mt: 2 }}>
                   <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                    <Typography variant="subtitle1">Education & Experience</Typography>
+                    <Typography variant="subtitle1">
+                      Education & Experience
+                    </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
                     <Grid container spacing={2}>
                       <Grid item xs={12} md={6}>
-                        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                        <Typography
+                          variant="subtitle2"
+                          color="text.secondary"
+                          gutterBottom
+                        >
                           <SchoolIcon sx={{ verticalAlign: "middle", mr: 1 }} />
                           Education
                         </Typography>
                         <Typography variant="body2" paragraph>
-                          <b>High School:</b> {candidate.high_school_name} ({candidate.high_school_degree}, {candidate.high_school_passing_year})
+                          <b>High School:</b> {candidate.high_school_name} (
+                          {candidate.high_school_degree},{" "}
+                          {candidate.high_school_passing_year})
                         </Typography>
                         <Typography variant="body2">
-                          <b>University:</b> {candidate.university_name} ({candidate.university_degree}, {candidate.university_passing_year})
+                          <b>University:</b> {candidate.university_name} (
+                          {candidate.university_degree},{" "}
+                          {candidate.university_passing_year})
                         </Typography>
                       </Grid>
                       <Grid item xs={12} md={6}>
-                        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                        <Typography
+                          variant="subtitle2"
+                          color="text.secondary"
+                          gutterBottom
+                        >
                           <WorkIcon sx={{ verticalAlign: "middle", mr: 1 }} />
                           Professional Experience
                         </Typography>
@@ -242,7 +335,9 @@ const AdminCandidates = () => {
                   </AccordionDetails>
                 </Accordion>
 
-                <Box sx={{ mt: 2, display: "flex", justifyContent: "flex-end" }}>
+                <Box
+                  sx={{ mt: 2, display: "flex", justifyContent: "flex-end" }}
+                >
                   <Button
                     variant="contained"
                     color="error"
@@ -263,11 +358,3 @@ const AdminCandidates = () => {
 };
 
 export default AdminCandidates;
-
-
-
-
-
-
-
-

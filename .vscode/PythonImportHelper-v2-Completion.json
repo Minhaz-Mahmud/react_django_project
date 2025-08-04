@@ -1957,6 +1957,22 @@
         "documentation": {}
     },
     {
+        "label": "AdminCandidateListAPIView",
+        "importPath": "registration.views",
+        "description": "registration.views",
+        "isExtraImport": true,
+        "detail": "registration.views",
+        "documentation": {}
+    },
+    {
+        "label": "AdminCandidateDeleteAPIView",
+        "importPath": "registration.views",
+        "description": "registration.views",
+        "isExtraImport": true,
+        "detail": "registration.views",
+        "documentation": {}
+    },
+    {
         "label": "CandidateLoginView",
         "importPath": "login.views",
         "description": "login.views",
@@ -2240,6 +2256,14 @@
     },
     {
         "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
+        "label": "AllowAny",
         "importPath": "rest_framework.permissions",
         "description": "rest_framework.permissions",
         "isExtraImport": true,
@@ -2934,7 +2958,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database\n# https://docs.djangoproject.com/en/5.1/ref/settings/#databases\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"postgres\",\n        \"PASSWORD\": \"114114114\",",
+        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"postgres\",\n        \"PASSWORD\": \"114114114\",\n        \"HOST\": \"localhost\",\n        \"PORT\": \"5432\",",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -3708,7 +3732,7 @@
         "kind": 6,
         "importPath": "backend.registration.serializer",
         "description": "backend.registration.serializer",
-        "peekOfCode": "class CandidateSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Candidate\n        fields = [\n            'full_name', 'email', 'phone_number', 'location',\n            'dob', 'gender', 'religion',\n            'high_school_name', 'high_school_degree', 'high_school_passing_year', 'high_school_grade',\n            'university_name', 'university_degree', 'university_passing_year', 'university_grade',\n            'professional_experience', 'skills',\n            'resume', 'profile_picture', 'password'",
+        "peekOfCode": "class CandidateSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Candidate\n        fields = [\n            'id', 'full_name', 'email', 'phone_number', 'location',\n            'dob', 'gender', 'religion',\n            'high_school_name', 'high_school_degree', 'high_school_passing_year', 'high_school_grade',\n            'university_name', 'university_degree', 'university_passing_year', 'university_grade',\n            'professional_experience', 'skills',\n            'resume', 'profile_picture', 'password'",
         "detail": "backend.registration.serializer",
         "documentation": {}
     },
@@ -3718,6 +3742,24 @@
         "importPath": "backend.registration.views",
         "description": "backend.registration.views",
         "peekOfCode": "class CandidateView(APIView):\n    serializer_class = CandidateSerializer\n    def get(self, request):\n        candidates = Candidate.objects.all()\n        serializer = self.serializer_class(candidates, many=True)\n        return Response(serializer.data)\n    def post(self, request):\n        serializer = self.serializer_class(data=request.data)\n        if serializer.is_valid():\n            serializer.save()",
+        "detail": "backend.registration.views",
+        "documentation": {}
+    },
+    {
+        "label": "AdminCandidateListAPIView",
+        "kind": 6,
+        "importPath": "backend.registration.views",
+        "description": "backend.registration.views",
+        "peekOfCode": "class AdminCandidateListAPIView(APIView):\n    def get(self, request):\n        candidates = Candidate.objects.all()\n        serializer = CandidateSerializer(candidates, many=True)\n        return Response(serializer.data)\nclass AdminCandidateDeleteAPIView(APIView):\n    def delete(self, request, pk):\n        try:\n            candidate = Candidate.objects.get(pk=pk)\n            candidate.delete()",
+        "detail": "backend.registration.views",
+        "documentation": {}
+    },
+    {
+        "label": "AdminCandidateDeleteAPIView",
+        "kind": 6,
+        "importPath": "backend.registration.views",
+        "description": "backend.registration.views",
+        "peekOfCode": "class AdminCandidateDeleteAPIView(APIView):\n    def delete(self, request, pk):\n        try:\n            candidate = Candidate.objects.get(pk=pk)\n            candidate.delete()\n            return Response({\"detail\": \"Candidate deleted\"}, status=status.HTTP_204_NO_CONTENT)\n        except Candidate.DoesNotExist:\n            return Response({\"error\": \"Candidate not found\"}, status=status.HTTP_404_NOT_FOUND)",
         "detail": "backend.registration.views",
         "documentation": {}
     },
