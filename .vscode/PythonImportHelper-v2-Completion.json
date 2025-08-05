@@ -1852,6 +1852,14 @@
         "documentation": {}
     },
     {
+        "label": "CandidateAppliedJobsAPIView",
+        "importPath": "apply.views",
+        "description": "apply.views",
+        "isExtraImport": true,
+        "detail": "apply.views",
+        "documentation": {}
+    },
+    {
         "label": "ApplyToJobView",
         "importPath": "apply.views",
         "description": "apply.views",
@@ -1881,6 +1889,14 @@
         "description": "apply.views",
         "isExtraImport": true,
         "detail": "apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "Apply",
+        "importPath": "apply.models",
+        "description": "apply.models",
+        "isExtraImport": true,
+        "detail": "apply.models",
         "documentation": {}
     },
     {
@@ -2895,7 +2911,7 @@
         "kind": 5,
         "importPath": "backend.apply.urls",
         "description": "backend.apply.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\n        \"candidate/details/<int:candidate_id>/\",\n        candidate_details,\n        name=\"candidate-details\",\n    ),\n    # URL for the page that displays applied jobs\n    path(\"candidate/applied-jobs/\", applied_jobs_view, name=\"applied_jobs_view\"),\n    # API endpoint to fetch applied jobs data\n    path(",
+        "peekOfCode": "urlpatterns = [\n    path(\n        \"candidate/details/<int:candidate_id>/\",\n        candidate_details,\n        name=\"candidate-details\",\n    ),\n    path(\"candidate/applied-jobs/\", applied_jobs_view, name=\"applied_jobs_view\"),\n    path(\n        \"candidate/applied-jobs/<int:candidate_id>/\",\n        get_candidate_applied_jobs,",
         "detail": "backend.apply.urls",
         "documentation": {}
     },
@@ -2904,7 +2920,7 @@
         "kind": 6,
         "importPath": "backend.apply.views",
         "description": "backend.apply.views",
-        "peekOfCode": "class ApplyToJobView(APIView):\n    def post(self, request, *args, **kwargs):\n        candidate_id = request.data.get(\"candidate_id\")\n        company_id = request.data.get(\"company_id\")\n        job_id = request.data.get(\"job_id\")\n        job_title = request.data.get(\"job_title\")\n        # Directly create the application without any checks\n        Apply.objects.create(\n            candidate_id=candidate_id,\n            company_id=company_id,",
+        "peekOfCode": "class ApplyToJobView(APIView):\n    def post(self, request, *args, **kwargs):\n        candidate_id = request.data.get(\"candidate_id\")\n        company_id = request.data.get(\"company_id\")\n        job_id = request.data.get(\"job_id\")\n        job_title = request.data.get(\"job_title\")\n        existing_application = Apply.objects.filter(\n            candidate_id=candidate_id,\n            job_id=job_id\n        ).first()",
         "detail": "backend.apply.views",
         "documentation": {}
     },
@@ -2941,6 +2957,15 @@
         "importPath": "backend.apply.views",
         "description": "backend.apply.views",
         "peekOfCode": "class UpdateApplicationResponse(APIView):\n    def post(self, request):\n        application_id = request.data.get(\"application_id\")\n        new_response = request.data.get(\"response\")\n        if not application_id or not new_response:\n            return Response(\n                {\"error\": \"Application ID and response are required.\"},\n                status=status.HTTP_400_BAD_REQUEST,\n            )\n        try:",
+        "detail": "backend.apply.views",
+        "documentation": {}
+    },
+    {
+        "label": "CandidateAppliedJobsAPIView",
+        "kind": 6,
+        "importPath": "backend.apply.views",
+        "description": "backend.apply.views",
+        "peekOfCode": "class CandidateAppliedJobsAPIView(APIView):\n    def get(self, request, candidate_id):\n        \"\"\"\n        Get all job IDs that a candidate has already applied to\n        \"\"\"\n        try:\n            applied_job_ids = Apply.objects.filter(\n                candidate_id=candidate_id\n            ).values_list('job_id', flat=True)\n            return Response({",
         "detail": "backend.apply.views",
         "documentation": {}
     },

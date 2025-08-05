@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   FaMapMarkerAlt,
@@ -9,6 +9,7 @@ import {
   FaFilter,
   FaChevronLeft,
   FaChevronRight,
+  FaCheck,
 } from "react-icons/fa";
 import "./JobFeed.css";
 
@@ -23,6 +24,7 @@ const JobFeed = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [jobTypeFilter, setJobTypeFilter] = useState("");
   const [showUpButton, setShowUpButton] = useState(false);
+  const [appliedJobIds, setAppliedJobIds] = useState([]);
   const jobTypes = ["Hybrid", "Remote", "Onsite"];
 
   useEffect(() => {
@@ -45,9 +47,17 @@ const JobFeed = () => {
     checkSessionData();
   }, [currentPage]);
 
+  // Fetch applied job IDs when user data is available
+  useEffect(() => {
+    if (userData && userData.id) {
+      fetchAppliedJobIds(userData.id);
+    }
+  }, [userData]);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
   // Check if there's any session data
   const checkSessionData = () => {
     const storedUserData = sessionStorage.getItem("candidateData");
@@ -57,12 +67,28 @@ const JobFeed = () => {
     }
   };
 
+  // New function to fetch applied job IDs
+  const fetchAppliedJobIds = async (candidateId) => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/candidate-applied-job-ids/${candidateId}/`
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setAppliedJobIds(data.applied_job_ids || []);
+      }
+    } catch (error) {
+      console.error("Error fetching applied job IDs:", error);
+    }
+  };
+
   const fetchJobPosts = async (page) => {
     setLoading(true);
     try {
       const response = await fetch(
         `http://127.0.0.1:8000/job-posts/?page=${page}`
       );
+      console.log("Response:", response);
       if (!response.ok) {
         throw new Error("Failed to fetch job posts.");
       }
@@ -76,18 +102,25 @@ const JobFeed = () => {
       setLoading(false);
     }
   };
-  
 
-   const handleApply = async (companyId, job_id, job_title) => {
+  const handleApply = async (companyId, job_id, job_title) => {
     if (!userData) {
       alert("You need to log in to apply!");
       return;
     }
 
+    // Check if already applied
+    if (appliedJobIds.includes(job_id)) {
+      alert("You have already applied to this job!");
+      return;
+    }
+
     // Confirmation dialog
-    const confirmed = window.confirm(`Are you sure you want to apply for the position: "${job_title}"?`);
+    const confirmed = window.confirm(
+      `Are you sure you want to apply for the position: "${job_title}"?`
+    );
     if (!confirmed) {
-      return; // User cancelled
+      return;
     }
 
     // Debug logging to see what we're sending
@@ -125,12 +158,22 @@ const JobFeed = () => {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Server response:", errorText);
+        const errorData = await response.json();
+        if (
+          response.status === 400 &&
+          errorData.message?.includes("already applied")
+        ) {
+          alert(errorData.message);
+          // Update applied job IDs to reflect this
+          setAppliedJobIds((prev) => [...prev, job_id]);
+          return;
+        }
         throw new Error("Failed to submit application.");
       }
 
       alert("Application submitted successfully!");
+      // Add the job ID to applied jobs list
+      setAppliedJobIds((prev) => [...prev, job_id]);
     } catch (error) {
       console.error("Apply error:", error);
       alert("An error occurred while applying. Please try again.");
@@ -182,6 +225,11 @@ const JobFeed = () => {
       (jobTypeFilter === "" || job.job_type === jobTypeFilter)
     );
   });
+
+  // Helper function to check if user has applied to a job
+  const hasAppliedToJob = (jobId) => {
+    return appliedJobIds.includes(jobId);
+  };
 
   return (
     <div className="job-feed-container">
@@ -289,26 +337,30 @@ const JobFeed = () => {
                         </span>
                       </div>
                       <div className="footer-right">
-                      {/* <Link to="/signin">
-                        <button className="btn btn-outline view-details-btn">
-                          View Details
-                        </button></Link> */}
-
-                  <Link to={`/job-details/${post.id}`}>
-                      <button className="btn btn-outline view-details-btn">
-                      View Details
-                      </button>
-                    </Link>
+                        <Link to={`/job-details/${post.id}`}>
+                          <button className="btn btn-outline view-details-btn">
+                            View Details
+                          </button>
+                        </Link>
 
                         {userData ? (
-                          <button
-                            className="btn btn-primary apply-btn"
-                            onClick={() =>
-                              handleApply(post.company, post.id, post.title)
-                            }
-                          >
-                            Apply Now
-                          </button>
+                          hasAppliedToJob(post.id) ? (
+                            <button
+                              className="btn btn-success already-applied-btn"
+                              disabled
+                            >
+                              <FaCheck /> Already Applied
+                            </button>
+                          ) : (
+                            <button
+                              className="btn btn-primary apply-btn"
+                              onClick={() =>
+                                handleApply(post.company, post.id, post.title)
+                              }
+                            >
+                              Apply Now
+                            </button>
+                          )
                         ) : (
                           <Link to="/signin">
                             <button className="btn btn-secondary login-to-apply-btn text-dark">

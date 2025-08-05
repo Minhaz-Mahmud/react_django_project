@@ -12,6 +12,7 @@ from django.views import View
 from django.shortcuts import render
 from django.db import connection
 from django.utils.timezone import localdate
+from apply.models import Apply
 
 
 class ApplyToJobView(APIView):
@@ -21,12 +22,24 @@ class ApplyToJobView(APIView):
         job_id = request.data.get("job_id")
         job_title = request.data.get("job_title")
 
-        # Directly create the application without any checks
+        existing_application = Apply.objects.filter(
+            candidate_id=candidate_id,
+            job_id=job_id
+        ).first()
+
+        if existing_application:
+            return Response(
+                {"message": "You have already applied to this job!"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        # Create the application if not already applied
         Apply.objects.create(
             candidate_id=candidate_id,
             company_id=company_id,
             job_id=job_id,
             job_title=job_title,
+            application_response="Application Submitted",
         )
 
         return Response(
@@ -210,3 +223,22 @@ class UpdateApplicationResponse(APIView):
                 {"error": str(e)},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
+
+class CandidateAppliedJobsAPIView(APIView):
+    def get(self, request, candidate_id):
+        """
+        Get all job IDs that a candidate has already applied to
+        """
+        try:
+            applied_job_ids = Apply.objects.filter(
+                candidate_id=candidate_id
+            ).values_list('job_id', flat=True)
+            
+            return Response({
+                'applied_job_ids': list(applied_job_ids)
+            }, status=status.HTTP_200_OK)
+            
+        except Exception as e:
+            return Response({
+                'error': str(e)
+            }, status=status.HTTP_500_INTERNAL_SERVER_ERROR,)

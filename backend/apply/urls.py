@@ -4,6 +4,7 @@ from apply.views import (
     candidate_details,
     applied_jobs_view,
     get_candidate_applied_jobs,
+    CandidateAppliedJobsAPIView,
 )
 
 urlpatterns = [
@@ -12,9 +13,7 @@ urlpatterns = [
         candidate_details,
         name="candidate-details",
     ),
-    # URL for the page that displays applied jobs
     path("candidate/applied-jobs/", applied_jobs_view, name="applied_jobs_view"),
-    # API endpoint to fetch applied jobs data
     path(
         "candidate/applied-jobs/<int:candidate_id>/",
         get_candidate_applied_jobs,
@@ -25,4 +24,7 @@ urlpatterns = [
         UpdateApplicationResponse.as_view(),
         name="update_application_response",
     ),
+     path('candidate-applied-job-ids/<int:candidate_id>/', CandidateAppliedJobsAPIView.as_view(), name='candidate_applied_job_ids'),
+
+
 ]
