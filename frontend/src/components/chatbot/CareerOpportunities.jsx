@@ -59,7 +59,10 @@ const CareerOpportunities = () => {
       );
       if (response.status === 200) {
         toast.success("Job suggestions found!");
-        navigate("/job-results", { state: { jobs: response.data.jobs } });
+        console.log("🚀 Response data from backend:", response.data);
+        navigate("/job-results", { state: response.data });
+
+
       }
     } catch (error) {
       toast.error("Failed to find job suggestions");

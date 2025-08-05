@@ -104,6 +104,7 @@
 
 
 
+
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import google.generativeai as genai
@@ -111,7 +112,7 @@ import json
 import re
 
 # Configure Gemini AI (Ensure API Key is set)
-genai.configure(api_key="AIzaSyAG6nA3tCRem-qDahg2hEX7_vwoROsaTU0")
+genai.configure(api_key="AIzaSyCSqf0gQ_KHhilgKy74rNlCYkUYiRg1oUg")
 
 @api_view(['POST'])
 def find_jobs(request):
@@ -156,7 +157,7 @@ def find_jobs(request):
 
         # Send request to Gemini AI
         print("🔄 Sending request to Gemini AI...")
-        model = genai.GenerativeModel("gemini-1.5-pro")
+        model = genai.GenerativeModel("gemini-2.5-flash")
         response = model.generate_content(prompt)
         
         # Debugging: Print full response object

@@ -25,10 +25,15 @@ from apply.views import (
 from mail.views import BasicEmailView,BasicEmailViewCompany
 from chatbot.views import find_jobs
 from registration.views import AdminCandidateListAPIView, AdminCandidateDeleteAPIView
+from job_recommendation.views import recommended_jobs,job_posts,debug_recommendations
 
 
 
 urlpatterns = [
+    path('api/recommendations/', recommended_jobs, name='recommended-jobs'),
+    path('api/job-posts/', job_posts, name='job-posts'),  # Add this new endpoint
+    path('api/debug-recommendations/', debug_recommendations, name='debug_recommendations'),
+
     path('api/find-jobs/', find_jobs, name='find-jobs'),
     path("apply/", ApplyToJobView.as_view(), name="apply_to_job"),
     path(
@@ -98,7 +103,7 @@ urlpatterns = [
 
     path('api/admin/candidates/', AdminCandidateListAPIView.as_view(), name='candidate-list'),
     path('api/admin/candidates/<int:pk>/delete/', AdminCandidateDeleteAPIView.as_view(), name='candidate-delete'),
-
+  
 ]
 
 

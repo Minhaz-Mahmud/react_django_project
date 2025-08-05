@@ -131,12 +131,13 @@ TEMPLATES = [
 WSGI_APPLICATION = "backend.wsgi.application"
 
 # Database configuration
+# Database configuration
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "career_connect",
         "USER": "postgres",
-        "PASSWORD": "114114114",
+        "PASSWORD": "123456",
         "HOST": "localhost",
         "PORT": "5432",
     }

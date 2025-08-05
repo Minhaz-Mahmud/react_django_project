@@ -77,9 +77,66 @@ const JobFeed = () => {
     }
   };
 
-  const handleApply = async (companyId, job_id, job_title) => {
+  // const handleApply = async (companyId, job_id, job_title) => {
+  //   if (!userData) {
+  //     alert("You need to log in to apply!");
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await fetch("http://127.0.0.1:8000/apply/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         candidate_id: userData.id,
+  //         company_id: companyId,
+  //         job_id: job_id,
+  //         job_title: job_title,
+  //       }),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("Failed to submit application.");
+  //     }
+
+  //     alert("Application submitted successfully!");
+  //   } catch (error) {
+  //     alert("An error occurred while applying. Please try again.");
+  //   }
+  // };
+  
+
+   const handleApply = async (companyId, job_id, job_title) => {
     if (!userData) {
       alert("You need to log in to apply!");
+      return;
+    }
+
+    // Confirmation dialog
+    const confirmed = window.confirm(`Are you sure you want to apply for the position: "${job_title}"?`);
+    if (!confirmed) {
+      return; // User cancelled
+    }
+
+    // Debug logging to see what we're sending
+    console.log("Apply Data:", {
+      candidate_id: userData.id,
+      company_id: companyId,
+      job_id: job_id,
+      job_title: job_title,
+    });
+
+    // Validate required fields
+    if (!companyId) {
+      alert("Error: Company ID is missing. Please try again.");
+      console.error("Company ID is null or undefined:", companyId);
+      return;
+    }
+
+    if (!job_id) {
+      alert("Error: Job ID is missing. Please try again.");
       return;
     }
 
@@ -98,11 +155,14 @@ const JobFeed = () => {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error("Server response:", errorText);
         throw new Error("Failed to submit application.");
       }
 
       alert("Application submitted successfully!");
     } catch (error) {
+      console.error("Apply error:", error);
       alert("An error occurred while applying. Please try again.");
     }
   };

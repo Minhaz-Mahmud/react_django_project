@@ -1,70 +1,192 @@
 .job-results-container {
-    margin-top: 50px;
-    padding: 40px;
-    background-color: #f8f9fa;
-    border-radius: 15px;
+  margin-top: 50px;
+  padding: 40px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.job-results-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #4a6cf7 0%, #6c5ce7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 40px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #4a6cf7;
+  padding: 15px 0;
+  border: none !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+.section-title::before,
+.section-title::after {
+  display: none !important;
+  content: none !important;
+}
+
+.no-jobs,
+.no-opportunities,
+.no-skills {
+  text-align: center;
+  color: #d32f2f;
+  font-size: 18px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffebee;
+  border-radius: 10px;
+  border-left: 4px solid #d32f2f;
+}
+
+.job-card {
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid rgba(74, 108, 247, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.job-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #4a6cf7 0%, #6c5ce7 100%);
+}
+
+.job-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(74, 108, 247, 0.2);
+}
+
+.job-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.skills-header {
+  margin-top: 20px;
+  margin-bottom: 15px; /* Added bottom margin */
+  font-size: 16px;
+  font-weight: 600;
+  color: #34495e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skill-chip {
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #bbdefb;
+  transition: all 0.2s ease;
+}
+
+.skill-chip:hover {
+  background-color: #bbdefb;
+  transform: scale(1.05);
+}
+
+.opportunity-chip {
+  font-size: 14px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+  color: white;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.opportunity-chip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.opportunities-container {
+  margin-top: 20px; /* Increased margin */
+  padding: 20px;
+  background-color: #f1f8e9;
+  border-radius: 12px;
+  border: 1px solid #c8e6c9;
+}
+
+.skills-container {
+  margin-top: 20px; /* Increased margin */
+  padding: 20px;
+  background-color: #fff3e0;
+  border-radius: 12px;
+  border: 1px solid #ffcc02;
+}
+
+/* Enhanced chip containers with better spacing */
+.opportunities-container .MuiGrid-container,
+.skills-container .MuiGrid-container {
+  gap: 12px !important;
+}
+
+/* Add some breathing room for the main sections */
+.job-results-container > .MuiTypography-h5:first-of-type {
+  margin-top: 20px;
+}
+
+/* Improved responsive design */
+@media (max-width: 768px) {
+  .job-results-container {
+    margin-top: 20px;
+    padding: 20px;
   }
   
   .job-results-title {
-    text-align: center;
-    font-size: 32px;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 30px;
   }
   
   .section-title {
-    margin-top: 30px;
-    font-size: 24px;
-    font-weight: 600;
-    color: #4a6cf7;
-  }
-  
-  .no-jobs,
-  .no-opportunities,
-  .no-skills {
-    text-align: center;
-    color: #d32f2f;
-    font-size: 18px;
-    margin-top: 10px;
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 25px;
   }
   
   .job-card {
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    background: #fff;
   }
-  
-  .job-card:hover {
-    transform: translateY(-5px);
+}
+
+/* Add animation for section appearance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
-  .job-title {
-    font-size: 22px;
-    font-weight: bold;
-    color: #333;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .skills-header {
-    margin-top: 15px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #555;
-  }
-  
-  .skill-chip,
-  .opportunity-chip {
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  .opportunities-container,
-  .skills-container {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
+}
+
+.section-title,
+.job-card,
+.opportunities-container,
+.skills-container {
+  animation: fadeInUp 0.6s ease-out;
+}

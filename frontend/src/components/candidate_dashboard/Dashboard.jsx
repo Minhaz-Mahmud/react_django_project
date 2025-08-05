@@ -9,6 +9,7 @@ import AppliedJobs from "../candidate_dashboard/cand_applied_jobs/AppliedJobs";
 import ResumeBuilder from "../resume/ResumeBuilder";
 import "./Dashboard.css";
 import ChangePassword from "../profile/ChangePassword";
+import RecommendedJobs from "../job_feed/RecommendedJobs";
 
 // Component for the main content area
 const MainContent = ({ activeComponent }) => {
@@ -37,6 +38,12 @@ const MainContent = ({ activeComponent }) => {
     Resume_Builder: (
       <div>
         <ResumeBuilder />
+      </div>
+    ),
+
+     Recommended_Jobs: (
+      <div>
+        <RecommendedJobs />
       </div>
     ),
   };
@@ -138,6 +145,15 @@ const Dashboard = () => {
               >
                 Generate Resume 🆕
               </button>
+              {/* Recommended Jobs */}<button
+                className={`nav-button ${
+                  activeComponent === "Recommended_Jobs" ? "active" : ""
+                }`}
+                onClick={() => setActiveComponent("Recommended_Jobs")}
+              >
+                Recommendeded Jobs
+              </button>
+
             </div>
           </div>
         </div>
