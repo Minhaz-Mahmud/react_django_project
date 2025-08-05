@@ -34,6 +34,8 @@ import ChangePasswordCompany from "./components/all_company/ChangePasswordCompan
 import JobDetails from "./components/dashboard_components/job_post/JobDetails";
 import AdminLogin from "./components/admin_dash/AdminLogin";
 import AdminDash from "./components/admin_dash/AdminDash";
+import AuthRoute from "./components/private_routes/AuthRoute";
+import PrivateAdminRoute from "./components/private_routes/PrivateAdminRoute";
 
 import RecommendedJobs from "./components/job_feed/RecommendedJobs";
 
@@ -57,30 +59,44 @@ const App = () => {
         <Route
           path="/registration"
           element={
-            <PrivateCompanyRoute>
+            <AuthRoute>
               <Registration />
-            </PrivateCompanyRoute>
+            </AuthRoute>
           }
         />
         <Route
           path="/signin"
           element={
-            <PrivateCompanyRoute>
+            <AuthRoute>
               <Signin />
-            </PrivateCompanyRoute>
+            </AuthRoute>
           }
         />
 
-        <Route path="/web/admin/login" element={<AdminLogin />} />
+        <Route
+          path="/web/admin/login"
+          element={
+            <AuthRoute>
+              <AdminLogin />
+            </AuthRoute>
+          }
+        />
         <Route
           path="/company-register"
           element={
-            <PrivateCompanyRoute>
+            <AuthRoute>
               <CompanyReg />
-            </PrivateCompanyRoute>
+            </AuthRoute>
           }
         />
-        <Route path="/admin/*" element={<AdminDash />} />
+        <Route
+          path="/admin/*"
+          element={
+            <PrivateAdminRoute>
+              <AdminDash />
+            </PrivateAdminRoute>
+          }
+        />
         <Route path="/company/dashboard" element={<CompanyDashboard />} />
         <Route path="/applied-jobs" element={<AppliedJobs />} />
         <Route
@@ -97,9 +113,9 @@ const App = () => {
         <Route
           path="/company-signin"
           element={
-            <PrivateCompanyRoute>
+            <AuthRoute>
               <CompanySignin />
-            </PrivateCompanyRoute>
+            </AuthRoute>
           }
         />
         <Route path="/company-profile" element={<CompanyProfile />} />

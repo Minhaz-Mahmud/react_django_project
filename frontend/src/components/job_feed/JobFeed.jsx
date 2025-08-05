@@ -76,36 +76,6 @@ const JobFeed = () => {
       setLoading(false);
     }
   };
-
-  // const handleApply = async (companyId, job_id, job_title) => {
-  //   if (!userData) {
-  //     alert("You need to log in to apply!");
-  //     return;
-  //   }
-
-  //   try {
-  //     const response = await fetch("http://127.0.0.1:8000/apply/", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         candidate_id: userData.id,
-  //         company_id: companyId,
-  //         job_id: job_id,
-  //         job_title: job_title,
-  //       }),
-  //     });
-
-  //     if (!response.ok) {
-  //       throw new Error("Failed to submit application.");
-  //     }
-
-  //     alert("Application submitted successfully!");
-  //   } catch (error) {
-  //     alert("An error occurred while applying. Please try again.");
-  //   }
-  // };
   
 
    const handleApply = async (companyId, job_id, job_title) => {

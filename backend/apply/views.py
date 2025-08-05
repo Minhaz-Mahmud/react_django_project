@@ -11,6 +11,7 @@ from job_post.models import JobPost
 from django.views import View
 from django.shortcuts import render
 from django.db import connection
+from django.utils.timezone import localdate
 
 
 class ApplyToJobView(APIView):
@@ -69,17 +70,47 @@ class CompanyApplicationsAPIView(APIView):
 
 def candidate_details(request, candidate_id):
     candidate = get_object_or_404(Candidate, id=candidate_id)
+    
+    # Calculate age if dob is available
+    age = None
+    if candidate.dob:
+        today = localdate()
+        age = today.year - candidate.dob.year - ((today.month, today.day) < (candidate.dob.month, candidate.dob.day))
+    
     data = {
+        # Basic Information
         "full_name": candidate.full_name,
         "email": candidate.email,
         "phone_number": candidate.phone_number,
         "location": candidate.location,
+        
+        # Personal Details
+        "dob": candidate.dob.strftime("%Y-%m-%d") if candidate.dob else None,
+        "age": age,
+        "gender": candidate.get_gender_display() if candidate.gender else None,
+        "religion": candidate.religion,
+        
+        # Education - High School
+        "high_school_name": candidate.high_school_name,
+        "high_school_degree": candidate.high_school_degree,
+        "high_school_passing_year": candidate.high_school_passing_year,
+        "high_school_grade": candidate.high_school_grade,
+        
+        # Education - University
+        "university_name": candidate.university_name,
+        "university_degree": candidate.university_degree,
+        "university_passing_year": candidate.university_passing_year,
+        "university_grade": candidate.university_grade,
+        
+        # Professional
+        "professional_experience": candidate.professional_experience,
         "skills": candidate.skills.split(",") if candidate.skills else [],
+        
+        # Files
         "resume": candidate.resume.url if candidate.resume else None,
-        "profile_picture": (
-            candidate.profile_picture.url if candidate.profile_picture else None
-        ),
+        "profile_picture": candidate.profile_picture.url if candidate.profile_picture else None,
     }
+    
     return JsonResponse(data)
 
 

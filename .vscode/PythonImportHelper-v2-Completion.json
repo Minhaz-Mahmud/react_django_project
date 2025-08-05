@@ -320,46 +320,6 @@
         "documentation": {}
     },
     {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -393,62 +353,6 @@
     },
     {
         "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -520,11 +424,123 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
         "documentation": {}
     },
     {
@@ -661,6 +677,14 @@
         "description": "admin_app.models",
         "isExtraImport": true,
         "detail": "admin_app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
         "documentation": {}
     },
     {
@@ -922,22 +946,6 @@
         "documentation": {}
     },
     {
-        "label": "serializers",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
-        "documentation": {}
-    },
-    {
         "label": "status",
         "importPath": "rest_framework",
         "description": "rest_framework",
@@ -959,6 +967,38 @@
         "description": "rest_framework",
         "isExtraImport": true,
         "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
         "documentation": {}
     },
     {
@@ -1434,6 +1474,22 @@
         "documentation": {}
     },
     {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
+        "importPath": "rest_framework.response",
+        "description": "rest_framework.response",
+        "isExtraImport": true,
+        "detail": "rest_framework.response",
+        "documentation": {}
+    },
+    {
         "label": "APIView",
         "importPath": "rest_framework.views",
         "description": "rest_framework.views",
@@ -1756,6 +1812,14 @@
         "documentation": {}
     },
     {
+        "label": "Candidate",
+        "importPath": "registration.models",
+        "description": "registration.models",
+        "isExtraImport": true,
+        "detail": "registration.models",
+        "documentation": {}
+    },
+    {
         "label": "UpdateApplicationResponse",
         "importPath": "apply.views",
         "description": "apply.views",
@@ -1900,6 +1964,22 @@
         "documentation": {}
     },
     {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
+        "label": "JobPost",
+        "importPath": "job_post.models",
+        "description": "job_post.models",
+        "isExtraImport": true,
+        "detail": "job_post.models",
+        "documentation": {}
+    },
+    {
         "label": "View",
         "importPath": "django.views",
         "description": "django.views",
@@ -1913,6 +1993,14 @@
         "description": "django.views",
         "isExtraImport": true,
         "detail": "django.views",
+        "documentation": {}
+    },
+    {
+        "label": "localdate",
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "isExtraImport": true,
+        "detail": "django.utils.timezone",
         "documentation": {}
     },
     {
@@ -2133,11 +2221,51 @@
         "documentation": {}
     },
     {
+        "label": "recommended_jobs",
+        "importPath": "job_recommendation.views",
+        "description": "job_recommendation.views",
+        "isExtraImport": true,
+        "detail": "job_recommendation.views",
+        "documentation": {}
+    },
+    {
+        "label": "job_posts",
+        "importPath": "job_recommendation.views",
+        "description": "job_recommendation.views",
+        "isExtraImport": true,
+        "detail": "job_recommendation.views",
+        "documentation": {}
+    },
+    {
+        "label": "debug_recommendations",
+        "importPath": "job_recommendation.views",
+        "description": "job_recommendation.views",
+        "isExtraImport": true,
+        "detail": "job_recommendation.views",
+        "documentation": {}
+    },
+    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "api_view",
+        "importPath": "rest_framework.decorators",
+        "description": "rest_framework.decorators",
+        "isExtraImport": true,
+        "detail": "rest_framework.decorators",
         "documentation": {}
     },
     {
@@ -2244,6 +2372,22 @@
         "description": "django.core.exceptions",
         "isExtraImport": true,
         "detail": "django.core.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectDoesNotExist",
+        "importPath": "django.core.exceptions",
+        "description": "django.core.exceptions",
+        "isExtraImport": true,
+        "detail": "django.core.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "JobPostSerializer",
+        "importPath": "job_post.serializers",
+        "description": "job_post.serializers",
+        "isExtraImport": true,
+        "detail": "job_post.serializers",
         "documentation": {}
     },
     {
@@ -2805,7 +2949,7 @@
         "kind": 2,
         "importPath": "backend.apply.views",
         "description": "backend.apply.views",
-        "peekOfCode": "def candidate_details(request, candidate_id):\n    candidate = get_object_or_404(Candidate, id=candidate_id)\n    data = {\n        \"full_name\": candidate.full_name,\n        \"email\": candidate.email,\n        \"phone_number\": candidate.phone_number,\n        \"location\": candidate.location,\n        \"skills\": candidate.skills.split(\",\") if candidate.skills else [],\n        \"resume\": candidate.resume.url if candidate.resume else None,\n        \"profile_picture\": (",
+        "peekOfCode": "def candidate_details(request, candidate_id):\n    candidate = get_object_or_404(Candidate, id=candidate_id)\n    # Calculate age if dob is available\n    age = None\n    if candidate.dob:\n        today = localdate()\n        age = today.year - candidate.dob.year - ((today.month, today.day) < (candidate.dob.month, candidate.dob.day))\n    data = {\n        # Basic Information\n        \"full_name\": candidate.full_name,",
         "detail": "backend.apply.views",
         "documentation": {}
     },
@@ -2958,7 +3102,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"postgres\",\n        \"PASSWORD\": \"114114114\",\n        \"HOST\": \"localhost\",\n        \"PORT\": \"5432\",",
+        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database configuration\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"postgres\",\n        \"PASSWORD\": \"114114114\",\n        \"HOST\": \"localhost\",",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -3120,7 +3264,7 @@
         "kind": 5,
         "importPath": "backend.backend.urls",
         "description": "backend.backend.urls",
-        "peekOfCode": "urlpatterns = [\n    path('api/find-jobs/', find_jobs, name='find-jobs'),\n    path(\"apply/\", ApplyToJobView.as_view(), name=\"apply_to_job\"),\n    path(\n        \"applications/<int:company_id>/\",\n        CompanyApplicationsAPIView.as_view(),\n        name=\"company-applications\",\n    ),\n    path(\"candidates/<int:candidate_id>/\", candidate_details, name=\"candidate_details\"),\n    path(",
+        "peekOfCode": "urlpatterns = [\n    path('api/recommendations/', recommended_jobs, name='recommended-jobs'),\n    path('api/job-posts/', job_posts, name='job-posts'),  # Add this new endpoint\n    path('api/debug-recommendations/', debug_recommendations, name='debug_recommendations'),\n    path('api/find-jobs/', find_jobs, name='find-jobs'),\n    path(\"apply/\", ApplyToJobView.as_view(), name=\"apply_to_job\"),\n    path(\n        \"applications/<int:company_id>/\",\n        CompanyApplicationsAPIView.as_view(),\n        name=\"company-applications\",",
         "detail": "backend.backend.urls",
         "documentation": {}
     },
@@ -3437,6 +3581,42 @@
         "description": "backend.job_post.views",
         "peekOfCode": "def job_detail(request, id):\n    try:\n        job = JobPost.objects.select_related(\"company\").get(id=id)\n        data = {\n            \"id\": job.id,\n            \"title\": job.title,\n            \"company\": job.company.name,\n            \"job_location\": job.job_location,\n            \"tags\": job.tags,\n            \"job_type\": job.job_type,",
         "detail": "backend.job_post.views",
+        "documentation": {}
+    },
+    {
+        "label": "JobRecommendationConfig",
+        "kind": 6,
+        "importPath": "backend.job_recommendation.apps",
+        "description": "backend.job_recommendation.apps",
+        "peekOfCode": "class JobRecommendationConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'job_recommendation'",
+        "detail": "backend.job_recommendation.apps",
+        "documentation": {}
+    },
+    {
+        "label": "recommended_jobs",
+        "kind": 2,
+        "importPath": "backend.job_recommendation.views",
+        "description": "backend.job_recommendation.views",
+        "peekOfCode": "def recommended_jobs(request):\n    debug_info = {\n        \"prompt_sent\": \"\",\n        \"gemini_response\": \"\",\n        \"parsed_result\": \"\",\n        \"candidate_skills\": \"\",\n        \"jobs_count\": 0\n    }\n    try:\n        # 1. Get candidate skills from frontend request",
+        "detail": "backend.job_recommendation.views",
+        "documentation": {}
+    },
+    {
+        "label": "debug_recommendations",
+        "kind": 2,
+        "importPath": "backend.job_recommendation.views",
+        "description": "backend.job_recommendation.views",
+        "peekOfCode": "def debug_recommendations(request):\n    \"\"\"\n    Dedicated endpoint for debugging - shows detailed information\n    Usage: GET /api/debug-recommendations/\n    \"\"\"\n    debug_info = {\n        \"timestamp\": \"\",\n        \"jobs_sample\": [],\n        \"system_info\": {}\n    }",
+        "detail": "backend.job_recommendation.views",
+        "documentation": {}
+    },
+    {
+        "label": "job_posts",
+        "kind": 2,
+        "importPath": "backend.job_recommendation.views",
+        "description": "backend.job_recommendation.views",
+        "peekOfCode": "def job_posts(request):\n    try:\n        ids_param = request.GET.get('ids', '')\n        if ids_param:\n            ids = [int(id.strip()) for id in ids_param.split(',') if id.strip().isdigit()]\n            jobs = JobPost.objects.filter(id__in=ids).select_related('company')\n        else:\n            jobs = JobPost.objects.all().select_related('company')\n        job_data = []\n        for job in jobs:",
+        "detail": "backend.job_recommendation.views",
         "documentation": {}
     },
     {
