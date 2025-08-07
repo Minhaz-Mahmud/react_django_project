@@ -31,7 +31,7 @@ from job_recommendation.views import recommended_jobs,job_posts,debug_recommenda
 
 urlpatterns = [
     path('api/recommendations/', recommended_jobs, name='recommended-jobs'),
-    path('api/job-posts/', job_posts, name='job-posts'),  # Add this new endpoint
+    path('api/job-posts/', job_posts, name='job-posts'),
     path('api/debug-recommendations/', debug_recommendations, name='debug_recommendations'),
 
     path('api/find-jobs/', find_jobs, name='find-jobs'),
@@ -100,10 +100,8 @@ urlpatterns = [
     path("api/", include("apply.urls")),
     path("api/", include("company_registration.urls")),
     path("api/", include("admin_app.urls")),
-
     path('api/admin/candidates/', AdminCandidateListAPIView.as_view(), name='candidate-list'),
     path('api/admin/candidates/<int:pk>/delete/', AdminCandidateDeleteAPIView.as_view(), name='candidate-delete'),
-  
 ]
 
 

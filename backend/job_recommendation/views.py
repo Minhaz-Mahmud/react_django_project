@@ -5,11 +5,15 @@ from job_post.models import JobPost
 import google.generativeai as genai
 import json
 import re
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from job_post.models import JobPost
+from job_post.serializers import JobPostSerializer
+from django.core.exceptions import ObjectDoesNotExist
 
-# Configure Gemini - add error handling for config
 try:
      genai.configure(api_key="AIzaSyCSqf0gQ_KHhilgKy74rNlCYkUYiRg1oUg")
-    # genai.configure(api_key="AIzaSyAG6nA3tCRem-qDahg2hEX7_vwoROsaTU0")
 except Exception as e:
     print(f"Gemini configuration failed: {str(e)}")
 
@@ -68,9 +72,7 @@ def recommended_jobs(request):
 
         # 4. Call Gemini API with correct model
         try:
-            # Use one of the available generation models from your list
             model = genai.GenerativeModel("models/gemini-1.5-flash-latest")
-            #model = genai.GenerativeModel("gemini-2.5-flash")
             
             response = model.generate_content(
                 prompt,
@@ -197,90 +199,6 @@ def debug_recommendations(request):
             "message": f"Debug error: {str(e)}",
             "debug": debug_info
         }, status=500)
-# def recommended_jobs(request):
-#     try:
-#         # 1. Get the first candidate with skills
-#         candidate = Candidate.objects.filter(skills__isnull=False).first()
-#         if not candidate:
-#             return Response({
-#                 "status": "error",
-#                 "message": "No candidates with skills found in database",
-#                 "recommended_ids": []
-#             }, status=200)
-
-#         # 2. Get all jobs with tags
-#         jobs = JobPost.objects.filter(tags__isnull=False).values('id', 'tags', 'title')[:50]  # Limit to 50 jobs
-        
-#         if not jobs:
-#             return Response({
-#                 "status": "error", 
-#                 "message": "No jobs with tags found",
-#                 "recommended_ids": []
-#             }, status=200)
-
-#         # 3. Prepare the prompt
-#         prompt = f"""
-#         Analyze these job listings and recommend the best matches based on the candidate's skills.
-#         Return ONLY JSON in this exact format: {{"recommended_job_ids": [id1, id2, id3]}}
-
-#         Candidate Skills: {candidate.skills}
-
-#         Available Jobs (ID, Title, Tags):
-#         {json.dumps(list(jobs), indent=2)}
-#         """
-
-#         # 4. Call Gemini API
-#         try:
-#             model = genai.GenerativeModel("gemini-2.5-flash")  # Using the more reliable model
-#             response = model.generate_content(
-#                 prompt,
-#                 generation_config={"temperature": 0.3},
-#                 request_options={"timeout": 10}
-#             )
-            
-#             if not response.text:
-#                 raise ValueError("Empty response from Gemini")
-
-#             # 5. Parse the response
-#             json_match = re.search(r'\{.*\}', response.text, re.DOTALL)
-#             if not json_match:
-#                 raise ValueError("No valid JSON found in response")
-            
-#             result = json.loads(json_match.group())
-#             if "recommended_job_ids" not in result:
-#                 raise ValueError("Missing recommended_job_ids in response")
-
-#             return Response({
-#                 "status": "success",
-#                 "message": "Recommendations generated",
-#                 "recommended_ids": result["recommended_job_ids"]
-#             })
-
-#         except Exception as e:
-#             # Fallback: Return some jobs if Gemini fails
-#             fallback_ids = [job['id'] for job in jobs[:3]]
-#             return Response({
-#                 "status": "partial",
-#                 "message": f"Gemini error: {str(e)} - Showing sample jobs",
-#                 "recommended_ids": fallback_ids
-#             })
-
-#     except Exception as e:
-#         return Response({
-#             "status": "error",
-#             "message": f"Server error: {str(e)}",
-#             "recommended_ids": []
-#         }, status=500)
-    
-
-
-
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import status
-from job_post.models import JobPost
-from job_post.serializers import JobPostSerializer
-from django.core.exceptions import ObjectDoesNotExist
 
 @api_view(['GET'])
 def job_posts(request):
@@ -301,7 +219,7 @@ def job_posts(request):
                 'company': {
                     'id': job.company.id,
                     'name': job.company.name,
-                    'email': job.company.email  # Add other company fields if needed
+                    'email': job.company.email
                 },
                 'job_location': job.job_location,
                 'tags': job.tags,

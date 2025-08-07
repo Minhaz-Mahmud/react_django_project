@@ -480,6 +480,14 @@
         "documentation": {}
     },
     {
+        "label": "IntegrityError",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -2399,6 +2407,14 @@
         "documentation": {}
     },
     {
+        "label": "ValidationError",
+        "importPath": "django.core.exceptions",
+        "description": "django.core.exceptions",
+        "isExtraImport": true,
+        "detail": "django.core.exceptions",
+        "documentation": {}
+    },
+    {
         "label": "JobPostSerializer",
         "importPath": "job_post.serializers",
         "description": "job_post.serializers",
@@ -2516,6 +2532,15 @@
         "description": "django.contrib.auth.models",
         "isExtraImport": true,
         "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "logging",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
         "documentation": {}
     },
     {
@@ -3127,7 +3152,7 @@
         "kind": 5,
         "importPath": "backend.backend.settings",
         "description": "backend.backend.settings",
-        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database configuration\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"postgres\",\n        \"PASSWORD\": \"114114114\",\n        \"HOST\": \"localhost\",",
+        "peekOfCode": "WSGI_APPLICATION = \"backend.wsgi.application\"\n# Database configuration\n# Database configuration\n# Database configuration\nDATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.postgresql\",\n        \"NAME\": \"career_connect\",\n        \"USER\": \"postgres\",\n        \"PASSWORD\": \"114114114\",",
         "detail": "backend.backend.settings",
         "documentation": {}
     },
@@ -3289,7 +3314,7 @@
         "kind": 5,
         "importPath": "backend.backend.urls",
         "description": "backend.backend.urls",
-        "peekOfCode": "urlpatterns = [\n    path('api/recommendations/', recommended_jobs, name='recommended-jobs'),\n    path('api/job-posts/', job_posts, name='job-posts'),  # Add this new endpoint\n    path('api/debug-recommendations/', debug_recommendations, name='debug_recommendations'),\n    path('api/find-jobs/', find_jobs, name='find-jobs'),\n    path(\"apply/\", ApplyToJobView.as_view(), name=\"apply_to_job\"),\n    path(\n        \"applications/<int:company_id>/\",\n        CompanyApplicationsAPIView.as_view(),\n        name=\"company-applications\",",
+        "peekOfCode": "urlpatterns = [\n    path('api/recommendations/', recommended_jobs, name='recommended-jobs'),\n    path('api/job-posts/', job_posts, name='job-posts'),\n    path('api/debug-recommendations/', debug_recommendations, name='debug_recommendations'),\n    path('api/find-jobs/', find_jobs, name='find-jobs'),\n    path(\"apply/\", ApplyToJobView.as_view(), name=\"apply_to_job\"),\n    path(\n        \"applications/<int:company_id>/\",\n        CompanyApplicationsAPIView.as_view(),\n        name=\"company-applications\",",
         "detail": "backend.backend.urls",
         "documentation": {}
     },
@@ -3946,7 +3971,7 @@
         "kind": 6,
         "importPath": "backend.registration.views",
         "description": "backend.registration.views",
-        "peekOfCode": "class CandidateView(APIView):\n    serializer_class = CandidateSerializer\n    def get(self, request):\n        candidates = Candidate.objects.all()\n        serializer = self.serializer_class(candidates, many=True)\n        return Response(serializer.data)\n    def post(self, request):\n        serializer = self.serializer_class(data=request.data)\n        if serializer.is_valid():\n            serializer.save()",
+        "peekOfCode": "class CandidateView(APIView):\n    serializer_class = CandidateSerializer\n    def get(self, request):\n        try:\n            candidates = Candidate.objects.all()\n            serializer = self.serializer_class(candidates, many=True)\n            return Response({\n                'success': True,\n                'message': 'Candidates retrieved successfully',\n                'data': serializer.data,",
         "detail": "backend.registration.views",
         "documentation": {}
     },
@@ -3965,6 +3990,15 @@
         "importPath": "backend.registration.views",
         "description": "backend.registration.views",
         "peekOfCode": "class AdminCandidateDeleteAPIView(APIView):\n    def delete(self, request, pk):\n        try:\n            candidate = Candidate.objects.get(pk=pk)\n            candidate.delete()\n            return Response({\"detail\": \"Candidate deleted\"}, status=status.HTTP_204_NO_CONTENT)\n        except Candidate.DoesNotExist:\n            return Response({\"error\": \"Candidate not found\"}, status=status.HTTP_404_NOT_FOUND)",
+        "detail": "backend.registration.views",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "backend.registration.views",
+        "description": "backend.registration.views",
+        "peekOfCode": "logger = logging.getLogger(__name__)\nclass CandidateView(APIView):\n    serializer_class = CandidateSerializer\n    def get(self, request):\n        try:\n            candidates = Candidate.objects.all()\n            serializer = self.serializer_class(candidates, many=True)\n            return Response({\n                'success': True,\n                'message': 'Candidates retrieved successfully',",
         "detail": "backend.registration.views",
         "documentation": {}
     },

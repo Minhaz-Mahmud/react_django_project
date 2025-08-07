@@ -25,6 +25,4 @@ urlpatterns = [
         name="update_application_response",
     ),
      path('candidate-applied-job-ids/<int:candidate_id>/', CandidateAppliedJobsAPIView.as_view(), name='candidate_applied_job_ids'),
-
-
 ]
