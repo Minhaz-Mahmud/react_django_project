@@ -1,7 +1,5 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
 import {
   FaEye,
@@ -32,12 +30,13 @@ const Registration = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(null);
+  const [errors, setErrors] = useState({});
   const [fileNames, setFileNames] = useState({
     resume: "",
     profile_picture: "",
   });
-  const [success, setSuccess] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [apiMessage, setApiMessage] = useState({ text: "", type: "" });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,6 +44,10 @@ const Registration = () => {
       ...formData,
       [name]: value,
     });
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: null }));
+    }
   };
 
   const handleFileChange = (e) => {
@@ -65,80 +68,122 @@ const Registration = () => {
     setShowPassword(!showPassword);
   };
 
-  const dismissError = () => {
-    setError(null);
+  const dismissMessage = () => {
+    setApiMessage({ text: "", type: "" });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
+  setErrors({});
+  setApiMessage({ text: "", type: "" });
 
-    const data = new FormData();
-    data.append("full_name", formData.full_name);
-    data.append("email", formData.email);
-    data.append("phone_number", formData.phone_number);
-    data.append("location", formData.location);
-    data.append("skills", formData.skills);
-    data.append("password", formData.password);
+  const data = new FormData();
+  data.append("full_name", formData.full_name);
+  data.append("email", formData.email);
+  data.append("phone_number", formData.phone_number);
+  data.append("location", formData.location);
+  data.append("skills", formData.skills);
+  data.append("password", formData.password);
 
-    if (formData.resume instanceof File) {
-      data.append("resume", formData.resume);
-    }
-    if (formData.profile_picture instanceof File) {
-      data.append("profile_picture", formData.profile_picture);
-    }
+  if (formData.resume instanceof File) {
+    data.append("resume", formData.resume);
+  }
+  if (formData.profile_picture instanceof File) {
+    data.append("profile_picture", formData.profile_picture);
+  }
 
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/candidates/",
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+  try {
+    const response = await axios.post(
+      "http://localhost:8000/candidates/",
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    // ✅ Success
+    setApiMessage({
+      text: response.data.message || "Registration successful!",
+      type: "success",
+    });
+
+    // Clear form
+    setFormData({
+      full_name: "",
+      email: "",
+      phone_number: "",
+      location: "",
+      skills: "",
+      resume: null,
+      profile_picture: null,
+      password: "",
+    });
+
+    setFileNames({
+      resume: "",
+      profile_picture: "",
+    });
+
+    // Redirect after short delay
+    setTimeout(() => navigate("/signin"), 3000);
+  } catch (error) {
+    console.error("Registration error:", error);
+
+    if (error.response) {
+      // ✅ Validation errors
+      if (error.response.data?.errors) {
+        setErrors(error.response.data.errors);
+
+        const allErrors = Object.entries(error.response.data.errors)
+          .map(([field, messages]) => `${field}: ${messages.join(", ")}`)
+          .join(" | ");
+
+        setApiMessage({
+          text: allErrors,
+          type: "error"
+        });
+      }
+      // ✅ Other known backend message
+      else if (error.response.data?.message) {
+        setApiMessage({
+          text: error.response.data.message,
+          type: "error"
+        });
+
+        if (error.response.data.error === 'duplicate_email') {
+          setErrors({ email: error.response.data.message });
         }
-      );
-      setSuccess("Registration successful! Redirecting to login...");
-
-      // Clear the form fields
-      setFormData({
-        full_name: "",
-        email: "",
-        phone_number: "",
-        location: "",
-        skills: "",
-        resume: null,
-        profile_picture: null,
-        password: "",
+      }
+    } 
+    // ✅ No backend response
+    else if (error.request) {
+      setApiMessage({
+        text: "No response from server. Please try again later.",
+        type: "error"
       });
-      setFileNames({
-        resume: "",
-        profile_picture: "",
+    } 
+    // ✅ Unexpected error
+    else {
+      setApiMessage({
+        text: "An unexpected error occurred. Please try again.",
+        type: "error"
       });
-
-      // Redirect to login page after a delay
-      setTimeout(() => {
-        navigate("/signin");
-      }, 3000);
-    } catch (error) {
-      console.error("Error creating profile:", error);
-      setError(
-        error.response?.data?.message ||
-          "Failed to create profile. Please try again."
-      );
     }
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
+
+  const getInputClass = (fieldName) => {
+    return errors[fieldName] ? "input-group has-error" : "input-group";
   };
 
   return (
     <div className="registration-container">
-      <ToastContainer
-        className="toast-class text-light"
-        position="top-center"
-        autoClose={2000}
-        style={{ zIndex: 10000 }}
-        toastStyle={{ backgroundColor: "#333" }}
-      />
-
       <div className="registration-wrapper">
         <div className="registration-image-container">
           <div className="image-overlay">
@@ -156,27 +201,35 @@ const Registration = () => {
         </div>
 
         <div className="registration-form-container">
-          {error && (
-            <div className="error-alert">
-              <span>{error}</span>
-              <button onClick={dismissError} className="close-alert">
-                <FaTimes />
-              </button>
-            </div>
-          )}
-          {success && (
-            <div className="success-alert">
-              <span>{success}</span>
-              <button onClick={() => setSuccess(null)} className="close-alert">
-                <FaTimes />
-              </button>
-            </div>
-          )}
           <form onSubmit={handleSubmit} className="registration-form">
             <h3>Create Your Account</h3>
+            
+          {apiMessage.text && (
+  <div
+    style={{
+      backgroundColor: apiMessage.type === 'success' ? '#d4edda' : '#f8d7da',
+      color: apiMessage.type === 'success' ? '#155724' : '#721c24',
+      padding: '12px 16px',
+      borderRadius: '5px',
+      border: `1px solid ${apiMessage.type === 'success' ? '#c3e6cb' : '#f5c6cb'}`,
+      marginTop: '10px',
+      fontWeight: 500,
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    }}
+  >
+    {apiMessage.text}
+    <button onClick={dismissMessage} className="close-message">
+      <FaTimes />
+    </button>
+  </div>
+)}
+
+
             <p className="form-subtitle">Fill out the form to get started</p>
 
-            <div className="input-group">
+            <div className={getInputClass("full_name")}>
               <div className="input-icon">
                 <FaUser />
               </div>
@@ -188,9 +241,14 @@ const Registration = () => {
                 value={formData.full_name}
                 required
               />
+              {errors.full_name && (
+                <div className="field-error-message">
+                  {errors.full_name}
+                </div>
+              )}
             </div>
 
-            <div className="input-group">
+            <div className={getInputClass("email")}>
               <div className="input-icon">
                 <FaEnvelope />
               </div>
@@ -202,9 +260,14 @@ const Registration = () => {
                 value={formData.email}
                 required
               />
+              {/* {errors.email && (
+                <div className="field-error-message">
+                  {Array.isArray(errors.email) ? errors.email[0] : errors.email}
+                </div>
+              )} */}
             </div>
 
-            <div className="input-group">
+            <div className={getInputClass("phone_number")}>
               <div className="input-icon">
                 <FaPhone />
               </div>
@@ -216,9 +279,14 @@ const Registration = () => {
                 value={formData.phone_number}
                 required
               />
+              {errors.phone_number && (
+                <div className="field-error-message">
+                  {Array.isArray(errors.phone_number) ? errors.phone_number[0] : errors.phone_number}
+                </div>
+              )}
             </div>
 
-            <div className="input-group">
+            <div className={getInputClass("location")}>
               <div className="input-icon">
                 <FaMapMarkerAlt />
               </div>
@@ -230,9 +298,14 @@ const Registration = () => {
                 value={formData.location}
                 required
               />
+              {errors.location && (
+                <div className="field-error-message">
+                  {Array.isArray(errors.location) ? errors.location[0] : errors.location}
+                </div>
+              )}
             </div>
 
-            <div className="input-group">
+            <div className={getInputClass("skills")}>
               <div className="input-icon">
                 <FaTools />
               </div>
@@ -243,9 +316,14 @@ const Registration = () => {
                 value={formData.skills}
                 required
               ></textarea>
+              {errors.skills && (
+                <div className="field-error-message">
+                  {Array.isArray(errors.skills) ? errors.skills[0] : errors.skills}
+                </div>
+              )}
             </div>
 
-            <div className="input-group password-group">
+            <div className={`password-group ${getInputClass("password")}`}>
               <div className="input-icon">
                 <FaLock />
               </div>
@@ -264,6 +342,11 @@ const Registration = () => {
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
+              {errors.password && (
+                <div className="field-error-message">
+                  {Array.isArray(errors.password) ? errors.password[0] : errors.password}
+                </div>
+              )}
             </div>
 
             <div className="file-input-group">
@@ -280,6 +363,11 @@ const Registration = () => {
                   className="hidden-file-input"
                 />
               </label>
+              {errors.resume && (
+                <div className="field-error-message">
+                  {Array.isArray(errors.resume) ? errors.resume[0] : errors.resume}
+                </div>
+              )}
             </div>
 
             <div className="file-input-group">
@@ -298,10 +386,19 @@ const Registration = () => {
                   className="hidden-file-input"
                 />
               </label>
+              {errors.profile_picture && (
+                <div className="field-error-message">
+                  {Array.isArray(errors.profile_picture) ? errors.profile_picture[0] : errors.profile_picture}
+                </div>
+              )}
             </div>
 
-            <button type="submit" className="submit-btn">
-              Create Account
+            <button 
+              type="submit" 
+              className="submit-btn"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Registering..." : "Create Account"}
             </button>
 
             <div className="login-link">
